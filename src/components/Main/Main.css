@@ -1,0 +1,16 @@
+li {
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    cursor: auto;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: red;
+    cursor: pointer;
+}
+
