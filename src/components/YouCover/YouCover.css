@@ -1,0 +1,57 @@
+.Cover  {
+    color: white;
+    background-color: salmon;
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    height: 200px;
+    width: 1200px;
+    background-image: url(https://www.naturesseed.com/pub/media/cache/1200x200/e47cf16f3d5bd49571ce8f0606b63dc4/l/a/lawn-and-garden-solutions-for-shady-areas.jpg);
+}
+
+.youPageName {
+    font-weight: 100;
+    position: absolute;
+    top: 110px;
+    left: 150px;
+    color: white;
+}
+
+.youPageUserName {
+    font-weight: 100;
+    position: absolute;
+    top: 140px;
+    left: 152px;
+    color: white;
+}
+
+.youFollowers {
+    font-weight: 100;
+    position: absolute;
+    top: 140px;
+    left: 252px;
+    color: white;
+}
+
+.youFollowing {
+    font-weight: 100;
+    position: absolute;
+    top: 140px;
+    left: 312px;
+    color: white;
+}
+
+.userPic {
+    position: absolute;
+    left: 75px;
+    top: 125px;
+    border-radius: 50%;
+}
+
+.Background {
+    position: absolute;
+    top: 235px;
+    width: 1080px;
+    height: 500px;
+    background: lightgray;
+}
