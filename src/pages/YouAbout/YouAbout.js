@@ -2,9 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 const YouAbout = (props) => {
-    const [showBox,setShowBox] = useState('false');
+    const [showTBox,setShowTBox] = useState('false');
+    const [Bio,setBio] = useState('false');
     useEffect(() => {
-        console.log(`Show is now ${showBox}`);
+        console.log(`Show is now ${showTBox}`);
+        console.log(`Bio is now ${Bio}`)
     }
     )
     return (
@@ -12,10 +14,16 @@ const YouAbout = (props) => {
             <div className='background'>
             </div>
             <div className='bio'>
-                <div className='editButton'onClick={() => setShowBox(!showBox)}> 
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Pencil_edit_icon.jpg" alt="Edit bio" width="15" height="15"/> 
-                </div>
-            {!showBox && (<textarea className='textBox'></textarea>)}
+                
+                {!showTBox && 
+                (<textarea className='textBox' onChange={() => setBio(`${Bio}`)}></textarea>)}
+                {!showTBox && 
+                (<button className='submitButton' onClick={()=> setShowTBox(!showTBox)}>Save</button>)}
+                {showTBox&& (
+                <div className='editButton' onClick={() => setShowTBox(!showTBox)}> 
+                <img src='https://upload.wikimedia.org/wikipedia/commons/4/4e/Pencil_edit_icon.jpg' alt='Edit bio' width='15' height='15'/> 
+                </div>)}
+                {showTBox && (<p>{Bio}</p>) }
             </div>
             <div className='showcase'>
             </div>
@@ -26,6 +34,10 @@ const YouAbout = (props) => {
                 <div className='userEmail'>JohnSilva@gmail.com</div>
             </div>
             <div className='stats'>
+                <h5 className='views'>views</h5>
+                <h5 className='tags'>tags</h5>
+                <h5 className='faves'>faves</h5>
+                <h5 className='groups'>groups</h5>
             </div>
         </div>
     );
