@@ -6,6 +6,7 @@ import dummy_posts from './__mock__/Posts/dummy_posts';
 const initialPostState = {
     posts: [],
     feed: dummy_posts,
+    activityView: 'ALL'
 };
 
 let globalCommentId = 0; //initial id
@@ -93,6 +94,10 @@ const postSlice = createSlice({
             state.feed[existingPostIndex].comments = state.feed[existingPostIndex].comments.filter(comment => comment.commentId !== commentId);
         },
 
+        setView(state, action) {
+            const viewText = action.payload;
+            state.activityView = viewText;
+        },
         // editComment(state, action) {
         //     const { commentId, commentText } = action.payload;
 

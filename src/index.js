@@ -1,14 +1,37 @@
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './index.css';
+// import App from './App';
+// import reportWebVitals from './reportWebVitals';
+// import { BrowserRouter as Router } from 'react-router-dom';
+// import { Provider } from 'react-redux';
+// import store from './storev2/store';
+// import { getUserInfo } from './storev2/users-slice';
+// import { getRecentPhotos } from './storev2/posts-slice'
+// import { getCommentsForPost } from './storev2/comments-slice';
+
+// store.dispatch(getUserInfo(2));
+// store.dispatch(getUserInfo(1));
+// store.dispatch(getRecentPhotos());
+// store.dispatch(getCommentsForPost(1));
+// store.dispatch(getCommentsForPost(2));
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
