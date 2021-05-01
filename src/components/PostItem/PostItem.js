@@ -97,7 +97,7 @@ const PostItem = (props) => {
                 </Fade>
             </Modal>
 
-            <PostPhoto description={props.caption} imageUrl={props.imageUrl}/>
+            <PostPhoto postId={props.postId} description={props.caption} imageUrl={props.imageUrl}/>
 
             <CardActionArea >
                 <PostFooter 

@@ -4,3 +4,12 @@
     
 }
 
+.edit_delete {
+    display: contents;
+}
+
+.add__comment {
+    width: 150px;
+    padding-top: 10px;
+}
+

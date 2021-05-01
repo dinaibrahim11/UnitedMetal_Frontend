@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { postsActions } from '../../../store/posts-slice';
+//import Button  from 'react-bootstrap/Button';
 /*
 
     isAddComment: to view the input textbox or not
@@ -49,8 +50,7 @@ const NewComment = (props) => {
                 variant="outlined"
             />
             
-        <Button variant="contained" color="primary" style={{height: '40px', marginTop: '10px', marginLeft: '270px'}} type="submit">Add comment</Button>
-        
+        <Button variant="contained" color="primary" className={classes.add__comment} type="submit">Add comment</Button>
         </form>
         </>
     );

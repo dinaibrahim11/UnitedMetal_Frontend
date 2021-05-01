@@ -11,7 +11,7 @@ const PostPhoto = (props) => {
 
     return (
         <CardActionArea>
-            <Link to="/photos"><CardMedia 
+            <Link to={`/photos/${props.postId}`}><CardMedia 
                 className={classes.post__image}
                 // classes={{ root: classes }}
                 image={props.imageUrl}

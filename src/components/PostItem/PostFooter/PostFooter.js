@@ -48,7 +48,7 @@ const PostFooter = (props) => {
     return (
         <Fragment>
             <div className={classes.footer} >
-                <p>{props.isFaved ? (
+                {/* <p>{props.isFaved ? (
                     <Tooltip title='Fav'>
                         <IconButton onClick={addFavHandler} component="span">
                             <FavoriteIcon />
@@ -73,9 +73,34 @@ const PostFooter = (props) => {
                     <IconButton component="span" >
                         <AddBoxIcon />
                     </IconButton>
-                </Tooltip>
+                </Tooltip> */}
 
-               
+                {props.isFaved ? (
+                    <Tooltip title='Fav'>
+                        <IconButton onClick={addFavHandler} component="span" className={classes.Button}>
+                            <FavoriteIcon />
+                        </IconButton>
+                    </Tooltip>
+                ) : (
+                    <Tooltip title='Fav'>
+                        <IconButton onClick={addFavHandler} component="span" className={classes.Button}>
+                            <FavoriteBorderIcon />
+                        </IconButton>
+                    </Tooltip>
+                )}
+                <p className={classes.count__faves}>{props.countFaves}
+                </p>
+                <Tooltip title='Comment'>
+                    <IconButton onClick={showCommentsHandler} component="span" className={classes.Button}>
+                        <CommentIcon />
+                    </IconButton>
+                </Tooltip>
+                    
+                <Tooltip title='Add to Gallery/Group'>    
+                    <IconButton component="span" className={classes.Button}>
+                        <AddBoxIcon />
+                    </IconButton>
+                </Tooltip>
                 
 
             </div>

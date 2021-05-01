@@ -8,7 +8,9 @@ import { useDispatch } from 'react-redux';
 import { userActions } from '../../../store/user-slice';
 import { postsActions } from '../../../store/posts-slice';
 
-
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 const Comment = (props) => {
     const dispatch = useDispatch();
@@ -80,10 +82,22 @@ const Comment = (props) => {
                     <h3 style={{marginLeft: '10px'}}>{props.username}</h3>
                     <p style={{marginLeft: '12px', fontSize: '80%'}}>{props.dateCommented}</p>
                     <Typography style={{marginLeft: '10px'}}>{props.commentText}</Typography>
-                    {props.isByCurrentUser && <button onClick={handleEdit}
-                        >Edit</button>}
-                    {props.isByCurrentUser && <button onClick={handleRemoveComment}
-                        style={{marginLeft: '20px'}}>Remove</button>}
+                    {/* {props.isByCurrentUser && <button onClick={handleEdit}
+                        >Edit</button>} */}
+                    {/* {props.isByCurrentUser && <button onClick={handleRemoveComment}
+                        style={{marginLeft: '20px'}}>Remove</button>} */}
+                    <div className={classes.edit_delete}>
+                    {props.isByCurrentUser && (
+                        <IconButton onClick={handleEdit}>
+                            <EditIcon />
+                        </IconButton>
+                    )}
+                    {props.isByCurrentUser && (
+                        <IconButton onClick={handleRemoveComment}>
+                            <DeleteIcon />
+                        </IconButton>
+                    )}
+                    </div>
                 </div>
                     
             )

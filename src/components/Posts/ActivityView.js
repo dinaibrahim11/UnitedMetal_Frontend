@@ -1,7 +1,7 @@
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { postsActions } from '../../store/posts-slice';
 import classes from './ActivityView.module.css';
 
@@ -9,11 +9,7 @@ import classes from './ActivityView.module.css';
 const ActivityView = (props) => {
     const dispatch = useDispatch();
 
-    const activityView = useSelector(state => state.posts.activityView);
 
-    const handleAll = () => {
-
-    }
     
 
     return (
