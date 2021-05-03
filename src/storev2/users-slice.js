@@ -28,7 +28,7 @@ const initialState = usersAdapter.getInitialState({
         activityPosts: [], //posts from activity feed in Home page
 
     },
-    toggle: false,
+    toggle: false, //to rerender post item at needed time
     status: 'idle', //whether loading or not 
     error: null
 })
