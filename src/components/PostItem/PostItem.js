@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import { CardActionArea, Menu, MenuItem } from '@material-ui/core';
 import classes from './PostItem.module.css';
@@ -8,8 +8,10 @@ import PostFooter from './PostFooter/PostFooter';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { userActions } from '../../store/user-slice';
-import { useDispatch } from 'react-redux';
+import { usersActions } from '../../storev2/users-slice';
+import { useDispatch, useSelector } from 'react-redux';
+import API from '../../fakeAPI';
+
 
 const PostItem = (props) => {
 
@@ -19,16 +21,27 @@ const PostItem = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
 
+    const [comments, setComments] = useState([]);
+
+    const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
+
     const dispatch = useDispatch();
 
-
+    useEffect(() => {
+        API.get(`posts/${props.postId}/comments`)
+            .then(res => {
+                setComments(res.data);
+            });
+            
+    }, [props.postId, rerender]);
+    
     const handleFav = () => {
         if (isFaved) {
             setCountFaves(prevCount => prevCount - 1);
-            dispatch(userActions.removeFavedPhoto(props.id));
+            dispatch(usersActions.removeFavedPhoto(props.id));
         } else {
             setCountFaves(prevCount => prevCount + 1);
-            dispatch(userActions.addSingleFavedPhoto({
+            dispatch(usersActions.addSingleFavedPhoto({
                 id: props.id,
                 owner: props.username,
                 url: props.imageUrl
@@ -60,7 +73,7 @@ const PostItem = (props) => {
     }
 
     const dummyClick = () => {
-        console.log("clicked menu item");
+        //console.log("clicked menu item");
     }
 
     return (
@@ -107,7 +120,7 @@ const PostItem = (props) => {
                     countFaves={countFaves+props.numFaves}
                     countComments={props.numComments}
                     postId={props.postId}
-                    comments={props.comments}
+                    comments={comments}
                 />
             </CardActionArea>
 

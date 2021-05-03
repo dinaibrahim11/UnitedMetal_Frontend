@@ -11,26 +11,11 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import { useSelector } from 'react-redux';
 import NewComment from '../NewComment/NewComment';
 
-/*
-    Here we should fetch the comments and number of likes from backend
-    based on id of the post
-
-
-*/
-
-/*
-
-    getAllComments from postsSlice in this component
-    add/edit/delete from commentsSlice in Comment component
-
-*/
-
 
 const PostFooter = (props) => {   
     const [showComments, setShowComments] = useState(false);
-    const userName = useSelector(state => state.user.username);
-    const isEditingAComment = useSelector(state => state.user.isEditingAComment);
-
+    const userName = useSelector(state => state.users.currentUser.username);
+    const isEditingAComment = useSelector(state => state.users.currentUser.isEditingAComment);
 
 
     const addFavHandler = () => {
@@ -48,32 +33,6 @@ const PostFooter = (props) => {
     return (
         <Fragment>
             <div className={classes.footer} >
-                {/* <p>{props.isFaved ? (
-                    <Tooltip title='Fav'>
-                        <IconButton onClick={addFavHandler} component="span">
-                            <FavoriteIcon />
-                        </IconButton>
-                    </Tooltip>
-                ) : (
-                    <Tooltip title='Fav'>
-                        <IconButton onClick={addFavHandler} component="span">
-                            <FavoriteBorderIcon />
-                        </IconButton>
-                    </Tooltip>
-                )}
-                {props.countFaves}
-                </p>
-                <Tooltip title='Comment'>
-                    <IconButton onClick={showCommentsHandler} component="span">
-                        <CommentIcon />
-                    </IconButton>
-                </Tooltip>
-                    
-                <Tooltip title='Add to Gallery/Group'>    
-                    <IconButton component="span" >
-                        <AddBoxIcon />
-                    </IconButton>
-                </Tooltip> */}
 
                 {props.isFaved ? (
                     <Tooltip title='Fav'>
@@ -110,7 +69,7 @@ const PostFooter = (props) => {
 
                     {props.comments.map((comment) => {
                         
-                        return <Comment key={comment.commentId} dateCommented={comment.dateCommented} postId={comment.postId} commentId={comment.commentId} isByCurrentUser={comment.username === userName} isAddComment={false} avatarPhoto={comment.avatarPhoto} username={comment.username} commentText={comment.commentText} />
+                        return <Comment key={comment.id} dateCommented={comment.dateCommented} postId={comment.postId} commentId={comment.id} isByCurrentUser={comment.username === userName} isAddComment={false} avatarPhoto={comment.avatarPhoto} username={comment.username} commentText={comment.commentText} />
                     })}
 
                     {!isEditingAComment && <NewComment postId={props.postId} />}

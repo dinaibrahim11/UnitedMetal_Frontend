@@ -5,23 +5,23 @@ import classes from '../Comment/Comment.module.css';
 import Button from '@material-ui/core/Button';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { postsActions } from '../../../store/posts-slice';
-//import Button  from 'react-bootstrap/Button';
+import { usersActions } from '../../../storev2/users-slice';
+
+import API from '../../../fakeAPI';
+
 /*
 
     isAddComment: to view the input textbox or not
-    TODO: handleEditSubmit, modify the postId
+    
 */
-
 
 const NewComment = (props) => {
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState('');
     
 
-    const userAvatarPhoto = useSelector(state => state.user.avatarPhoto);
-    const userName = useSelector(state => state.user.username);
-
+    const userAvatarPhoto = useSelector(state => state.users.currentUser.avatarPhoto);
+    const userName = useSelector(state => state.users.currentUser.username);
 
     const handleChange = (event) => {
         setCommentText(event.target.value);
@@ -29,9 +29,23 @@ const NewComment = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        dispatch(postsActions.addPostComment({postId: props.postId, commentText: commentText, avatarPhoto: userAvatarPhoto, username: userName}));
-        setCommentText('');
+        if (commentText === ''){
+            return;
+        }
+        var d = (new Date()).toString().split(' ').splice(1,3).join(' ');
+        API.post(`posts/${props.postId}/comments`, {
+            postId: props.postId,
+            commentText: commentText,
+            username: userName, 
+            avatarPhoto: userAvatarPhoto,
+            dateCommented: d
+        })
+        .then(res => {
+            
+            setCommentText('');
+            dispatch(usersActions.toggleComments());
+        })
+
     }
 
 
@@ -39,7 +53,7 @@ const NewComment = (props) => {
         <> 
         <form onSubmit={handleSubmit}> 
             <TextField
-                style={{width: '400px', marginLeft: '5px'}}
+                style={{width: '380px', marginLeft: '5px', marginBottom: '5px', marginRight: '5px'}}
                 id="outlined-multiline-flexible"
                 //label="Comment"
                 placeholder="Add comment to the photo"
@@ -50,7 +64,7 @@ const NewComment = (props) => {
                 variant="outlined"
             />
             
-        <Button variant="contained" color="primary" className={classes.add__comment} type="submit">Add comment</Button>
+        <Button variant="contained" color="primary" className={classes.add__comment__button} type="submit">Add</Button>
         </form>
         </>
     );

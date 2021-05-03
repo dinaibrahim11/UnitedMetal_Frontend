@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
 import classes from './PostDetail.module.css';
+
+import API from '../../fakeAPI';
 
 const PostDetail = (props) => {
 
     const postId = props.match.params.id;
-    // const dispatch = useDispatch();
-  
-    const posts = useSelector(state => state.posts.feed);
-    const post = posts.find(p => p.postId === +postId);
-    console.log(post.postId)
+    const [post, setPost] = useState({});
  
+
+    useEffect(() => {
+        API.get(`posts/${postId}`)
+            .then(res => {
+                setPost(res.data);
+            })
+    }, [postId]);
 
     return (
         <Fragment>
