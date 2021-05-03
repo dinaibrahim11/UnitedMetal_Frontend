@@ -3,9 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import YouCover from '../YouCover/YouCover';
 import Header from '../Header/Header';
 import './YouMain.css';
-import Tabs from'@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import { Link } from 'react-router-dom';
 import YouAbout from '../../pages/YouAbout/YouAbout';
 import { useState } from 'react';
@@ -31,21 +30,15 @@ const YouMain = (props) => {
                 <Route exact path="/CameraRoll" component={YouCameraRoll} />
             </Switch>
             </main>
-            <div>
-            <div className='bar'>
-                <Paper>
-                <Tabs>
-                    <Tab label='About' onClick={() => setTab('About')} />
-                    <Tab label='Photostream' />
-                    <Tab label='Albums' />
-                    <Tab label='Faves' />
-                    <Tab label='Galleries' />
-                    <Tab label='Groups' />
-                    <Tab label='Camera Roll' onClick={() => setTab('CameraRoll')} />
-                </Tabs>
-                </Paper>
-            </div>
-            </div>
+                <ButtonGroup className='navBar'>
+                    <Button className='About' onClick={() => setTab('About')} >About</Button>
+                    <Button className='Photostream'>Photostream</Button>
+                    <Button className='Albums'>Albums</Button>
+                    <Button className='Faves'>Faves</Button>
+                    <Button className='Galleries'>Galleries</Button>
+                    <Button className='Groups'>Groups</Button>
+                    <Button className='Camera Roll' onClick={() => setTab('CameraRoll')}>Camera Roll</Button>
+                </ButtonGroup>
         </div>
     );
 };

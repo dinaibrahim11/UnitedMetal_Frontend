@@ -2,11 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 const YouAbout = (props) => {
-    const [showTBox,setShowTBox] = useState('false');
+    const [showTBox,setShowTBox] = useState(true);
     const [Bio,setBio] = useState('false');
     useEffect(() => {
         console.log(`Show is now ${showTBox}`);
-        console.log(`Bio is now ${Bio}`)
+        console.log(`Bio is now ${Bio}`);
     }
     )
     return (
@@ -16,7 +16,7 @@ const YouAbout = (props) => {
             <div className='bio'>
                 
                 {!showTBox && 
-                (<textarea className='textBox' onChange={() => setBio(`${Bio}`)}></textarea>)}
+                (<textarea className='textBox' value={Bio} onChange={(event) => setBio(event.target.value)}></textarea>)}
                 {!showTBox && 
                 (<button className='submitButton' onClick={()=> setShowTBox(!showTBox)}>Save</button>)}
                 {showTBox&& (

@@ -5,7 +5,7 @@
     z-index: -1;
     top: 0px;
     height: 200px;
-    width: 1200px;
+    width: 1020px;
     background-image: url(https://www.naturesseed.com/pub/media/cache/1200x200/e47cf16f3d5bd49571ce8f0606b63dc4/l/a/lawn-and-garden-solutions-for-shady-areas.jpg);
 }
 
@@ -46,12 +46,4 @@
     left: 75px;
     top: 125px;
     border-radius: 50%;
-}
-
-.Background {
-    position: absolute;
-    top: 235px;
-    width: 1080px;
-    height: 500px;
-    background: lightgray;
 }
