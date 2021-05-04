@@ -168,13 +168,13 @@ if(redirect) {
                 <h5 className="center"> Login to flickr </h5>
        
                 <div className="input-field">
-                 <input type="email" placeholder="Email address" className="active validate" id="email"
+                 <input type="email" placeholder="Email address" className="active validate" id="login-email"
                         onChange={handleEmailInput} value={email} />
                         <p className="error">{emailError}</p>
                 </div>
        
                 <div className="input-field">
-                 <input type="password" placeholder="Password" className="active" id="password"
+                 <input type="password" placeholder="Password" className="active" id="login-password"
                         onChange={handlePasswordInput} value={password} />
                         <p className="error">{passError}</p>
                   </div>
@@ -184,7 +184,7 @@ if(redirect) {
                   </div>
        
                 <div className="col s12">
-                <button className="btn btn-block waves-effect center"> Login </button>
+                <button className="btn btn-block waves-effect center" id="login"> Login </button>
                 </div>
 
                 <div className="forgotpass">
