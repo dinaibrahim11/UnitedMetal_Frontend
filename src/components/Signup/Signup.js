@@ -341,38 +341,38 @@ if(redirect) {
 
 return (
 
-  <div className="page" >
+  <div className="page"  data-testid="signup">
  <div  className="signup-page">
 
     <form className="signup-page" onSubmit={handleSubmit}>
          <h5 className="center"> Create your account</h5>
 
          <div className="input-field">
-         <input type="text" placeholder="First name" className="active" id="firstname"
+         <input type="text" placeholder="First name" className="active" id="signup-firstname" data-testid="fname"
                 onChange={handleFirstNameInput} value={firstName} />
                <p className="error">{fnError}</p>
          </div>
 
          <div className="input-field">
-         <input type="text" placeholder="Last name" className="active" id="last name"
+         <input type="text" placeholder="Last name" className="active" id="signup-last name" data-testid="lname"
                 onChange={handleLastNameInput} value={lastName} />
                 <p className="error">{lnError}</p>
          </div>
 
          <div className="input-field">
-          <input type="text" placeholder="Your age" className="active" id="age" 
+          <input type="text" placeholder="Your age" className="active" id="signup-age" data-testid="age"
                   onChange={handleAgeInput} value={age}/>
           <p className="error">{ageError}</p>
          </div>
 
          <div className="input-field">
-          <input type="email" placeholder="Email address" className="active validate" id="email"
+          <input type="email" placeholder="Email address" className="active validate" id="signup-email" data-testid="email"
                  onChange={handleEmailInput} value={email} />
                  <p className="error">{emailError}</p>
          </div>
 
          <div className="input-field">
-          <input type="password" placeholder="Password" className="active" id="password"
+          <input type="password" placeholder="Password" className="active" id="signup-password" data-testid="password"
                  onChange={handlePasswordInput} value={password} />
                  <p className="error">{passError}</p>
            </div>
@@ -390,7 +390,7 @@ return (
         </div>
          
          <div className="input-field">
-         <button className="btn waves-effect ">Sign up</button>
+         <button className="btn waves-effect" id="signup" data-testid="button">Sign up</button>
          </div>
         
           <hr className="or"/>
