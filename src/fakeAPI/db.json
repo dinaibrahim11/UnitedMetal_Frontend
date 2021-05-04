@@ -114,12 +114,20 @@
       "id": 13
     },
     {
-      "postId": "1",
-      "commentText": "very good!!!",
+      "postId": "34",
+      "commentText": "so nice",
       "username": "Abdelrahman",
       "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "dateCommented": "May 03 2021",
-      "id": 14
+      "id": 15
+    },
+    {
+      "postId": "1",
+      "commentText": "awessommeeeee!!",
+      "username": "Abdelrahman",
+      "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+      "dateCommented": "May 04 2021",
+      "id": 16
     }
   ],
   "companies": [

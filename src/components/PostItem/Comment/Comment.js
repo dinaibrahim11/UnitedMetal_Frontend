@@ -9,10 +9,21 @@ import { usersActions } from '../../../storev2/users-slice';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import PropTypes from 'prop-types'; 
 
 import API from '../../../fakeAPI';
 
-
+/**
+ * Renders a comment item 
+ * @author Abdelrahman Mamdouh
+ * @param {*} props 
+ * @returns (
+ *      <Avatar />
+ *      commentText
+ *      <EditIcon />   if currentUser is owner
+ *      <DeleteIcon /> if currentUser is owner
+ * )
+ */
 const Comment = (props) => {
     const dispatch = useDispatch();
     const [isEditingComment, setIsEditingComment] = useState(false);
@@ -79,7 +90,7 @@ const Comment = (props) => {
 
     return (
         <div className={classes.add__comment}>
-            <Avatar src={props.avatarPhoto} alt={props.username}/>
+            <Avatar data-testid="avatar" src={props.avatarPhoto} alt={props.username}/>
             
             {isEditingComment ? editableComment :
             
@@ -111,5 +122,28 @@ const Comment = (props) => {
     );
 
 }
+
+Comment.propTypes = {
+    /**
+     * id of the post that this comment belongs to
+     */
+    postId: PropTypes.any.isRequired,
+    /**
+     * id of the current comment
+     */
+    commentId: PropTypes.number.isRequired,
+    /**
+     * username of the commentor
+     */
+    username: PropTypes.string.isRequired,
+    /**
+     * profile picture of the commentor
+     */
+    avatarPhoto: PropTypes.string.isRequired,
+    /**
+     * if this comment belongs to currentUser
+     */
+    isByCurrentUser: PropTypes.bool
+};
 
 export default Comment;

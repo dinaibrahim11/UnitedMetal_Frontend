@@ -2,7 +2,18 @@ import React from 'react';
 import { CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core';
 import classes from './PostPhoto.module.css';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+
+/**
+ * Renders the image and description under the image
+ * @author Abdelrahman Mamdouh
+ * @param {*} props 
+ * @returns (
+ *      <CardMedia />
+ *      <Typography />
+ * )
+ */
 const PostPhoto = (props) => {
 
     const handlePhotoClick = () => {
@@ -20,7 +31,7 @@ const PostPhoto = (props) => {
             />
             </Link>
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography data-testid="description" variant="body2" color="textSecondary" component="p">
                     {props.description}
                 </Typography>
             </CardContent>
@@ -28,5 +39,24 @@ const PostPhoto = (props) => {
         </CardActionArea>
     );
 }
+
+PostPhoto.propTypes = {
+    /**
+     * id of the current photo
+     */
+    postId: PropTypes.number.isRequired,
+    /**
+     * params
+     */
+    params: PropTypes.any,
+    /**
+     * link of the photo
+     */
+    imageUrl: PropTypes.string.isRequired,
+    /**
+     * description of the photo
+     */
+    description: PropTypes.string.isRequired
+};
 
 export default PostPhoto;

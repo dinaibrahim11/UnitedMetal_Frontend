@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { usersActions } from '../../../storev2/users-slice';
-
 import API from '../../../fakeAPI';
+import PropTypes from 'prop-types';
 
 /*
 
@@ -15,6 +15,12 @@ import API from '../../../fakeAPI';
     
 */
 
+/**
+ * Provides the input text box along with the Add Comment button
+ * @author Abdelrahman Mamdouh
+ * @param {*} props 
+ * @returns <TextField />
+ */
 const NewComment = (props) => {
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState('');
@@ -27,6 +33,11 @@ const NewComment = (props) => {
         setCommentText(event.target.value);
     }
 
+    /**
+     * Make a POST request with text written in the input box
+     * @param {*} event 
+     * @returns {void}
+     */
     const handleSubmit = (event) => {
         event.preventDefault();
         if (commentText === ''){
@@ -41,7 +52,10 @@ const NewComment = (props) => {
             dateCommented: d
         })
         .then(res => {
-            
+            /**
+             * toggleComments forces the comments to be refetched showing
+             * the most updated comments
+             */
             setCommentText('');
             dispatch(usersActions.toggleComments());
         })
@@ -53,6 +67,7 @@ const NewComment = (props) => {
         <> 
         <form onSubmit={handleSubmit}> 
             <TextField
+                data-testid="form"
                 style={{width: '380px', marginLeft: '5px', marginBottom: '5px', marginRight: '5px'}}
                 id="outlined-multiline-flexible"
                 //label="Comment"
@@ -64,7 +79,7 @@ const NewComment = (props) => {
                 variant="outlined"
             />
             
-        <Button variant="contained" color="primary" className={classes.add__comment__button} type="submit">Add</Button>
+        <Button data-testid="addComment" variant="contained" color="primary" className={classes.add__comment__button} type="submit">Add</Button>
         </form>
         </>
     );
@@ -81,5 +96,12 @@ const NewComment = (props) => {
     );
 
 }
+
+NewComment.propTypes = {
+    /**
+     * id of the post commenting on
+     */
+    postId: PropTypes.number.isRequired
+};
 
 export default NewComment;

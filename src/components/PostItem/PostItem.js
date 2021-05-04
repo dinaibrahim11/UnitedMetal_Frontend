@@ -11,8 +11,19 @@ import Fade from '@material-ui/core/Fade';
 import { usersActions } from '../../storev2/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import API from '../../fakeAPI';
+import PropTypes from 'prop-types';
 
-
+/**
+ * A single post item which contains the name+photo of the owner,
+ * and the actual photo that the owner posted.
+ * @author Abdelrahman Mamdouh
+ * 
+ * @returns (
+ *      <PostHeader />
+ *      <PostPhoto />
+ *      <PostFooter />
+ * )
+ */
 const PostItem = (props) => {
 
     const [isFaved, setIsFaved] = useState(false);
@@ -27,6 +38,9 @@ const PostItem = (props) => {
 
     const dispatch = useDispatch();
 
+    /**
+     * Get all the comments for this specific post/photo
+     */
     useEffect(() => {
         API.get(`posts/${props.postId}/comments`)
             .then(res => {
@@ -78,7 +92,7 @@ const PostItem = (props) => {
 
     return (
         <Card className={classes.post}>
-            <PostHeader avatar={props.avatarPhoto} username={props.username} onClickMore={showMoreHandler}/>
+            <PostHeader data-testid="postHeader" avatar={props.avatarPhoto} username={props.username} onClickMore={showMoreHandler}/>
             <Menu id="simple-menu" open={moreIsShown} onClose={closeMoreHandler} keepMounted anchorEl={anchorEl}>
                 <MenuItem onClick={handleOpenShareModal} >Share</MenuItem>
                 <MenuItem onClick={dummyClick}>Go to profile</MenuItem>
@@ -126,6 +140,41 @@ const PostItem = (props) => {
 
         </Card>
     );
+}
+
+PostItem.propTypes = {
+    /**
+     * id of the post
+     */
+    id: PropTypes.number.isRequired,
+    /**
+     * id of the post
+     */
+    postId: PropTypes.number.isRequired,
+    /**
+     * name of the owner of the post/photo
+     */
+    username: PropTypes.string.isRequired,
+    /**
+     * avatar photo of the owner of the post/photo
+     */
+    avatarPhoto: PropTypes.string.isRequired,
+    /**
+     * link of the photo
+     */
+    imageUrl: PropTypes.string.isRequired,
+    /**
+     * description or caption that is below the image
+     */
+    caption: PropTypes.string.isRequired,
+    /**
+     * count of people who favorited the post/photo 
+     */
+    numFaves: PropTypes.number.isRequired,
+    /**
+     * number of people commented (optional)
+     */
+    numComments: PropTypes.number
 }
 
 export default PostItem;
