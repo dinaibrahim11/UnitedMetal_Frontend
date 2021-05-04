@@ -1,0 +1,46 @@
+h4.center
+{
+    color: black;
+}
+
+form.formsuccess
+{
+    width: 500px;
+    height: 400px;
+    padding-top: 90px;
+    padding-bottom: 12px;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align: center;   
+    background-position:center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+   background-size: cover;
+   background-color: rgb(240, 208, 247);
+   color: black; 
+   margin-top: 200px;
+   z-index: 2;
+}
+
+
+p.formsuccess {
+    color: black;
+}
+
+div.form-page {
+
+    background-size:cover;
+    background-position:inherit;
+    padding-top: 1px;
+    padding-bottom: 10%;
+    background-image: url(bg22.jpg);
+    background-attachment:fixed;
+
+}
+
+img.formsuccess {
+    height: auto;
+    width: 110px;
+    position: relative;
+    padding-right: 6%;
+    margin-top: 1%;
+}
