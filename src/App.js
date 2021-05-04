@@ -14,10 +14,9 @@ import ForgetPasswordSuccess from './components/ForgetPasswordSuccess/ForgetPass
 import Signup from './components/Signup/Signup';
 import FormSuccess from './components/FormSuccess/FormSuccess';
 
-function App() {
-  
-  const [token, setToken] = useState();
 
+const App = () => {
+  const [token, setToken] = useState();
   return (
     <BrowserRouter>
       <div className="App">
@@ -37,6 +36,8 @@ function App() {
       <Route path="/home" component={Home} /> 
 
       </Switch>
+      <Main />
+
     </div>
     </BrowserRouter>
     
