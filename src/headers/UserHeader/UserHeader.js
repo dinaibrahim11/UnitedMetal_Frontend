@@ -77,7 +77,7 @@ const UserHeader = (props) => {
                                   <a href="javascript:void(0);" className="btn_search_mob"><span></span></a>
                                   <div className="custom-search-input">
                                 <form action="/Search" method="post">
-                                  <input type="text" placeholder="Search photos, people, and groups." name="keyword" value='' />
+                                  <input type="text" placeholder="Search photos, people, and groups." name="keyword" />
                                   <button type="submit">Q</button>
                                 </form>
                               </div>
@@ -87,7 +87,7 @@ const UserHeader = (props) => {
                             <div className="col-xl-4 col-lg-4 col-md-4 d-none d-md-block">
                               <div className="custom-search-input">
                                 <form action="/Search" method="post">
-                                  <input type="text" placeholder="Search photos, people, and groups." name="keyword" value='' />
+                                  <input type="text" placeholder="Search photos, people, and groups." name="keyword" />
                                   <button type="submit">Q</button>
                                 </form>
                               </div>
