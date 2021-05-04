@@ -1,8 +1,14 @@
+/**
+ * @function YouCameraRoll
+ */
 import React, { useState } from 'react';
-import YouImage from '../../components/YouImage/YouImage'
 
 
-
+/**
+ * Responsible for returning the 
+ * @param {properties} props 
+ * @returns {element} the Camera Roll components
+ */
 const YouCameraRoll = (props) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [localImgUrl, setLocalImgUrl] = useState(null);
@@ -31,7 +37,7 @@ const YouCameraRoll = (props) => {
             <div className='background'>
             </div>
             <div className='images'>
-            {props.currPics.map(imgSrc => (<img className='rollImage' key={imgSrc} src={imgSrc}/>))}
+            {props.currPics.map(imgSrc => (<img className='rollImage' width='100' height='100' key={imgSrc} src={imgSrc}/>))}
             </div>
             <div>
                 <div className='upButton'>

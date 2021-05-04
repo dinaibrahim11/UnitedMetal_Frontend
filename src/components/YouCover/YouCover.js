@@ -4,10 +4,12 @@
  */
 import React, { useState } from 'react';
 import './YouCover.css';
+
 /**
- * responsible for returning the upper part of the page containing cover and profile pictures along with user info
+ * @function
+ * Responsible for returning the upper part of the page containing cover and profile pictures along with user info
  * @param {properties} props 
- * @returns {element} 
+ * @returns {element} the cover components
  */
 const YouCover = (props) => {
     const [picChoose,setPicChoose] = useState(false);
@@ -18,6 +20,7 @@ const YouCover = (props) => {
     const [following,setFollowing] = useState('1');
     const [name,setName] = useState('John Silva');
     const [username,setUsername] = useState('JohnSilvaMendes');
+
     const picHandler = (event) => {
         setPic(event.target.src);
         console.log(`You chose ${pic}`);

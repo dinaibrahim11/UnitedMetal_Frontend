@@ -126,9 +126,16 @@
 
 .editCover {
     position: absolute;
-    left: 950px;
+    left: 900px;
     border: black;
     border-width: 4;
+}
+
+@media only screen and (max-width: 1000px) {
+    .editCover {
+        position: absolute;
+        left: 20px;
+    }
 }
 
 .covPic {

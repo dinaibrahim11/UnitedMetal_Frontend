@@ -1,6 +1,16 @@
+/**
+ * Responsible for all what the about page contains
+ * @function YouAbout
+ */
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+
+/**
+ * 
+ * @param {properties} props 
+ * @returns {element} About page contents
+ */
 const YouAbout = (props) => {
     const [showTBox,setShowTBox] = useState(true);
     const [Bio,setBio] = useState('');
