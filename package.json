@@ -31,6 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "doc": "jsdoc -d YouMain.js --configure jsconf.json main.js",
     "json:server": "json-server --watch src/fakeAPI/db.json"
   },
   "eslintConfig": {
