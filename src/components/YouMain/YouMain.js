@@ -14,6 +14,8 @@ import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
 
+
+
 /**
  * Array that contains the current pictures in the camera roll
  * @type {Array<strings>}
@@ -31,34 +33,32 @@ const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flex
  * @returns {element} The you page contents
  */
 const YouMain = (props) => {
-    const [tab, setTab] = useState('About');
+    const [tab, setTab] = useState('about');
     let history = useHistory();
+   
     useEffect(() => {
-        console.log(`You chose ${tab}`);
-        history.push(`${tab}`);
-    }
-    )
+        setTab(props.currentTab)
+    }, [props.currentTab])
+   
     return (
         <div>
             <div>
                 <YouCover currPics={DUMMY_IMAGES} />
             </div>
-            <main>
-            <Switch>
-                <Route exact path="/About" component={() => <YouAbout currPics={DUMMY_IMAGES}/>} />
-                <Route exact path="/CameraRoll" component={() => <YouCameraRoll currPics={DUMMY_IMAGES}/>} />
-            </Switch>
-            </main>
+            
             <div className='toolbarBg'></div>
             <ButtonGroup className='navBar'>
-                <Button className='About' onClick={() => setTab('About')} >About</Button>
+                <Button className='About' onClick={() => setTab('about')} >About</Button>
                 <Button className='Photostream'>Photostream</Button>
                 <Button className='Albums'>Albums</Button>
                 <Button className='Faves'>Faves</Button>
                 <Button className='Galleries'>Galleries</Button>
                 <Button className='Groups'>Groups</Button>
-                <Button className='CameraRoll' onClick={() => setTab('CameraRoll')}>Camera Roll</Button>
+                <Button className='CameraRoll' onClick={() => setTab('cameraroll')}>Camera Roll</Button>
             </ButtonGroup>
+            <main>
+                {tab === 'about' ? <YouAbout currPics={DUMMY_IMAGES}/> : <YouCameraRoll currPics={DUMMY_IMAGES}/>}
+            </main>
         </div>
     );
 };

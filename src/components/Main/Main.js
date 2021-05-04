@@ -9,6 +9,8 @@ import PostDetail from '../PostDetail/PostDetail';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Unauthorized from '../Unauthorized/Unauthorized';
 import { useSelector } from 'react-redux';
+import YouMain from '../YouMain/YouMain';
+
 
 const Main = (props) => {
 
@@ -22,6 +24,8 @@ const Main = (props) => {
                 <Route exact path="/photos" component={PostDetail} />
                 <Route exact path="/photos/:id" component={PostDetail} />
                 <Route exact path='/Unauthorized' component={Unauthorized} />
+                <Route exact path="/about" render={() => <YouMain currentTab="about" /> } />
+                <Route exact path="/cameraroll" render={() => <YouMain currentTab="cameraroll" /> } />
             </Switch>
             
         </main>
