@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 const YouAbout = (props) => {
     const [showTBox,setShowTBox] = useState(true);
-    const [Bio,setBio] = useState('false');
+    const [Bio,setBio] = useState('');
     useEffect(() => {
         console.log(`Show is now ${showTBox}`);
         console.log(`Bio is now ${Bio}`);
@@ -14,15 +14,20 @@ const YouAbout = (props) => {
             <div className='background'>
             </div>
             <div className='bio'>
-                
+                {!Bio && showTBox && 
+                (<div className='write' onClick={() => setShowTBox(false)}>Write something about yourself</div>)}
+
                 {!showTBox && 
                 (<textarea className='textBox' value={Bio} onChange={(event) => setBio(event.target.value)}></textarea>)}
+
                 {!showTBox && 
                 (<button className='submitButton' onClick={()=> setShowTBox(!showTBox)}>Save</button>)}
+
                 {showTBox&& (
                 <div className='editButton' onClick={() => setShowTBox(!showTBox)}> 
                 <img src='https://upload.wikimedia.org/wikipedia/commons/4/4e/Pencil_edit_icon.jpg' alt='Edit bio' width='15' height='15'/> 
                 </div>)}
+
                 {showTBox && (<p>{Bio}</p>) }
             </div>
             <div className='showcase'>
@@ -38,6 +43,10 @@ const YouAbout = (props) => {
                 <h5 className='tags'>tags</h5>
                 <h5 className='faves'>faves</h5>
                 <h5 className='groups'>groups</h5>
+                <div className='viewsNo'>0</div>
+                <div className='tagsNo'>0</div>
+                <div className='favesNo'>0</div>
+                <div className='groupsNo'>0</div>
             </div>
         </div>
     );

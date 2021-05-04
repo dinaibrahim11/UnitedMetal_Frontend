@@ -9,8 +9,8 @@
 .background {
     position: absolute;
     background-color: rgb(240, 236, 236);
-    width: 1020px;
-    height: 800px;
+    width: 100%;
+    height: 150%;
     top: 235px;
 }
 
@@ -116,12 +116,24 @@
     color: gray;
 }
 
+.viewsNo {
+    position: absolute;
+    top: 45px;
+    left: 70px;
+}
+
 .tags {
     position: relative;
     top: 10px;
     right: 223px;
     font-weight: 100;
     color: gray;
+}
+
+.tagsNo {
+    position: absolute;
+    top: 45px;
+    left: 170px;
 }
 
 .faves {
@@ -132,12 +144,24 @@
     color: gray;
 }
 
+.favesNo {
+    position: absolute;
+    top: 45px;
+    left: 270px;
+}
+
 .groups {
     position: relative;
     bottom: 70px;
     right: 23px;
     font-weight: 100;
     color: gray;
+}
+
+.groupsNo {
+    position: absolute;
+    top: 45px;
+    left: 370px;
 }
 
 .uploadButton {
@@ -154,13 +178,6 @@
     border-color: lightskyblue;
 }
 
-.upButton {
-    position: absolute;
-    width: 150px;
-    height: 80px;
-    top: 250px;
-    background-color: lightskyblue;
-}
 
 .navBar {
     position: absolute;
@@ -172,6 +189,79 @@
 }
 
 .About:focus {
-    text-decoration: underline;
-    text-decoration-color: lightblue;
+    background-color: lightblue;
+}
+
+.Photostream:focus {
+    background-color: lightblue;
+}
+
+.Albums:focus {
+    background-color: lightblue;
+}
+
+.Faves:focus {
+    background-color: lightblue;
+}
+
+.Galleries:focus {
+    background-color: lightblue;
+}
+
+.Groups:focus {
+    background-color: lightblue;
+}
+
+.CameraRoll:focus {
+    background-color: lightblue;
+}
+
+.images {
+    position: absolute;
+    top: 320px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0 8px;
+    width: 100px;
+}
+
+.uploadButton {
+    position: absolute;
+    top: 260px;
+    z-index: 2;
+    opacity: 0;
+}
+
+.colorButton {
+    background-color: lightblue;
+    width: 250px;
+    height: 25px;
+    position: absolute;
+    left: 500px;
+    top: 260px;
+    font-size: medium;
+    font-weight: 100;
+}
+
+.toolbarBg {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    height: 40px;
+    z-index: -1;
+    background-color: white;
+    opacity: 1;
+    width: 100%;
+}
+
+.rollImages {
+    position: relative;
+    top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    width: 20%;
+    height: 20%;
+
 }
