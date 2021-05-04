@@ -4,6 +4,7 @@ const YouImage = (props) => {
     return (
         <div className='image'> 
             <img alt='image' src={props.src}></img>
+            
         </div>
     )
 }

@@ -4,6 +4,12 @@ import { useEffect } from 'react';
 const YouAbout = (props) => {
     const [showTBox,setShowTBox] = useState(true);
     const [Bio,setBio] = useState('');
+    const [joinDate,setJoinDate] = useState('April 2021');
+    const [email,setEmail] = useState('JohnSilva@gmail.com');
+    const [viewsNo,setViewsNo] = useState('0');
+    const [tagsNo,setTagsNo] = useState('0');
+    const [favesNo,setFavesNo] = useState('0');
+    const [groupsNo,GroupsNo] = useState('0');
     useEffect(() => {
         console.log(`Show is now ${showTBox}`);
         console.log(`Bio is now ${Bio}`);
@@ -18,7 +24,7 @@ const YouAbout = (props) => {
                 (<div className='write' onClick={() => setShowTBox(false)}>Write something about yourself</div>)}
 
                 {!showTBox && 
-                (<textarea className='textBox' value={Bio} onChange={(event) => setBio(event.target.value)}></textarea>)}
+                (<textarea className='textBox' maxLength='150' value={Bio} onChange={(event) => setBio(event.target.value)}></textarea>)}
 
                 {!showTBox && 
                 (<button className='submitButton' onClick={()=> setShowTBox(!showTBox)}>Save</button>)}
@@ -34,19 +40,19 @@ const YouAbout = (props) => {
             </div>
             <div className='info'>
                 <h5 className='joined'>Joined</h5>
-                <div className='joinDate'>April 2021</div>
+                <div className='joinDate'>{joinDate}</div>
                 <h5 className='email'>Email</h5>
-                <div className='userEmail'>JohnSilva@gmail.com</div>
+                <div className='userEmail'>{email}</div>
             </div>
             <div className='stats'>
                 <h5 className='views'>views</h5>
                 <h5 className='tags'>tags</h5>
                 <h5 className='faves'>faves</h5>
                 <h5 className='groups'>groups</h5>
-                <div className='viewsNo'>0</div>
-                <div className='tagsNo'>0</div>
-                <div className='favesNo'>0</div>
-                <div className='groupsNo'>0</div>
+                <div className='viewsNo'>{viewsNo}</div>
+                <div className='tagsNo'>{tagsNo}</div>
+                <div className='favesNo'>{favesNo}</div>
+                <div className='groupsNo'>{groupsNo}</div>
             </div>
         </div>
     );

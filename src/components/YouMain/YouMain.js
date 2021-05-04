@@ -1,3 +1,9 @@
+/**
+ * The You module
+ * @module You
+ */
+
+
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import YouCover from '../YouCover/YouCover';
@@ -8,13 +14,22 @@ import YouAbout from '../../pages/YouAbout/YouAbout';
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+
+/**
+ * array that contains the current pictures in the camera roll
+ * @type {Array<strings>}
+ */
 const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flexible-series-metal-links-600w-1909534807.jpg',
     'https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg',
     'https://image.shutterstock.com/image-photo/wild-tropical-pulasan-fruit-nephelium-600w-1767117413.jpg',
     'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
     'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
     'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg' ];
-
+/**
+ * responsible for returning the you page entirely with all its components and routing between them
+ * @param {properties} props
+ * @returns {element} the you page contents
+ */
 const YouMain = (props) => {
     const [tab, setTab] = useState('About');
     let history = useHistory();

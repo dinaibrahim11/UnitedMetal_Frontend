@@ -1,6 +1,14 @@
+/**
+ * The cover module
+ * @module YouCover
+ */
 import React, { useState } from 'react';
 import './YouCover.css';
-
+/**
+ * responsible for returning the upper part of the page containing cover and profile pictures along with user info
+ * @param {properties} props 
+ * @returns {element} 
+ */
 const YouCover = (props) => {
     const [picChoose,setPicChoose] = useState(false);
     const [pic,setPic] = useState(`https://s3-us-west-2.amazonaws.com/melingoimages/Images/4315.jpg`);
@@ -22,7 +30,7 @@ const YouCover = (props) => {
 
     return(
     <div>
-        <div className='Cover'>
+        <div className='cover'>
             <img className='covPic' src={covPic} width='200' height='200'/>
         </div>
         {picChoose && 
