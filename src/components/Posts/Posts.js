@@ -12,7 +12,6 @@ const useStyles = makeStyles({
     }
 })
 
-
 /**
  * A posts list which represents the home feed
  * 
@@ -38,9 +37,11 @@ const Posts = () => {
             })
     }, [dispatch]);
 
+
     return (
-        // <div style={{margin: 'auto 10px', maxWidth: '600px'}}>
+        //  <div style={{margin: 'auto 100px', maxWidth: '600px'}}>
         <Container className={classes.layout}>
+
             <ActivityView data-testid="activity"/>
             
             {postsFeed.map((post) => {
@@ -56,7 +57,7 @@ const Posts = () => {
                         />;
             })}
             </Container> 
-        //  </div>
+          //</div>
      
     );
 }
