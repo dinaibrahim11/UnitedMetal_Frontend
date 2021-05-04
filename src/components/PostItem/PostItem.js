@@ -5,13 +5,13 @@ import classes from './PostItem.module.css';
 import PostHeader from './PostHeader/PostHeader';
 import PostPhoto from './PostPhoto/PostPhoto';
 import PostFooter from './PostFooter/PostFooter';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
 import { usersActions } from '../../storev2/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import API from '../../fakeAPI';
 import PropTypes from 'prop-types';
+import Modal from 'react-bootstrap/Modal';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 
 /**
  * A single post item which contains the name+photo of the owner,
@@ -31,7 +31,7 @@ const PostItem = (props) => {
     const [moreIsShown, setMoreIsShown] = useState(false); //more menu in top right corner of the post
     const [anchorEl, setAnchorEl] = useState(null);
     const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
-
+    const [isLinkCopied, setIsLinkCopied] = useState(false);
     const [comments, setComments] = useState([]);
 
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
@@ -77,7 +77,7 @@ const PostItem = (props) => {
         console.log("Share clicked");
         setIsShareModalOpen(true);
         //setAnchorEl(event.currentTarget);
-
+        setMoreIsShown(false);
     }
 
     const handleCloseShareModal = () => {
@@ -88,7 +88,16 @@ const PostItem = (props) => {
 
     const dummyClick = () => {
         //console.log("clicked menu item");
+        setMoreIsShown(false);
     }
+
+    const handleCopyToClipboard = () => {
+        setIsLinkCopied(true);
+        setTimeout(() => {
+            setIsLinkCopied(false);
+        }, 1000);
+    }
+
 
     return (
         <Card className={classes.post}>
@@ -96,33 +105,34 @@ const PostItem = (props) => {
             <Menu id="simple-menu" open={moreIsShown} onClose={closeMoreHandler} keepMounted anchorEl={anchorEl}>
                 <MenuItem onClick={handleOpenShareModal} >Share</MenuItem>
                 <MenuItem onClick={dummyClick}>Go to profile</MenuItem>
-                
             </Menu>
 
-            <Modal 
-                open={isShareModalOpen}
-                onClose={handleCloseShareModal}
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                BackdropComponent={Backdrop}
-                className={classes.modal}
-                closeAfterTransition
-                BackdropProps={{
-                timeout: 500
-                }}
-            >
-                <Fade in={isShareModalOpen} >
-                    <div className={classes.paper}>
-                        <h2 id="transition-modal-title" style={{margin: '30px auto auto 10px'}}>Share the photo</h2>
-                        <p id="transition-modal-description">
-                        External Share Link
-                        </p>
-                        <input
-                            style={{fontSize: '15px', width: '70%', textAlign: 'center', display: 'block', margin: '70px auto', padding: '0 40px', height: '53px' }} 
-                            readonly="" type="text" class="grab-link-text-field" value={props.externalShareLink} id="yui_3_16_0_1_1618999453530_59005"></input>
-                    </div>
-                </Fade>
-            </Modal>
+    <Modal
+     show={isShareModalOpen}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      onHide={handleCloseShareModal}
+      
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Share the photo
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h6>
+          External Share Link
+        </h6>
+        <CopyToClipboard style={{float: 'right', marginTop: '60px', marginRight: '20px'}} text={props.externalShareLink} onCopy={handleCopyToClipboard}>
+            <span>{isLinkCopied ? "Copied!" : <FileCopyOutlinedIcon />}</span>
+          </CopyToClipboard>
+        <input
+            style={{fontSize: '15px', width: '70%', textAlign: 'center', display: 'block', margin: '70px auto', padding: '0 40px', height: '53px' }} 
+            readonly="" type="text" class="grab-link-text-field" value={props.externalShareLink} id="yui_3_16_0_1_1618999453530_59005"></input>
+      </Modal.Body>
+
+    </Modal>
 
             <PostPhoto postId={props.postId} description={props.caption} imageUrl={props.imageUrl}/>
 

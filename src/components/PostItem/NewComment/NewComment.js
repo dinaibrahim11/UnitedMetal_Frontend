@@ -68,7 +68,8 @@ const NewComment = (props) => {
         <form onSubmit={handleSubmit}> 
             <TextField
                 data-testid="form"
-                style={{width: '380px', marginLeft: '5px', marginBottom: '5px', marginRight: '5px'}}
+                className={classes.input__comment}
+                //style={{width: '380px', marginLeft: '5px', marginBottom: '5px', marginRight: '5px'}}
                 id="outlined-multiline-flexible"
                 //label="Comment"
                 placeholder="Add comment to the photo"
@@ -88,7 +89,7 @@ const NewComment = (props) => {
 
     return (
         <div className={classes.add__comment}>
-            <Avatar src={userAvatarPhoto} alt={userName}/>
+            <Avatar src={userAvatarPhoto} alt={userName} style={{marginRight: '5px'}}/>
            
             { inputAddComment }
             

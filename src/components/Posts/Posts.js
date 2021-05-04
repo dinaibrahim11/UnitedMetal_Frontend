@@ -3,6 +3,14 @@ import PostItem from '../PostItem/PostItem';
 import { useDispatch } from 'react-redux';
 import ActivityView from './ActivityView';
 import API from '../../fakeAPI';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles({
+    layout: {
+        maxWidth: '600px'
+    }
+})
 
 
 /**
@@ -14,9 +22,8 @@ import API from '../../fakeAPI';
  *      <PostItem /> list
  * )
  */
-
 const Posts = () => {
-
+    const classes = useStyles();
     const dispatch = useDispatch();
 
     const [postsFeed, setPostsFeed] = useState([]);
@@ -32,8 +39,8 @@ const Posts = () => {
     }, [dispatch]);
 
     return (
-        <div style={{margin: 'auto 10px', maxWidth: '600px'}}>
-            
+        // <div style={{margin: 'auto 10px', maxWidth: '600px'}}>
+        <Container className={classes.layout}>
             <ActivityView data-testid="activity"/>
             
             {postsFeed.map((post) => {
@@ -48,8 +55,8 @@ const Posts = () => {
                         data-testid="postItemElement"
                         />;
             })}
-            
-        </div>
+            </Container> 
+        //  </div>
      
     );
 }
