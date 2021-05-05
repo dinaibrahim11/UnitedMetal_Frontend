@@ -19,6 +19,7 @@ const PostDetail = (props) => {
     return (
         <Fragment>
             <h1>Post Detail </h1>
+            <h2>Still Under Construction</h2>
             <h3>Post ID: {props.match.params.id}</h3>
             <div className={classes.image__view}>
                 <img src={post.imageUrl} alt="" />

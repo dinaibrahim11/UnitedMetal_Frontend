@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import './Searchbar.js'
+//import './Searchbar.js'
 import './SearchPage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -16,10 +16,42 @@ import PeopleIcon from '@material-ui/icons/People';
 import PhotoIcon from '@material-ui/icons/Photo';
 import ForumIcon from '@material-ui/icons/Forum';
 
+import { useSelector } from 'react-redux';
+
+
+
+
+import ButtonGroup from '@material-ui/core/ButtonGroup'
+import YouAbout from '../../pages/YouAbout/YouAbout';
+
+import Tab from '@material-ui/core/Tab';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+
+function a11yProps(index) {
+   return {
+       id: `scrollable-auto-tab-${index}`,
+       'aria-controls': `scrollable-auto-tabpanel-${index}`,
+};
+}
+     
+const useStyles = makeStyles((theme) => ({
+   root: {
+   flexGrow: 1,
+   width: '100%',
+   backgroundColor: theme.palette.background.paper,
+},
+}));
+
 
 function SearchPage(){
-
+   const searchQuery = useSelector(state => state.users.currentSearchQuery);
     const history = useHistory();
+
+
+
+
     const links1 = [
         
             {idd:1 ,url:"https://wallpapercave.com/uwp/uwp978614.jpeg" },
@@ -89,41 +121,38 @@ width:'20px',
 
     return(
    
-  
-
-
 
 
 <div className="Tabs">
 
 <button 
 
- className={TabSlection === 1 ? "selected-tab1" : "tab1"}
+ className={TabSlection === 1 ? "button__selected_tab1" : "button__tab1"}
     onClick={() => SetTabSelection(1)  }
 
  >
     Photos
  </button>
- <button  className="tab2"
-    className={TabSlection === 2 ? "selected-tab2" : "tab2"}
+ <button  className=" button__tab2"
+    className={TabSlection === 2 ? "button__selected_tab2" : "button__tab2"}
     onClick={() => SetTabSelection(2)}
  >
     People
  </button>
- <button  className="tab3"
-    className={TabSlection === 3 ? "selected-tab3" : "tab3"}
+ <button  className="button__tab3"
+    className={TabSlection === 3 ? "button__selected_tab3" : "button__tab3"}
     onClick={() => SetTabSelection(3)}
  >
 Groups
  </button>
- {TabSlection === 1 ?  Images.map( (Image) => <img className="PhotoG" src={Image.url} onClick={ ( )=> handleImageRoute(Image.idd)} width={200} height={200}     /> )  : (null)}
+ {TabSlection === 1 ?  Images.map( (Image) => <img className="img__PhotoG" src={Image.url} onClick={ ( )=> handleImageRoute(Image.idd)} width={200} height={200}     /> )  : (null)}
 {TabSlection===2 ? People.map((People) => <Card className="peopleC" style={cardStyle}  onClick={()=>handleCardRoute(People.id2)}>
 <CardHeader avatar={<Avatar >
     
     <img className="photoPeople"src={People.urll} width={50} height={50} ></img>
     
 </Avatar>} 
-action={<Button className="follower"  size='small'  style={ButtonStyle} >
+action={<Button   size='small'  style={ButtonStyle} >
 Follow+
 </Button>}
 
@@ -197,7 +226,6 @@ subheader={Group.since}
 
 
 </div>
-
 
 
 

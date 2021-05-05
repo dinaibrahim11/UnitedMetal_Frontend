@@ -2,7 +2,7 @@
 
 @include card.core-styles;
 
-button.selected-tab1
+.button__selected_tab1
 { 
     
     margin-top: 40px;
@@ -16,7 +16,7 @@ font-size: 25px;
 font-weight: bolder;
 
 }
-button.tab1
+.button__tab1
 { 
   
     margin-top: 40px;
@@ -35,7 +35,7 @@ font-size: 25px;
 
 
 
-button.selected-tab2
+.button__selected_tab2
 { 
     margin-top: 40px;
     height:50px;
@@ -48,7 +48,7 @@ width:180px;
 font-weight: bolder;
 
 }
-button.tab2
+.button__tab2
 {
     
     margin-top: 40px;
@@ -60,7 +60,7 @@ font-size: 25px;
 
 }
 
-button.selected-tab3
+.button__selected_tab3
 { 
     
     margin-top: 40px;
@@ -74,7 +74,7 @@ font-size: 25px;
 font-weight: bolder;
 
 }
-button.tab3
+.button__tab3
 {
     
     margin-top: 40px;
@@ -94,7 +94,7 @@ font-size: 25px;
 
 
 
-img.PhotoG{
+.img__PhotoG{
 
 margin-top: 40px;
 margin-right: 9px;;

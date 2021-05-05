@@ -11,8 +11,8 @@ const Header = () => {
     //let renderedHeader = ;
 
     return (
-        <div>
-            {alert(isLoggedIn.toString())}
+        <div style={{marginBottom: '55px'}}>
+            {/* {alert(isLoggedIn.toString())} */}
         {isLoggedIn ? <UserHeader /> : <GuestHeader />}
         </div>
     );

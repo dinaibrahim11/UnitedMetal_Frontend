@@ -1,4 +1,4 @@
-div.Searchbar{
+.div__Searchbar{
 
     padding-right: 80%;
 
@@ -6,14 +6,14 @@ div.Searchbar{
 }
 
 
-input
+.input
 {
 border-block-color: black;
 height: 13px;
 width:200px;
 
 }
-button{
+.button{
  
     height: 23px;
     width: 40px;

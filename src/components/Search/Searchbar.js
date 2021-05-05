@@ -1,7 +1,7 @@
 import React, {  useState } from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import './Searchbar.css';
+import classes from './Searchbar.module.css';
 
 
 
@@ -24,10 +24,10 @@ SetInput(e.target.value);
 
     return(
         
-<div className="Searchbar">
+<div className={classes.div__Searchbar}>
 
-    <input type="text"placeholder="Search...."  onChange={InputCheck} />
-       <button     onClick={!Input?(null):handleRoute} >
+    <input className={classes.input} type="text"placeholder="Search...."  onChange={InputCheck} />
+       <button className={classes.button}  onClick={!Input?(null):handleRoute} >
        <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/magnifying_glass.png"  height={15} width={25}/>
     
 </button>

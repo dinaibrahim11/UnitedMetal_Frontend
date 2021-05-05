@@ -20,11 +20,13 @@ import ResetPasswordSuccess from '../../components/ResetPasswordSuccess/ResetPas
 import ForgetPasswordSuccess from '../../components/ForgetPasswordSuccess/ForgetPasswordSuccess';
 import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
-
+import SearchPage from '../../components/Search/SearchPage';
+import SearchMain from '../../components/Search/SearchMain';
 
 const Main = (props) => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
+    const searchQuery = useSelector(state => state.users.currentSearchQuery);
 
     return (
         <main>
@@ -44,6 +46,7 @@ const Main = (props) => {
                 <Route exact path='/Unauthorized' component={Unauthorized} />
                 <Route exact path="/about" render={() => <YouMain currentTab="about" /> } />
                 <Route exact path="/cameraroll" render={() => <YouMain currentTab="cameraroll" /> } />
+                <Route exact path="/SearchPage" component={SearchPage} />
             </Switch>
             
         </main>
