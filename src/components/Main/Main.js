@@ -23,6 +23,12 @@ import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
 
+/**
+ * Responsible for the routing of the whole website
+ * @example <Main />
+ * 
+ *     
+ */
 const Main = (props) => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);

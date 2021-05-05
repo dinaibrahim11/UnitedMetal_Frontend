@@ -9,6 +9,7 @@ import classes from './ActivityView.module.css';
 /**
  * Selects which posts to view from (All, Friends & family, groups, people)
  * @author Abdelrahman Mamdouh
+ * @example <Activity>
  * @param {}  
  * @returns <ActivityView />
  */

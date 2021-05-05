@@ -15,7 +15,12 @@ import PropTypes from 'prop-types';
 /**
  * Contains comments and fave and comment icon and add to gallery icon
  * @author Abdelrahman Mamdouh 
- * @param {*} props 
+ * @param {function} setIsFaved - a function that sets the photo to be faved
+ * @param {function} handleFav - handles the fave action
+ * @param {number} postId - id of the post
+ * @param {boolean} isFaved - is the post faved by the current logged in user
+ * @param {number} countFaves - number of people faved the photo
+ * @param {Array} comments - list of comments on the photo/post
  * @returns (
  *      <FavoriteIcon />  <CommentIcon />  <AddBoxIcon />
  *      <Comment /> (list)

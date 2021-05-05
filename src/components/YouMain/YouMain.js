@@ -46,7 +46,8 @@ const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flex
 
 /**
  * Responsible for returning the you page entirely with all its components and routing between them
- * @param {properties} props
+ * @author Mostafa Hazem
+ * @param {string} currentTab - current selected tab, passed by the Header
  * @returns {element} The you page contents
  */
 const YouMain = (props) => {

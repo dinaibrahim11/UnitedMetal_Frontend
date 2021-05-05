@@ -44,7 +44,11 @@ const useStyles = makeStyles((theme) => ({
 },
 }));
 
-
+/**
+ * The Search page contains the three tabs (Photos, People, Groups)
+ * @author Alaa Hamed 
+ * @example <SearchPage />
+ */
 function SearchPage(){
    const searchQuery = useSelector(state => state.users.currentSearchQuery);
     const history = useHistory();

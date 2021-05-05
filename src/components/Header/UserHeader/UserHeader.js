@@ -11,6 +11,13 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useHistory } from "react-router-dom";
 
+
+/**
+ * The navigation bar that renders when the user is logged in
+ * Contains: Flickr button, You button, Explore button, Get Pro button, Search, Upload, Notifications, UserSettings 
+ * @author Dina Mohsen
+ * @example <UserHeader />
+ */
 //bg="dark" variant="dark"
 const UserHeader = () => {
 

@@ -3,6 +3,12 @@ import classes from './Welcome.module.css'
 import video1 from './welcome_video.mp4'
 import {Link} from 'react-router-dom'
 
+/**
+ * The welcome page
+ * @example <Welcome />
+ * @author Esraa Hamed
+ * 
+ */
 const Welcome = (props) => {
     return(
 

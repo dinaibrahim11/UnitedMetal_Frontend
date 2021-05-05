@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Posts/ActivityView.js</title>
+    <title>JSDoc: Source: components/PostDetail/PostDetail.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Posts/ActivityView.js</h1>
+    <h1 class="page-title">Source: components/PostDetail/PostDetail.js</h1>
 
     
 
@@ -26,54 +26,56 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+            <pre class="prettyprint source linenums"><code>import React, { Fragment, useEffect, useState } from 'react';
+import classes from './PostDetail.module.css';
 
-import { useDispatch } from 'react-redux';
-import { postsActions } from '../../store/posts-slice';
-import classes from './ActivityView.module.css';
+import API from '../../fakeAPI';
+
 
 /**
- * Selects which posts to view from (All, Friends &amp; family, groups, people)
- * @author Abdelrahman Mamdouh
- * @example &lt;Activity>
- * @param {}  
- * @returns &lt;ActivityView />
+ * Displays the details of a photo (img, comments, faves, metadata, owner)
+ * @async
+ * @param {number} postId - The id of the photo/post, takes it from the url
+ * @example &lt;PostDetail />
+ * 
  */
-const ActivityView = (props) => {
-    const dispatch = useDispatch();
+const PostDetail = (props) => {
 
-    const [currentView, setCurrentView] = useState('ALL');
-    
-    
+    const postId = props.match.params.id;
+    const [post, setPost] = useState({});
+ 
+
+    useEffect(() => {
+        API.get(`posts/${postId}`)
+            .then(res => {
+                setPost(res.data);
+            })
+    }, [postId]);
 
     return (
-        &lt;div className={classes.activity__button}>
-            &lt;DropdownButton
-                key='Secondary'
-                id='dropdown-variants-Secondary'
-                variant='secondary'
-                title='All Activity'
-            >
-                &lt;Dropdown.Item eventKey="1" onClick={() => dispatch(postsActions.setView('ALL'))}>
-                    All Activity
-                &lt;/Dropdown.Item>
-                &lt;Dropdown.Item eventKey="2" onClick={() => dispatch(postsActions.setView('PEOPLE'))}>
-                    People
-                &lt;/Dropdown.Item>
-                &lt;Dropdown.Item eventKey="3" onClick={() => dispatch(postsActions.setView('GROUPS'))}>
-                    Groups
-                &lt;/Dropdown.Item>
-                &lt;Dropdown.Item eventKey="3" onClick={() => dispatch(postsActions.setView('FRIENDS_AND_FAMILY'))}>
-                    Friends and Family
-                &lt;/Dropdown.Item>
-            &lt;/DropdownButton>
-          &lt;/div>
+        &lt;Fragment>
+            &lt;h1>Post Detail &lt;/h1>
+            &lt;h2>Still Under Construction&lt;/h2>
+            &lt;h3>Post ID: {props.match.params.id}&lt;/h3>
+            &lt;div className={classes.image__view}>
+                &lt;img src={post.imageUrl} alt="" />
+                &lt;button>Download&lt;/button>
+                &lt;button>Share&lt;/button>
+                &lt;button>Fave&lt;/button>
+            &lt;/div>
+
+            &lt;div className={classes.grid__parent}>
+                &lt;div className={classes.left}>Profile Info&lt;/div>
+                &lt;div className={classes.right}>Meta data&lt;/div>
+                
+            &lt;/div>
+
+
+        &lt;/Fragment>
     );
 }
 
-export default ActivityView;</code></pre>
+export default PostDetail;</code></pre>
         </article>
     </section>
 

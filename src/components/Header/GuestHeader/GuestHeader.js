@@ -8,6 +8,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
+
+/**
+ * The navigation bar that is rendered if the user is not logged in
+ * Contains: Flickr button, Search, Login button, SignUp button
+ * @author Dina Mohsen
+ * @example <GuestHeader />
+ */
 const GuestHeader = () => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);

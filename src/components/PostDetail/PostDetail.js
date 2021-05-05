@@ -3,6 +3,14 @@ import classes from './PostDetail.module.css';
 
 import API from '../../fakeAPI';
 
+
+/**
+ * Displays the details of a photo (img, comments, faves, metadata, owner)
+ * @async
+ * @param {number} postId - The id of the photo/post, takes it from the url
+ * @example <PostDetail />
+ * 
+ */
 const PostDetail = (props) => {
 
     const postId = props.match.params.id;

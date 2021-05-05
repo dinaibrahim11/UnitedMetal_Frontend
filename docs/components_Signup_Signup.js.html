@@ -1,4 +1,32 @@
-import React, { useState, useEffect} from 'react'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Signup/Signup.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Signup/Signup.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect} from 'react'
 import classes from './Signup.module.css'
 import {Link} from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login';
@@ -47,7 +75,7 @@ const handleSubmit = (e) => {
 }   
 
 const submitForm = () => {
-  if(isSubmitting && emailError=='' && passError=='' && checkboxErr=='' && fnError=='' && lnError=='' && ageError=='') {
+  if(isSubmitting &amp;&amp; emailError=='' &amp;&amp; passError=='' &amp;&amp; checkboxErr=='' &amp;&amp; fnError=='' &amp;&amp; lnError=='' &amp;&amp; ageError=='') {
     setRedirect("/post-signup");
   }
 }
@@ -66,7 +94,7 @@ const checkUserInput = () => {
 
 const postDataHandler = () => {
 
-if(emailError==='' && passError==='' && ageError==='' && fnError==='' && lnError===''){
+if(emailError==='' &amp;&amp; passError==='' &amp;&amp; ageError==='' &amp;&amp; fnError==='' &amp;&amp; lnError===''){
   const userInfo = {
     firstname : firstName,
     lastname: lastName,
@@ -121,7 +149,7 @@ const handleAgeInput = (e) => {
     setageError('Age is required')
     setErrorCount(1);
   }
-   else if (e.target.value < 13) {
+   else if (e.target.value &lt; 13) {
     setageError('Your age should be 13+ ');
     setErrorCount(1);
   } 
@@ -168,7 +196,7 @@ setPassword(e.target.value);
 if(!e.target.value){
   setpassError('Password is required');
   setErrorCount(1);
-} else if (e.target.value.length < 12) {
+} else if (e.target.value.length &lt; 12) {
   setpassError('Password should be 12 characters or more');
   setErrorCount(1);
 } else {setpassError(''); setErrorCount(0)}
@@ -222,7 +250,7 @@ const RecapchaLoaded = () => {
     if(!password){
         setpassError('Password is required');
         setErrorCount(1);
-    } else if (password.length < 12) {
+    } else if (password.length &lt; 12) {
         setpassError('Password should be 12 characters or more');
         setErrorCount(1);
     } else {setpassError(''); setErrorCount(0)}
@@ -232,7 +260,7 @@ const RecapchaLoaded = () => {
       setageError('Age is required')
       setErrorCount(1);
     }
-     else if (age < 13) {
+     else if (age &lt; 13) {
       setageError('Your age should be 13+ ');
       setErrorCount(1);
     } 
@@ -313,11 +341,11 @@ const componentClicked = () =>{
 
 
 if(login) { 
-  fbContent = <FacebookLogin />
+  fbContent = &lt;FacebookLogin />
 }
 else {
   fbContent = (
-    <FacebookLogin
+    &lt;FacebookLogin
     appId="942791213199046"
     autoLoad={false}
     returnScopes={true}
@@ -335,56 +363,56 @@ else {
 
 if(redirect) {
   return (
-    <Redirect to={redirect} />
+    &lt;Redirect to={redirect} />
   )
 }
 
 /*if(facebookRedirect) {
   return (
-    <Redirect to = {facebookRedirect} />
+    &lt;Redirect to = {facebookRedirect} />
   )
 }*/
 
 return (
 
-  <div className="page"  data-testid="signup">
- <div  className={classes.div__signup_page}>
+  &lt;div className="page"  data-testid="signup">
+ &lt;div  className={classes.div__signup_page}>
 
-    <form className={classes.form__signup_page} onSubmit={handleSubmit}>
-         <h5 className={classes.center}> Create your account</h5>
+    &lt;form className={classes.form__signup_page} onSubmit={handleSubmit}>
+         &lt;h5 className={classes.center}> Create your account&lt;/h5>
 
-         <div className="input-field">
-         <input type="text" placeholder="First name" className="active" id="signup-firstname" data-testid="fname"
+         &lt;div className="input-field">
+         &lt;input type="text" placeholder="First name" className="active" id="signup-firstname" data-testid="fname"
                 onChange={handleFirstNameInput} value={firstName} />
-               <p className="error">{fnError}</p>
-         </div>
+               &lt;p className="error">{fnError}&lt;/p>
+         &lt;/div>
 
-         <div className="input-field">
-         <input type="text" placeholder="Last name" className="active" id="signup-last name" data-testid="lname"
+         &lt;div className="input-field">
+         &lt;input type="text" placeholder="Last name" className="active" id="signup-last name" data-testid="lname"
                 onChange={handleLastNameInput} value={lastName} />
-                <p className="error">{lnError}</p>
-         </div>
+                &lt;p className="error">{lnError}&lt;/p>
+         &lt;/div>
 
-         <div className="input-field">
-          <input type="text" placeholder="Your age" className="active" id="signup-age" data-testid="age"
+         &lt;div className="input-field">
+          &lt;input type="text" placeholder="Your age" className="active" id="signup-age" data-testid="age"
                   onChange={handleAgeInput} value={age}/>
-          <p className={classes.p__error}>{ageError}</p>
-         </div>
+          &lt;p className={classes.p__error}>{ageError}&lt;/p>
+         &lt;/div>
 
-         <div className="input-field">
-          <input type="email" placeholder="Email address" className="active validate" id="signup-email" data-testid="email"
+         &lt;div className="input-field">
+          &lt;input type="email" placeholder="Email address" className="active validate" id="signup-email" data-testid="email"
                  onChange={handleEmailInput} value={email} />
-                 <p className="error">{emailError}</p>
-         </div>
+                 &lt;p className="error">{emailError}&lt;/p>
+         &lt;/div>
 
-         <div className="input-field">
-          <input type="password" placeholder="Password" className="active" id="signup-password" data-testid="password"
+         &lt;div className="input-field">
+          &lt;input type="password" placeholder="Password" className="active" id="signup-password" data-testid="password"
                  onChange={handlePasswordInput} value={password} />
-                 <p className="error">{passError}</p>
-           </div>
+                 &lt;p className="error">{passError}&lt;/p>
+           &lt;/div>
          
-         <div className={classes.div__recaptcha}>
-         <Recaptcha
+         &lt;div className={classes.div__recaptcha}>
+         &lt;Recaptcha
           sitekey="6LdeKMIaAAAAAKqTK1fu3QZUmB7Lzu0A804Ln1hN"
           render="explicit"
           onloadCallback={RecapchaLoaded}
@@ -392,31 +420,53 @@ return (
           />
           
           
-          <p className={classes.p__error2}>{checkboxErr}</p>
-        </div>
+          &lt;p className={classes.p__error2}>{checkboxErr}&lt;/p>
+        &lt;/div>
          
-         <div className="input-field">
-         <button className="btn waves-effect" id="signup" data-testid="button">Sign up</button>
-         </div>
+         &lt;div className="input-field">
+         &lt;button className="btn waves-effect" id="signup" data-testid="button">Sign up&lt;/button>
+         &lt;/div>
         
-          <hr className="or"/>
-          <p  className="or"> OR </p>
+          &lt;hr className="or"/>
+          &lt;p  className="or"> OR &lt;/p>
 
-          <div>
+          &lt;div>
             {fbContent}
-          </div>
+          &lt;/div>
 
-          <br />
-          <hr />
-          <p> Already have an account? Log in <Link to ="/login">here </Link> </p>
-          <br />
-          </form>
+          &lt;br />
+          &lt;hr />
+          &lt;p> Already have an account? Log in &lt;Link to ="/login">here &lt;/Link> &lt;/p>
+          &lt;br />
+          &lt;/form>
 
 
-  </div>
- </div> 
+  &lt;/div>
+ &lt;/div> 
  
 )
 }
 
-export default Signup;
+export default Signup;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-You.html">You</a></li><li><a href="module-YouCover.html">YouCover</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActivityView">ActivityView</a></li><li><a href="global.html#Comment">Comment</a></li><li><a href="global.html#DUMMY_IMAGES">DUMMY_IMAGES</a></li><li><a href="global.html#GuestHeader">GuestHeader</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#NewComment">NewComment</a></li><li><a href="global.html#PostDetail">PostDetail</a></li><li><a href="global.html#PostFooter">PostFooter</a></li><li><a href="global.html#PostHeader">PostHeader</a></li><li><a href="global.html#PostItem">PostItem</a></li><li><a href="global.html#PostPhoto">PostPhoto</a></li><li><a href="global.html#Posts">Posts</a></li><li><a href="global.html#ProtectedRoute">ProtectedRoute</a></li><li><a href="global.html#SearchMain">SearchMain</a></li><li><a href="global.html#SearchPage">SearchPage</a></li><li><a href="global.html#SearchPhotos">SearchPhotos</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#Unauthorized">Unauthorized</a></li><li><a href="global.html#UserHeader">UserHeader</a></li><li><a href="global.html#Welcome">Welcome</a></li><li><a href="global.html#YouAbout">YouAbout</a></li><li><a href="global.html#YouCameraRoll">YouCameraRoll</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Wed May 05 2021 23:41:06 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

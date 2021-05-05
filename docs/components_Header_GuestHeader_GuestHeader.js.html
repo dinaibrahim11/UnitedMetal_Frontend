@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Posts/ActivityView.js</title>
+    <title>JSDoc: Source: components/Header/GuestHeader/GuestHeader.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/Posts/ActivityView.js</h1>
+    <h1 class="page-title">Source: components/Header/GuestHeader/GuestHeader.js</h1>
 
     
 
@@ -27,53 +27,71 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
-import { useDispatch } from 'react-redux';
-import { postsActions } from '../../store/posts-slice';
-import classes from './ActivityView.module.css';
 
 /**
- * Selects which posts to view from (All, Friends &amp; family, groups, people)
- * @author Abdelrahman Mamdouh
- * @example &lt;Activity>
- * @param {}  
- * @returns &lt;ActivityView />
+ * The navigation bar that is rendered if the user is not logged in
+ * Contains: Flickr button, Search, Login button, SignUp button
+ * @author Dina Mohsen
+ * @example &lt;GuestHeader />
  */
-const ActivityView = (props) => {
-    const dispatch = useDispatch();
+const GuestHeader = () => {
 
-    const [currentView, setCurrentView] = useState('ALL');
-    
-    
+    const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
+    const history = useHistory();
+    const [searchQuery, setSearchQuery] = useState('');
+
+    //To avoid the refreshing problem:
+    //https://stackoverflow.com/questions/63880605/react-js-how-to-prevent-page-reload-once-click-on-the-link-right-now-the-whole
+
+    const handleChange = (event) => {
+        setSearchQuery(event.target.value);
+        
+    }
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        if (searchQuery === '') {
+            return;
+        }
+        setSearchQuery('');
+        history.push("/SearchPage");
+    }
+
+ 
 
     return (
-        &lt;div className={classes.activity__button}>
-            &lt;DropdownButton
-                key='Secondary'
-                id='dropdown-variants-Secondary'
-                variant='secondary'
-                title='All Activity'
-            >
-                &lt;Dropdown.Item eventKey="1" onClick={() => dispatch(postsActions.setView('ALL'))}>
-                    All Activity
-                &lt;/Dropdown.Item>
-                &lt;Dropdown.Item eventKey="2" onClick={() => dispatch(postsActions.setView('PEOPLE'))}>
-                    People
-                &lt;/Dropdown.Item>
-                &lt;Dropdown.Item eventKey="3" onClick={() => dispatch(postsActions.setView('GROUPS'))}>
-                    Groups
-                &lt;/Dropdown.Item>
-                &lt;Dropdown.Item eventKey="3" onClick={() => dispatch(postsActions.setView('FRIENDS_AND_FAMILY'))}>
-                    Friends and Family
-                &lt;/Dropdown.Item>
-            &lt;/DropdownButton>
-          &lt;/div>
-    );
-}
 
-export default ActivityView;</code></pre>
+        &lt;Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
+            {/* &lt;Navbar.Brand href="/home">Flickr&lt;/Navbar.Brand> */}
+            &lt;Link to={isLoggedIn ?  "/home" : "/"} style={{textDecoration: 'none'}}>Flickr&lt;/Link>
+            &lt;Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        &lt;Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+            
+        &lt;Nav>
+        &lt;Form inline>
+                &lt;FormControl value={searchQuery} onChange={handleChange} type="text" placeholder="Search" className="mr-sm-2" />
+                &lt;Button variant="outline-info" type="submit" onClick={handleClick}>Search&lt;/Button>
+            &lt;/Form>
+  
+            &lt;NavLink className="navbar navbar-dark bg-dark" to="/login" >Login&lt;/NavLink>
+            &lt;NavLink className="navbar navbar-dark bg-dark" to="/signup">Signup&lt;/NavLink>
+        &lt;/Nav>
+    
+        &lt;/Navbar.Collapse>
+        &lt;/Navbar>
+    );
+};
+
+export default GuestHeader;</code></pre>
         </article>
     </section>
 
