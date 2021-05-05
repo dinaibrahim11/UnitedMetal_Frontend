@@ -14,20 +14,14 @@ import ForgetPasswordSuccess from './components/ForgetPasswordSuccess/ForgetPass
 import Signup from './components/Signup/Signup';
 import FormSuccess from './components/FormSuccess/FormSuccess';
 import Menuu from './components/Menuu/Menuu';
-export const isLoggedInContext = React.createContext(false)
 
 const App = () => {
-  const isloggedin = false
+ 
   return (
     <BrowserRouter>
       <div className="App">
- 
-    <isLoggedInContext.Provider value={isloggedin}>
       <Header />
-    </isLoggedInContext.Provider>
-    <isLoggedInContext.Provider value={isloggedin}>
       <Menuu />
-    </isLoggedInContext.Provider>
       {/*<Main />*/}
       {/* <Switch>
 
