@@ -1,0 +1,79 @@
+.center
+{
+    color: black;
+}
+
+.form__signup_page
+{
+    width: 500px;
+    height:min-content;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin: 7% auto;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    text-align: center;   
+    background-position:center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+   background-size:cover;
+   background-color:rgb(240, 208, 247);
+   
+  
+}
+
+.div__signup_page{
+   
+    
+    background-size:cover;
+    background-position:inherit;
+    padding-top: 1px;
+    padding-bottom: 10%;
+    background-image: url(bg22.jpg);
+    background-attachment:fixed;
+    
+}
+
+hr.or
+{
+    margin-top: 20px;
+    width: 350px;
+    padding-right: 10%;
+}
+
+p.or
+{
+    background-color:rgb(240, 208, 247);
+    margin: -23px auto 10px;
+    width: 30px;
+    padding-top: 2%;
+}
+
+span
+{
+    color: black;
+}
+
+::placeholder
+{
+    color: rgb(109, 104, 104);
+}
+
+p.error {
+    color: red;
+    text-align: start;
+    line-height: 50%;
+    font-size: 90%;
+}
+
+p.error2{
+    color: red;
+    line-height: 190%;
+    font-size: 90%;
+    text-align: start;
+    padding-left: 8%;
+}
+
+div.recaptcha {
+   padding-left: 15%;
+}
