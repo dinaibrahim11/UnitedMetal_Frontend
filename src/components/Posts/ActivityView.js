@@ -10,7 +10,7 @@ import classes from './ActivityView.module.css';
  * Selects which posts to view from (All, Friends & family, groups, people)
  * @author Abdelrahman Mamdouh
  * @param {}  
- * @returns 
+ * @returns <ActivityView />
  */
 const ActivityView = (props) => {
     const dispatch = useDispatch();

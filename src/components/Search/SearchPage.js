@@ -99,17 +99,17 @@ const cardsPeoples=[
 
 
          var cardStyle={
-display:'grid' ,
-width: '26vw' ,
-height:'7vw',
-border:'black'
+            display:'grid' ,
+            width: '26vw' ,
+            height:'10vw',
+            border:'black'
 
            }
            var  ButtonStyle={
             background:'blue',
-          weight:'bolder',
-color:'white',
-width:'20px',
+            weight:'bolder',
+            color:'white',
+            width:'20px',
 
            }
   

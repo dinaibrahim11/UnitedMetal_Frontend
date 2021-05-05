@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 /**
  * Provides the input text box along with the Add Comment button
  * @author Abdelrahman Mamdouh
- * @param {*} props 
+ * @param {number} postId 
  * @returns <TextField />
  */
 const NewComment = (props) => {

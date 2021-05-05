@@ -11,6 +11,7 @@
  import Tabs from '@material-ui/core/Tabs';
  
 import SearchPhotos from './SearchPhotos';
+import SearchPage from './SearchPage';
 
  function a11yProps(index) {
      return {
@@ -83,6 +84,8 @@ import SearchPhotos from './SearchPhotos';
                  </div>
              </div>
              <main >
+                 {/* TODO: to be removed and put inside the below expression */}
+                 <SearchPage />
                  {tab === 'photos' ? <SearchPhotos />  : tab === 'people' ? <></> : <></> }
              </main>
          </div>
