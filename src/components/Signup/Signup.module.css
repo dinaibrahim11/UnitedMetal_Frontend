@@ -1,9 +1,9 @@
-h5.center
+.center
 {
     color: black;
 }
 
-form.signup-page
+.form__signup_page
 {
     width: 500px;
     height:min-content;
@@ -22,7 +22,7 @@ form.signup-page
   
 }
 
-div.signup-page{
+.div__signup_page{
    
     
     background-size:cover;

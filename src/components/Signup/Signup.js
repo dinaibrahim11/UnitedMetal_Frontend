@@ -1,11 +1,11 @@
 import React, { useState, useEffect} from 'react'
-import './Signup.css'
+import classes from './Signup.module.css'
 import {Link} from 'react-router-dom'
 import FacebookLogin from 'react-facebook-login';
 import { Redirect } from "react-router-dom";
 import axios from 'axios'
 import Recaptcha from 'react-recaptcha';
-
+import API from '../../fakeAPI';
 
 const Signup = () => {
 
@@ -49,7 +49,7 @@ const submitForm = () => {
 ///////////////////////////// json server //////////////////////////////
 
 const checkUserInput = () => {
-  axios.get(  apiURL + '?email=' + email)
+  API.get('users?email=' + email)
   .then(response => {
     console.log(response.data);
     if(response.data.length > 0) {
@@ -68,7 +68,7 @@ if(emailError==='' && passError==='' && ageError==='' && fnError==='' && lnError
     emailaddress: email,
     password: password 
    }
-  axios.post(apiURL, userInfo)      //json server
+  API.post('users', userInfo)      //json server
   .then(response => {
    console.log(response)
  })
@@ -135,7 +135,7 @@ const handleAgeInput = (e) => {
 const handleEmailInput = (e) => {
 setEmail(e.target.value);  
 
-axios.get(  apiURL + '?email=' + e.target.value )
+API.get('users?email=' + e.target.value )
 .then(response => {
   console.log(response.data);
   if(response.data.length > 0) {
@@ -264,7 +264,7 @@ const postFacebookDataHandler = () => {
 
   //Search for the user in our database, and if not found, record his/her info 
 
-  axios.get(  apiURL + '?email=' + facebookEmail)
+  API.get('users?email=' + facebookEmail)
   .then(response => {
     console.log(response.data);
     if(response.data.length === 0) {
@@ -275,7 +275,7 @@ const postFacebookDataHandler = () => {
         const facebookUserInfo = {
           name: name,
           email: facebookEmail }
-      axios.post(apiURL, facebookUserInfo)      //json server
+      API.post('users', facebookUserInfo)      //json server
       .then(response => {
        console.log(response)
      })  
@@ -342,10 +342,10 @@ if(redirect) {
 return (
 
   <div className="page"  data-testid="signup">
- <div  className="signup-page">
+ <div  className={classes.div__signup_page}>
 
-    <form className="signup-page" onSubmit={handleSubmit}>
-         <h5 className="center"> Create your account</h5>
+    <form className={classes.form__signup_page} onSubmit={handleSubmit}>
+         <h5 className={classes.center}> Create your account</h5>
 
          <div className="input-field">
          <input type="text" placeholder="First name" className="active" id="signup-firstname" data-testid="fname"

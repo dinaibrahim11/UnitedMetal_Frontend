@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react' 
-import './Login.css'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react' ;
+import {Link} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login';
-import axios from 'axios'
+import classes from './Login.module.css';
+import { useDispatch } from 'react-redux';
+import { usersActions } from '../../storev2/users-slice';
+import API from '../../fakeAPI';
+
 
 const Login = () => {
+
+  const dispatch = useDispatch();
 
 const apiURL = "http://localhost:3000/users" ;   //json server
 
@@ -47,12 +52,14 @@ const handlePasswordInput = (e) => {
 //////////////////////////// JSON SERVER /////////////////////////////////////
 
 const checkUserInput = () => {
-  axios.get(  apiURL + '?email=' + email + '&password=' + password )
+  API.get('users?emailaddress=' + email + '&password=' + password )
   .then(response => {
     console.log(response.data);
     if(response.data.length > 0) {
       setIsUser(true);
       setUserError('');
+      
+      dispatch(usersActions.login({email: email, password: password}));
       setRedirect("/home");
 
     } else if ( response.data.length === 0 && email && password) {
@@ -162,13 +169,13 @@ if(redirect) {
 
         
         <div className="page" >
-        <div className="login-page">
+        <div className={classes.div__login_page}>
        
-           <form className="login-page" onSubmit={handleSubmit}>
-                <h5 className="center"> Login to flickr </h5>
+           <form className={`${classes.login__page} ${classes.form__login}`} onSubmit={handleSubmit}>
+                <h5 className={classes.h5__center}> Login to flickr </h5>
        
                 <div className="input-field">
-                 <input type="email" placeholder="Email address" className="active validate" id="login-email"
+                 <input type="email" placeholder="Email address" className={`active validate ${classes.placeholder}`} id="login-email"
                         onChange={handleEmailInput} value={email} />
                         <p className="error">{emailError}</p>
                 </div>
@@ -176,23 +183,24 @@ if(redirect) {
                 <div className="input-field">
                  <input type="password" placeholder="Password" className="active" id="login-password"
                         onChange={handlePasswordInput} value={password} />
-                        <p className="error">{passError}</p>
+                        <p className={classes.p__error}>{passError}</p>
                   </div>
 
-                  <div className="usererror">
-                    <p className="error">{userError}</p>
+                  <div className={classes.div__usererror}>
+                    <p className={classes.p__error}>{userError}</p>
                   </div>
        
                 <div className="col s12">
-                <button className="btn btn-block waves-effect center" id="login"> Login </button>
+                  {/* TODO: check if center not working, import from classes */}
+                <button className={`btn ${classes.btn__block} waves-effect center`} id="login"> Login </button>
                 </div>
 
-                <div className="forgotpass">
-                <Link className="forgetpassword" to ="/forgotpassword"> Forgot password ? </Link> 
+                <div className={classes.div__forgetpassword}>
+                <Link className={classes.a__forgetpassword} to ="/forgotpassword"> Forgot password ? </Link> 
                 </div> 
                   
-                 <hr className="or"/>
-                 <p  className="or"> OR </p>
+                 <hr className={classes.hr__or}/>
+                 <p  className={classes.p__or}> OR </p>
 
                  <br />
 

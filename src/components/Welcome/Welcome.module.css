@@ -9,7 +9,7 @@
  
 }
 
-section.showcase {
+.section__showcase {
     position: absolute;
     right: 0;
     width: 100%;
@@ -27,7 +27,7 @@ section.showcase {
 }
 
 
-h3.logo
+.logo
 {
     padding-top: 50px;
     width: 100%;
@@ -50,27 +50,27 @@ video {
     position: absolute;
 }
 
-div.text {
+.div__text {
     z-index: 2;
     position:relative;
     left: 0;
   
 }
 
-h1.logo {
+.h1__logo {
     font-size: 3em;
     text-transform: uppercase;
     font-weight: 700;
 }
 
-h2.logo {
+.h2__logo {
     font-size: 2em;
     text-transform: uppercase;
     font-weight: 700;
 }
 
 
-div.overlay {
+.div__overlay {
     width: 100%;
     height: 100%;
     left: 0;
@@ -79,12 +79,12 @@ div.overlay {
     
 }
 
-p.text {
+.p__text {
     font-weight: 400;
     font-size: 1.5em;
 }
 
-a.welcome {
+.a__welcome {
     padding: 10px 30px;
     display: inline-block;
     font-size: 1em;

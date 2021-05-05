@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import searchImg from './search1.png'
 import axios from 'axios'
 import { Redirect } from "react-router-dom";
-import './ForgetPassword.css'
+import classes from './ForgetPassword.module.css'
 import passImg from './icon-password.jpg'
+import API from '../../fakeAPI';
 
 const ForgetPassword = () => {
 
@@ -36,7 +37,7 @@ const ForgetPassword = () => {
     }
 
     const checkUserInput = () => {
-      axios.get(apiURL + '?email=' + email) 
+      API.get('users?email=' + email) 
       .then(response => {
          console.log(response);
          if(response.data.length > 0 ) {
@@ -54,11 +55,11 @@ const ForgetPassword = () => {
       }
 
     return (
-        <div className="resetpassword-page"  data-testid="forgetpassword" >           
+        <div className={classes.div__resetpassword_page}  data-testid="forgetpassword" >           
         <form className="resetpassword" onSubmit={handleSubmit} data-testid="form">
               
-               <img className="forgotpass" src={passImg} /> 
-              <h4 className="center"> Forgot your password ? </h4>
+               <img className={classes.img__forgotpass} src={passImg} /> 
+              <h4 className={classes.h4__center}> Forgot your password ? </h4>
               <h6 className="center"> Please enter your email to search for your account </h6>
 
               <div className="input-field">
@@ -68,8 +69,8 @@ const ForgetPassword = () => {
                          <p className="error">{userError}</p>
               </div>
                    
-              <div className="searching">
-                 <button className="btn btn-block waves-effect" id="forgotpassword-button" data-testid="button"> Search </button>
+              <div className={classes.searching}>
+                 <button className={`btn ${classes.btn__block} waves-effect`} id="forgotpassword-button" data-testid="button"> Search </button>
               </div>
                  
                  <br />

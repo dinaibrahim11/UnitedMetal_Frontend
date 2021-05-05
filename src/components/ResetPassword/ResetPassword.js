@@ -1,6 +1,6 @@
 import React, {useState} from 'react' 
 import { useParams, useLocation, Redirect } from "react-router-dom";
-import './ResetPassword.css'
+import classes from './ResetPassword.module.css'
 import passImg from './icon-password.jpg'
 import axios from 'axios';
 
@@ -48,6 +48,7 @@ const ResetPassword = () => {
       .then(response => {
          console.log(response);
          if(response.data.length > 0 && passError==='' ) {
+           alert(response.data.id);
              setID(response.data.id); 
              changePassword();
              setRedirect("/post-forgotpassword-confirm");
@@ -71,14 +72,14 @@ const ResetPassword = () => {
     }
 
     return (
-        <div className="resetpassword-page" > 
+        <div className={classes.resetpassword_page} > 
 
-        <form className="resetpassword" onSubmit={handleSubmit}>
+        <form className={classes.resetpassword} onSubmit={handleSubmit}>
              
-        <img className="searchImg" src={passImg} />
+        <img className={classes.searchImg} src={passImg} />
 
-             <h4 className="center"> Email Verified </h4>
-             <h6 className="resetpassword"> Please enter your new password </h6>
+             <h4 className={classes.center}> Email Verified </h4>
+             <h6 className={classes.resetpassword}> Please enter your new password </h6>
              
        
                 <div className="input-field">
@@ -89,7 +90,7 @@ const ResetPassword = () => {
 
                 <br />
                   <div className="col s12">
-                 <button className="btn btn-block waves-effect" > Confrim password </button>
+                 <button className={`btn ${classes.btn__block} waves-effect`} > Confrim password </button>
                  </div>
 
                   <br />

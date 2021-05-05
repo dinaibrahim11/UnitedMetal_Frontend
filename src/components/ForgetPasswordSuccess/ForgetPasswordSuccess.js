@@ -1,18 +1,18 @@
 import React from 'react' 
 import mailImg from './mail.png'
-import './ForgetPasswordSuccess.css'
+import classes from './ForgetPasswordSuccess.module.css'
 
 const ForgetPasswordSuccess = () => {
 
 
 return (
-  <div className="forgetpassword-page">
+  <div className={classes.forgetpassword_page}>
 
-  <form className="forgetpasswordsuccess">
+  <form className={classes.forgetpasswordsuccess}>
 
-       <img src={mailImg} className="formsuccess"/>
-       <h4 className="center"> Check your inbox </h4>
-       <p className="forgetpasswordsuccess"> We sent a verification link. Please check your email to reset your password </p>
+       <img src={mailImg} className={classes.formsuccess}/>
+       <h4 className={classes.h4__center}> Check your inbox </h4>
+       <p className={classes.forgetpasswordsuccess}> We sent a verification link. Please check your email to reset your password </p>
 
        <br />   
 

@@ -100,7 +100,7 @@ const PostItem = (props) => {
 
 
     return (
-        <Card className={classes.post}>
+        <Card className={classes.post} >
             <PostHeader data-testid="postHeader" avatar={props.avatarPhoto} username={props.username} onClickMore={showMoreHandler}/>
             <Menu id="simple-menu" open={moreIsShown} onClose={closeMoreHandler} keepMounted anchorEl={anchorEl}>
                 <MenuItem onClick={handleOpenShareModal} >Share</MenuItem>

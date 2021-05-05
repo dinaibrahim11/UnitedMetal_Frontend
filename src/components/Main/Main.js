@@ -11,6 +11,16 @@ import Unauthorized from '../Unauthorized/Unauthorized';
 import { useSelector } from 'react-redux';
 import YouMain from '../YouMain/YouMain';
 
+import Welcome from '../../components/Welcome/Welcome';
+import Login from '../../components/Login/Login';
+import ForgetPassword from '../../components/ForgetPassword/ForgetPassword'
+import Home from '../../pages/Home/Home';
+import ResetPassword from '../../components/ResetPassword/ResetPassword'
+import ResetPasswordSuccess from '../../components/ResetPasswordSuccess/ResetPasswordSuccess'
+import ForgetPasswordSuccess from '../../components/ForgetPasswordSuccess/ForgetPasswordSuccess';
+import Signup from '../../components/Signup/Signup';
+import FormSuccess from '../../components/FormSuccess/FormSuccess';
+
 
 const Main = (props) => {
 
@@ -19,6 +29,14 @@ const Main = (props) => {
     return (
         <main>
             <Switch>
+                <Route exact path="/" component={Welcome} />
+                <Route path="/login" component={Login}/>
+                <Route path="/signup" component={Signup}/>
+                <Route path="/post-signup" component={FormSuccess} />
+                <Route path="/forgotpassword" component={ForgetPassword} />
+                <Route path="/post-forgotpassword" component={ForgetPasswordSuccess} />
+                <Route path="/forgotpassword-confirm" component={ResetPassword} />
+                <Route path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
                 <ProtectedRoute exact path="/home" isLoggedIn={isLoggedIn} component={Posts}/>
                 <Route exact path="/user/:id" component={UserPage} />
                 <Route exact path="/photos" component={PostDetail} />

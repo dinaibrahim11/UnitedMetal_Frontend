@@ -12,7 +12,7 @@ const initialState = usersAdapter.getInitialState({
         token: null,
         avatarPhoto: 'https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg',
         username: 'Abdelrahman',
-        isLoggedIn: true, // TODO: set to false before integration
+        isLoggedIn: false, // TODO: set to false before integration
         isEditingAComment: false,
         numFollowers: 0,
         numFollowing: 0,
@@ -26,7 +26,8 @@ const initialState = usersAdapter.getInitialState({
         userComments: [], //the comments typed by the user
         numViews: 0,
         activityPosts: [], //posts from activity feed in Home page
-
+        email: null,
+        password: null //TODO: check if the actual password is stored or an encrypted form of it
     },
     toggle: false, //to rerender post item at needed time
     status: 'idle', //whether loading or not 
@@ -57,9 +58,15 @@ const usersSlice = createSlice({
     initialState: initialState,
     reducers: {
         login(state, action) {
-            const { userId, token } = action.payload;
-            state.currentUser.userId = userId;
-            state.currentUser.token = token;
+            // TODO: check the payload
+            // const { userId, token } = action.payload;
+            // state.currentUser.userId = userId;
+            // state.currentUser.token = token;
+            const { email, password } = action.payload;
+            state.currentUser.email = email;
+            state.currentUser.password = password;
+            state.currentUser.isLoggedIn = true;
+            alert("islogged in: ", state.currentUser.isLoggedIn);
         },
         logout(state, action) {
             state.currentUser.userId = null;
