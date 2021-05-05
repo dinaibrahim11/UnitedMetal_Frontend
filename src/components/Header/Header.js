@@ -5,6 +5,15 @@ import UserHeader from '../../headers/UserHeader/UserHeader';
 import './Header.css';
 import { useSelector } from 'react-redux';
 
+
+import UserHeader from './UserHeader/UserHeader';
+import GuestHeader from './GuestHeader/GuestHeader'
+
+/**
+ * Navigation bar at the top
+ * @author Dina Mohsen
+ * 
+ */
 const Header = () => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
@@ -13,7 +22,8 @@ const Header = () => {
 
 
     return (
-        <div>
+        <div style={{marginBottom: '55px'}}>
+            {/* {alert(isLoggedIn.toString())} */}
         {isLoggedIn ? <UserHeader /> : <GuestHeader />}
         </div>
     );

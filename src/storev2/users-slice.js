@@ -29,6 +29,7 @@ const initialState = usersAdapter.getInitialState({
         email: null,
         password: null //TODO: check if the actual password is stored or an encrypted form of it
     },
+    currentSearchQuery: '',
     toggle: false, //to rerender post item at needed time
     status: 'idle', //whether loading or not 
     error: null
@@ -66,11 +67,14 @@ const usersSlice = createSlice({
             state.currentUser.email = email;
             state.currentUser.password = password;
             state.currentUser.isLoggedIn = true;
-            alert("islogged in: ", state.currentUser.isLoggedIn);
         },
         logout(state, action) {
             state.currentUser.userId = null;
             state.currentUser.token = null;
+        },
+
+        search(state, action) {
+            state.currentSearchQuery = action.payload;
         },
 
         //used to notify PostItem to rerender

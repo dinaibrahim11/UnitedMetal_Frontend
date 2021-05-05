@@ -20,23 +20,31 @@ import ResetPasswordSuccess from '../../components/ResetPasswordSuccess/ResetPas
 import ForgetPasswordSuccess from '../../components/ForgetPasswordSuccess/ForgetPasswordSuccess';
 import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
+import SearchPage from '../../components/Search/SearchPage';
+import SearchMain from '../../components/Search/SearchMain';
 
-
+/**
+ * Responsible for the routing of the whole website
+ * @example <Main />
+ * 
+ *     
+ */
 const Main = (props) => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
+    const searchQuery = useSelector(state => state.users.currentSearchQuery);
 
     return (
         <main>
             <Switch>
                 <Route exact path="/" component={Welcome} />
-                <Route path="/login" component={Login}/>
-                <Route path="/signup" component={Signup}/>
-                <Route path="/post-signup" component={FormSuccess} />
-                <Route path="/forgotpassword" component={ForgetPassword} />
-                <Route path="/post-forgotpassword" component={ForgetPasswordSuccess} />
-                <Route path="/forgotpassword-confirm" component={ResetPassword} />
-                <Route path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/signup" component={Signup}/>
+                <Route exact path="/post-signup" component={FormSuccess} />
+                <Route exact path="/forgotpassword" component={ForgetPassword} />
+                <Route exact path="/post-forgotpassword" component={ForgetPasswordSuccess} />
+                <Route exact path="/forgotpassword-confirm" component={ResetPassword} />
+                <Route exact path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
                 <ProtectedRoute exact path="/home" isLoggedIn={isLoggedIn} component={Posts}/>
                 <Route exact path="/user/:id" component={UserPage} />
                 <Route exact path="/photos" component={PostDetail} />
@@ -44,6 +52,7 @@ const Main = (props) => {
                 <Route exact path='/Unauthorized' component={Unauthorized} />
                 <Route exact path="/about" render={() => <YouMain currentTab="about" /> } />
                 <Route exact path="/cameraroll" render={() => <YouMain currentTab="cameraroll" /> } />
+                <Route exact path="/SearchPage" component={SearchPage} />
             </Switch>
             
         </main>

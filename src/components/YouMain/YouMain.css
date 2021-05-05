@@ -1,37 +1,30 @@
-.bar {
-    position: absolute;
-    top: 200px;
-    left: 20px;
-    width: 1000px;
-    height: 30px;
-    z-index: 1;
-}
+
 
 .background {
     position: absolute;
     background-color: rgb(240, 236, 236);
     width: 100%;
     height: 150%;
-    top: 235px;
-}
-
-@media only screen and (max-width: 1000px) {
-    .background{
-        width: 1020px;
-        height: 720px;
-    }
+    top: 250px;
 }
 
 .bio {
     position: absolute;
     top: 260px;
     background-color: white;
-    width: 800px;
-    height: 100px;
+    width: 80%;
+    height: 110px;
     left: 70px;
     border-style: solid;
     border-width: 0.5px;
     border-color: lightgray;
+}
+
+.currBio {
+    position: absolute;
+    left: 40px;
+    max-width: 80%;
+    word-wrap: break-word;
 }
 
 @media only screen and (max-width: 700px){
@@ -42,10 +35,10 @@
 
 .showcase {
     position: absolute;
-    top: 360px;
+    top: 370px;
     left: 70px;
     background-color: white;
-    width: 800px;
+    width: 80%;
     height: 300px;
     border-style: solid;
     border-width: 0.5px;
@@ -57,7 +50,7 @@
     top: 660px;
     left: 70px;
     background-color: white;
-    width: 800px;
+    width: 80%;
     height: 120px;
     border-style: solid;
     border-width: 0.5px;
@@ -66,15 +59,21 @@
 
 .editButton {
     position: relative;
-    left: 760px;
-    top: 50px;
-    width: 10px;
+    left: 670px;
+    top: 60px;
+    width: 10%;
     height: 10px;
 }
 
+@media only screen and (max-width: 900px) {
+    .editButton {
+        left: 20px;
+    }
+}
+
 .textBox {
-    width: 700px;
-    height: 50px;
+    width: 70%;
+    height: 50%;
     position: absolute;
     top: 15px;
     left: 50px;
@@ -85,7 +84,7 @@
     top: 780px;
     left: 70px;
     background-color: white;
-    width: 800px;
+    width: 80%;
     height: 120px;
     border-style: solid;
     border-width: 0.5px;
@@ -93,39 +92,39 @@
 }
 
 .joined {
-    position: relative;
-    top: 10px;
-    right: 320px;
+    position: absolute;
+    top: 20px;
+    left: 60px;
     color: gray;
     font-weight: 100;
 }
 
 .joinDate {
-    position: relative;
-    right: 180px;
-    bottom: 32px;
+    position: absolute;
+    left: 180px;
+    top: 20px;
     font-weight: 100;
 }
 
 .email {
-    position: relative;
-    bottom: 30px;
-    right: 323px;
+    position: absolute;
+    top: 65px;
+    left: 60px;
     color: gray;
     font-weight: 100;
 }
 
 .userEmail {
-    position: relative;
-    bottom: 72px;
-    right: 140px;
+    position: absolute;
+    top: 65px;
+    left: 180px;
     font-weight: 100;
 }
 
 .views {
-    position: relative;
-    top: 50px;
-    right: 323px;
+    position: absolute;
+    top: 65px;
+    left: 55px;
     font-weight: 100;
     color: gray;
 }
@@ -137,9 +136,9 @@
 }
 
 .tags {
-    position: relative;
-    top: 10px;
-    right: 223px;
+    position: absolute;
+    top: 65px;
+    left: 160px;
     font-weight: 100;
     color: gray;
 }
@@ -151,9 +150,9 @@
 }
 
 .faves {
-    position: relative;
-    bottom: 30px;
-    right: 123px;
+    position: absolute;
+    top: 65px;
+    left: 255px;
     font-weight: 100;
     color: gray;
 }
@@ -165,9 +164,9 @@
 }
 
 .groups {
-    position: relative;
-    bottom: 70px;
-    right: 23px;
+    position: absolute;
+    top: 65px;
+    left: 350px;
     font-weight: 100;
     color: gray;
 }
@@ -178,15 +177,78 @@
     left: 370px;
 }
 
+@media only screen and (max-width: 600px)
+{
+    .views {
+        font-size: smaller;
+        left: 50px;
+    }
+
+    .viewsNo {
+        font-size: smaller;
+        left: 60px;
+    }
+    
+    .tags {
+        font-size: smaller;
+        left: 110px;
+    }
+
+    .tagsNo {
+        font-size: smaller;
+        left: 117px;
+    }
+    .groups {
+        font-size: smaller;
+        left: 170px;
+    }
+
+    .groupsNo {
+        left: 183px;
+        font-size: smaller;
+    }
+
+    .faves {
+        font-size: smaller;
+        left: 230px;
+    }
+
+    .favesNo {
+        font-size: smaller;
+        left: 240px;
+    }
+
+    .userEmail {
+        font-size: smaller;
+        left: 160px;
+    }
+
+    .email {
+        font-size: smaller;
+        left: 40px;
+    }
+
+    .joinDate {
+        font-size: smaller;
+        left: 160px;
+    }
+
+    .joined {
+        font-size: smaller;
+        left: 40px;
+    }
+
+}
+
 .uploadButton {
     position: absolute;
     top: 400px;
 }
 
 .submitButton {
-    position: absolute;
-    top: 70px;
-    left: 712px;
+    position: relative;
+    top: 63px;
+    left: 150px;
     background-color:lightskyblue;
     border-width: 1px;
     border-color: lightskyblue;
@@ -195,11 +257,10 @@
 
 .navBar {
     position: absolute;
-    left: 70px;
+    left: 0px;
     top: 200px;
-    overflow: auto;
-    white-space: nowrap;
-
+    max-width: 100%;
+    width: 100%;
 }
 
 .About:focus {
@@ -233,15 +294,16 @@
 .images {
     position: absolute;
     top: 350px;
-    left: 70px;
+    left: 60px;
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px;
     padding: 0 8px;
 }
 
-@media only screen and (max-width: 400px)
+@media only screen and (max-width: 600px)
 {
     .images {
+        left: 10px;
         grid-template-columns: 100px 100px 100px;
     }
 }
@@ -256,13 +318,14 @@
 
 .colorButton {
     background-color: lightblue;
-    width: 250px;
+    width: 293px;
     height: 25px;
     position: absolute;
     left: 100px;
     top: 322px;
     font-size: medium;
     font-weight: 100;
+    text-align: center;
 }
 
 .toolbarBg {
@@ -275,10 +338,10 @@
     opacity: 1;
 }
 
-@media only screen and (max-width: 700px) {
-    .toolbarBg {
-        width: 1020px;
-    }
+.write {
+    position: absolute;
+    left: 50px;
+    top: 20px;
 }
 
 .rollImage {
@@ -297,7 +360,29 @@
 
 .previewTxt {
     position: absolute;
-    top: 330px;
-    left: 427px;
+    top: 350px;
+    left: 420px;
     font-weight: 100;
 }
+
+@media only screen and (max-width: 700px) {
+    .colorButton {
+        top: 362px;
+        left: 90px;
+    }
+
+    .previewTxt {
+        top: 302px;
+        left: 250px; 
+    }
+
+    .uploadButton {
+        top: 362px;
+        left: 90px;
+    }
+
+    .preview {
+        left: 100px;
+    }
+}
+

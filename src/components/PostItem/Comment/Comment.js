@@ -16,7 +16,11 @@ import API from '../../../fakeAPI';
 /**
  * Renders a comment item 
  * @author Abdelrahman Mamdouh
- * @param {*} props 
+ * @param {number} postId - id of the photo/post
+ * @param {number} commentId - id of the comment
+ * @param {string} username - username of the commentor
+ * @param {string} avatarPhoto - avatar photo of the commentor
+ * @param {boolean} isByCurrentUser - is this comment by the current logged user 
  * @returns (
  *      <Avatar />
  *      commentText

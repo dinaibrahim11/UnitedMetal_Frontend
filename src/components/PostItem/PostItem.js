@@ -17,7 +17,14 @@ import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
  * A single post item which contains the name+photo of the owner,
  * and the actual photo that the owner posted.
  * @author Abdelrahman Mamdouh
- * 
+ * @param {number} postId - Id of the photo/post
+ * @param {number} id - Id of the photo/post
+ * @param {string} username - Username of the owner of the photo/post
+ * @param {string} imageUrl - Link of the photo/post
+ * @param {string} avatarPhoto - Link of the avatar photo of the owner
+ * @param {number} numFaves - Number of favorites on the photo/post
+ * @param {number} numComments - Number of comments on the photo/post
+ * @param {string} caption - Description or caption that is below the photo/post
  * @returns (
  *      <PostHeader />
  *      <PostPhoto />

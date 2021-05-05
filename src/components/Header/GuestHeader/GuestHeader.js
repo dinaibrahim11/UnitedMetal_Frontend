@@ -1,39 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import CloudUpload from '@material-ui/icons/CloudUpload';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 
+
+/**
+ * The navigation bar that is rendered if the user is not logged in
+ * Contains: Flickr button, Search, Login button, SignUp button
+ * @author Dina Mohsen
+ * @example <GuestHeader />
+ */
 const GuestHeader = () => {
 
+    const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
+    const history = useHistory();
+    const [searchQuery, setSearchQuery] = useState('');
+
+    //To avoid the refreshing problem:
+    //https://stackoverflow.com/questions/63880605/react-js-how-to-prevent-page-reload-once-click-on-the-link-right-now-the-whole
+
+    const handleChange = (event) => {
+        setSearchQuery(event.target.value);
+        
+    }
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        if (searchQuery === '') {
+            return;
+        }
+        setSearchQuery('');
+        history.push("/SearchPage");
+    }
+
+ 
+
     return (
-        // <header>
-        //     <h1>Our React Header. Probably will be on every page </h1>
-        // </header>
+
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
             {/* <Navbar.Brand href="/home">Flickr</Navbar.Brand> */}
-            <Link to="/home" style={{textDecoration: 'none'}}>Flickr</Link>
+            <Link to={isLoggedIn ?  "/home" : "/"} style={{textDecoration: 'none'}}>Flickr</Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             
         <Nav>
         <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-info">Search</Button>
+                <FormControl value={searchQuery} onChange={handleChange} type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-info" type="submit" onClick={handleClick}>Search</Button>
             </Form>
   
-            <Nav.Link href="/login" >Login</Nav.Link>
-            <Nav.Link href="/signup">Signup</Nav.Link>
-    </Nav>
+            <NavLink className="navbar navbar-dark bg-dark" to="/login" >Login</NavLink>
+            <NavLink className="navbar navbar-dark bg-dark" to="/signup">Signup</NavLink>
+        </Nav>
     
-  </Navbar.Collapse>
-</Navbar>
+        </Navbar.Collapse>
+        </Navbar>
     );
 };
 

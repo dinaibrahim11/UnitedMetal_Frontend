@@ -16,6 +16,8 @@ const useStyles = makeStyles({
  * A posts list which represents the home feed
  * 
  * @author Abdelrahman Mamdouh
+ * @async 
+ * @example <Posts />
  * @returns (
  *      <ActivityView />
  *      <PostItem /> list

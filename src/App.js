@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import { createUseStyles } from 'react-jss'
+import React from 'react';
+import {BrowserRouter} from 'react-router-dom'
 import './App.css';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
@@ -14,6 +13,7 @@ import ForgetPasswordSuccess from './components/ForgetPasswordSuccess/ForgetPass
 import Signup from './components/Signup/Signup';
 import FormSuccess from './components/FormSuccess/FormSuccess';
 import Menuu from './components/Menuu/Menuu';
+
 
 const App = () => {
  
@@ -39,6 +39,9 @@ const App = () => {
       <Main />
 
     </div>
+    {/*<Header />
+        <Main />
+      </div>*/}
     </BrowserRouter>
     
 
