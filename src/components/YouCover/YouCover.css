@@ -9,12 +9,10 @@
     max-width: 100%;    
 }
 
-
-
 .youPageName {
     font-weight: 100;
     position: absolute;
-    top: 110px;
+    top: 120px;
     left: 150px;
     color: white;
 }
@@ -22,7 +20,7 @@
 .youPageUserName {
     font-weight: 100;
     position: absolute;
-    top: 140px;
+    top: 165px;
     left: 152px;
     color: white;
     visibility: visible;
@@ -31,16 +29,16 @@
 .youFollowers {
     font-weight: 100;
     position: absolute;
-    top: 140px;
-    left: 252px;
+    top: 165px;
+    left: 302px;
     color: white;
 }
 
 .youFollowing {
     font-weight: 100;
     position: absolute;
-    top: 140px;
-    left: 312px;
+    top: 165px;
+    left: 392px;
     color: white;
 }
 
@@ -50,13 +48,13 @@
     }
     
     .youFollowers {
-        top: 140px;
-        left: 152px; 
+        top: 165px;
+        left: 152px;
     }
 
     .youFollowing {
-        top: 140px;
-        left: 212px;
+        top: 165px;
+        left: 242px;
     }
 }
 
@@ -90,12 +88,12 @@
 
 .imagesList {
     position: relative;
-    top: 50px;
+    top: 120px;
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
-    width: 20%;
-    height: 50%;
+    width: 35%;
+    height: 35%;
 }
 
 .photoPickBg {
@@ -107,9 +105,10 @@
 }
 
 .xButton {
-    position: fixed;
-    top: 50px;
-    left: 850px;
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    width: 110px;
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
@@ -117,21 +116,15 @@
     background-color: lightblue;
 }
 
-@media only screen and (max-width: 950px) {
-    .xButton {
-        left: 50px;
-        top: 20px;
-    }
-}
-
 .editCover {
     position: absolute;
-    left: 900px;
+    left: 1000px;
+    top: 120px;
     border: black;
     border-width: 4;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1030px) {
     .editCover {
         position: absolute;
         left: 20px;
@@ -140,6 +133,7 @@
 
 .covPic {
     width: 100%;
+    max-width: 100%;
     height: 200px;
     z-index: -1;
 }
