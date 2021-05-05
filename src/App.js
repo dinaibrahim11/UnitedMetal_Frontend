@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import { createUseStyles } from 'react-jss'
 import './App.css';
 import Header from './components/Header/Header';
 import Searchbar from './components/Search/Searchbar';
@@ -28,50 +30,44 @@ import Group4 from './components/Search/Group4';
 
 import Photos from './components/Search/Photos';
 import Main from './components/Main/Main';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+
+import Welcome from './components/Welcome/Welcome';
+import Login from './components/Login/Login';
+import ForgetPassword from './components/ForgetPassword/ForgetPassword'
+import Home from './pages/Home/Home';
+import ResetPassword from './components/ResetPassword/ResetPassword'
+import ResetPasswordSuccess from './components/ResetPasswordSuccess/ResetPasswordSuccess'
+import ForgetPasswordSuccess from './components/ForgetPasswordSuccess/ForgetPasswordSuccess';
+import Signup from './components/Signup/Signup';
+import FormSuccess from './components/FormSuccess/FormSuccess';
 
 
-function App() {
+const App = () => {
   
   return (
     <BrowserRouter>
-
-    <div className="App">
-
+      <div className="App">
+      {/*<Main />*/}
       <Header />
-      {/*<Main /> */}
-      <Searchbar/>
-      
-     <Switch>
-    <Route path="/SearchPage" component={SearchPage}/>
-    <Route path="/images1" component={images1}/>
-    <Route path="/images2" component={images2}/>
-    <Route path="/images3" component={images3}/>
-    <Route path="/images4" component={images4}/>
-    <Route path="/images5" component={images5}/>
-    <Route path="/images6" component={images6}/>
-    <Route path="/images7" component={images7}/>
-    <Route path="/images8" component={images8}/>
-    <Route path="/images9" component={images9}/>
-    <Route path="/images10" component={images10}/>
-    <Route path="/images11" component={images11}/>
-    <Route path="/images12" component={images12}/>
-    <Route path="/people1" component={people1}/>
-    <Route path="/people2" component={people2}/>
-    <Route path="/people3" component={people3}/>
-    <Route path="/people4" component={people4}/>
-
-    <Route path="/Group1" component={Group1}/>
-    <Route path="/pGroup2" component={Group2}/>
-    <Route path="/Group3" component={Group3}/>
-    <Route path="/Group4" component={Group4}/>
-
     
-      
-    </Switch>
+      {/* <Switch>
+
+      <Route exact path="/" component={Welcome} />
+      <Route path="/login" component={Login}/>
+      <Route path="/signup" component={Signup}/>
+      <Route path="/post-signup" component={FormSuccess} />
+      <Route path="/forgotpassword" component={ForgetPassword} />
+      <Route path="/post-forgotpassword" component={ForgetPasswordSuccess} />
+      <Route path="/forgotpassword-confirm" component={ResetPassword} />
+      <Route path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
+      <Route path="/home" component={Home} /> 
+
+      </Switch> */}
+      <Main />
+
     </div>
     </BrowserRouter>
+    
   );
 }
 

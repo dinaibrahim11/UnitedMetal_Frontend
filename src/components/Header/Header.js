@@ -1,12 +1,20 @@
 import React from 'react';
-import './Header.css';
+import { useSelector } from 'react-redux';
 
-const Header = (props) => {
+import UserHeader from './UserHeader/UserHeader';
+import GuestHeader from './GuestHeader/GuestHeader'
+
+const Header = () => {
+
+    const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
+
+    //let renderedHeader = ;
 
     return (
-        <header>
-            <h1>Our React Header. Probably will be on every page </h1>
-        </header>
+        <div>
+            {alert(isLoggedIn.toString())}
+        {isLoggedIn ? <UserHeader /> : <GuestHeader />}
+        </div>
     );
 };
 

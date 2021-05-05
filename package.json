@@ -3,14 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "float-input": "0.0.2",
+    "json-server": "^0.16.3",
     "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2",
+    "react-facebook-login": "^4.1.1",
+    "react-jss": "^10.6.0",
+    "react-recaptcha": "^2.3.10",
+    "bootstrap-icons": "^1.4.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
+    "mdbreact": "^5.0.2",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
@@ -19,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "doc": "jsdoc -d YouMain.js --configure jsconf.json main.js",
+    "json:server": "json-server --watch src/fakeAPI/db.json"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +54,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^11.2.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest-dom": "^4.0.0",
+    "react-test-renderer": "^17.0.2",
+    "jsdoc": "^3.6.6"
   }
 }
