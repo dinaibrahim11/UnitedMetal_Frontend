@@ -1,24 +1,27 @@
-import React from 'react';
-import { slide as Menu } from 'react-burger-menu'
-class UserMenu extends React.Component {
-    showSettings (event) {
+import React, { useState } from 'react';
+import { slide as Menu } from 'react-burger-menu';
+import { useHistory } from "react-router-dom";
+
+const UserMenu = () => {
+    const showSettings = (event) => {
       event.preventDefault();
   
     }
-  
-    render () {
+
+    const history = useHistory();
+
   
       return (
         <Menu>
-          <a id="home" className="menu-item" href="/">Home</a>
+          <a id="home" className="menu-item" onClick={(e) => {e.preventDefault(); history.push("/home")}} href="/home">Home</a>
           <a id="you" className="menu-item" href="javascript:void(0);">You</a>
-          <a id="you" className="menu-item" href="javascript:void(0);">About</a>
+          <a id="you" className="menu-item" onClick={(e) => {e.preventDefault(); alert('hi'); history.push("/about")}} href="/about">About</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Photostream</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Albums</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Faves</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Galleries</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Groups</a>
-          <a id="you" className="menu-item" href="javascript:void(0);">Camera Roll</a>
+          <a id="you" className="menu-item" onClick={(e) => {e.preventDefault(); history.push("/cameraroll")}} href="/cameraroll">Camera Roll</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Rececnt Activities</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Prople</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Organize</a>
@@ -41,9 +44,9 @@ class UserMenu extends React.Component {
           <a id="you" className="menu-item" href="javascript:void(0);">Flickr Mail</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Settings</a>
           <a id="you" className="menu-item" href="javascript:void(0);">Log Out</a>
-          <a onClick={ this.showSettings } className="menu-item--small" href=""></a>
+          <a onClick={ showSettings } className="menu-item--small" href=""></a>
         </Menu>
       );
-    }
+    
   }
   export default UserMenu;

@@ -208,6 +208,14 @@
       "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "dateCommented": "May 04 2021",
       "id": 17
+    },
+    {
+      "postId": "1",
+      "commentText": "woww",
+      "username": "Abdelrahman",
+      "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+      "dateCommented": "May 06 2021",
+      "id": 18
     }
   ],
   "companies": [

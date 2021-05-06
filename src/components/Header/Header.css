@@ -153,7 +153,7 @@ header.version_1 .main_header a.phone_top:before {
     text-transform: uppercase;
 }
 
-header.version_1 .main-menu > ul > li > a {
+.header__version_1 .main-menu > ul > li > a {
     color: #fff;
 }
 

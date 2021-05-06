@@ -6,8 +6,8 @@ import './Header.css';
 import { useSelector } from 'react-redux';
 
 
-import UserHeader from './UserHeader/UserHeader';
-import GuestHeader from './GuestHeader/GuestHeader'
+// import UserHeader from './UserHeader/UserHeader';
+// import GuestHeader from './GuestHeader/GuestHeader'
 
 /**
  * Navigation bar at the top

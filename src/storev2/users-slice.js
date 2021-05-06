@@ -71,6 +71,7 @@ const usersSlice = createSlice({
         logout(state, action) {
             state.currentUser.userId = null;
             state.currentUser.token = null;
+            state.currentUser.isLoggedIn = false;
         },
 
         search(state, action) {
