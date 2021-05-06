@@ -15,6 +15,7 @@ import { Avatar, CardHeader, IconButton } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
 import PhotoIcon from '@material-ui/icons/Photo';
 import ForumIcon from '@material-ui/icons/Forum';
+import {Grid} from "@material-ui/core"
 
 import { useSelector } from 'react-redux';
 
@@ -104,9 +105,12 @@ const cardsPeoples=[
 
          var cardStyle={
             display:'grid' ,
-            width: '26vw' ,
-            height:'10vw',
-            border:'black'
+            width: '24vw' ,
+            height:'9vw',
+           variant:'outlined',
+           border: "1px solid black",
+           fontSize:"15px"
+
 
            }
            var  ButtonStyle={
@@ -150,14 +154,17 @@ const cardsPeoples=[
 Groups
  </button>
  {TabSlection === 1 ?  Images.map( (Image) => <img className="img__PhotoG" src={Image.url} onClick={ ( )=> handleImageRoute(Image.idd)} width={200} height={200}     /> )  : (null)}
-{TabSlection===2 ? People.map((People) => <Card className="peopleC" style={cardStyle}  onClick={()=>handleCardRoute(People.id2)}>
+ <Grid container spacing={5} >
+{TabSlection===2 ? People.map((People) => 
+ <Grid item xs={12} sm={6} md={4}>
+<Card className="peopleC" style={cardStyle} onClick={()=>handleCardRoute(People.id2)}>
 <CardHeader avatar={<Avatar >
     
     <img className="photoPeople"src={People.urll} width={50} height={50} ></img>
     
 </Avatar>} 
 action={<Button   size='small'  style={ButtonStyle} >
-Follow+
++Follow
 </Button>}
 
 title={People.Name} 
@@ -181,9 +188,14 @@ subheader={People.bio}
 
 </CardActions>
         
-</Card>):(null)}
+</Card>
+</Grid>
 
-{TabSlection===3?Groups.map((Group) => <Card className="groupC" style={cardStyle}  onClick={()=>handleGroupRoute(Group.id3)}>
+):(null)}
+</Grid>
+<Grid container  spacing={4} >
+{TabSlection===3?Groups.map((Group) => <Grid item  xs={12} sm={6} md={4}>
+   <Card className="groupC" style={cardStyle}  onClick={()=>handleGroupRoute(Group.id3)}>
 <CardHeader avatar={<Avatar >
     
     <img className="GroupPeople"src={Group.urlll} width={50} height={50} ></img>
@@ -221,8 +233,10 @@ subheader={Group.since}
 
 </CardActions>
         
-</Card>):(null)}
-
+</Card>
+</Grid>
+):(null)}
+</Grid>
 
 
 
