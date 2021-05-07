@@ -51,7 +51,7 @@ const Main = (props) => {
                 <Route exact path="/photos/:id" component={PostDetail} />
                 <Route exact path='/Unauthorized' component={Unauthorized} />
                 <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
-                <Route exact path="/cameraroll" render={() => <YouMain currentTab="cameraroll" /> } />
+                <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
             </Switch>
             

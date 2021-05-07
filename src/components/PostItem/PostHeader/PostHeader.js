@@ -18,7 +18,7 @@ const PostHeader = (props) => {
             title={props.username}
             action={(
                 <Tooltip title="More">
-                    <IconButton onClick={props.onClickMore}>
+                    <IconButton onClick={props.onClickMore} data-testid="moreButton">
                         <MoreHorizIcon />
                     </IconButton>
                 </Tooltip>
