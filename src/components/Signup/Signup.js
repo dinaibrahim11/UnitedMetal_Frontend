@@ -7,10 +7,13 @@ import axios from 'axios'
 import Recaptcha from 'react-recaptcha';
 import API from '../../fakeAPI';
 
+
 /**
  * Signup new user
  * @author Esraa Hamed
  * @async
+ * @example <Signup />
+ * @returns {element} The sign up form contents
  * 
  */
 const Signup = () => {
@@ -36,25 +39,38 @@ const [errorcount, setErrorCount] = useState('');
 
 const [isSubmitting, setisSubmitting] = useState(false);
 
+/**
+ * Handles what happens when form is submitted
+ * 
+ * @param {object} e - the JavaScript event object
+ */
 const handleSubmit = (e) => {
-
     e.preventDefault();
-    checkUserInput();
-     validateInfo();
-    postDataHandler();
     setisSubmitting(true);
+    checkUserInput();
+    validateInfo();
+    postDataHandler();
     submitForm();
 }   
 
+/**
+ *  Checks if all inputs are valid, then user will be registered and will be redirected to another form
+ *  that shows the user a message to check his/her email for confirmation 
+ */
 const submitForm = () => {
-  if(isSubmitting && emailError=='' && passError=='' && checkboxErr=='' && fnError=='' && lnError=='' && ageError=='') {
+  if(emailError=='' && passError=='' && checkboxErr=='' && fnError=='' && lnError=='' && ageError=='') {
     setRedirect("/post-signup");
   }
 }
 
-///////////////////////////// json server //////////////////////////////
+// ------------------------------------- json server -------------------------------------------//
 
-const checkUserInput = () => {
+/**
+ * Checks the availability of the email, if it's already in the fakeAPI, function will return 'Email unavailable'
+ * It's considered to be part of the email validation, but it's written in a separate function since it has different logic than other validations 
+ * & depends on the server 
+ */
+ const checkUserInput = () => {
   API.get('users?email=' + email)
   .then(response => {
     console.log(response.data);
@@ -64,8 +80,11 @@ const checkUserInput = () => {
   })
 }
 
+/**
+ * Responsible for posting/recording the data inputted by the user in the fakeAPI, but it checks first if all inputs are valid 
+ * 
+ */
 const postDataHandler = () => {
-
 if(emailError==='' && passError==='' && ageError==='' && fnError==='' && lnError===''){
   const userInfo = {
     firstname : firstName,
@@ -81,14 +100,10 @@ if(emailError==='' && passError==='' && ageError==='' && fnError==='' && lnError
 }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////
+//---------------------------------------- HANDLING INPUTS ---------------------------------------//
+// ** Handling input functions also contain validations to provide instant validation on typing ** //
 
-const handleFacebookSubmit = (e) => {
-    e.preventDefault();
-}
-
-////////////////////////// FIRST NAME INPUT ///////////////////////////////
-
+//First Name
 const handleFirstNameInput = (e) => {
 setFirstname(e.target.value);
 
@@ -97,11 +112,9 @@ if(e.target.value)
 else {
   setfnError('First name required')
 }
-
 }
 
-//////////////////////// LAST NAME INPUT ///////////////////////
-
+//Last Name
 const handleLastNameInput = (e) => {
 setLastname(e.target.value); 
 
@@ -112,8 +125,7 @@ else {
 }
 }
 
-/////////////////////////////////// AGE INPUT /////////////////////////
-
+//Age
 const handleAgeInput = (e) => {
   setAge(e.target.value) ;
 
@@ -137,10 +149,9 @@ const handleAgeInput = (e) => {
    else {setageError(''); setErrorCount(0)}
 }
 
-///////////////////////////// EMAIL INPUT ///////////////////////////
+//Email
 const handleEmailInput = (e) => {
 setEmail(e.target.value);  
-
 API.get('users?email=' + e.target.value )
 .then(response => {
   console.log(response.data);
@@ -160,8 +171,7 @@ else if (!/\S+@\S+\.\S+/.test(e.target.value)) {
 else {setemailError(''); setErrorCount(0)}
 }
 
-///////////////////////// PASSWORD INPUT ////////////////////////////////////
-
+//Password
 const handlePasswordInput = (e) => {
 setPassword(e.target.value);
 
@@ -174,8 +184,8 @@ if(!e.target.value){
 } else {setpassError(''); setErrorCount(0)}
 }
 
-/////////////////////// CHECKBOX INPUT ////////////////////////////////
 
+//Recapcha
 const handleCheckboxInput = (response) => {
   if(response) {
 setIsChecked(true);
@@ -191,23 +201,28 @@ const RecapchaLoaded = () => {
   console.log("loaded successfully") ;
 }
 
-/////////////////////////////////// VALIDATION /////////////////////////////
+// ---------------------------------------- VALIDATIONS ---------------------------------------------- //
+// **Beside the validations written inside handling functions, we also need separate validation function ** //
 
+/**
+ * Insures that all input data is valid
+ * This is what provides instant validation on submiiting the form
+ */
  const validateInfo = () => {
 
-    ///////////// FIRST NAME ///////////////
+    //First name
     if(!firstName) {
         setfnError('First name is required');
         setErrorCount(1);
     } else{setfnError(''); setErrorCount(0)}
 
-    //////////// LAST NAME ///////////////
+    //Last name
     if(!lastName) {
         setlnError('Last name is required');
         setErrorCount(1);
     } else{setlnError(''); setErrorCount(0)}
 
-    ////////////  EMAIL /////////////////
+    //Email
     if(!email){
         setemailError('Email is required');
         setErrorCount(1);
@@ -218,7 +233,7 @@ const RecapchaLoaded = () => {
     }
     else {setemailError(''); setErrorCount(0)}
 
-    //////////// PASSWORD ////////////////
+    //Password
     if(!password){
         setpassError('Password is required');
         setErrorCount(1);
@@ -227,7 +242,7 @@ const RecapchaLoaded = () => {
         setErrorCount(1);
     } else {setpassError(''); setErrorCount(0)}
 
-    //////////// AGE ////////////////
+    //Age
     if(!age) {
       setageError('Age is required')
       setErrorCount(1);
@@ -247,7 +262,7 @@ const RecapchaLoaded = () => {
     }
      else {setageError(''); setErrorCount(0)}
 
-    ////////////// CHECKBOX ///////////////
+    //Recapcha
     if(isChecked == 'false') {
       setCheckboxErr('Please verify that you are a human')
       setErrorCount(1);
@@ -255,10 +270,9 @@ const RecapchaLoaded = () => {
 
 } 
  
-///////////////////////////// FACEBOOK PART //////////////////////////////////
+// --------------------------------------- FACEBOOK LOGIN ----------------------------------------------- //
 
 const [data, setData] = useState({});
-
 const [login, setLogin] = useState(false);
 const [picture, setPicture] = useState('');
 const [userID, setUserID] = useState('');
@@ -266,28 +280,9 @@ const [name, setName] = useState('');
 const [facebookEmail, setFacebookEmail] = useState();
 const [isRegistered, setIsRegistered] = useState();
 
-const postFacebookDataHandler = () => {
-
-  //Search for the user in our database, and if not found, record his/her info 
-
-  API.get('users?email=' + facebookEmail)
-  .then(response => {
-    console.log(response.data);
-    if(response.data.length === 0) {
-          setIsRegistered(false);
-       }})
-
-       if(isRegistered === false) {
-        const facebookUserInfo = {
-          name: name,
-          email: facebookEmail }
-      API.post('users', facebookUserInfo)      //json server
-      .then(response => {
-       console.log(response)
-     })  
-}
-}
-
+/**
+ * Facebook login component to be returned with other form components
+ */
 let fbContent;
 
 const responseFacebook = (response) => {
@@ -305,12 +300,37 @@ const responseFacebook = (response) => {
   }
 } 
 
-const componentClicked = () =>{
+/**
+ * Search for the user in our database, and if not found, record his/her info 
+ * Since an already-registered user can click on login with facebook button
+ * We want to avoid multiple records for a single person
+ */
+const postFacebookDataHandler = () => {
+  API.get('users?email=' + facebookEmail)
+  .then(response => {
+    console.log(response.data);
+    if(response.data.length === 0) {
+          setIsRegistered(false);
+       }})
+       if(isRegistered === false) {
+        const facebookUserInfo = {
+          name: name,
+          email: facebookEmail }
+      API.post('users', facebookUserInfo)      //json server
+      .then(response => {
+       console.log(response)
+     })  
+}
+}
 
+/**
+ * If user clicked on the Facebook login button he/she will be redirected to home page as well as
+ * having their data recorded (if it wasn't already recorded)
+ */
+const componentClicked = () =>{
   postFacebookDataHandler();
   setRedirect("/home");
 }
-
 
 if(login) { 
   fbContent = <FacebookLogin />
@@ -321,7 +341,7 @@ else {
     appId="942791213199046"
     autoLoad={false}
     returnScopes={true}
-    size="medium"
+    size="small"
     fields="name,email,picture"
     scope="public_profile,user_friends"
     callback={responseFacebook}
@@ -331,7 +351,7 @@ else {
   )
 }
 
-///////////////////////////////////////////////////////////////////////////////////////
+// ------------------------------------------ RETURN -------------------------------------------------- //
 
 if(redirect) {
   return (
@@ -339,48 +359,42 @@ if(redirect) {
   )
 }
 
-/*if(facebookRedirect) {
-  return (
-    <Redirect to = {facebookRedirect} />
-  )
-}*/
-
 return (
 
   <div className="page"  data-testid="signup">
  <div  className={classes.div__signup_page}>
 
-    <form className={classes.form__signup_page} onSubmit={handleSubmit}>
+    <form className={classes.form__signup_page} onSubmit={handleSubmit} data-testid="form">
          <h5 className={classes.center}> Create your account</h5>
 
-         <div className="input-field">
-         <input type="text" placeholder="First name" className="active" id="signup-firstname" data-testid="fname"
+         <div className={classes.div__input}>
+         <input type="text" placeholder="First name" className={classes.div__inputfield} id="signup-firstname" data-testid="fname"
                 onChange={handleFirstNameInput} value={firstName} />
-               <p className="error">{fnError}</p>
+               <p className={classes.p__error}>{fnError}</p>
          </div>
 
-         <div className="input-field">
-         <input type="text" placeholder="Last name" className="active" id="signup-last name" data-testid="lname"
+         <div className={classes.div__input}>
+         <input type="text" placeholder="Last name" className={classes.div__inputfield} id="signup-last name" data-testid="lname"
                 onChange={handleLastNameInput} value={lastName} />
-                <p className="error">{lnError}</p>
+                <p className={classes.p__error}>{lnError}</p>
          </div>
 
-         <div className="input-field">
-          <input type="text" placeholder="Your age" className="active" id="signup-age" data-testid="age"
+         <div className={classes.div__input}>
+          <input type="text" placeholder="Your age" className={classes.div__inputfield} id="signup-age" data-testid="age"
                   onChange={handleAgeInput} value={age}/>
           <p className={classes.p__error}>{ageError}</p>
          </div>
 
-         <div className="input-field">
-          <input type="email" placeholder="Email address" className="active validate" id="signup-email" data-testid="email"
+         <div className={classes.div__input}>
+          <input type="email" placeholder="Email address" className={classes.div__inputfield} id="signup-email" data-testid="email"
                  onChange={handleEmailInput} value={email} />
-                 <p className="error">{emailError}</p>
+                 <p className={classes.p__error}>{emailError}</p>
          </div>
 
-         <div className="input-field">
-          <input type="password" placeholder="Password" className="active" id="signup-password" data-testid="password"
+         <div className={classes.div__input}>
+          <input type="password" placeholder="Password" className={classes.div__inputfield} id="signup-password" data-testid="password"
                  onChange={handlePasswordInput} value={password} />
-                 <p className="error">{passError}</p>
+                 <p className={classes.p__error}>{passError}</p>
            </div>
          
          <div className={classes.div__recaptcha}>
@@ -389,33 +403,32 @@ return (
           render="explicit"
           onloadCallback={RecapchaLoaded}
           verifyCallback={handleCheckboxInput}
-          />
-          
-          
-          <p className={classes.p__error2}>{checkboxErr}</p>
+          />  
         </div>
          
-         <div className="input-field">
-         <button className="btn waves-effect" id="signup" data-testid="button">Sign up</button>
+        <div className={classes.div__usererror}>
+        <p className={classes.p__error2}>{checkboxErr}</p>
+        </div>
+
+         <div className={classes.div__input}>
+         <button className={classes.div_signupbutton} id="signup" data-testid="button">Sign up</button>
          </div>
         
-          <hr className="or"/>
-          <p  className="or"> OR </p>
-
-          <div>
+          <hr className={classes.hr__or}/>
+          <p  className={classes.p__or}> OR </p>
+          <br />
+          
+        {/*  <div>
             {fbContent}
-          </div>
+          </div> */}
 
           <br />
           <hr />
           <p> Already have an account? Log in <Link to ="/login">here </Link> </p>
           <br />
           </form>
-
-
   </div>
  </div> 
- 
 )
 }
 

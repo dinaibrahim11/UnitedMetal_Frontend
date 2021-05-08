@@ -4,6 +4,16 @@ import classes from './ResetPassword.module.css'
 import passImg from './icon-password.jpg'
 import axios from 'axios';
 
+/**
+ * A from that takes new password as input and records it in the database
+ * It accesses the url parameters to obtain the user's email
+ *  
+ * @author Esraa Hamed
+ * @async
+ * @example <ResetPassword />
+ * @returns {element} The Reset Password form contents
+ */
+
 const ResetPassword = () => {
 
     const apiURL = "http://localhost:3000/users" ;   //json server
@@ -18,14 +28,20 @@ const ResetPassword = () => {
     const emailParam = query.get('email');
     console.log(emailParam);
     
+    /**
+     * Handles what happens when form is submitted
+    * 
+    * @param {object} e - the JavaScript event object
+    */
     const handleSubmit = (e) => {
     e.preventDefault();
     validateInfo();
     checkUserInput();
     }
 
+    
+    //---------------------------------------- HANDLING INPUT ---------------------------------------//
     const handlePasswordInput = (e) => {
-
         setPassword(e.target.value);
         if(!e.target.value){
           setpassError('Password is required');
@@ -33,9 +49,9 @@ const ResetPassword = () => {
           setpassError('Password should be 12 characters or more');
         } else {setpassError('')}
     }
-
+    
+    // --------------------------------------- VALIDATIONS ------------------------------------------ //
     const validateInfo = () => {
-
     if(!password){
         setpassError('Password is required');
       } else if (password.length < 12) {
@@ -43,6 +59,13 @@ const ResetPassword = () => {
       } else {setpassError('')}
     }
 
+    // ---------------------------------------- json server -------------------------------------------//
+
+    /**
+     * Searches for an email in the databse matching the email param accessed from the url 
+     * When found, password will be reset successfully, and changed in the databse
+     * Also, user will be redirected to another form page showing a message that password was successfully reset
+     */
     const checkUserInput = () => {
       axios.get(apiURL + '?email=' + emailParam)        //search for the email parameter we got in the database
       .then(response => {
@@ -56,6 +79,9 @@ const ResetPassword = () => {
       })
     }
 
+    /**
+     * Changes the user's password in the database to the new one inputted by the user in this form
+     */
     const changePassword = () => {
       const newPass = {
         password: password
@@ -65,6 +91,9 @@ const ResetPassword = () => {
      axios.patch(newURL, {password: password});
     }
 
+
+  // ------------------------------------------ RETURN -------------------------------------------------- //
+
     if(redirect){
       return(
         <Redirect to={redirect} />
@@ -72,26 +101,27 @@ const ResetPassword = () => {
     }
 
     return (
-        <div className={classes.resetpassword_page} > 
+        <div className={classes.div__resetpassword_page} > 
 
-        <form className={classes.resetpassword} onSubmit={handleSubmit}>
+        <form className={classes.form__resetpassword} onSubmit={handleSubmit}>
              
-        <img className={classes.searchImg} src={passImg} />
+        <img className={classes.img__resetpass} src={passImg} />
 
-             <h4 className={classes.center}> Email Verified </h4>
-             <h6 className={classes.resetpassword}> Please enter your new password </h6>
+             <h4 className={classes.h4__center}> Email Verified </h4>
+             <h6 className={classes.h6__center}> Please enter your new password </h6>
              
        
-                <div className="input-field">
-                 <input type="password" placeholder="New Password" className="active" id="resetpassword-password"
-                        onChange={handlePasswordInput} value={password} />
-                        <p className="error">{passError}</p>
+                <div className={classes.div__input}>
+                 <input type="password" placeholder="New Password" className={classes.div__inputfield} id="resetpassword-password"
+                        onChange={handlePasswordInput} value={password} data-testid="rp_input"/>
+                        <p className={classes.p__error}>{passError}</p>
                 </div>
-
-                <br />
-                  <div className="col s12">
-                 <button className={`btn ${classes.btn__block} waves-effect`} > Confrim password </button>
-                 </div>
+ 
+                  <br />
+   
+                <div>
+                 <button className={classes.div_resetpasswordbutton} data-testid="rp_button"> Confrim password </button>
+                </div>
 
                   <br />
                   <br />                
@@ -99,9 +129,6 @@ const ResetPassword = () => {
               </form>
       </div>
     )
-
-
 }
-
 
 export default ResetPassword
