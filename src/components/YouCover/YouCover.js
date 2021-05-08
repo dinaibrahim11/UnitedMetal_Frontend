@@ -23,6 +23,7 @@ const YouCover = (props) => {
     const [username,setUsername] = useState('JohnSilvaMendes');
     const userId = props.userId;
 
+    //("you cover")
     useEffect(() => {
         API.get(`users/${userId}`)
             .then(res => {
@@ -30,6 +31,8 @@ const YouCover = (props) => {
                 setName(res.data.displayName);
                 setUsername(res.data.username);
                 setCovPic(res.data.coverPhoto);
+            }).catch(err => {
+                alert(err)
             })
     }, []);
 

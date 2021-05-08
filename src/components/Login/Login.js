@@ -182,7 +182,7 @@ if(login) {
 else {
   fbContent = (
     <FacebookLogin
-   // appId="942791213199046"
+    appId="942791213199046"
     autoLoad={false}
     size="small"
     fields="name,email,picture"
@@ -237,9 +237,9 @@ if(redirect) {
                  <p  className={classes.p__or}> OR </p>
                  <br />
                   
-                 {/* <div>
+                 <div>
                    {fbContent}
-                 </div> */}
+                 </div>
        
                  <br />
                  <hr />

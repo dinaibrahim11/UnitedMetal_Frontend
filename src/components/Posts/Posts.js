@@ -55,6 +55,7 @@ const Posts = () => {
                         comments={post.comments}
                         numFaves={post.numFaves}
                         numComments={post.numFaves}
+                        ownerId={post.ownerId}
                         data-testid="postItemElement"
                         />;
             })}

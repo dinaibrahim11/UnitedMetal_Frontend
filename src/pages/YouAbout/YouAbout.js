@@ -26,7 +26,6 @@ const YouAbout = (props) => {
     // get userId from the url
     const userId = props.userId;    
 
-
     useEffect(() => {
         API.get(`users/${userId}`)
             .then(res => {
@@ -45,7 +44,7 @@ const YouAbout = (props) => {
                 GroupsNo(res.data[0].groups);
             })
             
-    }, []);
+    }, [userId]);
 
     
 

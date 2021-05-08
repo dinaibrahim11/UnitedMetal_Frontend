@@ -418,9 +418,9 @@ return (
           <p  className={classes.p__or}> OR </p>
           <br />
           
-        {/*  <div>
+         <div>
             {fbContent}
-          </div> */}
+          </div>
 
           <br />
           <hr />
