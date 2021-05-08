@@ -9,16 +9,11 @@ import { usersActions } from '../../../storev2/users-slice';
 import API from '../../../fakeAPI';
 import PropTypes from 'prop-types';
 
-/*
-
-    isAddComment: to view the input textbox or not
-    
-*/
 
 /**
  * Provides the input text box along with the Add Comment button
  * @author Abdelrahman Mamdouh
- * @param {*} props 
+ * @param {number} postId 
  * @returns <TextField />
  */
 const NewComment = (props) => {
@@ -78,6 +73,9 @@ const NewComment = (props) => {
                 value={commentText}
                 onChange={handleChange}
                 variant="outlined"
+                inputProps={{
+                    id: 'new-comment'
+                }}
             />
             
         <Button data-testid="addComment" variant="contained" color="primary" className={classes.add__comment__button} type="submit">Add</Button>

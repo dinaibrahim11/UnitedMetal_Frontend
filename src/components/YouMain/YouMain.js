@@ -12,7 +12,28 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import YouAbout from '../../pages/YouAbout/YouAbout';
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import Tab from '@material-ui/core/Tab';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+import { useSelector } from 'react-redux';
+
+
+function a11yProps(index) {
+    return {
+        id: `scrollable-auto-tab-${index}`,
+        'aria-controls': `scrollable-auto-tabpanel-${index}`,
+};
+}
+      
+const useStyles = makeStyles((theme) => ({
+    root: {
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+},
+}));
 
 /**
  * Array that contains the current pictures in the camera roll
@@ -27,38 +48,60 @@ const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flex
 
 /**
  * Responsible for returning the you page entirely with all its components and routing between them
- * @param {properties} props
+ * @author Mostafa Hazem
+ * @param {string} currentTab - current selected tab, passed by the Header
  * @returns {element} The you page contents
  */
 const YouMain = (props) => {
-    const [tab, setTab] = useState('About');
+    const [tab, setTab] = useState('cameraroll');
     let history = useHistory();
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+    const currentUserId = useSelector(state => state.users.currentUser.userId);
+    const userId = props.match.params.id || currentUserId; 
+
+    const handleChange = (event, newValue) => {
+    setValue(newValue);
+    };
     useEffect(() => {
-        console.log(`You chose ${tab}`);
-        history.push(`${tab}`);
-    }
-    )
+        setTab(props.currentTab)
+    }, [props.currentTab])
+   
+    
     return (
         <div>
             <div>
-                <YouCover currPics={DUMMY_IMAGES} />
+                <YouCover userId={userId} currPics={DUMMY_IMAGES} />
             </div>
-            <main>
-            <Switch>
-                <Route exact path="/About" component={() => <YouAbout currPics={DUMMY_IMAGES}/>} />
-                <Route exact path="/CameraRoll" component={() => <YouCameraRoll currPics={DUMMY_IMAGES}/>} />
-            </Switch>
-            </main>
+            
             <div className='toolbarBg'></div>
-            <ButtonGroup className='navBar'>
-                <Button className='About' onClick={() => setTab('About')} >About</Button>
-                <Button className='Photostream'>Photostream</Button>
-                <Button className='Albums'>Albums</Button>
-                <Button className='Faves'>Faves</Button>
-                <Button className='Galleries'>Galleries</Button>
-                <Button className='Groups'>Groups</Button>
-                <Button className='CameraRoll' onClick={() => setTab('CameraRoll')}>Camera Roll</Button>
-            </ButtonGroup>
+            <div className={classes.root}>
+                <div className='navBar'>
+                    <AppBar position="static" color="default" >
+                        <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        variant="scrollable"
+                        scrollButtons="on"
+                        aria-label="scrollable auto tabs example"
+                        >
+                            <Tab label="About" {...a11yProps(0)} onClick={() => setTab('about')}/>
+                            <Tab label="Photostream" {...a11yProps(1)} />
+                            <Tab label="Albums" {...a11yProps(2)} />
+                            <Tab label="Faves" {...a11yProps(3)} />
+                            <Tab label="Galleries" {...a11yProps(4)} />
+                            <Tab label="Groups" {...a11yProps(5)} />
+                            <Tab label="CameraRoll" {...a11yProps(6)} onClick={() => setTab('cameraRoll')}/>
+                        </Tabs>
+                    </AppBar>
+        
+                </div>
+            </div>
+            <div>
+                {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
+            </div>
         </div>
     );
 };

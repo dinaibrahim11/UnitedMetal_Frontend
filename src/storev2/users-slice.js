@@ -12,7 +12,7 @@ const initialState = usersAdapter.getInitialState({
         token: null,
         avatarPhoto: 'https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg',
         username: 'Abdelrahman',
-        isLoggedIn: true, // TODO: set to false before integration
+        isLoggedIn: false, // TODO: set to false before integration
         isEditingAComment: false,
         numFollowers: 0,
         numFollowing: 0,
@@ -26,8 +26,10 @@ const initialState = usersAdapter.getInitialState({
         userComments: [], //the comments typed by the user
         numViews: 0,
         activityPosts: [], //posts from activity feed in Home page
-
+        email: null,
+        password: null //TODO: check if the actual password is stored or an encrypted form of it
     },
+    currentSearchQuery: '',
     toggle: false, //to rerender post item at needed time
     status: 'idle', //whether loading or not 
     error: null
@@ -57,13 +59,28 @@ const usersSlice = createSlice({
     initialState: initialState,
     reducers: {
         login(state, action) {
-            const { userId, token } = action.payload;
+            // TODO: check the payload
+            // const { userId, token } = action.payload;
+            // state.currentUser.userId = userId;
+            // state.currentUser.token = token;
+            const { email, password, userId } = action.payload;
+            state.currentUser.email = email;
+            state.currentUser.password = password;
+            state.currentUser.isLoggedIn = true;
             state.currentUser.userId = userId;
-            state.currentUser.token = token;
+            let user = {email: email, password: password, userId: userId, isLoggedIn: true};
+            localStorage.setItem('currentUser',JSON.stringify(user));
         },
         logout(state, action) {
             state.currentUser.userId = null;
             state.currentUser.token = null;
+            state.currentUser.isLoggedIn = false;
+            state.currentUser.userId = null;
+            localStorage.removeItem('currentUser');
+        },
+
+        search(state, action) {
+            state.currentSearchQuery = action.payload;
         },
 
         //used to notify PostItem to rerender

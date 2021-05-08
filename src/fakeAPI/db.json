@@ -8,7 +8,10 @@
       "email": "john@gmail.com",
       "age": 34,
       "pro": false,
-      "companyId": "1"
+      "companyId": "1",
+      "joindate": "24 June 2020",
+      "aboutme": "Football is life",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": "2",
@@ -17,7 +20,10 @@
       "email": "mark@gmail.com",
       "age": 33,
       "pro": true,
-      "companyId": "1"
+      "companyId": "1",
+      "joindate": "2 February 2000",
+      "aboutme": "Lame profile",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": "3",
@@ -26,16 +32,112 @@
       "email": "sara@gmail.com",
       "age": 23,
       "pro": false,
-      "companyId": "2"
+      "companyId": "2",
+      "joindate": "4 July 2019",
+      "aboutme": "Roses are black",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
-      "firstName": "Brad",
-      "lastName": "Traversy",
-      "age": 35,
-      "email": "test@test.com",
-      "companyId": "3",
-      "pro": false,
-      "id": "B1Ww3BIS-"
+      "id": 100,
+      "username": "esraa2000",
+      "firstname": "Esraa",
+      "lastname": "Hamed",
+      "age": "21",
+      "email": "esraahamedabdalla@hotmail.com",
+      "password": "esraa-password",
+      "joindate": "1 May 2021",
+      "aboutme": "Hi, I am esraa",
+      "displayName": "Esraa Hamed",
+      "coverPhoto": "https://upload.wikimedia.org/wikipedia/commons/4/45/Wide_lightning.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+    },
+    {
+      "id": 200,
+      "username": "alaa99",
+      "firstname": "Alaa",
+      "lastname": "Hamed",
+      "age": "22",
+      "email": "alaahamedabdalla@hotmail.com",
+      "password": "alaa-password",
+      "joindate": "1 January 2021",
+      "aboutme": "Hi, I am alaa",
+      "displayName": "Alaa Hamed",
+      "coverPhoto": "https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+    },
+    {
+      "id": 300,
+      "username": "dina2000",
+      "firstname": "Dina",
+      "lastname": "Mohsen",
+      "age": "22",
+      "email": "dina.ibrahim.1@outlook.com",
+      "password": "dina-password",
+      "joindate": "5 March 2018",
+      "aboutme": "Hi, I am dina",
+      "displayName": "Dina Mohsen",
+      "coverPhoto": "https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+    },
+    {
+      "id": 400,
+      "username": "abdelrahman99",
+      "firstname": "Abdelrahman",
+      "lastname": "Mamdouh",
+      "age": "22",
+      "email": "amamdouhmahfouz@gmail.com",
+      "password": "abdelrahman-password",
+      "joindate": "17 May 2021",
+      "aboutme": "Hi, I am abdelrahman",
+      "displayName": "Abdelrahman Mamdouh",
+      "coverPhoto": "https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+    },
+    {
+      "id": 500,
+      "username": "mostafa99",
+      "firstname": "Mostafa",
+      "lastname": "Hazem",
+      "age": "22",
+      "email": "mostafahmk@gmail.com",
+      "password": "mostafa-password",
+      "joindate": "1 August 2001",
+      "aboutme": "Hi, I am mostafa",
+      "displayName": "Mostafa Hazem",
+      "coverPhoto": "https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+    },
+    {
+      "firstname": "laila",
+      "lastname": "ahmed",
+      "age": "21",
+      "email": "lailaaaa@gmail.com",
+      "password": "laila-password",
+      "id": 600
+    },
+    {
+      "firstname": "Radwa",
+      "lastname": "Mohamed",
+      "age": "22",
+      "email": "radwaaaamoh@gmail.com",
+      "password": "radwa-mohamed",
+      "id": 700
+    },
+    {
+      "firstname": "arwa",
+      "lastname": "mohamed",
+      "age": "25",
+      "email": "arwaa_mohamed@gmail.com",
+      "password": "arwa-password",
+      "id": 800
+    },
+    {
+      "firstname": "Abdelrahman",
+      "lastname": "Mahfouz",
+      "age": "33",
+      "emailaddress": "abdelrahman@mail.com",
+      "password": "asdfghjkl;'\\",
+      "id": "Af854yU"
     }
   ],
   "recent": [
@@ -136,6 +238,14 @@
       "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
       "dateCommented": "May 04 2021",
       "id": 17
+    },
+    {
+      "postId": "1",
+      "commentText": "woww",
+      "username": "Abdelrahman",
+      "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
+      "dateCommented": "May 06 2021",
+      "id": 18
     }
   ],
   "companies": [
@@ -158,7 +268,7 @@
   "posts": [
     {
       "id": 1,
-      "ownerId": "abdelrahman1999",
+      "ownerId": 400,
       "username": "Abdelrahman",
       "imageUrl": "https://images.template.net/wp-content/uploads/2016/05/19130256/Beach-Resort-Sunset-HD-Wallpaper-Background.jpg",
       "avatarPhoto": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg",
@@ -220,6 +330,53 @@
       "numFaves": 0,
       "numComments": 0,
       "comments": []
+    }
+  ],
+  "stats": [
+    {
+      "id": 1,
+      "userId": 400,
+      "views": 100,
+      "tags": 2,
+      "geotags": 0,
+      "faves": 92,
+      "groups": 1
+    },
+    {
+      "id": 2,
+      "userId": 500,
+      "views": 200,
+      "tags": 4,
+      "geotags": 10,
+      "faves": 920,
+      "groups": 11
+    },
+    {
+      "id": 3,
+      "userId": 300,
+      "views": 200,
+      "tags": 20,
+      "geotags": 20,
+      "faves": 292,
+      "groups": 21
+    },
+    {
+      "id": 4,
+      "userId": 200,
+      "views": 90,
+      "tags": 23,
+      "geotags": 30,
+      "faves": 923,
+      "groups": 13
+    },
+    {
+      "id": 5,
+      "userId": 100,
+      "views": 400,
+      "tags": 4,
+      "geotags": 40,
+      "faves": 924,
+      "groups": 41
     }
   ],
   "cameraRoll": [

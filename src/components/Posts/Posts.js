@@ -16,6 +16,8 @@ const useStyles = makeStyles({
  * A posts list which represents the home feed
  * 
  * @author Abdelrahman Mamdouh
+ * @async 
+ * @example <Posts />
  * @returns (
  *      <ActivityView />
  *      <PostItem /> list
@@ -53,6 +55,7 @@ const Posts = () => {
                         comments={post.comments}
                         numFaves={post.numFaves}
                         numComments={post.numFaves}
+                        ownerId={post.ownerId}
                         data-testid="postItemElement"
                         />;
             })}

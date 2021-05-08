@@ -1,8 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act, cleanup, waitForElement } from '@testing-library/react';
 import NewComment from './NewComment';
 import store from '../../../storev2/store';
 import { Provider } from 'react-redux';
-
 
 describe("New Commment component", () => {
 
@@ -18,3 +17,4 @@ describe("New Commment component", () => {
     })
 
 })
+
