@@ -17,6 +17,8 @@ import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+import { useSelector } from 'react-redux';
+
 
 function a11yProps(index) {
     return {
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flexible-series-metal-links-600w-1909534807.jpg',
     'https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg',
     'https://image.shutterstock.com/image-photo/wild-tropical-pulasan-fruit-nephelium-600w-1767117413.jpg',
-    'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/8/82/Wide_angle_tetons.jpg',
     'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
     'https://upload.wikimedia.org/wikipedia/commons/4/45/Wide_lightning.jpg' ];
 
@@ -51,10 +53,13 @@ const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flex
  * @returns {element} The you page contents
  */
 const YouMain = (props) => {
-    const [tab, setTab] = useState('about');
+    const [tab, setTab] = useState('cameraroll');
     let history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    const currentUserId = useSelector(state => state.users.currentUser.userId);
+    const userId = props.match.params.id || currentUserId; 
+
     const handleChange = (event, newValue) => {
     setValue(newValue);
     };
@@ -62,10 +67,11 @@ const YouMain = (props) => {
         setTab(props.currentTab)
     }, [props.currentTab])
    
+    
     return (
         <div>
             <div>
-                <YouCover currPics={DUMMY_IMAGES} />
+                <YouCover userId={userId} currPics={DUMMY_IMAGES} />
             </div>
             
             <div className='toolbarBg'></div>
@@ -93,9 +99,9 @@ const YouMain = (props) => {
         
                 </div>
             </div>
-            <main>
-                {tab === 'about' ? <YouAbout currPics={DUMMY_IMAGES}/> : <YouCameraRoll currPics={DUMMY_IMAGES}/>}
-            </main>
+            <div>
+                {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
+            </div>
         </div>
     );
 };

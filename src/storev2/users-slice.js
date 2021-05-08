@@ -63,15 +63,20 @@ const usersSlice = createSlice({
             // const { userId, token } = action.payload;
             // state.currentUser.userId = userId;
             // state.currentUser.token = token;
-            const { email, password } = action.payload;
+            const { email, password, userId } = action.payload;
             state.currentUser.email = email;
             state.currentUser.password = password;
             state.currentUser.isLoggedIn = true;
+            state.currentUser.userId = userId;
+            let user = {email: email, password: password, userId: userId, isLoggedIn: true};
+            localStorage.setItem('currentUser',JSON.stringify(user));
         },
         logout(state, action) {
             state.currentUser.userId = null;
             state.currentUser.token = null;
             state.currentUser.isLoggedIn = false;
+            state.currentUser.userId = null;
+            localStorage.removeItem('currentUser');
         },
 
         search(state, action) {

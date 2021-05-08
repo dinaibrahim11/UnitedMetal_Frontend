@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
  
  
+
 /**
  * The Search page contains the three tabs (Photos, People, Groups)
  * each tab is either selected or not , the className depends on whether tab is selected or not
@@ -267,5 +268,6 @@ subheader={Group.since}
 
 
 </div>);
+
 }
 export default SearchPage;

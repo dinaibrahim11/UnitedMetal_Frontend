@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import { useHistory } from "react-router-dom";
+
 
 /**
  * A single post item which contains the name+photo of the owner,
@@ -32,6 +34,8 @@ import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
  * )
  */
 const PostItem = (props) => {
+
+    const history = useHistory();
 
     const [isFaved, setIsFaved] = useState(false);
     const [countFaves, setCountFaves] = useState(0);
@@ -94,8 +98,11 @@ const PostItem = (props) => {
     }
 
     const dummyClick = () => {
-        //console.log("clicked menu item");
         setMoreIsShown(false);
+    }
+
+    const handleGoToProfile = () => {
+        history.push(`/user/${props.ownerId}`);
     }
 
     const handleCopyToClipboard = () => {
@@ -110,8 +117,8 @@ const PostItem = (props) => {
         <Card className={classes.post} >
             <PostHeader data-testid="postHeader" avatar={props.avatarPhoto} username={props.username} onClickMore={showMoreHandler}/>
             <Menu id="simple-menu" open={moreIsShown} onClose={closeMoreHandler} keepMounted anchorEl={anchorEl}>
-                <MenuItem onClick={handleOpenShareModal} >Share</MenuItem>
-                <MenuItem onClick={dummyClick}>Go to profile</MenuItem>
+                <MenuItem onClick={handleOpenShareModal} data-testid="shareButton">Share</MenuItem>
+                <MenuItem onClick={handleGoToProfile}>Go to profile</MenuItem>
             </Menu>
 
     <Modal

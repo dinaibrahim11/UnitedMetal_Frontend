@@ -50,13 +50,13 @@ const PostFooter = (props) => {
 
                 {props.isFaved ? (
                     <Tooltip title='Fav'>
-                        <IconButton onClick={addFavHandler} component="span" className={classes.Button}>
+                        <IconButton onClick={addFavHandler} component="span" className={classes.Button} data-testid="faveFilled">
                             <FavoriteIcon />
                         </IconButton>
                     </Tooltip>
                 ) : (
                     <Tooltip title='Fav'>
-                        <IconButton onClick={addFavHandler} component="span" className={classes.Button}>
+                        <IconButton onClick={addFavHandler} component="span" className={classes.Button} data-testid="faveEmpty">
                             <FavoriteBorderIcon />
                         </IconButton>
                     </Tooltip>

@@ -17,8 +17,8 @@ import { useSelector } from 'react-redux';
 const Header = () => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
-
-    //let renderedHeader = ;
+    // const islogged = JSON.parse(localStorage.getItem('currentUser'));
+    // alert(islogged)
 
 
     return (

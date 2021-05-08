@@ -33,6 +33,7 @@ const Main = (props) => {
 
     const isLoggedIn = useSelector(state => state.users.currentUser.isLoggedIn);
     const searchQuery = useSelector(state => state.users.currentSearchQuery);
+    const currentUserId = useSelector(state => state.users.currentUser.userId);
 
     return (
         <main>
@@ -46,12 +47,11 @@ const Main = (props) => {
                 <Route exact path="/forgotpassword-confirm" component={ResetPassword} />
                 <Route exact path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
                 <ProtectedRoute exact path="/home" isLoggedIn={isLoggedIn} component={Posts}/>
-                <Route exact path="/user/:id" component={UserPage} />
                 <Route exact path="/photos" component={PostDetail} />
                 <Route exact path="/photos/:id" component={PostDetail} />
                 <Route exact path='/Unauthorized' component={Unauthorized} />
-                <Route exact path="/about" render={() => <YouMain currentTab="about" /> } />
-                <Route exact path="/cameraroll" render={() => <YouMain currentTab="cameraroll" /> } />
+                <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
+                <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
             </Switch>
             

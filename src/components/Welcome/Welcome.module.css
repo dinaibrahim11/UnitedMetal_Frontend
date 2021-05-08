@@ -31,7 +31,7 @@
 {
     padding-top: 50px;
     width: 100%;
-    left: 0;
+    left: 40%;
     top: 0;
     position: absolute;
     z-index: 10;
@@ -61,12 +61,14 @@ video {
     font-size: 3em;
     text-transform: uppercase;
     font-weight: 700;
+    width: 100%;
 }
 
 .h2__logo {
     font-size: 2em;
     text-transform: uppercase;
     font-weight: 700;
+    width: 100%;
 }
 
 
@@ -82,6 +84,7 @@ video {
 .p__text {
     font-weight: 400;
     font-size: 1.5em;
+    width: 100%;
 }
 
 .a__welcome {
@@ -96,7 +99,7 @@ video {
     color: black;
 }
 
-a.welcome:hover {
+.a__welcome:hover {
     letter-spacing: 5px;
 }
 

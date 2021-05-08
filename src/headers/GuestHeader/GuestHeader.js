@@ -24,7 +24,7 @@ const GuestHeader = (props) => {
     }
 
 
-    return (    <header className="version_1">
+    return (    <header className="version_1" >
                       <div className="main_header">
                         <div className="container">
                           <div className="row small-gutters">

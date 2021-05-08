@@ -2,8 +2,9 @@
  * The cover module
  * @module YouCover
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './YouCover.css';
+import API from '../../fakeAPI';
 
 /**
  * @function
@@ -20,6 +21,22 @@ const YouCover = (props) => {
     const [following,setFollowing] = useState('1');
     const [name,setName] = useState('John Silva');
     const [username,setUsername] = useState('JohnSilvaMendes');
+    const userId = props.userId;
+
+    //("you cover")
+    useEffect(() => {
+        API.get(`users/${userId}`)
+            .then(res => {
+                setPic(res.data.profileurl);
+                setName(res.data.displayName);
+                setUsername(res.data.username);
+                setCovPic(res.data.coverPhoto);
+            }).catch(err => {
+                alert(err)
+            })
+    }, []);
+
+
 
     const picHandler = (event) => {
         setPic(event.target.src);
