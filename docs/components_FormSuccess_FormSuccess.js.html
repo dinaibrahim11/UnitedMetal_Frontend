@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/PostDetail/PostDetail.js</title>
+    <title>JSDoc: Source: components/FormSuccess/FormSuccess.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/PostDetail/PostDetail.js</h1>
+    <h1 class="page-title">Source: components/FormSuccess/FormSuccess.js</h1>
 
     
 
@@ -26,56 +26,35 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { Fragment, useEffect, useState } from 'react';
-import classes from './PostDetail.module.css';
-
-import API from '../../fakeAPI';
-
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import classes from './FormSuccess.module.css'
+import mailImg from './mail.png'
 
 /**
- * Displays the details of a photo (img, comments, faves, metadata, owner)
- * @async
- * @param {number} postId - The id of the photo/post, takes it from the url
- * @example &lt;PostDetail />
+ * A form responsible for showing the user a message to check his/her email for confirmation
  * 
+ * @author Esraa Hamed
+ * @example &lt;ForgetSuccess />
+ * @returns {element} The FormSuccess form contents
  */
-const PostDetail = (props) => {
+const FormSuccess = () => {
 
-    const postId = props.match.params.id;
-    const [post, setPost] = useState({});
- 
+return (
+ &lt;div className={classes.form_page}>
+    &lt;form className={classes.formsuccess}>
 
-    useEffect(() => {
-        API.get(`posts/${postId}`)
-            .then(res => {
-                setPost(res.data);
-            })
-    }, [postId]);
+     &lt;img src={mailImg} className={classes.img__formsuccess} />
+     &lt;h4 className={classes.center}> Check your inbox &lt;/h4>
+     &lt;h6 className={classes.center} > We sent a verification link. Please check your email for confirmation &lt;/h6>
 
-    return (
-        &lt;Fragment>
-            &lt;h1>Post Detail &lt;/h1>
-            &lt;h2>Still Under Construction&lt;/h2>
-            &lt;h3>Post ID: {props.match.params.id}&lt;/h3>
-            &lt;div className={classes.image__view}>
-                &lt;img src={post.imageUrl} alt="" />
-                &lt;button>Download&lt;/button>
-                &lt;button>Share&lt;/button>
-                &lt;button>Fave&lt;/button>
-            &lt;/div>
-
-            &lt;div className={classes.grid__parent}>
-                &lt;div className={classes.left}>Profile Info&lt;/div>
-                &lt;div className={classes.right}>Meta data&lt;/div>
-                
-            &lt;/div>
-
-
-        &lt;/Fragment>
-    );
+         &lt;br />
+          &lt;/form>
+  &lt;/div> 
+    )
 }
 
-export default PostDetail;</code></pre>
+export default FormSuccess
+</code></pre>
         </article>
     </section>
 
