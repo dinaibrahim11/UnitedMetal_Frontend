@@ -21,7 +21,7 @@ import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
 const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flexible-series-metal-links-600w-1909534807.jpg',
     'https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg',
     'https://image.shutterstock.com/image-photo/wild-tropical-pulasan-fruit-nephelium-600w-1767117413.jpg',
-    'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/8/82/Wide_angle_tetons.jpg',
     'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
     'https://upload.wikimedia.org/wikipedia/commons/4/45/Wide_lightning.jpg' ];
 
