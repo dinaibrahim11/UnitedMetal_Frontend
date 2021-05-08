@@ -2,89 +2,106 @@
 
 @include card.core-styles;
 
-.button__selected_tab1
-{ 
-    
-    margin-top: 40px;
-    
-    height:50px;
-    background-color:white;
-    width:180px;
-border-bottom: lightblue;
-color: black;
-font-size: 25px;
-font-weight: bolder;
+div.Tabs{min-height: 100%;}
 
+.button__selected_tab1
+{     
+margin-top: 30px;
+height:40px;
+background-color:white;
+width:120px;
+border-left: 3px solid white;
+border-right: 3px solid white;
+border-top: 3px solid white;
+border-Bottom: 3px solid blue;
+color: black;
+font-size: 20px;
+font-weight: bolder;
+margin-bottom: 50px;
+border-right: 3px solid white;
+margin-left: 0px;
 }
+
 .button__tab1
 { 
-  
-    margin-top: 40px;
-    
-    height:50px;
-    background-color:white;
-    width:180px;
+margin-top: 30px;
+height:40px;
+background-color:white;
+border-left: 3px solid white;
+border-right: 3px solid white;
+border-top: 3px solid white;
+border-Bottom: 3px solid white;
+width:120px;
 color: black;
-font-size: 25px;
-
-
+font-size: 20px;
+margin-bottom: 50px;
+margin-left: 0px;
 }
 
 
 
-
-
-
-.button__selected_tab2
+.button__selected_tab2 
 { 
-    margin-top: 40px;
-    height:50px;
-    border-bottom: lightblue;
-    background-color:white;
-width:180px;
-font-size: 25px;
+margin-top: 30px;
+height:40px;
+border-left: 3px solid white;
+border-right: 3px solid white;
+border-top: 3px solid white;
+border-Bottom: 3px solid blue;
+background-color:white;
+width:120px;
+font-size: 20px;
 color: black;
-width:180px;
 font-weight: bolder;
-
+margin-bottom: 50px;
 }
+
 .button__tab2
 {
-    
-    margin-top: 40px;
-    height:50px;
-    background-color:white;
-width:180px;
+margin-top: 30px;
+height:40px;
+background-color:white;
+border-left: 3px solid white;
+border-right: 3px solid white;
+border-top: 3px solid white;
+border-Bottom: 3px solid white;
+width:120px;
 color: black;
-font-size: 25px;
-
+font-size: 20px;
+margin-bottom: 50px;
 }
+
 
 .button__selected_tab3
 { 
-    
-    margin-top: 40px;
-    margin-right: 900px;
-    height:50px;
-    background-color:white;
-    width:180px;
-border-bottom: lightblue;
+margin-top: 30px;
+height:40px;
+background-color:white;
+width:120px;
+border-right: 3px solid white;
+border-top: 3px solid white;
+border-Bottom: 3px solid blue;
+border-left: 3px solid white;
 color:black;
-font-size: 25px;
+font-size: 20px;
 font-weight: bolder;
-
+margin-bottom: 50px;
 }
+
+
 .button__tab3
 {
-    
-    margin-top: 40px;
-    margin-right: 900px;
-    height:50px;
+margin-top: 30px;
+height:40px;
 background-color:white;
-width:180px;
+border-left: 3px solid white;
+border-right: 3px solid white;
+border-top: 3px solid white;
+border-Bottom: 3px solid white;
+width:120px;
 color: black;
-font-size: 25px;
-
+font-size: 20px;
+margin-bottom: 50px;
 }
 
 
@@ -94,11 +111,5 @@ font-size: 25px;
 
 
 
-.img__PhotoG{
 
-margin-top: 40px;
-margin-right: 9px;;
-
-
-}
 
