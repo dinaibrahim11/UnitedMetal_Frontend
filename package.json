@@ -29,6 +29,7 @@
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "use-mediaquery": "^1.0.1",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
@@ -62,7 +63,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jest-dom": "^4.0.0",
-    "react-test-renderer": "^17.0.2",
-    "jsdoc": "^3.6.6"
+    "jsdoc": "^3.6.6",
+    "react-test-renderer": "^17.0.2"
   }
 }
