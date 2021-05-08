@@ -30,12 +30,12 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "doc": "jsdoc -c jsdoc.conf.json",
-    "json:server": "json-server --watch src/fakeAPI/db.json"
+    "json:server": "json-server --watch --port 3000 src/fakeAPI/db.json"
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +61,7 @@
     "cors": "^2.8.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "jest-dom": "^4.0.0",
     "jsdoc": "^3.6.6",

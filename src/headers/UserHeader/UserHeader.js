@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { usersActions } from '../../storev2/users-slice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const UserHeader = (props) => {
 
@@ -12,6 +12,8 @@ const UserHeader = (props) => {
     event.preventDefault();
     history.push(path);
   }
+
+  const currentUserId = useSelector(state => state.users.currentUser.userId);
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -46,7 +48,7 @@ const UserHeader = (props) => {
                                    <li>
                                     <a href="/You" >YOU</a>
                                     <ul>
-                                      <li><a href="/about" onClick={(e) => {e.preventDefault(); history.push("/about")}} >About</a></li>
+                                      <li><a href="/about" onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}`)}} >About</a></li>
                                       <li><a href="javascript:void(0);" >Photostream</a></li>
                                       <li><a href="javascript:void(0);">Albums</a></li>
                                       <li><a href="javascript:void(0);">Faves</a></li>

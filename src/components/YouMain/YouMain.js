@@ -55,6 +55,8 @@ const YouMain = (props) => {
     let history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    const userId = props.match.params.id;
+
     const handleChange = (event, newValue) => {
     setValue(newValue);
     };
@@ -65,7 +67,7 @@ const YouMain = (props) => {
     return (
         <div>
             <div>
-                <YouCover currPics={DUMMY_IMAGES} />
+                <YouCover userId={userId} currPics={DUMMY_IMAGES} />
             </div>
             
             <div className='toolbarBg'></div>
@@ -94,7 +96,7 @@ const YouMain = (props) => {
                 </div>
             </div>
             <main>
-                {tab === 'about' ? <YouAbout currPics={DUMMY_IMAGES}/> : <YouCameraRoll currPics={DUMMY_IMAGES}/>}
+                {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
             </main>
         </div>
     );

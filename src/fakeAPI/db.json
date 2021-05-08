@@ -8,7 +8,10 @@
       "email": "john@gmail.com",
       "age": 34,
       "pro": false,
-      "companyId": "1"
+      "companyId": "1",
+      "joindate": "24 June 2020",
+      "aboutme": "Football is life",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": "2",
@@ -17,7 +20,10 @@
       "email": "mark@gmail.com",
       "age": 33,
       "pro": true,
-      "companyId": "1"
+      "companyId": "1",
+      "joindate": "2 February 2000",
+      "aboutme": "Lame profile",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": "3",
@@ -26,56 +32,80 @@
       "email": "sara@gmail.com",
       "age": 23,
       "pro": false,
-      "companyId": "2"
-    },
-    {
-      "firstName": "Brad",
-      "lastName": "Traversy",
-      "age": 35,
-      "email": "test@test.com",
-      "companyId": "3",
-      "pro": false,
-      "id": "B1Ww3BIS-"
+      "companyId": "2",
+      "joindate": "4 July 2019",
+      "aboutme": "Roses are black",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": 100,
+      "username": "esraa2000",
       "firstname": "Esraa",
       "lastname": "Hamed",
       "age": "21",
       "email": "esraahamedabdalla@hotmail.com",
-      "password": "esraa-password"
+      "password": "esraa-password",
+      "joindate": "1 May 2021",
+      "aboutme": "Hi, I am esraa",
+      "displayName": "Esraa Hamed",
+      "coverPhoto": "https://upload.wikimedia.org/wikipedia/commons/4/45/Wide_lightning.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": 200,
+      "username": "alaa99",
       "firstname": "Alaa",
       "lastname": "Hamed",
       "age": "22",
       "email": "alaahamedabdalla@hotmail.com",
-      "password": "alaa-password"
+      "password": "alaa-password",
+      "joindate": "1 January 2021",
+      "aboutme": "Hi, I am alaa",
+      "displayName": "Alaa Hamed",
+      "coverPhoto": "https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": 300,
+      "username": "dina2000",
       "firstname": "Dina",
       "lastname": "Mohsen",
       "age": "22",
       "email": "dina.ibrahim.1@outlook.com",
-      "password": "dina-password"
+      "password": "dina-password",
+      "joindate": "5 March 2018",
+      "aboutme": "Hi, I am dina",
+      "displayName": "Dina Mohsen",
+      "coverPhoto": "https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": 400,
+      "username": "abdelrahman99",
       "firstname": "Abdelrahman",
       "lastname": "Mamdouh",
       "age": "22",
       "email": "amamdouhmahfouz@gmail.com",
-      "password": "abdelrahman-password"
+      "password": "abdelrahman-password",
+      "joindate": "17 May 2021",
+      "aboutme": "Hi, I am abdelrahman",
+      "displayName": "Abdelrahman Mamdouh",
+      "coverPhoto": "https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "id": 500,
+      "username": "mostafa99",
       "firstname": "Mostafa",
       "lastname": "Hazem",
       "age": "22",
       "email": "mostafahmk@gmail.com",
-      "password": "mostafa-password"
+      "password": "mostafa-password",
+      "joindate": "1 August 2001",
+      "aboutme": "Hi, I am mostafa",
+      "displayName": "Mostafa Hazem",
+      "coverPhoto": "https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg",
+      "profileurl": "https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
     },
     {
       "firstname": "laila",
@@ -300,6 +330,53 @@
       "numFaves": 0,
       "numComments": 0,
       "comments": []
+    }
+  ],
+  "stats": [
+    {
+      "id": 1,
+      "userId": 400,
+      "views": 100,
+      "tags": 2,
+      "geotags": 0,
+      "faves": 92,
+      "groups": 1
+    },
+    {
+      "id": 2,
+      "userId": 500,
+      "views": 200,
+      "tags": 4,
+      "geotags": 10,
+      "faves": 920,
+      "groups": 11
+    },
+    {
+      "id": 3,
+      "userId": 300,
+      "views": 200,
+      "tags": 20,
+      "geotags": 20,
+      "faves": 292,
+      "groups": 21
+    },
+    {
+      "id": 4,
+      "userId": 200,
+      "views": 90,
+      "tags": 23,
+      "geotags": 30,
+      "faves": 923,
+      "groups": 13
+    },
+    {
+      "id": 5,
+      "userId": 100,
+      "views": 400,
+      "tags": 4,
+      "geotags": 40,
+      "faves": 924,
+      "groups": 41
     }
   ],
   "cameraRoll": [

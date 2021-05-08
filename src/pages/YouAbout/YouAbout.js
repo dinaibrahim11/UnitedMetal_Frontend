@@ -5,6 +5,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import API from '../../fakeAPI';
 
 /**
  * 
@@ -16,15 +17,39 @@ const YouAbout = (props) => {
     const [Bio,setBio] = useState('');
     const [joinDate,setJoinDate] = useState('April 2021');
     const [email,setEmail] = useState('JohnSilva@gmail.com');
-    const [viewsNo,setViewsNo] = useState('0');
-    const [tagsNo,setTagsNo] = useState('0');
-    const [favesNo,setFavesNo] = useState('0');
-    const [groupsNo,GroupsNo] = useState('0');
+    const [viewsNo,setViewsNo] = useState(0);
+    const [tagsNo,setTagsNo] = useState(0);
+    const [favesNo,setFavesNo] = useState(0);
+    const [groupsNo,GroupsNo] = useState(0);
+    
+
+    // get userId from the url
+    const userId = props.userId;    
+
+
     useEffect(() => {
-        console.log(`Show is now ${showTBox}`);
-        console.log(`Bio is now ${Bio}`);
-    }
-    )
+        API.get(`users/${userId}`)
+            .then(res => {
+                setBio(res.data.aboutme);
+                setJoinDate(res.data.joindate);
+                setEmail(res.data.email);
+
+            })
+            
+        API.get(`users/${userId}/stats`)
+            .then(res => {
+                console.log(res.data[0]);
+                setViewsNo(res.data[0].views);
+                setTagsNo(res.data[0].tags);
+                setFavesNo(res.data[0].faves);
+                GroupsNo(res.data[0].groups);
+            })
+            
+    }, []);
+
+    
+
+
     return (
         <div>
             <div className='background'>

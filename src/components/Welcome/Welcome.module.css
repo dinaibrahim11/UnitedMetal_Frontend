@@ -99,7 +99,7 @@ video {
     color: black;
 }
 
-a.welcome:hover {
+.a__welcome:hover {
     letter-spacing: 5px;
 }
 

@@ -75,8 +75,7 @@ const checkUserInput = () => {
     if(response.data.length > 0) {
       setIsUser(true);
       setUserError('');
-      
-      dispatch(usersActions.login({email: email, password: password}));
+      dispatch(usersActions.login({email: email, password: password, userId: response.data[0].id}));
       setRedirect("/home");
 
     } else if ( response.data.length === 0 && email && password) {
