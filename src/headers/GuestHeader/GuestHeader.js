@@ -50,8 +50,8 @@ const GuestHeader = (props) => {
                                 <li className="d-block d-none d-sm-block d-md-none">
                                   <a href="javascript:void(0);" className="btn_search_mob"><span></span></a>
                                   <div className="custom-search-input">
-                                <form action="/Search/all" method="post">
-                                  <input type="text" placeholder="Search photos, people, and groups." name="keyword"  />
+                                <form onClick={handleClick}>
+                                  <input onChange={handleChange} type="text" placeholder="Search photos, people, and groups." value={searchQuery} name="keyword"  />
                                   <button type="submit">Q</button>
                                 </form>
                               </div>
