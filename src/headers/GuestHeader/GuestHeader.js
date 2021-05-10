@@ -38,12 +38,12 @@ aria-label="Menu" aria-controls="navigation" aria-expanded="true/false" >
   </div>
 </div> 
 
-<li><a className="phone_top" >FLICKR</a></li>
+<a className="phone_top" >FLICKR</a>
                           
                                   <ul>
                                   
-                                      <li><a href="/signup">Sign Up</a></li>
-                                      <li><a href="/login">Log in</a></li>
+                                      <li><a onClick={(e) => {e.preventDefault(); history.push("/signup")}}  href="/signup">Sign Up</a></li>
+                                      <li><a onClick={(e) => {e.preventDefault(); history.push("/login")}}  href="/login">Log in</a></li>
                                     </ul>
             
 </a>
@@ -56,9 +56,7 @@ aria-label="Menu" aria-controls="navigation" aria-expanded="true/false" >
                             <div className="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right">
                             <li>  <ul> <a className="phone_top" href="/signup"><strong><span>Sign
                               Up</span></strong></a></ul></li>
-
-                            
-                            <li> <ul> <a className="phone_top" href="/login"><strong><span>Log
+                            <li> <ul> <a className="phone_top" href="/login"><strong><span> Log
                                In</span></strong></a></ul></li>
                             </div>
                           </div>
