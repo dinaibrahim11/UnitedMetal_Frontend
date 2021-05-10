@@ -2,12 +2,10 @@
 import React from 'react';
 import GuestHeader from '../../headers/GuestHeader/GuestHeader';
 import UserHeader from '../../headers/UserHeader/UserHeader';
-import './Header.css';
+import custombootstrap from '../../libraries/custombootstrap.css';
+import style from '../../libraries/style.css';
+import hamburgers from '../../libraries/hamburgers.css';
 import { useSelector } from 'react-redux';
-
-
-// import UserHeader from './UserHeader/UserHeader';
-// import GuestHeader from './GuestHeader/GuestHeader'
 
 /**
  * Navigation bar at the top
@@ -24,6 +22,7 @@ const Header = () => {
     return (
         <div style={{marginBottom: '55px'}}>
             {/* {alert(isLoggedIn.toString())} */}
+        
         {isLoggedIn ? <UserHeader /> : <GuestHeader />}
         </div>
     );
