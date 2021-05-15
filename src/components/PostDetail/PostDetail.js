@@ -7,7 +7,16 @@ import { Avatar } from '@material-ui/core';
 import { BsDownload } from 'react-icons/bs';
 import { FaRegShareSquare } from 'react-icons/fa';
 import { AiOutlineStar } from 'react-icons/ai';
-
+import Button from '@material-ui/core/Button';
+import CheckIcon from '@material-ui/icons/Check';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import CloseIcon from '@material-ui/icons/Close';
+import Divider from '@material-ui/core/Divider';
+import AddIcon from '@material-ui/icons/Add';
 import API from '../../fakeAPI';
 
 
@@ -24,6 +33,10 @@ const PostDetail = (props) => {
     const [post, setPost] = useState({});
     const [userDisplayName, setUserDisplayName] = useState("Abdelrahman Mamdouh");
     const [avatarPhoto, setAvatarPhoto] = useState('');
+    const [followingMenuOpen, setFollowingMenuOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [friendChecked, setFriendChecked] = useState(false);
+    const [familyChecked, setFamilyChecked] = useState(false);
 
     useEffect(() => {
         API.get(`posts/${postId}`)
@@ -31,6 +44,27 @@ const PostDetail = (props) => {
                 setPost(res.data);
             })
     }, [postId]);
+
+    const handleOpenFollowing = (event) => {
+        setFollowingMenuOpen(true);
+        setAnchorEl(event.currentTarget);
+    }
+
+    const handleCloseFollowingPopover = () => {
+        setFollowingMenuOpen(false);
+        setAnchorEl(null);
+    }
+
+    const handleFriendCheckboxChange = (event) => {
+        setFriendChecked(event.target.checked);
+    }
+
+    const handleFamilyCheckboxChange = (event) => {
+        setFamilyChecked(event.target.checked);
+    }
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
     return (
         <Fragment>
@@ -64,7 +98,63 @@ const PostDetail = (props) => {
                                 <Avatar src="https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png" />
                             </div>
                             <p>{userDisplayName}</p>
-                            <button className={classes.follow__button}>Following</button>
+                            {/* <button className={classes.follow__button}>Following</button> */}
+                            <Button variant="outlined" color="primary" 
+                                onClick={handleOpenFollowing}
+                                startIcon={<AddIcon />}
+                                style={{height: '30px', width: '100px', 
+                                        color: 'white', backgroundColor: '#008ddf',
+                                        marginLeft: '10px'}}>
+                                Follow
+                            </Button>
+                            <Button variant="outlined" color="primary" 
+                                onClick={handleOpenFollowing}
+                                startIcon={<CheckIcon />}
+                                style={{height: '30px', width: '130px', 
+                                        color: '#128fdc', backgroundColor: '#f3f5f6',
+                                        marginLeft: '10px'}}>
+                                Following
+                            </Button>
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleCloseFollowingPopover}
+                                style={{width: '400px'}}
+                                anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                                }}
+                            >
+                                <FormGroup col>
+                                    <FormControlLabel 
+                                        control={<Checkbox
+                                            checked={friendChecked}
+                                            onChange={handleFriendCheckboxChange}
+                                            color="primary"
+                                            style={{marginLeft: '5px'}}
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />}
+                                        label="Friend"
+                                    />
+                                    <FormControlLabel 
+                                        control={<Checkbox
+                                            checked={familyChecked}
+                                            onChange={handleFamilyCheckboxChange}
+                                            color="primary"
+                                            style={{marginLeft: '5px'}}
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />}
+                                        label="Family"
+                                    />
+                                    <Divider />
+                                    <Button startIcon={<CloseIcon />} >UnFollow</Button>
+                                    </FormGroup>
+                            </Popover>
                         </div>
                         <div style={{display: 'flex'}}>
                             <button className={classes.pro__button} >PRO</button>
