@@ -161,17 +161,20 @@
     {
       "id": 1,
       "imageUrl": "https://images.template.net/wp-content/uploads/2016/05/19130256/Beach-Resort-Sunset-HD-Wallpaper-Background.jpg",
-      "userId": 1
+      "userId": 1,
+      "isFollowing": true
     },
     {
       "id": 2,
       "imageUrl": "www.yahoo.com",
-      "userId": 1
+      "userId": 1,
+      "isFollowing": false
     },
     {
       "id": 3,
       "imageUrl": "www.gmail.com",
-      "userId": 2
+      "userId": 2,
+      "isFollowing": false
     }
   ],
   "comments": [

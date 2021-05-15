@@ -18,7 +18,10 @@ import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
 import AddIcon from '@material-ui/icons/Add';
 import API from '../../fakeAPI';
-
+import FollowButton from './FollowButton/FollowButton';
+import FollowingButton from './FollowingButton/FollowingButton';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Displays the details of a photo (img, comments, faves, metadata, owner)
@@ -37,13 +40,18 @@ const PostDetail = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [friendChecked, setFriendChecked] = useState(false);
     const [familyChecked, setFamilyChecked] = useState(false);
+    const [isFollowing, setIsFollowing] = useState(false);
+
 
     useEffect(() => {
-        API.get(`posts/${postId}`)
+        API.get(`photos/${postId}`)
             .then(res => {
                 setPost(res.data);
+                setIsFollowing(res.data.isFollowing);
             })
     }, [postId]);
+
+
 
     const handleOpenFollowing = (event) => {
         setFollowingMenuOpen(true);
@@ -61,6 +69,25 @@ const PostDetail = (props) => {
 
     const handleFamilyCheckboxChange = (event) => {
         setFamilyChecked(event.target.checked);
+    }
+
+    const handleFollowClick = (event) => {
+        setIsFollowing(true);
+        API.patch(`photos/${postId}`, {
+            isFollowing: true
+        }).then(res => {
+
+        });
+    }
+
+    const handleUnFollow = (event) => {
+        setIsFollowing(false);
+        API.patch(`photos/${postId}`, {
+            isFollowing: false
+        }).then(res => {
+            
+        });
+            
     }
 
     const open = Boolean(anchorEl);
@@ -99,62 +126,8 @@ const PostDetail = (props) => {
                             </div>
                             <p>{userDisplayName}</p>
                             {/* <button className={classes.follow__button}>Following</button> */}
-                            <Button variant="outlined" color="primary" 
-                                onClick={handleOpenFollowing}
-                                startIcon={<AddIcon />}
-                                style={{height: '30px', width: '100px', 
-                                        color: 'white', backgroundColor: '#008ddf',
-                                        marginLeft: '10px'}}>
-                                Follow
-                            </Button>
-                            <Button variant="outlined" color="primary" 
-                                onClick={handleOpenFollowing}
-                                startIcon={<CheckIcon />}
-                                style={{height: '30px', width: '130px', 
-                                        color: '#128fdc', backgroundColor: '#f3f5f6',
-                                        marginLeft: '10px'}}>
-                                Following
-                            </Button>
-                            <Popover
-                                id={id}
-                                open={open}
-                                anchorEl={anchorEl}
-                                onClose={handleCloseFollowingPopover}
-                                style={{width: '400px'}}
-                                anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center',
-                                }}
-                            >
-                                <FormGroup col>
-                                    <FormControlLabel 
-                                        control={<Checkbox
-                                            checked={friendChecked}
-                                            onChange={handleFriendCheckboxChange}
-                                            color="primary"
-                                            style={{marginLeft: '5px'}}
-                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
-                                        />}
-                                        label="Friend"
-                                    />
-                                    <FormControlLabel 
-                                        control={<Checkbox
-                                            checked={familyChecked}
-                                            onChange={handleFamilyCheckboxChange}
-                                            color="primary"
-                                            style={{marginLeft: '5px'}}
-                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
-                                        />}
-                                        label="Family"
-                                    />
-                                    <Divider />
-                                    <Button startIcon={<CloseIcon />} >UnFollow</Button>
-                                    </FormGroup>
-                            </Popover>
+                            {isFollowing ? <FollowingButton onClickUnFollow={handleUnFollow} /> : <FollowButton onClickFollow={handleFollowClick} />}
+                            
                         </div>
                         <div style={{display: 'flex'}}>
                             <button className={classes.pro__button} >PRO</button>
