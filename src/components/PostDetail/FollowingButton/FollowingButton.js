@@ -8,6 +8,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
 import { PinDropSharp } from '@material-ui/icons';
+import classes from './FollowingButton.module.css';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 /**
  * Following Button
@@ -23,7 +25,7 @@ const FollowingButton = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [friendChecked, setFriendChecked] = useState(false);
     const [familyChecked, setFamilyChecked] = useState(false);
-
+    const [showDropIcon, setShowDropIcon] = useState(false);
 
 
     const handleOpenFollowing = (event) => {
@@ -52,6 +54,14 @@ const FollowingButton = (props) => {
         props.onClickUnFollow();
     }
 
+    const handleMouseEnter = (event) => {
+        setShowDropIcon(true);
+    }
+
+    const handleMouseLeave = (event) => {
+        setShowDropIcon(false);
+    }
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -59,9 +69,13 @@ const FollowingButton = (props) => {
         <Fragment>
 
             <Button variant="outlined" color="primary" 
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className={classes.following__button}
                 onClick={handleOpenFollowing}
                 startIcon={<CheckIcon />}
-                style={{height: '30px', width: '130px', 
+                endIcon={(open || (showDropIcon)) ? <ExpandMoreIcon /> : null}
+                style={{height: '30px', width: (open || showDropIcon) ? '160px' : '130px',
                         color: '#128fdc', backgroundColor: '#f3f5f6',
                         marginLeft: '10px'}}>
                 Following
@@ -71,7 +85,7 @@ const FollowingButton = (props) => {
                 open={open}
                 anchorEl={anchorEl}
                 onClose={handleCloseFollowingPopover}
-                style={{width: '400px'}}
+                style={{width: '400px', marginLeft: '20px'}}
                 anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'center',
