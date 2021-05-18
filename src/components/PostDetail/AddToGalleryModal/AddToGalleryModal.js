@@ -8,11 +8,21 @@ const AddToGalleryModal = (props) => {
 
     const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false); //redundant
     const [isCreateNewGalleryFormOpen, setIsCreateNewGalleryFormOpen] = useState(false);
+    const [newGalleryName, setNewGalleryName] = useState('');
+    const [galleryDescription, setGalleryDescription] = useState('');
 
     const handleCloseGalleryModal = () => {
         setIsGalleryModalOpen(false);
         setIsCreateNewGalleryFormOpen(false);
         props.closeGalleryModal();
+    }
+
+    const handleGalleryNameChange = (event) => {
+        setNewGalleryName(event.target.value);
+    }
+
+    const handleDescriptionChange = (event) => {
+        setGalleryDescription(event.target.value);
     }
 
     /**
@@ -106,8 +116,8 @@ const AddToGalleryModal = (props) => {
                 
             <div style={{height: '380px'}}>
                 
-                <input type="text" placeholder="Gallery name" className={classes.create__gallery__name}/>
-                <textarea type="text" placeholder="Description (optional)" className={classes.create__description} ></textarea>
+                <input onChange={handleGalleryNameChange} value={newGalleryName} type="text" placeholder="Gallery name" className={classes.create__gallery__name}/>
+                <textarea onChange={handleDescriptionChange} value={galleryDescription} type="text" placeholder="Description (optional)" className={classes.create__description} ></textarea>
 
                 <div className={classes.create__footer}>
                     <div className={classes.buttons}>

@@ -610,6 +610,25 @@
     display: flex;
 }
 
+.sub__photo__right__row4 {
+    border-bottom: 1px solid #cfd6d9;
+    padding-bottom: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+}
+
+.sub__photo__right__view .sub__photo__right__row4 {
+    border-bottom: 1px solid #cfd6d9;
+    padding-bottom: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
 .galleries {
     border-top: 1px solid #cfd6d9;
     padding-bottom: 17px;
@@ -643,6 +662,57 @@
 .add__to__gallery:hover {
     text-decoration: underline;
     color: #006dac;
+}
+
+.tags__view {
+    float: left;
+    width: 300px;
+    margin-right: 30px;
+
+}
+
+.tags__title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+    margin-left: 10px;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+
+    text-decoration: none;
+    color: #006dac;
+}
+
+.tags__list {
+    clear: both;
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    float: left;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    max-width: 96%;
+    margin: 0 5px 5px 0;
+    background-color: #cfd6d9;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: all .15s ease-in-out;
+    cursor: pointer;
+}
+
+.tag:hover {
+    color: white;
+    background-color: #979ea2;
 }
 
 @media only screen and (max-width: 1080px) {

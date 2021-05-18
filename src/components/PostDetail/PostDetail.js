@@ -7,16 +7,7 @@ import { Avatar } from '@material-ui/core';
 import { BsDownload } from 'react-icons/bs';
 import { FaRegShareSquare } from 'react-icons/fa';
 import { AiOutlineStar } from 'react-icons/ai';
-import Button from '@material-ui/core/Button';
-import CheckIcon from '@material-ui/icons/Check';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
-import AddIcon from '@material-ui/icons/Add';
 import API from '../../fakeAPI';
 import FollowButton from './FollowButton/FollowButton';
 import FollowingButton from './FollowingButton/FollowingButton';
@@ -246,6 +237,27 @@ const PostDetail = (props) => {
                                 closeGalleryModal={handleCloseGalleryModal}/>
                             </div>
                         </div>            
+
+                        <div className={classes.sub__photo__right__row4}>
+                            <div className={classes.tags__view}>
+                                <h5 className={classes.tags__title}>Tags</h5>
+                                <ul className={classes.tags__list}>
+                                    <li className={classes.tag}>2021</li>
+                                    <li className={classes.tag}>cats</li>
+                                    <li className={classes.tag}>scene</li>
+                                    <li className={classes.tag}>background</li>
+                                    <li className={classes.tag}>1999</li>
+                                    <li className={classes.tag}>ocean</li>
+                                    <li className={classes.tag}>blues</li>
+                                    <li className={classes.tag}>awesome</li>
+                                    <li className={classes.tag}>hilarious</li>
+                                    <li className={classes.tag}>great</li>
+                                    <li className={classes.tag}>awkward</li>
+                                    <li className={classes.tag}>lame</li>
+                                    <li className={classes.tag}>ohhh</li>
+                                </ul>
+                            </div>
+                        </div>   
 
 
                     </div>
