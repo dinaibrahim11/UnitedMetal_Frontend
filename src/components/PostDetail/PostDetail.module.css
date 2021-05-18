@@ -45,6 +45,8 @@
 .sub__photo__right__view {
     margin-top: 1em;
     margin-bottom: 120px;
+    /* margin-left: 100px; */
+    margin-left: 10px;
     width: 500px;
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     /* width: auto; */
@@ -589,6 +591,59 @@
     display: flex;
 }
 
+.sub__photo__right__row3 {
+    border-bottom: 1px solid #cfd6d9;
+    padding-bottom: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+}
+
+.sub__photo__right__view .sub__photo__right__row3 {
+    border-bottom: 1px solid #cfd6d9;
+    padding-bottom: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.galleries {
+    border-top: 1px solid #cfd6d9;
+    padding-bottom: 17px;
+    position: relative;
+    width: 100%;
+}
+
+.galleries__count {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 20px 0 6px;
+    display: block;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.add__to__gallery {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 14px;
+    margin-top: 17px;
+    text-decoration: none;
+    color: #006dac;
+    cursor: pointer;
+}
+
+.add__to__gallery:hover {
+    text-decoration: underline;
+    color: #006dac;
+}
 
 @media only screen and (max-width: 1080px) {
     .sub__photo__right__view .sub__photo__right__row1 {

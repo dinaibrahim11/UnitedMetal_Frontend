@@ -25,6 +25,8 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import NewComment from '../PostItem/NewComment/NewComment';
 import CameraMetadata from './CameraMetadata/CameraMetadata';
+import AddToGalleryModal from './AddToGalleryModal/AddToGalleryModal';
+
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
 
@@ -46,7 +48,7 @@ const PostDetail = (props) => {
     const [friendChecked, setFriendChecked] = useState(false);
     const [familyChecked, setFamilyChecked] = useState(false);
     const [isFollowing, setIsFollowing] = useState(false);
-
+    const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
 
     useEffect(() => {
         API.get(`photos/${postId}`)
@@ -93,6 +95,14 @@ const PostDetail = (props) => {
             
         });
             
+    }
+
+    const handleOpenGalleryModal = () => {
+        setIsOpenGalleryModal(true);
+    }
+
+    const handleCloseGalleryModal = () => {
+        setIsOpenGalleryModal(false);
     }
 
     const open = Boolean(anchorEl);
@@ -224,7 +234,18 @@ const PostDetail = (props) => {
                             <CameraMetadata cameraName="Nikon" lensString="16.0-35.0 mm" focalLength="f/4.0"/>
                         </div>
             
-                        
+                        <div className={classes.sub__photo__right__row3}>
+                            <div className={classes.galleries}>
+                                <h5 className={classes.galleries__count}>
+                                    This photo is in 5 galleries
+                                </h5>
+                                <p className={classes.add__to__gallery}
+                                onClick={handleOpenGalleryModal}
+                                >Add to gallery</p>
+                                <AddToGalleryModal openGalleryModal={isOpenGalleryModal}
+                                closeGalleryModal={handleCloseGalleryModal}/>
+                            </div>
+                        </div>            
 
 
                     </div>
