@@ -17,9 +17,12 @@ import { Link } from 'react-router-dom';
 import NewComment from '../PostItem/NewComment/NewComment';
 import CameraMetadata from './CameraMetadata/CameraMetadata';
 import AddToGalleryModal from './AddToGalleryModal/AddToGalleryModal';
-
+import Zoom from 'react-medium-image-zoom'
+import TagItem from './TagItem/TagItem'
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
+const DUMMY_TAGS = ["2021","cats","scene","background","1999","ocean","blues","awesome",
+                    "hilarious","great","awkward","lame","ohhh"]
 
 /**
  * Displays the details of a photo (img, comments, faves, metadata, owner)
@@ -40,6 +43,11 @@ const PostDetail = (props) => {
     const [familyChecked, setFamilyChecked] = useState(false);
     const [isFollowing, setIsFollowing] = useState(false);
     const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
+    const [canAddTag, setCanAddTag] = useState(false);
+    const [tags, setTags] = useState(DUMMY_TAGS);
+    const [showAddTag, setShowAddTag] = useState(false);
+    const [addTagValue, setAddTagValue] = useState(null);
+    const [isPhotoMine, _] = useState(false); //check if this is the current user's photo
 
     useEffect(() => {
         API.get(`photos/${postId}`)
@@ -96,6 +104,22 @@ const PostDetail = (props) => {
         setIsOpenGalleryModal(false);
     }
 
+    const handleShowAddTag = () => {
+        setShowAddTag(true);
+    }
+
+    const handleAddTagChange = (event) => {
+        setAddTagValue(event.target.value);
+    }
+
+    const handleAddTagKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            setTags(prevTags => [...prevTags, addTagValue]);
+            //setShowAddTag(false);
+            setAddTagValue('');
+        }
+    }
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -106,7 +130,19 @@ const PostDetail = (props) => {
                 <div className={classes.back}>
                     ← Back to home
                 </div>
-                <img className={classes.image__view_img} src={post.imageUrl} alt="" />
+                <Zoom
+                    image={{
+                    src: `${post.imageUrl}`,
+                    alt: 'photo detail',
+                    className: `${classes.image__view_img}`,
+          
+                    }}
+                    zoomImage={{
+                    src: `${post.imageUrl}`,
+                    alt: 'photo detail large'
+                    }}
+                />
+                {/* <img className={classes.image__view_img} src={post.imageUrl} alt="" /> */}
                 <AiOutlineStar className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} />
                 <FaRegShareSquare className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}}/>
                 <BsDownload className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} />
@@ -122,7 +158,7 @@ const PostDetail = (props) => {
                 
             </div>
             </div> */}
-
+            <div className={classes.main__content}>
             <div className={classes.sub__photo__container}>
                 <div className={classes.sub__photo__content__container}>
                     <div className={classes.sub__photo__left__view}>
@@ -241,20 +277,10 @@ const PostDetail = (props) => {
                         <div className={classes.sub__photo__right__row4}>
                             <div className={classes.tags__view}>
                                 <h5 className={classes.tags__title}>Tags</h5>
+                                <p onClick={handleShowAddTag} className={classes.add__tag}>Add tags</p>
+                                {showAddTag && <input onKeyDown={handleAddTagKeyDown} onChange={handleAddTagChange} value={addTagValue} type="text" placeholder="Add a tag" className={classes.add__tag__input} />}
                                 <ul className={classes.tags__list}>
-                                    <li className={classes.tag}>2021</li>
-                                    <li className={classes.tag}>cats</li>
-                                    <li className={classes.tag}>scene</li>
-                                    <li className={classes.tag}>background</li>
-                                    <li className={classes.tag}>1999</li>
-                                    <li className={classes.tag}>ocean</li>
-                                    <li className={classes.tag}>blues</li>
-                                    <li className={classes.tag}>awesome</li>
-                                    <li className={classes.tag}>hilarious</li>
-                                    <li className={classes.tag}>great</li>
-                                    <li className={classes.tag}>awkward</li>
-                                    <li className={classes.tag}>lame</li>
-                                    <li className={classes.tag}>ohhh</li>
+                                    {tags.map(tag => <TagItem tagName={tag} editable={true}/>)}
                                 </ul>
                             </div>
                         </div>   
@@ -264,7 +290,7 @@ const PostDetail = (props) => {
                    
                 </div>
             </div>
-
+            </div>
         </Fragment>
     );
 }
