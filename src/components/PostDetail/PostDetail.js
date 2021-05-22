@@ -17,10 +17,12 @@ import { Link } from 'react-router-dom';
 import NewComment from '../PostItem/NewComment/NewComment';
 import CameraMetadata from './CameraMetadata/CameraMetadata';
 import AddToGalleryModal from './AddToGalleryModal/AddToGalleryModal';
+import AddToAlbumModal from './AddToAlbumModal/AddToAlbumModal';
 import Zoom from 'react-medium-image-zoom'
 import TagItem from './TagItem/TagItem'
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
+const tmpPhoto2 = "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg";
 const DUMMY_TAGS = ["2021","cats","scene","background","1999","ocean","blues","awesome",
                     "hilarious","great","awkward","lame","ohhh"]
 
@@ -272,7 +274,34 @@ const PostDetail = (props) => {
                                 <AddToGalleryModal openGalleryModal={isOpenGalleryModal}
                                 closeGalleryModal={handleCloseGalleryModal}/>
                             </div>
-                        </div>            
+                        </div> 
+
+                        <div className={classes.sub__photo__right__row5}>
+                            <div className={classes.galleries}>
+                                <h5 className={classes.galleries__count}>
+                                    This photo is in 2 albums
+                                </h5>
+                                <p className={classes.add__to__gallery}
+                                onClick={handleOpenGalleryModal}
+                                >Add to album</p>
+                                <AddToAlbumModal openGalleryModal={isOpenGalleryModal}
+                                closeGalleryModal={handleCloseGalleryModal}/>
+
+                                <ul className={classes.albums__list}>
+                                    <li className={classes.album__item}>
+                                        <img src={tmpPhoto2} />
+                                        <span className={classes.album__title}>Cat Album</span>
+                                        <span className={classes.album__photos__count}>1 item</span>
+                                    </li>
+                                    
+                                    <li className={classes.album__item}>
+                                        <img src="https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg" />
+                                        <span className={classes.album__title}>Cat Album</span>
+                                        <span className={classes.album__photos__count}>1 item</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>              
 
                         <div className={classes.sub__photo__right__row4}>
                             <div className={classes.tags__view}>
