@@ -48,10 +48,12 @@
 }
 
 .sub__photo__right__view {
+    position: relative;
     margin-top: 1em;
     margin-bottom: 120px;
     /* margin-left: 100px; */
     margin-left: 10px;
+    margin-right: 10px;
     width: 500px;
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
     /* width: auto; */
@@ -182,13 +184,23 @@
     width: 130px;
 }
 
-.description {
+/* .description {
     top: -30px;
     padding: 5px;
     overflow-wrap: break-word;
     margin-left: 20px;
+    width: 350px;
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
 }
+
+.description:hover {
+    background-color: #ebebeb;
+}
+
+.description h5 {
+    position: relative;
+    top: 0px;
+} */
 
 .pro__button {
     width: 33px;
@@ -794,58 +806,7 @@
     padding-inline-start: 40px;
 }
 
-.album__item {
-    clear: left;
-    position: relative;
-    width: 230px;
-    padding: 9px;
-    margin: 0 0 2px;
-    float: left;
-    overflow: hidden;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    transition: opacity .3s ease-out,background-color .2s ease-in-out;
-}
 
-.album__item:hover {
-    background-color: #d7dadb;
-}
-
-.album__item img {
-    float: left;
-    margin: 0 20px 0 0;
-    width: 48px;
-    height: 48px;
-    background: #ddd;
-    background-size: cover;
-    box-shadow: inset 0 0 20px rgb(0 0 0 / 8%);
-    cursor: pointer;
-    position: relative;
-    margin-top: 1px;
-}
-
-.album__title {
-    font-size: 14px;
-    font-weight: 600;
-    display: inline-block;
-    max-width: 160px;
-    text-decoration: none;
-    color: #006dac;
-    word-wrap: break-word;
-}
-
-.album__title:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.album__photos__count {
-    font-size: 14px;
-    color: #898989;
-    padding: 0 0 0 67px;
-    margin-top: 3px;
-    display: block;
-}
 
 @media only screen and (max-width: 1080px) {
     .sub__photo__right__view .sub__photo__right__row1 {

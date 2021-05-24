@@ -382,6 +382,29 @@
       "groups": 41
     }
   ],
+  "albums": [
+    {
+      "id": 1,
+      "userId": 400,
+      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
+      "title": "Green",
+      "itemsCount": 1
+    },
+    {
+      "id": 2,
+      "userId": 400,
+      "photoSrc": "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg",
+      "title": "Awesome Cats",
+      "itemsCount": 3
+    },
+    {
+      "id": 3,
+      "userId": 200,
+      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
+      "title": "Green",
+      "itemsCount": 5
+    }
+  ],
   "cameraRoll": [
     {
       "id": 1

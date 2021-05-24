@@ -31,6 +31,7 @@ const initialState = usersAdapter.getInitialState({
     },
     currentSearchQuery: '',
     toggle: false, //to rerender post item at needed time
+    albumsToggle: false, //to rerender albums thumbnails in PostDetail
     status: 'idle', //whether loading or not 
     error: null
 })
@@ -88,6 +89,9 @@ const usersSlice = createSlice({
             state.toggle = !state.toggle;
         },
 
+        deleteFromAlbumToggle(state, action) {
+            state.albumsToggle = !state.albumsToggle;
+        },
 
         addComment(state, action) {
             //add Comments typed by the user for a certain post

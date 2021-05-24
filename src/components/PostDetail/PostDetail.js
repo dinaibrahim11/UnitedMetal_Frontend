@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import classes from './PostDetail.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -18,13 +19,48 @@ import NewComment from '../PostItem/NewComment/NewComment';
 import CameraMetadata from './CameraMetadata/CameraMetadata';
 import AddToGalleryModal from './AddToGalleryModal/AddToGalleryModal';
 import AddToAlbumModal from './AddToAlbumModal/AddToAlbumModal';
-import Zoom from 'react-medium-image-zoom'
-import TagItem from './TagItem/TagItem'
+import Zoom from 'react-medium-image-zoom';
+import TagItem from './TagItem/TagItem';
+import CloseIcon from '@material-ui/icons/Close';
+import AlbumItem from './AlbumItem/AlbumItem';
+import { useDispatch } from 'react-redux';
+import { usersActions } from '../../storev2/users-slice';
+import PhotoDescription from './PhotoDescription/PhotoDescription';
+
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
 const tmpPhoto2 = "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg";
+const tmpPhoto3 = "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg";
 const DUMMY_TAGS = ["2021","cats","scene","background","1999","ocean","blues","awesome",
                     "hilarious","great","awkward","lame","ohhh"]
+const DUMMY_ALBUMS = [{id: "1", photoSrc: tmpPhoto2, itemsCount: 1, title: "Green"}, {id: "2", photoSrc: tmpPhoto3, itemsCount: 3, title: "Cool Cats"}];
+
+/*
+"albums": [
+    {
+      "id": 1,
+      "userId": 400,
+      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
+      "title": "Green",
+      "itemsCount": 1
+    },
+    {
+      "id": 2,
+      "userId": 400,
+      "photoSrc": "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg",
+      "title": "Awesome Cats",
+      "itemsCount": 3
+    },
+    {
+      "id": 3,
+      "userId": 200,
+      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
+      "title": "Green",
+      "itemsCount": 5
+    }
+  ],
+
+*/
 
 /**
  * Displays the details of a photo (img, comments, faves, metadata, owner)
@@ -34,6 +70,10 @@ const DUMMY_TAGS = ["2021","cats","scene","background","1999","ocean","blues","a
  * 
  */
 const PostDetail = (props) => {
+
+    const currentUserId = useSelector(state => state.users.currentUser.userId);
+    const rerenderAlbums = useSelector(state => state.users.albumsToggle);
+    const dispatch = useDispatch();
 
     const postId = props.match.params.id;
     const [post, setPost] = useState({});
@@ -45,11 +85,14 @@ const PostDetail = (props) => {
     const [familyChecked, setFamilyChecked] = useState(false);
     const [isFollowing, setIsFollowing] = useState(false);
     const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
+    const [isOpenAlbumModal, setIsOpenAlbumModal] = useState(false);
     const [canAddTag, setCanAddTag] = useState(false);
     const [tags, setTags] = useState(DUMMY_TAGS);
     const [showAddTag, setShowAddTag] = useState(false);
     const [addTagValue, setAddTagValue] = useState(null);
-    const [isPhotoMine, _] = useState(false); //check if this is the current user's photo
+    const [isPhotoMine, _] = useState(true); //check if this is the current user's photo
+    const [showAlbumCloseThumbnail, setShowAlbumCloseThumbnail] = useState(false);
+    const [albums, setAlbums] = useState([]);
 
     useEffect(() => {
         API.get(`photos/${postId}`)
@@ -59,6 +102,15 @@ const PostDetail = (props) => {
             })
     }, [postId]);
 
+    useEffect(() => {
+        //TODO: should be changed to ${currentUserId}
+        API.get(`users/400/albums`)
+            .then(res => {
+                setAlbums(res.data);
+            }).catch(err => {
+                console.log(err);
+            })
+    }, [currentUserId, rerenderAlbums])
 
 
     const handleOpenFollowing = (event) => {
@@ -106,6 +158,14 @@ const PostDetail = (props) => {
         setIsOpenGalleryModal(false);
     }
 
+    const handleOpenAlbumModal = () => {
+        setIsOpenAlbumModal(true);
+    }
+
+    const handleCloseAlbumModal = () => {
+        setIsOpenAlbumModal(false);
+    }
+
     const handleShowAddTag = () => {
         setShowAddTag(true);
     }
@@ -121,6 +181,18 @@ const PostDetail = (props) => {
             setAddTagValue('');
         }
     }
+
+    const handleDeleteFromAlbum = (albumId) => {
+        //alert("deleting albumId: "+albumId);
+        API.delete(`/albums/${+albumId}`)
+            .then(res => {
+                dispatch(usersActions.deleteFromAlbumToggle());
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+    
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
@@ -175,7 +247,7 @@ const PostDetail = (props) => {
                         </div>
                         <div style={{display: 'flex'}}>
                             <button className={classes.pro__button} >PRO</button>
-                            <p className={classes.description}>This is a description</p>
+                            <PhotoDescription isEditable={isPhotoMine} title="Title" description="This is a description" />
                         </div>
                         <div className={classes.sub__photo__comments__view}>
                             {/* <p>comments</p> */}
@@ -276,33 +348,26 @@ const PostDetail = (props) => {
                             </div>
                         </div> 
 
+                        {isPhotoMine && (
                         <div className={classes.sub__photo__right__row5}>
                             <div className={classes.galleries}>
                                 <h5 className={classes.galleries__count}>
-                                    This photo is in 2 albums
+                                    This photo is in {albums.length} albums
                                 </h5>
                                 <p className={classes.add__to__gallery}
-                                onClick={handleOpenGalleryModal}
+                                onClick={handleOpenAlbumModal}
                                 >Add to album</p>
-                                <AddToAlbumModal openGalleryModal={isOpenGalleryModal}
-                                closeGalleryModal={handleCloseGalleryModal}/>
+                                <AddToAlbumModal openGalleryModal={isOpenAlbumModal}
+                                closeGalleryModal={handleCloseAlbumModal}/>
 
                                 <ul className={classes.albums__list}>
-                                    <li className={classes.album__item}>
-                                        <img src={tmpPhoto2} />
-                                        <span className={classes.album__title}>Cat Album</span>
-                                        <span className={classes.album__photos__count}>1 item</span>
-                                    </li>
-                                    
-                                    <li className={classes.album__item}>
-                                        <img src="https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg" />
-                                        <span className={classes.album__title}>Cat Album</span>
-                                        <span className={classes.album__photos__count}>1 item</span>
-                                    </li>
+                                    {albums.map(album => (
+                                        <AlbumItem onDeleteAlbum={() => handleDeleteFromAlbum(album.id)} key={album.id} albumId={album.id} photoSrc={album.photoSrc} albumTitle={album.title} itemsCount={album.itemsCount} />
+                                    ))}
                                 </ul>
                             </div>
                         </div>              
-
+                        )}
                         <div className={classes.sub__photo__right__row4}>
                             <div className={classes.tags__view}>
                                 <h5 className={classes.tags__title}>Tags</h5>
