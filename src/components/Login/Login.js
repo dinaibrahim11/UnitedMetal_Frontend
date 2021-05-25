@@ -69,21 +69,45 @@ const handlePasswordInput = (e) => {
  * Otherwise, the user remains in login form page and is shown an error message : 'Incorrect email or password'
  */
 const checkUserInput = () => {
-  API.get('users?email=' + email + '&password=' + password )
-  .then(response => {
-    console.log(response.data);
-    if(response.data.length > 0) {
+  // API.get('users?email=' + email + '&password=' + password )
+  // .then(response => {
+  //   console.log(response.data);
+  //   if(response.data.length > 0) {
+  //     setIsUser(true);
+  //     setUserError('');
+  //     dispatch(usersActions.login({email: email, password: password, userId: response.data[0].id}));
+  //     setRedirect("/home");
+
+  //   } else if ( response.data.length === 0 && email && password) {
+  //     setIsUser(false);
+  //     setUserError('Incorrect email or password')
+  //     setpassError('');
+  //   }
+  // })
+
+  API.post('user/sign-in', {
+    "email": email,
+    "password": password
+  }).then(res => {
+    if (res.status === 'success') {
+      alert("sign in is correct");
       setIsUser(true);
       setUserError('');
-      dispatch(usersActions.login({email: email, password: password, userId: response.data[0].id}));
+      dispatch(usersActions.login({email: email, password: password, userId: res.token}));
       setRedirect("/home");
-
-    } else if ( response.data.length === 0 && email && password) {
+    } else {
+      alert("bad sign in");
       setIsUser(false);
       setUserError('Incorrect email or password')
       setpassError('');
     }
-  })
+  }).catch(err => {
+    console.log(err);
+    alert("error"+err);
+  });
+
+
+
 }
     
 // ---------------------------------------- VALIDATIONS ---------------------------------------------- //
