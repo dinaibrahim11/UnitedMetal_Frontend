@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { Avatar } from '@material-ui/core';
 import { BsDownload } from 'react-icons/bs';
 import { FaRegShareSquare } from 'react-icons/fa';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import Divider from '@material-ui/core/Divider';
 import API from '../../fakeAPI';
 import FollowButton from './FollowButton/FollowButton';
@@ -26,7 +26,7 @@ import AlbumItem from './AlbumItem/AlbumItem';
 import { useDispatch } from 'react-redux';
 import { usersActions } from '../../storev2/users-slice';
 import PhotoDescription from './PhotoDescription/PhotoDescription';
-
+// /import ShareModal from '../UI/ShareModal/ShareModal';
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
 const tmpPhoto2 = "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg";
@@ -93,6 +93,7 @@ const PostDetail = (props) => {
     const [isPhotoMine, _] = useState(true); //check if this is the current user's photo
     const [showAlbumCloseThumbnail, setShowAlbumCloseThumbnail] = useState(false);
     const [albums, setAlbums] = useState([]);
+    const [isFaved, setIsFaved] = useState(false);
 
     useEffect(() => {
         API.get(`photos/${postId}`)
@@ -112,6 +113,11 @@ const PostDetail = (props) => {
             })
     }, [currentUserId, rerenderAlbums])
 
+
+    const handleFav = () => {
+        setIsFaved(prevFav => !prevFav);
+        
+    }
 
     const handleOpenFollowing = (event) => {
         setFollowingMenuOpen(true);
@@ -217,9 +223,10 @@ const PostDetail = (props) => {
                     }}
                 />
                 {/* <img className={classes.image__view_img} src={post.imageUrl} alt="" /> */}
-                <AiOutlineStar className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} />
+                {isFaved ? <AiFillStar id="photo-like-filled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}}/> : <AiOutlineStar id="photo-like-unfilled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} />}
                 <FaRegShareSquare className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}}/>
                 <BsDownload className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} />
+                {/* <ShareModal /> */}
                 {/* <button>Download</button>
                 <button>Share</button>
                 <button>Fave</button> */}
