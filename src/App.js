@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter
-} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import './App.css';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
@@ -17,40 +15,34 @@ import FormSuccess from './components/FormSuccess/FormSuccess';
 import Drawer from './components/Drawer/Drawer';
 
 const App = () => {
+ 
+  return (
+    <BrowserRouter>
+      <div className="App">
+      <Header />
+      
+      {/*<Main />*/}
+      {/* <Switch>
 
-  return ( <
-    BrowserRouter >
-    <
-    div className = "App" >
-    <
-    Header / >
+      <Route exact path="/" component={Welcome} />
+      <Route path="/login" component={Login}/>
+      <Route path="/signup" component={Signup}/>
+      <Route path="/post-signup" component={FormSuccess} />
+      <Route path="/forgotpassword" component={ForgetPassword} />
+      <Route path="/post-forgotpassword" component={ForgetPasswordSuccess} />
+      <Route path="/forgotpassword-confirm" component={ResetPassword} />
+      <Route path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
+      <Route path="/home" component={Home} /> 
 
-    {
-      /*<Main />*/ } {
-      /* <Switch>
+      </Switch> */}
+      <Main />
 
-            <Route exact path="/" component={Welcome} />
-            <Route path="/login" component={Login}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/post-signup" component={FormSuccess} />
-            <Route path="/forgotpassword" component={ForgetPassword} />
-            <Route path="/post-forgotpassword" component={ForgetPasswordSuccess} />
-            <Route path="/forgotpassword-confirm" component={ResetPassword} />
-            <Route path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
-            <Route path="/home" component={Home} /> 
-
-            </Switch> */
-    } <
-    Main / >
-
-    <
-    /div> {
-      /*<Header />
-              <Main />
-            </div>*/
-    } <
-    /BrowserRouter>
-
+    </div>
+    {/*<Header />
+        <Main />
+      </div>*/}
+    </BrowserRouter>
+    
 
   );
 }
