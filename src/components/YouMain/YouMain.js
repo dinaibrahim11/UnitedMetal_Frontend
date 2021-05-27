@@ -59,6 +59,10 @@ const YouMain = (props) => {
     const [value, setValue] = React.useState(0);
     const currentUserId = useSelector(state => state.users.currentUser.userId);
     const userId = props.match.params.id || currentUserId; 
+    const currentUserToken = useSelector(state => state.users.currentUser.token);
+    const currentUserFirstName = useSelector(state => state.users.currentUser.firstName);
+    const currentUserLastName = useSelector(state => state.users.currentUser.lastName);
+    const currentUserDisplayName = useSelector(state => state.users.currentUser.displayName);
 
     const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,7 +75,7 @@ const YouMain = (props) => {
     return (
         <div>
             <div>
-                <YouCover userId={userId} currPics={DUMMY_IMAGES} />
+                <YouCover token={currentUserToken} userId={userId} currPics={DUMMY_IMAGES} />
             </div>
             
             <div className='toolbarBg'></div>
@@ -100,7 +104,7 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
-                {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
+                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>
     );

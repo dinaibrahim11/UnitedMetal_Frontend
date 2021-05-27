@@ -22,19 +22,47 @@ const YouCover = (props) => {
     const [name,setName] = useState('John Silva');
     const [username,setUsername] = useState('JohnSilvaMendes');
     const userId = props.userId;
+    
+    const isThisMe = props.userId === props.currentUserId;
+
+    useEffect(() => {
+        
+        API.get(`user/${userId}/disp-name`)
+            .then(res => {
+                if (res.data.status === 'success') {
+                    setUsername(res.data.data.displayName);
+                    console.log(res)
+                    console.log(userId)
+                }
+            }).catch(err => {
+                alert(err);
+            });
+        
+        API.get(`user/${userId}/real-name`)
+            .then(res => {
+                if (res.data.status === 'success') {
+                    setName(res.data.data.firstName+" "+res.data.data.lastName);
+                }
+            }).catch(err => {
+                alert(err);
+            });
+
+        
+        
+    }, [])
 
     //("you cover")
-    useEffect(() => {
-        API.get(`users/${userId}`)
-            .then(res => {
-                setPic(res.data.profileurl);
-                setName(res.data.displayName);
-                setUsername(res.data.username);
-                setCovPic(res.data.coverPhoto);
-            }).catch(err => {
-                alert(err)
-            })
-    }, []);
+    // useEffect(() => {
+    //     API.get(`users/${userId}`)
+    //         .then(res => {
+    //             setPic(res.data.profileurl);
+    //             setName(res.data.displayName);
+    //             setUsername(res.data.username);
+    //             setCovPic(res.data.coverPhoto);
+    //         }).catch(err => {
+    //             alert(err)
+    //         })
+    // }, []);
 
 
 

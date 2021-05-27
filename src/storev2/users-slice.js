@@ -8,8 +8,12 @@ const BASE_USERS_URL = "https://jsonplaceholder.typicode.com/users";
 const usersAdapter = createEntityAdapter();
 const initialState = usersAdapter.getInitialState({
     currentUser: {
+        id: null,
         userId: 1,
         token: null,
+        displayName: null,
+        firstName: null,
+        lastName: null,
         avatarPhoto: 'https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg',
         username: 'Abdelrahman',
         isLoggedIn: false, // TODO: set to false before integration
@@ -59,16 +63,27 @@ const usersSlice = createSlice({
     initialState: initialState,
     reducers: {
         login(state, action) {
-            // TODO: check the payload
-            // const { userId, token } = action.payload;
-            // state.currentUser.userId = userId;
-            // state.currentUser.token = token;
-            const { email, password, userId } = action.payload;
+            const { email, password, userId, token, displayName, firstName, lastName } = action.payload;
             state.currentUser.email = email;
             state.currentUser.password = password;
             state.currentUser.isLoggedIn = true;
             state.currentUser.userId = userId;
-            let user = {email: email, password: password, userId: userId, isLoggedIn: true};
+            state.currentUser.id = userId;
+            state.currentUser.token = token;
+            state.currentUser.displayName = displayName;
+            state.currentUser.firstName = firstName;
+            state.currentUser.lastName = lastName;
+            let user = {
+                email: email, 
+                password: password, 
+                userId: userId, 
+                isLoggedIn: true, 
+                id: userId,
+                token: token,
+                displayName: displayName,
+                firstName: firstName,
+                lastName: lastName
+            };
             localStorage.setItem('currentUser',JSON.stringify(user));
         },
         logout(state, action) {
@@ -76,7 +91,28 @@ const usersSlice = createSlice({
             state.currentUser.token = null;
             state.currentUser.isLoggedIn = false;
             state.currentUser.userId = null;
+            state.currentUser.id = null;
+            state.currentUser.token = null;
+            state.currentUser.displayName = null;
+            state.currentUser.firstName = null;
+            state.currentUser.lastName = null;
             localStorage.removeItem('currentUser');
+        },
+
+        signup(state, action) {
+            const { email, password, userId, token, displayName, firstName, lastName } = action.payload;
+            let user = {
+                email: email, 
+                password: password, 
+                userId: userId, 
+                isLoggedIn: true, 
+                id: userId,
+                token: token,
+                displayName: displayName,
+                firstName: firstName,
+                lastName: lastName
+            };
+            localStorage.setItem('currentUser',JSON.stringify(user));
         },
 
         search(state, action) {
