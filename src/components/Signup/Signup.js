@@ -291,7 +291,7 @@ const Signup = () => {
           .then(res => {
             console.log(res);
             if (res.data.status === "success") {
-              alert("signup is correct");
+              //alert("signup is correct");
               dispatch(usersActions.login({
                 email: email, 
                 password: password, 
@@ -305,7 +305,7 @@ const Signup = () => {
               // TODO: change to email confirmation screen
               setRedirect("/home");
             } else {
-              alert("[SignUp] signup is incorrect status: "+res.data.status);
+              console.log("[SignUp] signup is incorrect status: "+res.data.status);
               
             }
       }).catch(err => {

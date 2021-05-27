@@ -92,13 +92,13 @@ const checkUserInput = () => {
   }).then(res => {
     console.log(res);
     if (res.data.status === 'success') {
-      alert("sign in is correct");
+      //alert("sign in is correct");
       setIsUser(true);
       setUserError('');
       dispatch(usersActions.login({email: email, password: password, userId: res.data.token}));
       setRedirect("/home");
     } else {
-      alert("bad sign in");
+      //alert("bad sign in");
       setIsUser(false);
       setUserError('Incorrect email or password')
       setpassError('');
@@ -165,7 +165,7 @@ const validateLoginInfo = () => {
       console.log("DEBUG:: id="+res.data.data.user._id);
       console.log(res.data)
       if (res.data.status === 'success') {
-        alert("sign in is correct");
+        //alert("sign in is correct");
         setUserError('');
         dispatch(usersActions.login({
           email: email, 
@@ -177,14 +177,18 @@ const validateLoginInfo = () => {
           lastName: res.data.data.user.lastName
         }));
         setRedirect("/home");
+      } else if (res.data.status === 'fail' && res.data.message === 'Invalid Email') {
+        setUserError('Incorrect email');
+      } else if (res.data.status === 'fail' && res.data.message === 'Invalid Password') {
+        setUserError('Incorrect password');
       } else {
-        alert("bad sign in");
+        //alert("bad sign in");
         setUserError('Incorrect email or password')
         setpassError('');
       }
     }).catch(err => {
       console.log(err);
-      alert("error"+err);
+      setUserError('Incorrect email or password')
     });
 
   }
