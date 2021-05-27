@@ -38,8 +38,9 @@ const [isSubmitting, setisSubmitting] = useState(false);
  */
 const handleSubmit = (e) => {
     e.preventDefault();
-    checkUserInput();
-    validateLoginInfo();
+    // checkUserInput();
+    // validateLoginInfo();
+    loginUser();
     setisSubmitting(true);
 }
 
@@ -89,11 +90,12 @@ const checkUserInput = () => {
     "email": email,
     "password": password
   }).then(res => {
-    if (res.status === 'success') {
+    console.log(res);
+    if (res.data.status === 'success') {
       alert("sign in is correct");
       setIsUser(true);
       setUserError('');
-      dispatch(usersActions.login({email: email, password: password, userId: res.token}));
+      dispatch(usersActions.login({email: email, password: password, userId: res.data.token}));
       setRedirect("/home");
     } else {
       alert("bad sign in");
@@ -135,7 +137,57 @@ const validateLoginInfo = () => {
        setUserError('');
      }
 
+     
 }
+
+  const loginUser = () => {
+    //Email
+    if(!email){
+      setemailError('Email is required'); setUserError('');
+    }
+    else {setemailError('')}
+
+    //Password
+    if(!password){
+        setpassError('Password is required'); setUserError('');
+    } else {setpassError('')}
+
+    if(email && password) {
+      setUserError('');
+    } else {
+      return;
+    }
+
+    API.post('user/sign-in', {
+      "email": email,
+      "password": password
+    }).then(res => {
+      console.log("DEBUG:: id="+res.data.data.user._id);
+      console.log(res.data)
+      if (res.data.status === 'success') {
+        alert("sign in is correct");
+        setUserError('');
+        dispatch(usersActions.login({
+          email: email, 
+          password: password, 
+          userId: res.data.data.user._id,
+          token: res.data.token,
+          displayName: res.data.data.user.displayName,
+          firstName: res.data.data.user.firstName,
+          lastName: res.data.data.user.lastName
+        }));
+        setRedirect("/home");
+      } else {
+        alert("bad sign in");
+        setUserError('Incorrect email or password')
+        setpassError('');
+      }
+    }).catch(err => {
+      console.log(err);
+      alert("error"+err);
+    });
+
+  }
 
 // --------------------------------------- FACEBOOK LOGIN ----------------------------------------------- //
 
@@ -233,13 +285,13 @@ if(redirect) {
                 <h5 className={classes.h5__center}> Login to flickr </h5>
        
                 <div className={classes.div__input}>
-                 <input type="email" placeholder="Email address" className={classes.div__inputfield}  id="login-email"
+                 <input type="email" placeholder="Email address" className={classes.div__inputfield}  id="login-email-field"
                         onChange={handleEmailInput} value={email} data-testid="email_input" />
                         <p className={classes.p__error}>{emailError}</p>
                 </div>
        
                 <div className={classes.div__input}>
-                 <input type="password" placeholder="Password" className={classes.div__inputfield} id="login-password"
+                 <input type="password" placeholder="Password" className={classes.div__inputfield} id="login-psswrd-field"
                         onChange={handlePasswordInput} value={password} data-testid="password_input"/>
                         <p className={classes.p__error}>{passError}</p>
                   </div>
@@ -250,11 +302,11 @@ if(redirect) {
        
                 <div className={classes.div__input}>
                   {/* TODO: check if center not working, import from classes */}
-                <button className={classes.div_loginbutton} id="login" data-testid="button"> Login </button>
+                <button className={classes.div_loginbutton} id="login-signin-btn" data-testid="button"> Login </button>
                 </div>       
 
                 <div className={classes.div__forgetpassword}>
-                <Link className={classes.a__forgetpassword} to ="/forgotpassword"> Forgot password ? </Link> 
+                <Link className={classes.a__forgetpassword} to ="/forgotpassword" id="forgot-psswrd-link"> Forgot password ? </Link> 
                 </div> 
                   
                  <hr className={classes.hr__or}/>
@@ -267,7 +319,7 @@ if(redirect) {
        
                  <br />
                  <hr />
-                 <p> Do not have an account? Signup <Link to ="/signup"> here </Link> </p>
+                 <p> Do not have an account? Signup <Link to ="/signup" id="signup-here-link"> here </Link> </p>
                  <br />    
                 
                  </form>
