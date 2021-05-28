@@ -17,7 +17,7 @@ const Header = () => {
 
 
     return (
-        <div style={{marginBottom: '55px'}}>
+        <div style={{marginBottom: '60px'}}>
             {/* {alert(isLoggedIn.toString())} */}
     
         {isLoggedIn ? <UserHeader /> : <GuestHeader />}

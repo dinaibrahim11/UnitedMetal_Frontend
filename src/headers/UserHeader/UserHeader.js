@@ -95,8 +95,8 @@ const UserHeader = (props) => {
                   <div className="mobile-nav-toggle phone-and-tablet-only">
                   <DrawerToggleButton/>
                   </div>
-                  <div className="flickr-logo-container">
-                    <a href="/" className="main-logo new-logo" data-track="gnLogoClick" title="Flickr logo. If you click it, you'll go home" role="heading" aria-level={1} aria-label="Flickr logo. If you click it, you'll go home">
+                  <div className="flickr-logo-container" style={{marginLeft: '20px'}}>
+                    <a href="/home" onClick={(e) => {e.preventDefault(); history.push("/home")}}  className="main-logo new-logo" data-track="gnLogoClick" title="Flickr logo. If you click it, you'll go home" role="heading" aria-level={1} aria-label="Flickr logo. If you click it, you'll go home">
                       <svg className="icon icon-flickr_logo_dots"><use xlinkHref="#icon-flickr_logo_dots" /></svg>
                     </a>
                   </div>
@@ -105,7 +105,7 @@ const UserHeader = (props) => {
                       <a role="menuitem" data-track="gnYouMainClick" className="gn-title you" href="/photos/192903766@N08/" aria-haspopup="true" aria-expanded="false" aria-label="You">You</a>
                       <ul className="gn-submenu" role="menu" aria-label="submenu">
                         <li className="menuitem">
-                          <a role="menuitem" aria-label="About" data-track="gnYouAboutClick" href="/people/192903766@N08/">About</a>
+                          <a role="menuitem" aria-label="About" data-track="gnYouAboutClick" href="/about" onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}`)}}>About</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Photostream">
                           <a data-track="gnYouPhotostreamClick" href="/photos/192903766@N08/">Photostream</a>
@@ -121,23 +121,15 @@ const UserHeader = (props) => {
                             Galleries
                           </a>
                         </li>
-                        <li className="menuitem" role="menuitem" aria-label="Groups">
-                          <a data-track="gnYouGroupsClick" href="/groups">Groups</a>
-                        </li>
+                    
                         <li className="menuitem" role="menuitem" aria-label="Camera Roll">
-                          <a data-track="gnYouCameraRollClick" href="/cameraroll">Camera Roll</a>
+                          <a data-track="gnYouCameraRollClick" onClick={(e) => {e.preventDefault(); history.push("/cameraroll")}}  href="/cameraroll">Camera Roll</a>
                         </li>
                         <li className="divider" tabIndex={-1}>
                           &nbsp;
                         </li>
-                        <li className="menuitem" role="menuitem" aria-label="Recent Activity">
-                          <a data-track="gnYouRecentActivityClick" href="/activity">Recent Activity</a>
-                        </li>
-                        <li className="menuitem" role="menuitem" aria-label="People">
-                          <a data-track="gnYouPeopleClick" href="/photos/friends">People</a>
-                        </li>
-                        <li className="menuitem" role="menuitem" aria-label="Organize">
-                          <a data-track="gnYouOrganizeClick" href="/photos/organize">Organize</a>
+                        <li className="menuitem" role="menuitem" aria-label="SignOut">
+                          <a data-track="gnYouCameraRollClick" onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/")}} href="/">Sign Out</a>
                         </li>
                       </ul>
                     </li>
@@ -150,24 +142,7 @@ const UserHeader = (props) => {
                           <a data-track="gnExploreRecentPhotosClick" href="/explore">Recent Photos</a></li>
                         <li role="menuitem" aria-label="Trending">
                           <a data-track="gnExploreTagsClick" href="/photos/tags">Trending</a></li>
-                        <li role="menuitem" aria-label="Events">
-                          <a data-track="gnExploreEventsClick" href="/events">Events</a>
-                        </li>
-                        <li role="menuitem" aria-label="The Commons">
-                          <a data-track="gnExploreTheCommonsClick" href="/commons">The Commons</a>
-                        </li>
-                        <li role="menuitem" aria-label="Flickr Galleries">
-                          <a data-track="gnExploreGalleriesClick" href="/galleries">Flickr Galleries</a>
-                        </li>
-                        <li role="menuitem" aria-label="World Map">
-                          <a data-track="gnExploreWorldMapClick" href="/map">World Map</a>
-                        </li>
-                        <li role="menuitem" aria-label="Camera Finder">
-                          <a data-track="gnExploreCameraFinderClick" href="/cameras">Camera Finder</a>
-                        </li>
-                        <li role="menuitem" aria-label="Flickr Blog">
-                          <a data-track="gnExploreFlickrBlogClick" href="https://blog.flickr.net/">Flickr Blog</a>
-                        </li>
+                        
                       </ul>
                     </li>
                     <li className="gn-create" data-context="create">
@@ -196,17 +171,19 @@ const UserHeader = (props) => {
                       <a role="menuitem" data-track="gnGetProMainClick" className="gn-title" href="/account/upgrade/pro" aria-label="Get Pro">Get Pro</a>
                     </li>
                   </ul>
-                  <ul className="gn-tools" role="menubar">
+                  <ul className="gn-tools" role="menubar" style={{marginRight: '20px'}} >
                     <li className="gn-search-box" role="menuitem">
                       <svg className="icon icon-search mobile-search-button phone-and-tablet-only"><use xlinkHref="#icon-search" /></svg>
-                      <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__resetStoredBatchId_true__showFeedBannerAd_true"><form method="get" action="/search/" role="search" className="search-form">
+                      <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__resetStoredBatchId_true__showFeedBannerAd_true"><form role="search" className="search-form" onClick={handleClick}>
                           <label data-track="gnSearchSearchIcon" aria-label="Search">
                             <svg className="icon search-icon" style={{width: '22px', height: '22px'}} data-track="gnSearchSearchIcon" aria-label="Search"><use xlinkHref="#icon-search" /></svg>
-                            <input type="submit" data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button" />
+                            <input type="submit" data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button" 
+                            onChange={handleChange} value={searchQuery}
+                            />
                           </label>
                           <ul className="search-pillbox">
                           </ul>
-                          <input type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Photos, people, or groups" name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
+                          <input onChange={handleChange} value={searchQuery} type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Photos, people, or groups" name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
                         </form>
                         <div className="view search-autosuggest-items-list-view" data-view-signature="search-autosuggest-items-list-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_false__requiredToShowOnServer_false__resetStoredBatchId_true__showFeedBannerAd_true" />
                       </div>

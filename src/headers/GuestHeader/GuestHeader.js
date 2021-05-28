@@ -91,21 +91,21 @@ const GuestHeader = (props) => {
                     <ul className="gn-tools" role="menubar">
                       <li className="gn-search-box" role="menuitem">
                         <svg className="icon icon-search mobile-search-button phone-and-tablet-only"><use xlinkHref="#icon-search" /></svg>
-                        <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_true__requiredToShowOnServer_true__theme_semi-transparent-theme__whichTabIsActiveOnRender_none"><form method="get" action="/search/" role="search" className="search-form">
+                        <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_true__requiredToShowOnServer_true__theme_semi-transparent-theme__whichTabIsActiveOnRender_none"><form onClick={handleClick} role="search" className="search-form">
                             <label data-track="gnSearchSearchIcon" aria-label="Search">
                               <svg className="icon search-icon" style={{width: '22px', height: '22px'}} data-track="gnSearchSearchIcon" aria-label="Search"><use xlinkHref="#icon-search" /></svg>
-                              <input type="submit" data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button" />
+                              <input onChange={handleChange} value={searchQuery} type="submit" data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button" />
                             </label>
                             <ul className="search-pillbox">
                             </ul>
-                            <input type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Photos, people, or groups" name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
+                            <input onChange={handleChange} value={searchQuery} type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Photos, people, or groups" name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
                           </form>
                           <div className="view search-autosuggest-items-list-view" data-view-signature="search-autosuggest-items-list-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_false__requiredToShowOnServer_false__theme_semi-transparent-theme__whichTabIsActiveOnRender_none" />
                         </div>
                         <svg className="icon mobile-search-close-button phone-and-tablet-only"><use xlinkHref="#icon-close" /></svg>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/signin">Log In</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Log In</a>
                       </li>
                       <li className="gn-signup" role="menuitem" aria-label="Sign Up">
                         <a data-track="gnSignupClick" data-link-id="globalnav_signup_button" className="gn-title butt" href="/signup">Sign Up</a>
