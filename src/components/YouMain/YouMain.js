@@ -39,12 +39,13 @@ const useStyles = makeStyles((theme) => ({
  * Array that contains the current pictures in the camera roll
  * @type {Array<strings>}
  */
-const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flexible-series-metal-links-600w-1909534807.jpg',
-    'https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg',
-    'https://image.shutterstock.com/image-photo/wild-tropical-pulasan-fruit-nephelium-600w-1767117413.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/8/82/Wide_angle_tetons.jpg',
-    'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/4/45/Wide_lightning.jpg' ];
+
+const DUMMY_IMAGES = [{link:"https://image.shutterstock.com/image-photo/connected-flexible-series-metal-links-600w-1909534807.jpg", date:"2020-05-05"} ,
+{link:'https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg', date:"2020-01-02" },
+{link:'https://image.shutterstock.com/image-photo/wild-tropical-pulasan-fruit-nephelium-600w-1767117413.jpg', date:"2020-05-09" },
+{link:'https://upload.wikimedia.org/wikipedia/commons/8/82/Wide_angle_tetons.jpg', date:"2020-01-02" },
+{link:'https://www.gardeningknowhow.com/wp-content/uploads/2020/11/orange-tree.jpg', date:"2020-02-01"},
+{link:'https://upload.wikimedia.org/wikipedia/commons/4/45/Wide_lightning.jpg', date:"2020-01-02" }];
 
 /**
  * Responsible for returning the you page entirely with all its components and routing between them

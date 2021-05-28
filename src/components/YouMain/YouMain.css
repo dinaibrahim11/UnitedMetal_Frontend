@@ -220,7 +220,7 @@
 
     .userEmail {
         font-size: smaller;
-        left: 160px;
+        left: 110px;
     }
 
     .email {
@@ -230,7 +230,7 @@
 
     .joinDate {
         font-size: smaller;
-        left: 160px;
+        left: 110px;
     }
 
     .joined {
@@ -291,13 +291,35 @@
     background-color: lightblue;
 }
 
+.uploadImg {
+    position: relative;
+    top: 160px;
+    left: 450px;
+}
+
 .images {
     position: absolute;
-    top: 350px;
+    top: 250px;
     left: 60px;
-    display: grid;
-    grid-template-columns: 100px 100px 100px 100px 100px;
+    display: block;
+    grid-template-columns: 200px 200px 200px 100px;
     padding: 0 8px;
+}
+
+.imgBlock {
+    display:block;
+}
+
+.imgGroup {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.dateOfPic {
+    position: relative;
+    top: 75px;
+    left: 15px;
 }
 
 @media only screen and (max-width: 600px)
@@ -309,20 +331,21 @@
 }
 
 .uploadButton {
-    position: absolute;
-    top: 322px;
-    left: 100px;
+    position: relative;
+    top: 20px;
+    left: 0px;
     z-index: 2;
     opacity: 0;
 }
 
 .colorButton {
-    background-color: lightblue;
+    background-color: rgb(4, 144, 231);
+    color: white;
     width: 293px;
     height: 25px;
-    position: absolute;
-    left: 100px;
-    top: 322px;
+    position: relative;
+    left: 0px;
+    bottom: 5px;
     font-size: medium;
     font-weight: 100;
     text-align: center;
@@ -344,7 +367,29 @@
     top: 20px;
 }
 
+.fullScreenButton {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    font-size: 2ch;
+    left: 10px;
+    top: 40px;
+    z-index: -1;
+}
+
 .rollImage {
+    position: relative;
+    top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.rollImage:hover {
+    border: 2px solid rgb(63, 152, 207);
+}
+
+.imgBackground {
     position: relative;
     top: 70px;
     display: flex;

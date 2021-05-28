@@ -57,7 +57,7 @@ const YouCover = (props) => {
         (<div className='picChoice'>
             <div className='popUp'>
                 {props.currPics.map(imgSrc => (
-                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc} onClick={picHandler}/>))}
+                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc.link} onClick={picHandler}/>))}
                 <button className='xButton' onClick={()=>setPicChoose(false)}>Save profile picture</button>
             </div> 
         </div>)
@@ -66,7 +66,7 @@ const YouCover = (props) => {
         (
             <div className='popUp'>
                 {props.currPics.map(imgSrc => (
-                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc} onClick={covHandler}/>))}
+                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc.link} onClick={covHandler}/>))}
                 <button className='xButton' onClick={()=>setCovChoose(false)}>Save cover picture</button>
             </div>
         )
