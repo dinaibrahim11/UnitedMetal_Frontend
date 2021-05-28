@@ -12,8 +12,7 @@ import ResetPasswordSuccess from './components/ResetPasswordSuccess/ResetPasswor
 import ForgetPasswordSuccess from './components/ForgetPasswordSuccess/ForgetPasswordSuccess';
 import Signup from './components/Signup/Signup';
 import FormSuccess from './components/FormSuccess/FormSuccess';
-import Menuu from './components/Menuu/Menuu';
-
+import Drawer from './components/Drawer/Drawer';
 
 const App = () => {
  
@@ -21,7 +20,7 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
       <Header />
-      <Menuu />
+      
       {/*<Main />*/}
       {/* <Switch>
 
