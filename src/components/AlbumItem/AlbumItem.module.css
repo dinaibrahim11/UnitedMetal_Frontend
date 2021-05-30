@@ -1,0 +1,52 @@
+.album {
+    display: 'block';
+    width: 184px;
+    height: 164px;
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.12);
+    overflow: 'visible';
+    z-index: 0;
+    transition: 0.4s
+}
+
+.album:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px 0 rgba(194, 34, 101, 0.12);   
+}
+
+.typo{
+    z-index: 2;
+    width: 100%;
+    bottom: 24px;
+    position: absolute;
+    margin-left: 6%;
+}
+
+.typo_hovered{
+    z-index: 2;
+    width: 100%;
+    bottom: 17px;
+    position: absolute;
+    margin-left: 6%;
+}
+
+.title{   
+    font-size: smaller;
+    font-weight: 100;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.photosNumber{
+    font-size: x-small;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.albumFooter{
+    background-color: transparent;
+    display: flex;
+    letter-spacing: 2%;
+    align-items: center;
+    bottom: 2px;
+}
+
