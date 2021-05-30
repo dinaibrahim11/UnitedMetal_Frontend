@@ -1,50 +1,155 @@
-import React, {useState} from 'react'; 
+import React, {useState, useEffect, useReducer} from 'react'; 
 import classes from './Organizer.module.css'
 import { Redirect } from "react-router-dom";
 import API from '../../fakeAPI';
-import Draggable from 'react-draggable';
-import Button from '@material-ui/core/Button';
 
 const Organizer = () => {
 
-  //const DUMMY_IMAGES = [{url: "https://images.template.net/wp-content/uploads/2016/05/19130256/Beach-Resort-Sunset-HD-Wallpaper-Background.jpg"},
-  //{url: "https://image.shutterstock.com/image-photo/linked-blocks-bank-world-currencies-600w-1937429821.jpg" }];
-
     const [cameraRollPhotos, setCameraRollPhotos] = useState([]);
-
-    const [albumsCount, setAlbumsCount] = useState(0);
+    const [droppedOver, setIsDroppedOver] = useState(false);
+    const [enableSaveButton, setEnableSaveButton] = useState(false);
     const [redirect, setRedirect] = useState(null);
-    const [dragging, setDragging] = useState(false);
+    const [titleError, setTitleError] = useState('');
+    const [primaryPhoto, setPrimaryPhoto] = useState();
+    var [photoAlreadyExists, setPhotoAlreadyExists] = useState(false);
+
+             // ***** UPPER DRAG ***** //
+    const [draggedPhotoID, setDraggedPhotoID] = useState();
+    const [draggedPhotoURL, setDraggedPhotoURL] = useState();
+
+            // ***** LOWER DRAG ***** //
+    const [removedPhotoID, setRemovedPhotoID] = useState();
+    const [removedPhotoURL, setRemovedPhotoURL] = useState();
+    const [removedPhotoIndex, setRemovedPhotoIndex] = useState();
+ 
+
+    // ------------------------------------------ ALBUM -------------------------------------------------//
+    const [albumID, setAlbumID] = useState(0);
+    const [albumTitle, setAlbumTitle] = useState('new album');
+    var [albumsCount, setAlbumsCount] = useState(0);
+    const [albumDescription, setAlbumDescription] = useState();
+    const [primaryPhotoID, setPrimaryPhotoID] = useState();
+    const [droppedPhotos, setDroppedPhotos] = useState([]);
+
+    useEffect(() => {
+      getCameraRollPhotos();
+    }, [])
+
+    useEffect(() => {
+      setPhotoAlreadyExists(false);
+      {droppedPhotos.map((item)=>{
+        if(item.id === draggedPhotoID) { setPhotoAlreadyExists(true);}  
+       })}  
+    }, [droppedPhotos, draggedPhotoID])
+    
+    const handleTitleInput = (e) => {
+      setAlbumTitle(e.target.value);
+    }
+
+    const handleDescriptionInput = (e) => {
+      setAlbumDescription(e.target.value);
+    }
 
     const handleCancel = (e) => {
       e.preventDefault();
       setRedirect("/albums");
     }
 
-    const searchClickHandler = () => {
-
-    }
-
-    const handleDrag = (e) => {
-     e.preventDefault();
-     e.preventPropagation();
-    }
-
-    const handleDragStart = (e) => {
-       setDragging(true);
-    }
-
-    const dragOverHandler = (e) => {
+    const handleSaveClick = (e) => {
       e.preventDefault();
+      if(!albumTitle){
+        setTitleError('Cannot create an album without a title');
+    } else{
+    setAlbumID(albumID+1);
+    postDataHandler();
+    setRedirect("/albums"); }
     }
+
+    const searchClickHandler = () => {
+    }
+
+    const handleDragStart = (ev,id, url) => {
+      console.log("on drag start:", id);
+      setDraggedPhotoID(id);
+      setDraggedPhotoURL(url);
+     // setPhotoToBeRemovedIndex(cameraRollPhotos.indexOf(ev.target));  
+    }
+
+    const handleLowerDragStart = (ev,id, url) => {
+      console.log("on drag start:", id);
+      setRemovedPhotoID(id);
+      setRemovedPhotoURL(url);
+      setRemovedPhotoIndex(cameraRollPhotos.indexOf(ev.target));  
+      console.log(removedPhotoIndex);
+    }
+
+    const handleDragEnter = (ev, id) => {
+      ev.preventDefault();
+      
+    }
+
+    const handleDragOver = (ev) => {
+      ev.preventDefault();
+     // setIsDroppedOver(true);
+    }
+      
+    const handleTextAreaDrop = (ev) => {
+      ev.preventDefault();
+    } 
+
+    const handleUpperDrop = (ev) => {     
+      ev.preventDefault();
+      if(photoAlreadyExists===false){
+      setEnableSaveButton(true);
+      setIsDroppedOver(true);
+      setAlbumsCount(albumsCount+1);
+      let addedPhoto;
+      addedPhoto = {
+        "id": draggedPhotoID,
+        "url": draggedPhotoURL
+      }
+      setDroppedPhotos([...droppedPhotos, addedPhoto]);
+      if(albumsCount === 0) {setPrimaryPhoto(addedPhoto);}
+      }
+ }
+
+const handleLowerDrop = (ev) => {
+
+   ev.preventDefault();
+   const array = droppedPhotos.filter((item) => item.id !== removedPhotoID)
+   setDroppedPhotos(array);
+
+   if(albumsCount === 1) {setEnableSaveButton(false); setIsDroppedOver(false); setPrimaryPhoto(); setAlbumsCount(albumsCount-1)}
+   else if(albumsCount > 1) {
+   setAlbumsCount(albumsCount-1);
+  }
+}
 
     const getCameraRollPhotos = () => {
       API.get('photos' )
       .then(response => {
-        console.log(response.data);
         setCameraRollPhotos(response.data);
     })
   }
+
+const postDataHandler = () => {
+  if(titleError===''){
+    const albumInfo = {
+      "id": albumID,
+      "albunName": albumTitle,
+      "description": albumDescription,
+      "photocount": albumsCount,
+      "primaryphoto": primaryPhotoID,
+      "photos" : {droppedPhotos}
+     }
+    API.post('albums', albumInfo)      //json server
+    .then(response => {
+     console.log(response)
+   })
+  }
+  }
+
+  // ------------------------------------------------ RETURN --------------------------------------------------//
 
     if(redirect==="/albums"){
       return(
@@ -52,30 +157,50 @@ const Organizer = () => {
       )
     }
 
-    getCameraRollPhotos();
-
     return (
-      <div>
+      <div className={classes.container}>
+   
           <div className={classes.Organizer_maindiv}>
            <form className={classes.Organizer_form}>
-            <p className={classes.Organizer_square}>The photo or video you drag here will represent the set</p>
+
+             {primaryPhoto ? ( <div className={classes.Organizer_square}>
+               <img src={primaryPhoto.url} key={primaryPhoto.id} className={classes.Organizer_squarePhoto}/>
+               </div> ) : (
+              <p className={classes.Organizer_square}>The photo or video you drag here will represent the set</p>
+             )}
+          
             <p className={classes.Organizer_square_p}>{albumsCount} items in the album</p>
-            <input type="text" className={classes.Organizer_textbox1} value="new album"></input>
+            <input type="text" className={classes.Organizer_textbox1}  defaultValue="new album" onChange={handleTitleInput}/>
             <br />
-            <input type="textarea" className={classes.Organizer_textbox2} ></input>
+            <input type="textarea" className={classes.Organizer_textbox2} onDrop={(e)=>handleTextAreaDrop(e)} onChange={handleDescriptionInput}></input>
             <div className={classes.Buttons_div}>
-            <button className={classes.save_button} disabled >SAVE</button> 
+
+             {enableSaveButton===false ? (<button className={classes.save_button_disabled} disabled onClick={handleSaveClick}>SAVE</button>) : (<button className={classes.save_button_enabled} onClick={handleSaveClick}>SAVE</button>)}
+
+             
             <button className={classes.cancel_button} onClick={handleCancel}>CANCEL</button>
             </div>
+            <p className={classes.p__error}>{titleError}</p>
            </form>
 
-           <div className={classes.Organizer_rightdiv} onDragOver={dragOverHandler}>
+           
+           { droppedOver ? (
+            <div className={classes.Organizer_dnd} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} > 
+               {droppedPhotos.map((droppedPhoto)=>(
+              <img key={droppedPhoto.id} src={droppedPhoto.url} draggable onDragStart={(e)=>handleLowerDragStart(e,droppedPhoto.id, droppedPhoto.url)} 
+                   className={classes.Organizer_dropped_photo} style={{marginLeft:'2px'}}
+              />
+         ))}
+         </div>
+           ) :   
+           <div className={classes.Organizer_rightdiv} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} >
            <br /> <br />
              <h4 className={classes.Organizer_rightdiv_h4} style={{fontWeight:'normal', fontSize:'33px'}}>
              Drag stuff here to add it to the album
              </h4>
              <h6 style={{fontWeight:'normal' , fontSize:'25px'}}>You can drag them around to re-order them.</h6>
-           </div>
+           </div>}
+         
            </div>
 
           
@@ -84,24 +209,17 @@ const Organizer = () => {
               <input type="text" className={classes.search_inputfield}></input>
               <button className={classes.search_button}>SEARCH</button>
               </div>
-              <div className={classes.middle_block}>
+              <div className={classes.middle_block} onDragOver={(e)=>handleDragOver(e)} onDrop={(e)=>handleLowerDrop(e)}>
               
                    {cameraRollPhotos.map((photo) => (
-                    <img src={photo.url} className={classes.Organizer_photo} draggable ondragstart={handleDragStart} id="img1"  />
+                    <img src={photo.url} className={classes.Organizer_photo} key={photo.id} draggable onDragStart={(e)=>handleDragStart(e,photo.id, photo.url)} onDragEnter={(e)=>handleDragEnter(e,photo.id)}/>
                    ))}
-
-               { /*<img className={classes.Organizer_photo} draggable ondragstart={handleDragStart} id="img1" src="https://images.template.net/wp-content/uploads/2016/05/19130256/Beach-Resort-Sunset-HD-Wallpaper-Background.jpg"></img>
-                <img className={classes.Organizer_photo} src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png"></img> */}
-               
 
               </div>
           </div>
 
     </div>
     )
-
 }
-
-
 
 export default Organizer;

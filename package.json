@@ -23,7 +23,9 @@
     "react-bootstrap": "^1.5.2",
     "react-burger-menu": "^3.0.6",
     "react-copy-to-clipboard": "^5.0.3",
+    "react-dnd": "^14.0.2",
     "react-dom": "^17.0.2",
+    "react-draggable": "^4.4.3",
     "react-facebook-login": "^4.1.1",
     "react-icons": "^4.2.0",
     "react-jss": "^10.6.0",
@@ -64,12 +66,12 @@
     "@testing-library/react": "^11.2.6",
     "better-docs": "^2.3.2",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "jest-dom": "^4.0.0",
-    "jsdoc": "^3.6.6",
+    "jsdoc": "^3.6.7",
     "react-test-renderer": "^17.0.2"
   }
 }
