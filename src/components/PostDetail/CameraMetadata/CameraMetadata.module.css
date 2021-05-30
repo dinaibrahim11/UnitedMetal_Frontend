@@ -69,3 +69,42 @@
     vertical-align: middle;
     list-style: none;
 }
+
+.exif {
+    
+    display: flex;
+}
+
+.exif img {
+    border-radius: 50%;
+}
+
+
+
+.exif__link {
+    margin-bottom: 20px;
+    position: relative;
+    height: auto;
+    font-size: 14px;
+    line-height: 1.3;
+    min-height: 20px;
+    padding: 0;
+    margin: 0 0 5px;
+    vertical-align: middle;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: #006dac;
+}
+
+.exif__link:hover {
+    text-decoration: underline;
+}
+
+.exif__icon {
+    background: url(https://combo.staticflickr.com/ap/build/images/sprites/scrappy-95f0c81a.png) -21px -151px no-repeat;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    margin-right: 5px;
+}

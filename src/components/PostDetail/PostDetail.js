@@ -27,6 +27,7 @@ import { useDispatch } from 'react-redux';
 import { usersActions } from '../../storev2/users-slice';
 import PhotoDescription from './PhotoDescription/PhotoDescription';
 import Comments from './Comments/Comments';
+import GalleryItem from './GalleryItem/GalleryItem';
 // /import ShareModal from '../UI/ShareModal/ShareModal';
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
@@ -94,6 +95,7 @@ const PostDetail = (props) => {
     const [isPhotoMine, _] = useState(true); //check if this is the current user's photo
     const [showAlbumCloseThumbnail, setShowAlbumCloseThumbnail] = useState(false);
     const [albums, setAlbums] = useState([]);
+    const [galleries, setGalleries] = useState([]);
     const [isFaved, setIsFaved] = useState(false);
 
     useEffect(() => {
@@ -101,7 +103,9 @@ const PostDetail = (props) => {
             .then(res => {
                 setPost(res.data);
                 setIsFollowing(res.data.isFollowing);
-            })
+            });
+
+            
     }, [postId]);
 
     useEffect(() => {
@@ -109,9 +113,20 @@ const PostDetail = (props) => {
         API.get(`users/400/albums`)
             .then(res => {
                 setAlbums(res.data);
+                
             }).catch(err => {
                 console.log(err);
-            })
+            });
+
+        API.get(`users/400/galleries`)
+        .then(res => {
+            setGalleries(res.data);
+            console.log(res.data);
+            
+        }).catch(err => {
+            console.log(err);
+        });
+        
     }, [currentUserId, rerenderAlbums])
 
 
@@ -199,6 +214,20 @@ const PostDetail = (props) => {
             })
     }
 
+    const handleDeleteFromGallery = (galleryId) => {
+        //alert("deleting albumId: "+albumId);
+        API.delete(`/galleries/${+galleryId}`)
+            .then(res => {
+                dispatch(usersActions.deleteFromAlbumToggle());
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
+    const handleDownloadPhoto = (event) => {
+        // TODO: make API request
+    }
+
     
 
     const open = Boolean(anchorEl);
@@ -226,7 +255,7 @@ const PostDetail = (props) => {
                 {/* <img className={classes.image__view_img} src={post.imageUrl} alt="" /> */}
                 {isFaved ? <AiFillStar id="photo-like-filled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}}/> : <AiOutlineStar id="photo-like-unfilled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} />}
                 <FaRegShareSquare className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}}/>
-                <BsDownload className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} />
+                <BsDownload onClick={handleDownloadPhoto} className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} />
                 {/* <ShareModal /> */}
                 {/* <button>Download</button>
                 <button>Share</button>
@@ -287,19 +316,32 @@ const PostDetail = (props) => {
                             </div>
                         </div>
                         <div className={classes.sub__photo__right__row2}>
-                            <CameraMetadata cameraName="Nikon" lensString="16.0-35.0 mm" focalLength="f/4.0"/>
+                            <CameraMetadata photoId={postId} cameraName="Nikon" lensString="16.0-35.0 mm" focalLength="f/4.0"/>
                         </div>
             
                         <div className={classes.sub__photo__right__row3}>
                             <div className={classes.galleries}>
                                 <h5 className={classes.galleries__count}>
-                                    This photo is in 5 galleries
+                                    This photo is in {galleries.length} galleries
                                 </h5>
                                 <p className={classes.add__to__gallery}
                                 onClick={handleOpenGalleryModal}
                                 >Add to gallery</p>
                                 <AddToGalleryModal openGalleryModal={isOpenGalleryModal}
                                 closeGalleryModal={handleCloseGalleryModal}/>
+
+                                <ul className={classes.albums__list}>
+                                    {galleries.map(gallery => (
+                                        <GalleryItem onDeleteGallery={() => handleDeleteFromGallery(gallery.id)} 
+                                            key={gallery.id} galleryId={gallery.id} 
+                                            photoSrc={gallery.photoSrc} 
+                                            galleryTitle={gallery.title} 
+                                            itemsCount={gallery.itemsCount} 
+                                            isPhotoMine={isPhotoMine}
+                                        />
+                                    ))}
+                                </ul>
+
                             </div>
                         </div> 
 
