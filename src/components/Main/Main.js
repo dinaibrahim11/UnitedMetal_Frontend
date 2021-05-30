@@ -22,6 +22,7 @@ import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
+import Followers from '../../pages/Followers/Followers'
 
 /**
  * Responsible for the routing of the whole website
@@ -53,6 +54,7 @@ const Main = (props) => {
                 <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
+                <Route exact path="/user/:id/followers" component={Followers} />
             </Switch>
             
         </main>

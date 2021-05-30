@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import './YouCover.css';
 import API from '../../fakeAPI';
+import { useHistory } from 'react-router';
 
 /**
  * @function
@@ -22,6 +23,7 @@ const YouCover = (props) => {
     const [name,setName] = useState('John Silva');
     const [username,setUsername] = useState('JohnSilvaMendes');
     const userId = props.userId;
+    let history = useHistory();
 
     //("you cover")
     useEffect(() => {
