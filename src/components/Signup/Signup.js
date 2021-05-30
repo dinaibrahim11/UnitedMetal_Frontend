@@ -38,6 +38,8 @@ const Signup = () => {
   const [checkboxErr, setCheckboxErr] = useState();
   const [errorcount, setErrorCount] = useState(0);
 
+  
+
   const [isSubmitting, setisSubmitting] = useState(false);
 
   /**
@@ -205,6 +207,14 @@ const Signup = () => {
 
   const signUpUser = () => {
     setisSubmitting(true);
+    let totalErrorCount = 0;
+    setfnError(''); 
+    setErrorCount(0);
+    setlnError('');
+    setemailError('');
+    setpassError(''); 
+    setageError('');
+    setCheckboxErr('');
     // checkUserInput will not be used as we cannot check 
     // if the email was already in the database or not
 
@@ -216,22 +226,26 @@ const Signup = () => {
     if(!firstName) {
       setfnError('First name is required');
       setErrorCount(1);
+      totalErrorCount++;
     } else{setfnError(''); setErrorCount(0)}
 
     //Last name
     if(!lastName) {
         setlnError('Last name is required');
         setErrorCount(1);
+        totalErrorCount++;
     } else{setlnError(''); setErrorCount(0)}
 
     //Email
     if(!email){
         setemailError('Email is required');
         setErrorCount(1);
+        totalErrorCount++;
     }
     else if (!/\S+@\S+\.\S+/.test(email)) {
         setemailError('Email address is invalid');
         setErrorCount(1);
+        totalErrorCount++;
     }
     else {setemailError(''); setErrorCount(0)}
 
@@ -239,28 +253,44 @@ const Signup = () => {
     if(!password){
         setpassError('Password is required');
         setErrorCount(1);
+        totalErrorCount++;
     } else if (password.length < 12) {
         setpassError('Password should be 12 characters or more');
         setErrorCount(1);
-    } else {setpassError(''); setErrorCount(0)}
+    } else {
+      if (checkStrongPassword(password)){
+        setpassError(''); 
+        setErrorCount(0);
+      } else {
+        setpassError('Password is weak, should have uppercase, lowercase, and digit');
+        setErrorCount(1);
+        totalErrorCount++;
+      }
+    }
+
+ 
 
     //Age
     if(!age) {
       setageError('Age is required')
       setErrorCount(1);
+      totalErrorCount++;
     }
     else if (age < 13) {
       setageError('Your age should be 13+ ');
       setErrorCount(1);
+      totalErrorCount++;
     } 
     else if (age >120) {
       setageError('Invalid Age');
       setErrorCount(1);
+      totalErrorCount++;
     }
     else if (!Number.isInteger(parseInt(age,10))) 
     {
       setageError('Age should be inputted as number')
       setErrorCount(1);
+      totalErrorCount++;
     }
     else {setageError(''); setErrorCount(0)}
 
@@ -268,12 +298,20 @@ const Signup = () => {
     if(isChecked == 'false') {
       setCheckboxErr('Please verify that you are a human')
       setErrorCount(1);
+      //totalErrorCount++;
     } else {setCheckboxErr(''); setErrorCount(0)}
 
-    if (errorcount === 1) {
+    // if (errorcount === 1) {
+    //   alert("cannot")
+    //   return;
+    // }
+    console.log("total error count: "+totalErrorCount);
+    if (totalErrorCount > 0) {
+      //alert("cannot");
       return;
     }
 
+    // alert("could");
     /**
      * Responsible for posting/recording the data inputted by the user to the server, but it checks first if all inputs are valid 
      * 
@@ -287,7 +325,7 @@ const Signup = () => {
         email: email,
         password: password 
        }
-      API.post('user/sign-up', userInfo)      //json server
+        API.post('user/sign-up', userInfo)      //json server
           .then(res => {
             console.log(res);
             if (res.data.status === "success") {
@@ -301,20 +339,59 @@ const Signup = () => {
                 firstName: res.data.data.user.firstName,
                 lastName: res.data.data.user.lastName
               }));
-
+              //setisSubmitting(false);
               // TODO: change to email confirmation screen
               setRedirect("/home");
-            } else {
-              console.log("[SignUp] signup is incorrect status: "+res.data.status);
-              
-            }
+            } 
       }).catch(err => {
-        alert("[SignUp]::ERROR "+err);
+        console.log(err.response);
+        console.log(err.response.data.status);
+        if (err.response.data.status === "fail") {
+          //alert("status 400");
+          if (err.response.data.message.toString().includes("Duplicate")) {
+            setemailError("duplicate email found");
+          }
+          //setpassError(err.response.data.message);
+          setisSubmitting(false);
+        } 
       })
     }
 
   }
 
+
+    const checkGoodPassword = (str) => {
+      let acceptable = false;
+      let upperCaseGood = false;
+      let digitGood = false;
+      let lowerCaseGood = false;
+      for (let i = 0; i < str.length; i++) {
+        let character = str.charAt(i);
+        if (!isNaN(character * 1)){
+          digitGood = true;
+        }else{
+          if (character == character.toUpperCase()) {
+              upperCaseGood = true;
+          }
+          if (character == character.toLowerCase()){
+              lowerCaseGood = true;
+          }
+      }
+      }
+      return (upperCaseGood && lowerCaseGood && digitGood);
+    }
+
+    const checkStrongPassword = (pswd) => {
+      var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+      if(pswd.match(decimal)) 
+      { 
+      //alert('Correct, try another...')
+      return true;
+      } else {
+        //alert("so weakkk");
+        return false;
+      }
+    }
 
 // ---------------------------------------- VALIDATIONS ---------------------------------------------- //
 // **Beside the validations written inside handling functions, we also need separate validation function ** //
