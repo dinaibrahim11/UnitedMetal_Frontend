@@ -28,7 +28,7 @@ import { usersActions } from '../../storev2/users-slice';
 import PhotoDescription from './PhotoDescription/PhotoDescription';
 import Comments from './Comments/Comments';
 import GalleryItem from './GalleryItem/GalleryItem';
-// /import ShareModal from '../UI/ShareModal/ShareModal';
+import ShareModal from '../UI/ShareModal/ShareModal';
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
 const tmpPhoto2 = "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg";
@@ -97,6 +97,8 @@ const PostDetail = (props) => {
     const [albums, setAlbums] = useState([]);
     const [galleries, setGalleries] = useState([]);
     const [isFaved, setIsFaved] = useState(false);
+
+    const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
 
     useEffect(() => {
         API.get(`photos/${postId}`)
@@ -229,6 +231,19 @@ const PostDetail = (props) => {
     }
 
     
+    // ********** Share Modal *************
+
+    const handleOpenShareModal = (event) => {
+        console.log("Share clicked");
+        setIsShareModalOpen(true);
+    }
+
+    const handleCloseShareModal = () => {
+        setIsShareModalOpen(false);
+    }
+
+    
+
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
@@ -254,9 +269,14 @@ const PostDetail = (props) => {
                 />
                 {/* <img className={classes.image__view_img} src={post.imageUrl} alt="" /> */}
                 {isFaved ? <AiFillStar id="photo-like-filled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}}/> : <AiOutlineStar id="photo-like-unfilled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} />}
-                <FaRegShareSquare className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}}/>
+                <FaRegShareSquare onClick={() => setIsShareModalOpen(true)} className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}}/>
                 <BsDownload onClick={handleDownloadPhoto} className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} />
-                {/* <ShareModal /> */}
+                <ShareModal 
+                    isShareModalOpen={isShareModalOpen} 
+                    handleCloseShareModal={handleCloseShareModal}
+                    modalTitle="Share the photo"
+                    externalShareLink="http://www.google.com"
+                />
                 {/* <button>Download</button>
                 <button>Share</button>
                 <button>Fave</button> */}

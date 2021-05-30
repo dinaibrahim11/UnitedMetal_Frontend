@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
@@ -7,6 +7,12 @@ const ShareModal = (props) => {
 
     const [isLinkCopied, setIsLinkCopied] = useState(false);
 
+    const handleCopyToClipboard = () => {
+        setIsLinkCopied(true);
+        setTimeout(() => {
+            setIsLinkCopied(false);
+        }, 1000);
+    }
 
     return (
         <Modal
@@ -26,7 +32,7 @@ const ShareModal = (props) => {
                 <h6>
                 External Share Link
                 </h6>
-                <CopyToClipboard style={{float: 'right', marginTop: '60px', marginRight: '20px'}} text={props.externalShareLink} onCopy={props.handleCopyToClipboard}>
+                <CopyToClipboard style={{float: 'right', marginTop: '60px', marginRight: '20px'}} text={props.externalShareLink} onCopy={handleCopyToClipboard}>
                     <span>{isLinkCopied ? "Copied!" : <FileCopyOutlinedIcon />}</span>
                 </CopyToClipboard>
                 <input
