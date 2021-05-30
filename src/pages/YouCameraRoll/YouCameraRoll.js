@@ -12,15 +12,41 @@ const YouCameraRoll = (props) => {
     var objectsArray = []
     var dateArray = []
     const [selectedFile, setSelectedFile] = useState(null);
-    const {selectedImg, setSelectedImg} = useState(null);
+    const [selectedImg, setSelectedImg] = useState(null);
     const [localImgUrl, setLocalImgUrl] = useState(null);
-    
+    const [privacyChoice, setPrivacyChoice] = useState(false);
+    const [imgState, setImgState] = useState(null);
 
     const fileSelectionHandler = (event) => {
         setSelectedFile(event.target.files[0]);
         console.log(event.target.files[0]);
         setLocalImgUrl(URL.createObjectURL(event.target.files[0]));
         console.log("local url: ", URL.createObjectURL(event.target.files[0]));
+    }
+
+    const selectImgHandler = (img) => {
+        if (selectedImg == img)
+        {
+            setSelectedImg(null)
+        }
+        else 
+        {
+            setSelectedImg(img)
+        }
+    }
+
+    const deleteObject = () => {
+        
+    }
+
+    const uncheckOthersAndSet = (id) => {
+        var boxes = document.getElementsByName('checkBox');
+        setImgState(id);
+        for (let item of boxes) {
+            if (item.id != id) {
+                item.checked=false;
+            }
+        }
     }
 
     const fileUploadHandler = () => {
@@ -58,6 +84,57 @@ const YouCameraRoll = (props) => {
         <div>
             <div className='background'>
             </div>
+            {selectedImg && (<div className='choiceBar'>
+                <div className='choiceBarBody'>
+                </div>
+                <img className='chosenImg' width='50' height='50' src={selectedImg.link}/>
+                <div className='privacy'>
+                    Privacy
+                    <button className='privacyButton' onClick={()=>setPrivacyChoice(!privacyChoice)}></button>
+                    { privacyChoice && (
+                        
+                        <div className='privacyMenu'>
+                            <div className='popUpPrivacy'></div>
+                            <div className='popUpPrivacyBg'>
+                            <div className='privacyInputs'>
+                                <div className='changePrivacy'>Change privacy?</div>
+                                <input type="checkbox" id="public" name="checkBox" value="public" onClick={()=>uncheckOthersAndSet('public')}/>
+                                <label for="public"> Public</label><br></br>
+                                <input type="checkbox" id="private" name="checkBox" value="private" onClick={()=>uncheckOthersAndSet('private')}/>
+                                <label for="private"> Private</label><br></br>
+                                <input type="checkbox" id="friends" name="checkBox" value="friends" onClick={()=>uncheckOthersAndSet('friends')}/>
+                                <label for="friends"> Friends</label><br></br>
+                            </div>
+                            </div>
+                            
+                            <button className='savePrivacyButton' onClick={()=>setPrivacyChoice(false)}>Change</button>
+                            <button className='closePrivacyButton' onClick={()=>setPrivacyChoice(false)}>Cancel</button>
+                        </div>
+                    )}
+                    <div className='download'>
+                        Download
+                        <a href={selectedImg.link} download> 
+                            <button className='downloadButton'></button>
+                        </a>
+                    </div> 
+                    <div className='delete'>
+                        Delete
+                        <button className='deleteButton' onClick={deleteObject}></button>
+                    </div>
+                    <div className='addToAlbum'>
+                        Add to Album
+                        <button className='albumButton' ></button>
+                    </div>
+                    <div className='share'>
+                        Share
+                        <button className='shareButton'></button>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            )}
+            
             { !objectsArray.length &&
             (<div className='uploadImg'>
                 <div>Got a lot of photos? We got a lot of space</div>
@@ -75,7 +152,7 @@ const YouCameraRoll = (props) => {
                 <div className='imgGroup' >
                 {imgSrc.map(imgSr => (
                 <div>                            
-                    <img className='rollImage' width='100' height='100' key={imgSrc} src={imgSr.link} />
+                    <img className='rollImage' onClick={()=>selectImgHandler(imgSr)} width='100' height='100' key={imgSrc} src={imgSr.link} />
                 </div>
                 ))}
                 </div>
