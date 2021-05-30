@@ -104,6 +104,10 @@ const YouCameraRoll = (props) => {
                                 <label for="private"> Private</label><br></br>
                                 <input type="checkbox" id="friends" name="checkBox" value="friends" onClick={()=>uncheckOthersAndSet('friends')}/>
                                 <label for="friends"> Friends</label><br></br>
+                                <input type="checkbox" id="family" name="checkBox" value="family" onClick={()=>uncheckOthersAndSet('family')}/>
+                                <label for="family"> Family</label><br></br>
+                                <input type="checkbox" id="familyAndFriends" name="checkBox" value="familyAndFriends" onClick={()=>uncheckOthersAndSet('familyAndfriends')}/>
+                                <label for="familyAndFriends"> Family and Friends</label><br></br>
                             </div>
                             </div>
                             
