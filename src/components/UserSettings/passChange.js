@@ -70,7 +70,7 @@ return(
     // contians a card that represents a box of success of changing password
     // Done Icon
     // different text
-    // button that when clicked redirects you back to /AccountSettings Page
+    // button that when clicked calls function that redirects you back to /AccountSettings Page
     <div className="Backgound2">
         <div className="space"></div>
 <Card  className="Forum2"  style={cardStyling}>
