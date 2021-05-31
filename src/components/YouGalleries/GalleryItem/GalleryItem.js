@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { FaRegShareSquare } from 'react-icons/fa';
 import galleryClasses from './GalleryItem.module.css';
 import ShareModal from '../../UI/ShareModal/ShareModal';
-import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -25,11 +25,8 @@ const GalleryItem = (props) => {
     const classes = useStyles();
 
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-    const history = useHistory();
 
-    const handleGotoGallery = () => {
-        history.push(`gallery/${props.galleryId}`)
-    }
+ 
 
     const handleShareGallery = () => {
         setIsShareModalOpen(true);
@@ -42,17 +39,19 @@ const GalleryItem = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea onClick={handleGotoGallery}> 
+      <Link to={`/gallery/${props.galleryId}`}><CardActionArea> 
         <CardMedia
           className={classes.media}
           image={props.galleryCoverPhotoSrc}
           title={props.galleryTitle}
         />
-      </CardActionArea>
+      </CardActionArea></Link>
      
-        <div onClick={handleGotoGallery} className={galleryClasses.gallery__title}>
-            {props.galleryTitle}
-        </div>
+      <Link to={`/gallery/${props.galleryId}`} style={{textDecoration: 'none', color: 'black'}}>
+          <div className={galleryClasses.gallery__title}>
+                {props.galleryTitle}
+          </div>
+      </Link>
           <div style={{display: 'flex', flexDirection: 'row', marginLeft: '10px', marginRight: '10px'}}>
               <p className={galleryClasses.stats}>{props.countItems} item</p>
               <p className={galleryClasses.stats}>{props.countViews} views</p>
