@@ -101,6 +101,7 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
+                
                 {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>

@@ -2,7 +2,8 @@
  * @function YouCameraRoll
  */
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router';
+import ShareModal from '../../components/UI/ShareModal/ShareModal'
 /**
  * Responsible for returning the 
  * @param {properties} props 
@@ -16,6 +17,13 @@ const YouCameraRoll = (props) => {
     const [localImgUrl, setLocalImgUrl] = useState(null);
     const [privacyChoice, setPrivacyChoice] = useState(false);
     const [imgState, setImgState] = useState(null);
+    const [isShareModalOpen,setIsShareModalOpen] = useState(false);
+    let history = useHistory();
+    const userId = props.userId;
+
+    const handleCloseShareModal = () => {
+        setIsShareModalOpen(false);
+    }
 
     const fileSelectionHandler = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -37,6 +45,10 @@ const YouCameraRoll = (props) => {
 
     const deleteObject = () => {
         
+    }
+
+    const goToUpl = () => {
+        history.push(`/upload`);
     }
 
     const uncheckOthersAndSet = (id) => {
@@ -131,7 +143,11 @@ const YouCameraRoll = (props) => {
                     </div>
                     <div className='share'>
                         Share
-                        <button className='shareButton'></button>
+                        <button className='shareButton' onClick={() =>setIsShareModalOpen(true)}></button>
+                        <ShareModal isShareModalOpen={isShareModalOpen}
+                                    handleCloseShareModal={handleCloseShareModal}
+                                    modalTitle="Share the photo"
+                                    externalShareLink={selectedImg.link}/>
                     </div>
                     
                 </div>
@@ -163,6 +179,7 @@ const YouCameraRoll = (props) => {
             </div>
             ))}
             </div>
+            <button className='uploadButto' onClick={goToUpl}>Upload</button>
         </div>
     )
 }

@@ -363,6 +363,13 @@
     opacity: 1;
 }
 
+.uploadButto {
+    position: absolute;
+    top: 290px;
+    background-color: lightblue;
+    left: 350px;
+}
+
 .write {
     position: absolute;
     left: 50px;
