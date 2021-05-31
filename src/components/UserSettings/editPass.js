@@ -162,7 +162,7 @@ const setpass=()=> {
     return(
 /// return function has the card representing form
 // lock icon and arrow icon
-// two input box with eye icon and with ability of password to be visible or not using ternary oprator
+// two input box (current and new) with eye icon and with ability of password to be visible or not using ternary oprator
 // button that resets password if certain conditions are there and redirect us to another page
 // differnt text
         <div className="Backgound">
