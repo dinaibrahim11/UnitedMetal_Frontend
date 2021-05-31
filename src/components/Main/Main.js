@@ -22,7 +22,10 @@ import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
-
+import AccountSettings from '../../components/UserSettings/AccountSettings';
+import editPass from '../UserSettings/editPass';
+import passChange from '../UserSettings/passChange';
+import dispChange from '../UserSettings/dispChange';
 /**
  * Responsible for the routing of the whole website
  * @example <Main />
@@ -53,6 +56,10 @@ const Main = (props) => {
                 <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
+                <Route exact path="/AccountSettings" component={AccountSettings} />
+                <Route exact path="/editPass" component={editPass} />
+                <Route exact path="/passChange" component={passChange} />
+                <Route exact path="/dispChange" component={dispChange} />
             </Switch>
             
         </main>

@@ -111,21 +111,21 @@ const links1 = [
 //////////////////////////////////////////////////////  different routes redirecting functions //////////////////////////////////////////////////////////////////
     /**
      * it takes the ID number of an image and directs the user to a page depending on image ID
-     *  @returns void
+     *  @returns {void}
      * @param {int} num - An int represting image ID
      */
  const handleImageRoute=(num)=>{history.push("/images"+num);}
       
     /**
      * it takes the ID number of a person  and directs the user to a page depending on Person ID
-     * @returns void
+     * @returns {void}
      * @param {int} num - An int represting Person ID
      */
  const handleCardRoute=(num)=>{history.push("/people"+num);}
 
  /**
   * it takes the ID number of a Group and directs the user to a page depending on Person ID
-  * @returns void
+  * @returns {void}
   * @param {int} num -An int represting Group ID
   */
  const handleGroupRoute=(num)=>{history.push("/Group"+num); }
