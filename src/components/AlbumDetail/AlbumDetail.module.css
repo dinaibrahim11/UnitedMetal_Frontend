@@ -1,0 +1,163 @@
+.container {
+    max-zoom: 90%;
+    width: 100%;
+    height: 100%;  
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+}
+
+.buttons{
+    display: flex;
+    margin-left: 100px;
+    margin-bottom: 10px;  
+}
+
+.button1{
+    background-color: transparent;
+    color: black;
+    border-style: hidden;
+    margin-right: 2%;
+    font-weight: 500;
+}
+
+.organizer_link {
+    color: blue;
+}
+
+.organizer_link:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.album_cover{
+    position:absolute;
+   align-items: center;
+   text-align: center;   
+    background-position:center;
+    width: 80%;
+    height: 300px;
+    margin-left: 10%;
+    text-shadow: 5px 5px 5px #000;
+    opacity: 0.9;
+    -webkit-transition: height .5s ease-out;
+    transition: height .5s ease-out;
+    background-color: #000;
+    text-shadow: 0 1px 1px #000;
+}
+
+
+.cover_photo{
+    height: 300px;
+    width: 100%;  
+    z-index: 0;
+    opacity: 0.8;
+    position: absolute;
+    left: 0;
+}
+
+.text1{
+    z-index: 5;
+    position: relative;
+    color: white;
+    margin-left: 2%;
+    margin-right: 2%;
+    cursor: text;
+    margin-top: -2%;
+}
+
+.text1:hover{
+    background: rgba(58, 58, 58, 0.6);
+    transition: background-color .2s,padding .5s ease-out;
+   
+}
+
+.text2{
+    z-index: 5;
+    position: relative;
+    color: white; 
+}
+
+.cover_title{
+    margin-top: 7%;
+    font-size: 2em;
+    opacity: 0.9;
+    font-weight: 400;
+   
+}
+
+.cover_description{
+    font-size: 20px;
+    opacity: 0.9;
+    font-weight: 300; 
+    max-height: 29px; 
+}
+
+.cover_photoCount{
+    font-size: 15px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.album_photos{
+  align-items: flex-start;
+  margin-left: 10%;
+   margin-top: 350px;
+   opacity: 0.9;
+   display:block;
+}
+
+.album_photo{
+    height: 170px;
+    width: 150px;
+    margin-right: 1%;
+    transition: 0.3s;
+}
+
+.album_photo:hover{
+    cursor: pointer;
+    transform: scaleY(-2px);
+    box-shadow: 0 8px 10px 0 rgb(146, 11, 106) ;
+}
+
+.edit_icon{
+    font-size: 20px;
+    opacity: 0.9;
+    color: white;
+    font-weight: 300;
+    margin-left: 95%;
+    margin-top: 1%;
+}
+
+.edit_icon:hover{
+    cursor: pointer;
+}
+
+.icons{
+    opacity: 0.9;
+    margin-top: -2%;
+    
+}
+
+.shareIcon{
+    color: white;
+    font-size: 23px;
+    margin-left: 2%;
+    margin-right: 3%;
+    margin-top: 5px;
+}
+
+.shareIcon:hover {
+    cursor: pointer;
+}
+
+.downloadIcon{
+    color: white;
+    font-size: 30px;
+    margin-bottom: -7px;
+    margin-right: 3%;
+    margin-top: 10px;
+}
+
+.downloadIcon:hover {
+    cursor: pointer;
+}
