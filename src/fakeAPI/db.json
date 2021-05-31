@@ -225,12 +225,92 @@
   ],
   "albums": [
     {
-      "_id": "5590beb07237ad1fb4458fae",
+      "id": "5590beb07237ad1fb4458fae",
       "albumName": "sunsets",
       "description": "best sunset photos",
-      "photocount": 17,
-      "primaryphoto": 292882708,
-      "photos": []
+      "photocount": 2,
+      "primaryphoto": 1,
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.template.net/wp-content/uploads/2016/05/19130256/Beach-Resort-Sunset-HD-Wallpaper-Background.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://wallpapercave.com/fwp/wp5716268.jpg"
+        }
+      ]
+    },
+    {
+      "id": "QhTpUwY",
+      "albumName": "album1",
+      "description": "album1_description",
+      "photocount": 5,
+      "primaryphoto": 2,
+      "photos": [
+        {
+          "id": 2,
+          "url": "https://wallpapercave.com/fwp/wp5716268.jpg"
+        },
+        {
+          "id": 4,
+          "url": "https://wallpapercave.com/uwp/uwp404136.jpeg"
+        },
+        {
+          "id": 5,
+          "url": "https://wallpapercave.com/wp/wp170202.jpg"
+        },
+        {
+          "id": 6,
+          "url": "https://wallpapercave.com/wp/wp4202055.jpg"
+        },
+        {
+          "id": 9,
+          "url": "https://wallpapercave.com/wp/wp4203600.jpg"
+        }
+      ]
+    },
+    {
+      "id": "jMsECDI",
+      "albumName": "album2",
+      "description": "album2_descrition",
+      "photocount": 3,
+      "primaryphoto": 3,
+      "photos": [
+        {
+          "id": 3,
+          "url": "https://wallpapercave.com/fwp/wp5981208.jpg"
+        },
+        {
+          "id": 8,
+          "url": "https://wallpapercave.com/wp/9T3NTEL.jpg"
+        },
+        {
+          "id": 10,
+          "url": "https://wallpapercave.com/wp/wp4079759.jpg"
+        }
+      ]
+    },
+    {
+      "id": "OCuuvq5",
+      "albumName": "album3",
+      "description": "",
+      "photocount": 3,
+      "primaryphoto": 8,
+      "photos": [
+        {
+          "id": 8,
+          "url": "https://wallpapercave.com/wp/9T3NTEL.jpg"
+        },
+        {
+          "id": 9,
+          "url": "https://wallpapercave.com/wp/wp4203600.jpg"
+        },
+        {
+          "id": 10,
+          "url": "https://wallpapercave.com/wp/wp4079759.jpg"
+        }
+      ]
     }
   ],
   "comments": [
