@@ -22,6 +22,7 @@ import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
+import GalleryDetail from '../GalleryDetail/GalleryDetail';
 
 /**
  * Responsible for the routing of the whole website
@@ -54,6 +55,7 @@ const Main = (props) => {
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
                 <Route exact path="/user/:id/galleries" render={(props) => <YouMain {...props} currentTab="galleries" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
+                <Route exact path="/gallery/:id" component={GalleryDetail} />
             </Switch>
             
         </main>
