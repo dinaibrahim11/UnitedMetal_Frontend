@@ -18,7 +18,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
 import { useSelector } from 'react-redux';
-
+import YouGalleries from '../YouGalleries/YouGalleries';
 
 function a11yProps(index) {
     return {
@@ -95,7 +95,7 @@ const YouMain = (props) => {
                             <Tab label="Photostream" {...a11yProps(1)} />
                             <Tab label="Albums" {...a11yProps(2)} />
                             <Tab label="Faves" {...a11yProps(3)} />
-                            <Tab label="Galleries" {...a11yProps(4)} />
+                            <Tab label="Galleries" {...a11yProps(4)} onClick={() => setTab('galleries')} />
                             <Tab label="Groups" {...a11yProps(5)} />
                             <Tab label="CameraRoll" {...a11yProps(6)} onClick={() => setTab('cameraRoll')}/>
                         </Tabs>
@@ -104,7 +104,8 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
-                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
+                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : 
+                tab === 'galleries' ? <YouGalleries /> : <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>
     );
