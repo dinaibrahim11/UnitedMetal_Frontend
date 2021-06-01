@@ -4,7 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import ShareModal from '../../components/UI/ShareModal/ShareModal'
-import axios from 'axios'
+import API from '../../fakeAPI';
+
 /**
  * Responsible for returning the 
  * @param {properties} props 
@@ -50,9 +51,9 @@ const YouCameraRoll = (props) => {
       };
 
     useEffect (()=> {
-        axios.get('http://localhost:7000/user/camera-roll', {
+        API.get('user/camera-roll', {
             headers: {
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+                "Authorization": `Bearer ${props.token}` 
             }}
             )
              .then(res => {
@@ -60,9 +61,9 @@ const YouCameraRoll = (props) => {
                 
     for (let item of array)
     {
-        axios.get(`http://localhost:7000/photo/${item._id}`, {
+        API.get(`photo/${item._id}`, {
             headers: {
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+                "Authorization": `Bearer ${props.token}` 
             }}
             )
              .then(res => {
@@ -72,12 +73,15 @@ const YouCameraRoll = (props) => {
                  setPics(picArray)
                  
              }) .catch( res => {
-
+                alert(res.response);
+                console.log(res.response);
              })
     }
              }) .catch( res => {
 
              })
+
+             
     },[])
     const handleCloseShareModal = () => {
         setIsShareModalOpen(false);
@@ -99,9 +103,9 @@ const YouCameraRoll = (props) => {
         }
     }
     const deleteObject = () => {
-        axios.delete(`http://localhost:7000/photo/${selectedImg.id}`, {
+        API.delete(`photo/${selectedImg.id}`, {
             headers: {
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+                "Authorization": `Bearer ${props.token}` 
             }}
             )
             .then(res => {

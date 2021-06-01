@@ -1,6 +1,7 @@
 import './Upload.css'
 import { useState } from 'react'
-import axios from 'axios'
+import API from '../../fakeAPI';
+import { useSelector } from 'react-redux';
 
 const Upload = (props) => {
 
@@ -10,6 +11,10 @@ const Upload = (props) => {
     const [tags, setTags] = useState("");
     const [people, setPeople] = useState("");
     const [albums, setAlbums] = useState("");
+
+    const currentUserToken = useSelector(state => state.users.currentUser.token);
+    const currentUserFirstName = useSelector(state => state.users.currentUser.firstName);
+
 
     var input = document.getElementById("description");
     
@@ -24,16 +29,16 @@ const Upload = (props) => {
         console.log(selectedFile);
         const fd = new FormData();
         fd.append("photo",selectedFile);
-        fd.append("title","mostafa");
-        fd.append("description","mostafaaa");
+        fd.append("title",`${currentUserFirstName}_photo`);
+        fd.append("description","");
         for(var pair of fd.entries()) {
              console.log(pair[0]+', '+pair[1]);
            }
          console.log("form data: ", fd)
          let data = { photo: fd, Title:'test1',Description:'this is a test' };
-         axios.post('http://localhost:7000/photo', fd, {
+         API.post('photo', fd, {
             headers: {
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+                "Authorization": `Bearer ${currentUserToken}` 
             }}
             )
              .then(res => {
