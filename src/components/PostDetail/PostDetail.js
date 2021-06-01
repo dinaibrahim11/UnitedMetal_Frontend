@@ -29,6 +29,8 @@ import PhotoDescription from './PhotoDescription/PhotoDescription';
 import Comments from './Comments/Comments';
 import GalleryItem from './GalleryItem/GalleryItem';
 import ShareModal from '../UI/ShareModal/ShareModal';
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
 const tmpPhoto2 = "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg";
@@ -76,10 +78,14 @@ const PostDetail = (props) => {
     const currentUserId = useSelector(state => state.users.currentUser.userId);
     const rerenderAlbums = useSelector(state => state.users.albumsToggle);
     const dispatch = useDispatch();
+    const history = useHistory();
+
 
     const postId = props.match.params.id;
     const [post, setPost] = useState({});
-    const [userDisplayName, setUserDisplayName] = useState("Abdelrahman Mamdouh");
+    const [userDisplayName, setUserDisplayName] = useState("");
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [avatarPhoto, setAvatarPhoto] = useState('');
     const [followingMenuOpen, setFollowingMenuOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -89,26 +95,88 @@ const PostDetail = (props) => {
     const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
     const [isOpenAlbumModal, setIsOpenAlbumModal] = useState(false);
     const [canAddTag, setCanAddTag] = useState(false);
-    const [tags, setTags] = useState(DUMMY_TAGS);
+    const [tags, setTags] = useState([]);
     const [showAddTag, setShowAddTag] = useState(false);
     const [addTagValue, setAddTagValue] = useState(null);
-    const [isPhotoMine, _] = useState(true); //check if this is the current user's photo
+    const [isPhotoMine, setIsPhotoMine] = useState(false); //check if this is the current user's photo
     const [showAlbumCloseThumbnail, setShowAlbumCloseThumbnail] = useState(false);
     const [albums, setAlbums] = useState([]);
     const [galleries, setGalleries] = useState([]);
-    const [isFaved, setIsFaved] = useState(false);
-
+    const [isFaved, setIsFaved] = useState();
+    const [favedPhotos, setFavedPhotos] = useState([]);
+    const [imgSrc, setImgSrc] = useState('');
     const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
+    const [photo, setPhoto] = useState(null);
+    const [dateUploaded, setDateUploaded] = useState(null);
+
+    const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
+    const loggedInUserFaves = useSelector(state => state.users.currentUser.favedPhotos);
+
+    const tmpToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjY1ODg0MWQ1OTNjNjVjOGMxYTc5OCIsImlhdCI6MTYyMjU3NjgyMywiZXhwIjoxNjMwMzUyODIzfQ.8mCry7WtW7Z7OkhKTF13UWO_H_SDt2VAF49ucCwyDpk";
+
+    //const tmpPhotoId = "60b57a56eb47f20b64271884";
+    const tmpPhotoId = "60b6614e1d593c65c8c1a79e";
+    const tmpUserId = "60b658841d593c65c8c1a798";
+    let ownerId = null;
+
 
     useEffect(() => {
-        API.get(`photos/${postId}`)
+        // API.get(`photos/${postId}`)
+        //     .then(res => {
+        //         setPost(res.data);
+        //         setIsFollowing(res.data.isFollowing);
+        //     });
+
+        axios.get(`http://localhost:7000/photo/${postId}`)
             .then(res => {
-                setPost(res.data);
-                setIsFollowing(res.data.isFollowing);
+                
+                setPhoto(res.data.data);
+                setTags(res.data.data.tags);
+                
+            })
+
+        axios.get(`http://localhost:7000/photo/${tmpPhotoId}`)
+            .then(res => {
+                console.log("Photo details")
+                console.log(res);
+                //console.log(res.data.data.userId);
+                setImgSrc(res.data.data.sizes.size.large.source);
+            }).catch(err => {
+                console.log("[PostDetail]::ERROR");
+                console.log(err.response);
+            })
+            
+        axios.get(`http://localhost:7000/user/${tmpUserId}/real-name`)
+            .then(res => {
+                setFirstName(res.data.data.firstName);
+                setLastName(res.data.data.lastName);
+            }).catch(err => {
+                console.log("[PostDetail]::RealName")
             });
 
-            
-    }, [postId]);
+        axios.get(`http://localhost:7000/user/${tmpUserId}/faves`)
+            .then(res => {
+                console.log("FAVED");
+                if (res.data.status === 'success') {
+                    dispatch(usersActions.setFavedPhotos(res.data.data.favourites));
+                    setFavedPhotos(res.data.data.favourites);
+                }
+                console.log(res)
+                
+            }).catch(err => {
+                console.log(err.response);
+            });
+
+        for (let i = 0; i < favedPhotos.length; i++) {
+            if (favedPhotos[i].userId._id === tmpUserId) {
+                setIsFaved(true);
+                dispatch(usersActions.toggleComments());
+                //window.location.reload(true);
+                break;
+            }
+        }
+
+    }, [postId, rerender]);
 
     useEffect(() => {
         //TODO: should be changed to ${currentUserId}
@@ -129,12 +197,63 @@ const PostDetail = (props) => {
             console.log(err);
         });
         
+        axios.get(`http://localhost:7000/user/${tmpUserId}/faves`)
+            .then(res => {
+                console.log("FAVED");
+                if (res.data.status === 'success') {
+                    dispatch(usersActions.setFavedPhotos(res.data.data.favourites));
+                    setFavedPhotos(res.data.data.favourites);
+                }
+                console.log(res)
+                
+            }).catch(err => {
+                console.log(err.response);
+            });
+
+        for (let i = 0; i < favedPhotos.length; i++) {
+            if (favedPhotos[i].userId._id === tmpUserId) {
+                setIsFaved(true);
+                dispatch(usersActions.toggleComments());
+                //window.location.reload(true);
+                break;
+            }
+        }
+
     }, [currentUserId, rerenderAlbums])
 
 
     const handleFav = () => {
-        setIsFaved(prevFav => !prevFav);
         
+        if (isFaved) {
+            axios.delete(`http://localhost:7000/user/faves/${postId}`, { 
+                headers: {
+                    "Authorization": `Bearer ${tmpToken}` 
+                }})
+                .then(res => {
+                    console.log("REMOVING A FAVE");
+                    console.log(res);
+                    
+                }).catch(err => {
+
+                });
+                setIsFaved(false);
+        } else {
+            axios.post(`http://localhost:7000/user/faves/${postId}`,{},{ 
+                headers: {
+                "Authorization": `Bearer ${tmpToken}` 
+                }})
+                .then(res => {
+                    console.log("ADDING A FAV");
+                    console.log(res);
+                    setIsFaved(true);
+                }).catch(err => {
+                    console.log(err.response);
+                });
+                setIsFaved(true);
+        }
+
+        //setIsFaved(prevFav => !prevFav);
+        //window.location.reload(true);
     }
 
     const handleOpenFollowing = (event) => {
@@ -202,6 +321,19 @@ const PostDetail = (props) => {
         if (event.key === 'Enter') {
             setTags(prevTags => [...prevTags, addTagValue]);
             //setShowAddTag(false);
+            axios.post(`http://localhost:7000/photo/${postId}/tags`, {
+                tags: addTagValue
+            },
+            { 
+                headers: {
+                "Authorization": `Bearer ${tmpToken}` 
+            }}).then(res => {
+                console.log("TAGS");
+                console.log(res);
+            }).catch(err => {
+
+            });
+
             setAddTagValue('');
         }
     }
@@ -242,7 +374,13 @@ const PostDetail = (props) => {
         setIsShareModalOpen(false);
     }
 
-    
+    const handleGoToHome = () => {
+        history.push("/home");
+    }
+
+    const handleGoToProfile = () => {
+        history.push(`/user/${tmpUserId}`);
+    }
 
 
     const open = Boolean(anchorEl);
@@ -250,20 +388,20 @@ const PostDetail = (props) => {
 
     return (
         <Fragment>
-
             <div className={classes.image__view}>
-                <div className={classes.back}>
+                <div className={classes.back} onClick={handleGoToHome}>
                     ← Back to home
                 </div>
                 <Zoom
                     image={{
-                    src: `${post.imageUrl}`,
+                    //src: `${post.imageUrl}`,
+                    src: `${imgSrc}`,
                     alt: 'photo detail',
                     className: `${classes.image__view_img}`,
           
                     }}
                     zoomImage={{
-                    src: `${post.imageUrl}`,
+                    src: `${imgSrc}`,
                     alt: 'photo detail large'
                     }}
                 />
@@ -275,7 +413,7 @@ const PostDetail = (props) => {
                     isShareModalOpen={isShareModalOpen} 
                     handleCloseShareModal={handleCloseShareModal}
                     modalTitle="Share the photo"
-                    externalShareLink="http://www.google.com"
+                    externalShareLink={imgSrc}
                 />
                 {/* <button>Download</button>
                 <button>Share</button>
@@ -295,18 +433,18 @@ const PostDetail = (props) => {
                     <div className={classes.sub__photo__left__view}>
                         <div className={classes.user__header}>
                             <div style={{marginRight: '20px'}}>
-                                <Avatar src="https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png" />
+                                <Avatar src="" />
                             </div>
-                            <p>{userDisplayName}</p>
+                            <p onClick={handleGoToProfile} className={classes.real__name} >{firstName}{" "}{lastName}</p>
                             {/* <button className={classes.follow__button}>Following</button> */}
-                            {isFollowing ? <FollowingButton onClickUnFollow={handleUnFollow} /> : <FollowButton onClickFollow={handleFollowClick} />}
+                            {isPhotoMine ? null : isFollowing ? <FollowingButton onClickUnFollow={handleUnFollow} /> : <FollowButton onClickFollow={handleFollowClick} />}
                             
                         </div>
                         <div style={{display: 'flex'}}>
                             <button className={classes.pro__button} >PRO</button>
-                            <PhotoDescription isEditable={isPhotoMine} title="Title" description="This is a description" />
+                            <PhotoDescription postId={postId} isEditable={!isPhotoMine} title="Title" description="This is a description" />
                         </div>
-                        <Comments isPhotoMine={isPhotoMine} photoId="1"/>
+                        <Comments isPhotoMine={isPhotoMine} userId={photo && photo.userId} photoId={postId}/>
 
                         <div>
                             
@@ -318,20 +456,20 @@ const PostDetail = (props) => {
                             <div className={classes.sub__photo__right__stats__view}>
                                 <div className={classes.right__stats_details__container}>
                                     <div className={classes.stat__item}>
-                                        <span>1000</span>
+                                        <span>{photo && photo.views}</span>
                                         <span className={classes.stats__label}>views</span>
                                     </div>
                                     <div className={classes.stat__item}>
-                                        <span>94</span>
+                                        <span>{photo && photo.favourites}</span>
                                         <span className={classes.stats__label}>faves</span>
                                     </div>
                                     <div className={classes.stat__item}>
-                                        <span>371</span>
+                                        <span>{photo && photo.comments.length}</span>
                                         <span className={classes.stats__label}>comments</span>
                                     </div>
                                 </div>
                                 <div className={classes.date__taken}>
-                                    <span>Taken on December 14, 2020</span>
+                                    {photo && <span>Taken on {photo.dateUploaded.slice(0, 10)}</span> }
                                 </div>
                             </div>
                         </div>
@@ -391,8 +529,9 @@ const PostDetail = (props) => {
                                 <p onClick={handleShowAddTag} className={classes.add__tag}>Add tags</p>
                                 {showAddTag && <input onKeyDown={handleAddTagKeyDown} onChange={handleAddTagChange} value={addTagValue} type="text" placeholder="Add a tag" className={classes.add__tag__input} />}
                                 <ul className={classes.tags__list}>
-                                    {tags.map(tag => <TagItem tagName={tag} editable={true}/>)}
+                                    {tags.map(tag => <TagItem tagText={tag} token={tmpToken} photoId={postId} tagName={tag} editable={true}/>)}
                                 </ul>
+                                
                             </div>
                         </div>   
 

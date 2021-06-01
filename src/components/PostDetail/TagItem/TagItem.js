@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import classes from './TagItem.module.css';
 import CloseIcon from '@material-ui/icons/Close';
+import axios from 'axios';
 
 const TagItem = (props) => {
 
@@ -18,12 +19,23 @@ const TagItem = (props) => {
 
     const handleDeleteTag = () => {
         // TODO: send delete request
+        axios.delete(`http://localhost:7000/photo/${props.photoId}/tags`,{
+            tags: props.tagText
+        }, { 
+            headers: {
+            "Authorization": `Bearer ${props.token}` 
+        }}).then(res => {
+            console.log("REMOVE TAG");
+            console.log(res);
+        }).catch(err => {
+            console.log(err.response);
+        })
     }
 
     return (
         <Fragment>
             <li onMouseEnter={handleShowDeleteTag} onMouseLeave={handleHideDeleteTag} className={classes.tag}>
-                {props.tagName} {" "} {showDeleteTag && <CloseIcon style={{height: '20px'}} onClick={() => alert("hi")} />}
+                {props.tagName} {" "} {showDeleteTag && <CloseIcon style={{height: '20px'}} onClick={handleDeleteTag} />}
             </li>
         </Fragment>
     )

@@ -228,15 +228,15 @@
     margin-right: 10px;
 } */
 
-@media (max-width: 56.25rem) {
+/* Commented image media query */
+/* @media (max-width: 56.25rem) {
     .image__view {
-        /* height: 300px; */
         width: 510px;
     }
     .image__view img {
         height: 200px;
     }
-}
+} */
 
 .sub__photo__right__row1 {
     border-bottom: 1px solid #cfd6d9;
@@ -547,4 +547,18 @@
         flex-direction: column;
         border-top: 1px solid #cfd6d9;
     }
+}
+
+.real__name {
+    color: #212124;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.real__name:hover {
+    color: #212124;
+    text-decoration: underline;
 }

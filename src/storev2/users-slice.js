@@ -31,6 +31,7 @@ const initialState = usersAdapter.getInitialState({
     },
     currentSearchQuery: '',
     toggle: false, //to rerender post item at needed time
+    toggleCommentsPostDetail: false,
     albumsToggle: false, //to rerender albums thumbnails in PostDetail
     status: 'idle', //whether loading or not 
     error: null
@@ -80,6 +81,10 @@ const usersSlice = createSlice({
             localStorage.removeItem('currentUser');
         },
 
+        setFavedPhotos(state, action) {
+            state.currentUser.favedPhotos = action.payload;
+        },
+
         search(state, action) {
             state.currentSearchQuery = action.payload;
         },
@@ -87,6 +92,10 @@ const usersSlice = createSlice({
         //used to notify PostItem to rerender
         toggleComments(state, action) {
             state.toggle = !state.toggle;
+        },
+
+        toggleCommentsPhotoDetails(state, action) {
+            state.toggleCommentsPostDetail = !state.toggleCommentsPostDetail;
         },
 
         deleteFromAlbumToggle(state, action) {
