@@ -17,6 +17,8 @@ import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
+import YouFaves from '../../pages/YouFaves/YouFaves';
 import { useSelector } from 'react-redux';
 
 
@@ -54,6 +56,7 @@ const DUMMY_IMAGES = ['https://image.shutterstock.com/image-photo/connected-flex
  */
 const YouMain = (props) => {
     const [tab, setTab] = useState('cameraroll');
+    
     let history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -92,9 +95,9 @@ const YouMain = (props) => {
                         aria-label="scrollable auto tabs example"
                         >
                             <Tab label="About" {...a11yProps(0)} onClick={() => setTab('about')}/>
-                            <Tab label="Photostream" {...a11yProps(1)} />
+                            <Tab label="Photostream" {...a11yProps(1)} onClick={() => setTab('photostream')} />
                             <Tab label="Albums" {...a11yProps(2)} />
-                            <Tab label="Faves" {...a11yProps(3)} />
+                            <Tab label="Faves" {...a11yProps(3)} onClick={() => setTab('faves')} />
                             <Tab label="Galleries" {...a11yProps(4)} />
                             <Tab label="Groups" {...a11yProps(5)} />
                             <Tab label="CameraRoll" {...a11yProps(6)} onClick={() => setTab('cameraRoll')}/>

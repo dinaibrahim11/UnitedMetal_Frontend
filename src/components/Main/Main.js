@@ -23,6 +23,9 @@ import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
 
+import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
+import YouFaves from '../../pages/YouFaves/YouFaves';
+
 /**
  * Responsible for the routing of the whole website
  * @example <Main />
@@ -39,6 +42,8 @@ const Main = (props) => {
         <main>
             <Switch>
                 <Route exact path="/" component={Welcome} />
+                <Route exact path="/photostream" component={YouPhotostream} />
+                <Route exact path="/faves" component={YouFaves} />
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/post-signup" component={FormSuccess} />
@@ -51,7 +56,8 @@ const Main = (props) => {
                 <Route exact path="/photos/:id" component={PostDetail} />
                 <Route exact path='/Unauthorized' component={Unauthorized} />
                 <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
-                <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
+                <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />  
+            
                 <Route exact path="/SearchPage" component={SearchPage} />
             </Switch>
             
