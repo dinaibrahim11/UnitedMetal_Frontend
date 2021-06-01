@@ -46,7 +46,6 @@ const YouCameraRoll = (props) => {
             });
           })
           .catch(err => {
-            console.log(err);
           });
       };
 
@@ -57,13 +56,10 @@ const YouCameraRoll = (props) => {
             }}
             )
              .then(res => {
-                console.log("Roll getting")
-                console.log(res.data.data.photos.photos)
                 array=res.data.data.photos.photos
                 
     for (let item of array)
     {
-        console.log(item._id)
         axios.get(`http://localhost:7000/photo/${item._id}`, {
             headers: {
                 "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
@@ -77,26 +73,19 @@ const YouCameraRoll = (props) => {
                  
              }) .catch( res => {
 
-                 alert(res)
-                 console.log(res.response)
              })
     }
              }) .catch( res => {
 
-                 alert(res)
-                 console.log(res.response)
              })
     },[])
-    console.log(picArray)
     const handleCloseShareModal = () => {
         setIsShareModalOpen(false);
     }
 
     const fileSelectionHandler = (event) => {
         setSelectedFile(event.target.files[0]);
-        console.log(event.target.files[0]);
         setLocalImgUrl(URL.createObjectURL(event.target.files[0]));
-        console.log("local url: ", URL.createObjectURL(event.target.files[0]));
     }
 
     const selectImgHandler = (img) => {
@@ -110,19 +99,14 @@ const YouCameraRoll = (props) => {
         }
     }
     const deleteObject = () => {
-        console.log("deleted image id")
-        console.log(`${selectedImg.id}`)
         axios.delete(`http://localhost:7000/photo/${selectedImg.id}`, {
             headers: {
                 "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
             }}
             )
             .then(res => {
-                console.log(res)
             }) .catch( res => {
 
-                alert(res)
-                console.log(res.response)
             })
 
     }
@@ -171,7 +155,6 @@ const YouCameraRoll = (props) => {
         objectsArray.push(sameDateArray)
     }
 
-    console.log(pics)
     return (
         <div>
             <div className='background'>
