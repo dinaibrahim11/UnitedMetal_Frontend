@@ -1,10 +1,10 @@
-import './Following.css'
+import './Followers.css'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const arr = [ {displayName:'MohamedEtraKhayat',firstName:'Ahmed',lastName:'El Zahawy Badr', photoCount:9, status:'Family'}, {displayName:'u2', firstName:'Alaa',lastName:'Tahtawy', photoCount:10, status:'Following'} ]
 
-const Following = (props) => {
+const Followers = (props) => {
     
     const [followStatus,setFollowStatus] = useState('Following')
     const [showEdit,setShowEdit] = useState(false)
@@ -12,7 +12,6 @@ const Following = (props) => {
     const [following,setFollowing] = useState(false)
     const [friend,setFriend] = useState(false)
     const [family,setFamily] = useState(false)
-
     const currentUserId = useSelector(state => state.users.currentUser.userId);
     const userId = props.match.params.id || currentUserId; 
     var myprof = false;
@@ -80,11 +79,9 @@ const Following = (props) => {
     </div>)}
     <select className='options'>
             <option disabled selected value>----</option>
-            <option value='everyone'>everyone</option>
-            <option value='following'>Following</option>
-            <option value="friends">Friends</option>
-            <option value="family">Family</option>
-            <option value="famAndFriends">Friends and Family</option>
+            <option value='everyone'>all of your followers</option>
+            <option value='following'>followers you follow</option>
+            <option value="friends">followers you don't follow</option>
     </select>
     <div className='head'>
         <div className='nameUsr'>Name</div>
@@ -108,7 +105,7 @@ const Following = (props) => {
            <div className='countPhoto'>{usr.photoCount}</div>
            <div className='listStatus'>
                {usr.status}
-               {myprof && (<div onClick={() =>editHandler(usr)}>(edit)</div>)}
+               <div onClick={() =>editHandler(usr)}>(edit)</div>
                </div>
         </div>
         ))}
@@ -118,5 +115,4 @@ const Following = (props) => {
     </div>
     )
 }
-
-export default Following;
+export default Followers;

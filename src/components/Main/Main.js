@@ -23,6 +23,7 @@ import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
 import Following from '../../pages/Following/Following'
+import Followers from '../../pages/Followers/Followers'
 /**
  * Responsible for the routing of the whole website
  * @example <Main />
@@ -54,6 +55,7 @@ const Main = (props) => {
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
                 <Route exact path="/Following" component={Following} />
+                <Route exact path="/Followers" component={Followers} />
             </Switch>
             
         </main>

@@ -68,6 +68,9 @@ const YouCover = (props) => {
         history.push('/Following')
     }
 
+    const followersHandler = () => {
+        history.push('/Followers')
+    }
 
     const picHandler = (event) => {
         setPic(event.target.src);
@@ -108,7 +111,7 @@ const YouCover = (props) => {
         <img className='userPic' alt='profilePic' onClick={()=> setPicChoose(true)} width ='65' height ='65' src={pic} />
         <h2 className='youPageName'>{name}</h2>
         <h6 className='youPageUserName'>{username}</h6>
-        <h6 className='youFollowers'>{followers} Followers .</h6>
+        <h6 className='youFollowers' onClick={followersHandler}>{followers} Followers .</h6>
         <h6 className='youFollowing' onClick={followingHandler}>{following} Following</h6>
     </div>
     );
