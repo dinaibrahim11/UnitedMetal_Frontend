@@ -1,9 +1,10 @@
 /**
  * @function YouCameraRoll
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import ShareModal from '../../components/UI/ShareModal/ShareModal'
+import axios from 'axios'
 /**
  * Responsible for returning the 
  * @param {properties} props 
@@ -19,7 +20,24 @@ const YouCameraRoll = (props) => {
     const [imgState, setImgState] = useState(null);
     const [isShareModalOpen,setIsShareModalOpen] = useState(false);
     let history = useHistory();
+    let clickShare = '';
     const userId = props.userId;
+    
+    useEffect (()=> {
+        axios.get('http://localhost:7000/user/camera-roll', {
+            headers: {
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+            }}
+            )
+             .then(res => {
+                 console.log(res.data.data.photos.photos)
+             }) .catch( res => {
+
+                 alert(res)
+                 console.log(res.response)
+             })
+    },[])
+
 
     const handleCloseShareModal = () => {
         setIsShareModalOpen(false);
@@ -118,7 +136,7 @@ const YouCameraRoll = (props) => {
                                 <label for="friends"> Friends</label><br></br>
                                 <input type="checkbox" id="family" name="checkBox" value="family" onClick={()=>uncheckOthersAndSet('family')}/>
                                 <label for="family"> Family</label><br></br>
-                                <input type="checkbox" id="familyAndFriends" name="checkBox" value="familyAndFriends" onClick={()=>uncheckOthersAndSet('familyAndfriends')}/>
+                                <input type="checkbox" id="familyAndFriends" name="checkBox" value="familyAndFriends" onClick={()=>uncheckOthersAndSet('familyAndFriends')}/>
                                 <label for="familyAndFriends"> Family and Friends</label><br></br>
                             </div>
                             </div>
@@ -143,7 +161,7 @@ const YouCameraRoll = (props) => {
                     </div>
                     <div className='share'>
                         Share
-                        <button className='shareButton' onClick={() =>setIsShareModalOpen(true)}></button>
+                        <button className='shareButton' ref={button => {clickShare=button}} onClick={()=>setIsShareModalOpen(true)}></button>
                         <ShareModal isShareModalOpen={isShareModalOpen}
                                     handleCloseShareModal={handleCloseShareModal}
                                     modalTitle="Share the photo"

@@ -46,9 +46,10 @@
     position: relative;
     left: 210px;
     width: 60px;
+    top: 3px;
     color:white;
     background-color: rgb(43, 112, 202);
-    border-radius:25px;
+    border-radius:5px;
     font-size:xx-small;
     z-index:1000;
 }
@@ -57,4 +58,24 @@
     position: absolute;
     top: 90px;
     left: 180px;
+}
+
+.desc {
+    position: absolute;
+    left: 10px;
+    top:90px;
+    color: white;
+}
+
+.tag {
+    position: absolute;
+    left: 10px;
+    color: white;
+}
+
+.fileName {
+    position: absolute;
+    top: 200px;
+    left: 180px;
+    color: white;
 }
