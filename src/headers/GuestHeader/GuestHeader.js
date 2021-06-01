@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
+/**
+ * Navigation bar at the top
+ * @author Dina Mohsen
+ * 
+ */
 const GuestHeader = (props) => {
 
     const history = useHistory();

@@ -3,6 +3,12 @@ import { useHistory } from "react-router-dom";
 import { usersActions } from '../../storev2/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import DrawerToggleButton from '../../components/Drawer/DrawerToggleButton';
+
+/**
+ * Navigation bar at the top
+ * @author Dina Mohsen
+ * 
+ */
 const UserHeader = (props) => {
 
   const history = useHistory();
@@ -108,13 +114,13 @@ const UserHeader = (props) => {
                           <a role="menuitem" aria-label="About" data-track="gnYouAboutClick" href="/about" onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}`)}}>About</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Photostream">
-                          <a data-track="gnYouPhotostreamClick" href="/photos/192903766@N08/">Photostream</a>
+                          <a data-track="gnYouPhotostreamClick" href="/photostream">Photostream</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Albums">
                           <a data-track="gnYouSetsClick" href="/photos/192903766@N08/albums">Albums</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Faves">
-                          <a data-track="gnYouFavoritesClick" href="/photos/192903766@N08/favorites">Faves</a>
+                          <a data-track="gnYouFavoritesClick" href="/photos/faves">Faves</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Galleries">
                           <a data-track="gnYouGalleriesClick" href="/photos/192903766@N08/galleries">
@@ -203,15 +209,24 @@ const UserHeader = (props) => {
                       </div>
                     </li>
                     <li role="menuitem">
-                      <div className="view account-menu-view requiredToShowOnServer" data-view-signature="account-menu-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__resetStoredBatchId_true__showFeedBannerAd_true">	<div className="c-account-menu">
+                      <div role="menuitem" className="view account-menu-view requiredToShowOnServer" data-view-signature="account-menu-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__resetStoredBatchId_true__showFeedBannerAd_true">	<div className="c-account-menu">
                           <div className="c-account-buddyicon">
                             <a href="/account" tabIndex={0} aria-haspopup="true" aria-expanded="false" aria-label="Your account">
                               <div className="avatar person tiny" style={{backgroundImage: 'url(//combo.staticflickr.com/pw/images/buddyicon06.png#192903766@N08)'}} />
                             </a>
+                        
                           </div>
+                          
                         </div>
                       </div>
                     </li>
+
+                    <li >
+                      <a role="menuitem"  className="gn-title explore" href="/settings" aria-haspopup="true" aria-expanded="false" aria-label="Account">
+                        Settings
+                      </a>
+                    </li>
+                    
                   </ul>
                  
                 </div>
