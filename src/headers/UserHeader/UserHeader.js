@@ -43,33 +43,14 @@ const UserHeader = (props) => {
     return (
           
       <div>
-      <meta property="fb:app_id" content={137206539707334} />
-      <meta property="og:site_name" content="Flickr" />
-      <meta property="og:updated_time" content="2021-05-25T15:46:24.215Z" />
-      <meta name="robots" content="archive" />
-      <meta name="googlebot" content="archive" />
-      <meta property="al:ios:app_name" content="Flickr" />
-      <meta property="al:ios:app_store_id" content={328407587} />	<meta property="twitter:app:name:iphone" content="Flickr" />
-      <meta property="twitter:app:id:iphone" content={328407587} />
-      <meta property="twitter:app:name:ipad" content="Flickr" />
-      <meta property="twitter:app:id:ipad" content={328407587} />
-      <meta property="twitter:app:name:googleplay" content="Flickr" />
-      <meta property="twitter:app:id:googleplay" content="com.flickr.android" />
- 
+      
       <title>Home | Flickr</title>
-      <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1" data-dynamic="true" />
-      <meta httpEquiv="x-dns-prefetch-control" content="on" />
       <link rel="dns-prefetch" href="//combo.staticflickr.com" />
       <link rel="dns-prefetch" href="//live.staticflickr.com" />
       <link rel="dns-prefetch" href="//api.flickr.com" />
       <link rel="dns-prefetch" href="//yui-s.yahooapis.com" />
       <link rel="dns-prefetch" href="//www.flickrpro.com" />
       <link rel="dns-prefetch" href="//www.flickrprints.com" />
-      <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-      <meta name="application-name" content="Home | Flickr" />
-      <meta name="msapplication-TileColor" content="#ffffff" />
-      <meta name="google" value="notranslate" />
-      <meta httpEquiv="Content-Security-Policy" content="style-src 'unsafe-inline' https://*.flickr.com https://*.staticflickr.com https://cdn.yahooapis.com https://yui-s.yahooapis.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.2o7.net https://api.digitalriver.com https://cdn.siftscience.com https://*.flickrpro.com https://securepubads.g.doubleclick.net https://adservice.google.com https://cdn.ampproject.org https://*.google.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.com https://*.doubleclick.de https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.googlesyndication.com https://*.googleapis.com https://boards.greenhouse.io https://adserver.adtech.advertising.com https://cdn.jsdelivr.net https://js.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://*.trustarc.com https://trustarc.mgr.consensu.org https://shb.richaudience.com https://sync.richaudience.com/ https://*.infolinks.com https://ads.pubmatic.com https://static.criteo.net; default-src https://*.flickr.com https://*.staticflickr.com https://*.googlesyndication.com https://securepubads.g.doubleclick.net https://adservice.google.com https://cdn.ampproject.org https://*.trustarc.com; img-src data: blob: https://*.flickr.com https://*.staticflickr.com https://*.pinterest.com https://tagmanager.google.com https://www.googletagmanager.com https://*.google.com https://*.google.de https://*.google.fr https://*.google.it https://*.google.co.uk https://*.google-analytics.com https://*.googleadservices.com https://*.googlesyndication.com https://*.doubleclick.com https://*.doubleclick.de https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.googlesyndication.com https://*.googleapis.com https://assets.adobedtm.com https://*.2o7.net https://hexagon-analytics.com https://*.flickrpro.com https://*.everesttech.net https://ad.turn.com https://aka-cdn.adtechus.com https://aol-match.dotomi.com https://cm.g.doubleclick.net https://ib.adnxs.com https://match.adsrvr.org https://pixel.advertising.com https://pixel.quantserve.com https://sync.mathtag.com https://x.bidswitch.net https://api.mapbox.com https://ssum.casalemedia.com https://sync.adtelligent.com https://prebid-match.dotomi.com https://rtb.openx.net https://eb2.3lift.com https://pixel.rubiconproject.com https://rtb.gamoshi.io https://ads.yieldmo.com https://sync.1rx.io https://ap.lijit.com https://prebid.adnxs.com https://dis.criteo.com https://bsw.digitru.st https://us-west-sync.bidswitch.net https://ups.analytics.yahoo.com https://htlb.casalemedia.com/ https://image2.pubmatic.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://*.trustarc.com/ https://pr-bh.ybp.yahoo.com https://match.prod.bidr.io https://shb.richaudience.com https://sync.richaudience.com/ https://acuityplatform.com https://um.simpli.fi https://ssbsync-global.smartadserver.com https://contextual.media.net https://bh.contextweb.com https://1x1.a-mo.net https://*.infolinks.com https://static.criteo.net https://sync.go.sonobi.com https://sync.srv.stackadapt.com/ https://uipglob.semasio.net; media-src https://*.flickr.com https://*.staticflickr.com https://*.flickrpro.com; script-src 'unsafe-eval' 'unsafe-inline' 'nonce-2b4e13302514ae16d3dc0d6a69d9b835' https://*.flickr.com https://*.staticflickr.com https://cdn.yahooapis.com https://yui-s.yahooapis.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.2o7.net https://api.digitalriver.com https://cdn.siftscience.com https://*.flickrpro.com https://securepubads.g.doubleclick.net https://adservice.google.com https://cdn.ampproject.org https://*.google.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.com https://*.doubleclick.de https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.googlesyndication.com https://*.googleapis.com https://boards.greenhouse.io https://adserver.adtech.advertising.com https://cdn.jsdelivr.net https://js.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://*.trustarc.com https://trustarc.mgr.consensu.org https://shb.richaudience.com https://sync.richaudience.com/ https://*.infolinks.com https://ads.pubmatic.com https://static.criteo.net; connect-src https://*.flickr.com https://*.staticflickr.com https://cdn.yahooapis.com https://yui-s.yahooapis.com http://api.flickr.com https://*.pinterest.com https://tagmanager.google.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.2o7.net https://cdn.siftscience.com https://store.digitalriver.com https://*.flickrpro.com https://*.demdex.net https://securepubads.g.doubleclick.net https://*.googlesyndication.com https://api.greenhouse.io https://*.flickrprints.net https://*.flickrprints.com https://csi.gstatic.com https://prebid.adnxs.com https://tlx.3lift.com https://*.adtech.advertising.com https://grid.bidswitch.net https://fastlane.rubiconproject.com https://hbopenbid.pubmatic.com https://as-sec.casalemedia.com https://ib.adnxs.com/ut/v3/prebid https://gum.criteo.com https://prg.smartadserver.com https://ice.360yield.com https://mug.criteo.com https://api.stripe.com https://c2shb.ssp.yahoo.com https://htlb.casalemedia.com/ https://prebid.a-mo.net https://*.trustarc.com https://shb.richaudience.com https://sync.richaudience.com/ https://*.infolinks.com https://api.intentiq.com/ https://api.rlcdn.com https://match.adsrvr.org https://tag.1rx.io https://bidder.criteo.com https://apex.go.sonobi.com https://d.adroll.com https://static.criteo.net https://com-flickr-prod1.mini.snplow.net; frame-src https://*.flickr.com https://combo.staticflickr.com https://assets.adobedtm.com https://*.2o7.net https://tpc.googlesyndication.com https://*.doubleclick.net/ https://adservice.google.com https://cdn.ampproject.org https://boards.greenhouse.io https://ads.pubmatic.com https://ssum-sec.casalemedia.com https://www.googletagservices.com/pubconsole/ https://eb2.3lift.com https://eus.rubiconproject.com/ https://*.safeframe.googlesyndication.com/safeframe/ https://*.tynt.com/ https://*.adnxs.com/ https://*.indexww.com/ https://csync.smartadserver.com/ https://js.stripe.com https://hooks.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://*.trustarc.com https://trustarc.mgr.consensu.org/ https://sync.richaudience.com/ https://shb.richaudience.com https://www.youtube.com/embed/dEneeOyqu54 https://*.infolinks.com https://gum.criteo.com/; child-src https://*.flickr.com https://combo.staticflickr.com https://assets.adobedtm.com https://*.2o7.net https://tpc.googlesyndication.com https://*.doubleclick.net/ https://adservice.google.com https://cdn.ampproject.org https://boards.greenhouse.io https://ads.pubmatic.com https://ssum-sec.casalemedia.com https://www.googletagservices.com/pubconsole/ https://eb2.3lift.com https://eus.rubiconproject.com/ https://*.safeframe.googlesyndication.com/safeframe/ https://*.tynt.com/ https://*.adnxs.com/ https://*.indexww.com/ https://csync.smartadserver.com/ https://js.stripe.com https://hooks.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://*.trustarc.com https://trustarc.mgr.consensu.org/ https://sync.richaudience.com/ https://shb.richaudience.com https://www.youtube.com/embed/dEneeOyqu54 https://*.infolinks.com https://gum.criteo.com/; font-src https://*.staticflickr.com https://*.flickr.com https://*.trustarc.com https://fonts.gstatic.com data:; worker-src blob:; form-action https://*.flickr.com https://*.flickrpro.com; " />
       <link rel="shortcut icon" href="https://combo.staticflickr.com/pw/favicon.ico" />
       <link rel="icon" sizes="16x16 32x32" href="https://combo.staticflickr.com/pw/favicon.ico" />
       <link rel="icon" href="https://combo.staticflickr.com/pw/images/favicons/favicon-32.png" sizes="32x32" />
@@ -83,8 +64,6 @@ const UserHeader = (props) => {
       <link rel="apple-touch-icon-precomposed" href="https://combo.staticflickr.com/pw/images/favicons/favicon-120.png" sizes="120x120" />
       <link rel="apple-touch-icon-precomposed" href="https://combo.staticflickr.com/pw/images/favicons/favicon-152.png" sizes="152x152" />
       <link rel="apple-touch-icon-precomposed" href="https://combo.staticflickr.com/pw/images/favicons/favicon-180.png" sizes="180x180" />
-      <meta name="msapplication-TileColor" content="#FFFFFF" />
-      <meta name="msapplication-TileImage" content="https://combo.staticflickr.com/pw/images/favicons/favicon-144.png" />
       <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Flickr" />
       {/* TradeDoubler site verification 3059184 */}
       <style dangerouslySetInnerHTML={{__html: "\n\t\n\t\n\t\tbody > .pageLoadingDialogWrapper {\n\t\t\tposition: fixed;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tbottom: 0;\n\t\t\tright: 0;\n\t\t\tbackground-color: rgba(0,0,0,0.7);\n\t\t\tz-index: 9999;\n\t\t}\n\t\n\t\tbody > .pageLoadingDialogWrapper > .pageLoadingDialog {\n\t\t\twidth: 200px;\n\t\t\theight: 160px;\n\t\t\ttop: 50%;\n\t\t\tleft: 50%;\n\t\t\tmargin: -80px 0 0 -100px;\n\t\t\tposition: fixed;\n\t\t\tbackground-color: #fff;\n\t\t\tborder: 1px solid #212124;\n\t\t\tborder-radius: 3px;\n\t\t\tpadding: 10px;\n\t\t\ttext-align: center;\n\t\t}\n\t\n\t\tbody > .pageLoadingDialogWrapper > .pageLoadingDialog > h1 {\n\t\t\tfont-size: 20px;\n\t\t\tmargin: 0;\n\t\t}\n\t\n\t\t.html-mobile-photo-page-view body > .pageLoadingDialogWrapper > .pageLoadingDialog {\n\t\t\ttop: 30% !important;\n\t\t\tleft: 10% !important;\n\t\t\twidth: 80% !important;\n\t\t}\n\t" }} />
@@ -134,9 +113,7 @@ const UserHeader = (props) => {
                         <li className="divider" tabIndex={-1}>
                           &nbsp;
                         </li>
-                        <li className="menuitem" role="menuitem" aria-label="SignOut">
-                          <a data-track="gnYouCameraRollClick" onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/")}} href="/">Sign Out</a>
-                        </li>
+                     
                       </ul>
                     </li>
                     <li data-context="explore">
@@ -211,7 +188,7 @@ const UserHeader = (props) => {
                     <li role="menuitem">
                       <div role="menuitem" className="view account-menu-view requiredToShowOnServer" data-view-signature="account-menu-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__resetStoredBatchId_true__showFeedBannerAd_true">	<div className="c-account-menu">
                           <div className="c-account-buddyicon">
-                            <a href="/account" tabIndex={0} aria-haspopup="true" aria-expanded="false" aria-label="Your account">
+                            <a href="/settings" tabIndex={0} aria-haspopup="true" aria-expanded="false" aria-label="Your account">
                               <div className="avatar person tiny" style={{backgroundImage: 'url(//combo.staticflickr.com/pw/images/buddyicon06.png#192903766@N08)'}} />
                             </a>
                         
@@ -221,11 +198,10 @@ const UserHeader = (props) => {
                       </div>
                     </li>
 
+
                     <li >
-                      <a role="menuitem"  className="gn-title explore" href="/settings" aria-haspopup="true" aria-expanded="false" aria-label="Account">
-                        Settings
-                      </a>
-                    </li>
+                          <a role="menuitem"  className="gn-title explore"  aria-haspopup="true" aria-expanded="false" aria-label="Account"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/")}} href="/welcome">Logout</a>
+                        </li>
                     
                   </ul>
                  
