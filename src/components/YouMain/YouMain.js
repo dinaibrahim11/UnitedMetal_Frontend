@@ -84,7 +84,7 @@ const YouMain = (props) => {
             <div className='toolbarBg'></div>
             <div className={classes.root}>
                 <div className='navBar'>
-                    <AppBar position="static" color="default" >
+                    <AppBar position="static" color="white" >
                         <Tabs
                         value={value}
                         onChange={handleChange}
@@ -107,7 +107,8 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
-                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
+                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : 
+                <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>
     );
