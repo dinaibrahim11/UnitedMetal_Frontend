@@ -10,16 +10,21 @@ import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
 import { BsTrash } from "react-icons/bs";
 import {RiShareForwardLine} from "react-icons/ri";
 import {Icon} from '@material-ui/core';
+import { BurstModeOutlined } from '@material-ui/icons';
 
 const AlbumDetail = (props) => {
 
     const albumId = props.match.params.id;
 
-    const [album, setAlbum] = useState({});
+    const [album, setAlbum] = useState([]);
+    const [albumID, setAlbumID] = useState();
     const [albumName, setalbumName] = useState();
     const [albumDescription, setAlbumDescription] = useState();
     const [photosCount, setPhotosCount] = useState();
     const [photos, setPhotos] = useState([]); 
+
+    const [editTextClicked, setEditTextClicked] = useState(false);
+    const [newAlbumName, setNewAlbumName] = useState('');
 
     const [primaryPhotoURL, setPrimaryPhotoURL] = useState();
     const [primaryPhotoID, setPrimaryPhotoID] = useState();
@@ -45,17 +50,62 @@ const AlbumDetail = (props) => {
     const shareHandler = () =>{
 
     }
+
+    const handleGoBack = () => {
+        setRedirect("/albums")
+    }
+
+    const handleEditText = () => {
+       setEditTextClicked(true);
+    }
+
+    const handleDoneClick = () => {
+        
+        setEditTextClicked(false);
+        if(!albumDescription){setAlbumDescription('Click here to enter a description for this album')}
+        if(!newAlbumName) {setNewAlbumName(albumName)};
+        console.log(albumDescription);
+        postNewData();
+    }
+
+    const handleTitleChange = (e) => {
+       // if(e.target.value !== '') {setalbumName(e.target.value);}
+       // else{setNewAlbumName('')}
+       setNewAlbumName(e.target.value);
+    }
    
+    const handleDescriptionChange = (e) => {
+           setAlbumDescription(e.target.value);
+    }
+
+    const postNewData = () => {
+        if(albumName){
+            const newAlbumInfo = {
+              "albumName": newAlbumName,
+              "description": albumDescription
+             }
+            API.patch('/albums/'+albumID, newAlbumInfo) 
+            .then(response => {
+             console.log(response)
+           })
+          }
+    }
+
+    const handleFocus = () => {
+        if(albumDescription ==='Click here to enter a description for this album') {setAlbumDescription('')}
+    }
+    
     useEffect(() => {
         API.get(`albums/${albumId}`)
             .then(response => {
                 setAlbum(response.data);
-                setalbumName(response.data.albumName);
+                setAlbumID(response.data.id);
+                setalbumName(response.data.albumName); setNewAlbumName(response.data.albumName);
                 setAlbumDescription(response.data.description);
                 setPhotosCount(response.data.photocount);
                 setPhotos(response.data.photos);
                 if(response.data.id === albumId) {setPrimaryPhotoID(response.data.primaryphoto);}
-                if(!response.data.description) {setAlbumDescription("Click here to enter a description for this album");}
+                if(!response.data.description) {setAlbumDescription('Click here to enter a description for this album');}
             });
     }, [])
 
@@ -79,7 +129,7 @@ return(
 <div className={classes.container}>
 
     <div className={classes.buttons}>
-          <button className={classes.button1}> <ArrowBackIcon /> Back to album list</button>
+          <button className={classes.button1} onClick={handleGoBack}> <ArrowBackIcon /> Back to album list</button>
           <Link to ="/organize" className={classes.organizer_link}> Edit in organizer </Link>
     </div>
 
@@ -88,12 +138,14 @@ return(
        <img className={classes.cover_photo} src={primaryPhotoURL}/>
        <EditIcon className={classes.edit_icon} onClick={handleEdit}/>
 
-       <div className={classes.text1}>
-       <h3 className={classes.cover_title}> {albumName}</h3>
-       <h6 className={classes.cover_description}>{albumDescription}</h6>
-       </div>
+       <div className={classes.text1} onClick={handleEditText}>
+       <input type="text" className={classes.cover_title} defaultValue={albumName} value={newAlbumName} onChange={handleTitleChange}/>
+       <input type="textarea" className={classes.cover_description} defaultValue={albumDescription} value={albumDescription} onChange={handleDescriptionChange} onFocus={handleFocus}/>
+        </div>
 
-       <div className={classes.text2}>
+       {editTextClicked===false ? (
+           <div>
+        <div className={classes.text2}>
        <p className={classes.cover_photoCount}> {photosCount + " photos"} </p>
        </div>
 
@@ -103,12 +155,19 @@ return(
                  <GetAppOutlinedIcon />
          </Icon>
        </div>
+          </div>
+       ) : (
+           <div>
+               <button className={classes.done_button} onClick={handleDoneClick}>Done</button>
+           </div>
+       )}
+      
 
      </div>
 
     <div className={classes.album_photos}>
     {photos.map((photo) => (
-    <img src={photo.url}  className={classes.album_photo} onClick={()=>handlePhotoClick(photo.id)}/>))}
+    <img key={photo.id} src={photo.url}  className={classes.album_photo} onClick={()=>handlePhotoClick(photo.id)}/>))}
     </div>
 
 </div>
