@@ -19,10 +19,38 @@ const YouCameraRoll = (props) => {
     const [privacyChoice, setPrivacyChoice] = useState(false);
     const [imgState, setImgState] = useState(null);
     const [isShareModalOpen,setIsShareModalOpen] = useState(false);
+    const [pics,setPics] = useState([])
+    
     let history = useHistory();
     let clickShare = '';
     const userId = props.userId;
-    
+    var picArray = [];
+    var array =[{}];
+    var dateTaken = "";
+    var url = "";
+
+
+    const download = e => {
+        console.log(e.target.href);
+        fetch(selectedImg.link, {
+          method: "GET",
+          headers: {}
+        })
+          .then(response => {
+            response.arrayBuffer().then(function(buffer) {
+              const url = window.URL.createObjectURL(new Blob([buffer]));
+              const link = document.createElement("a");
+              link.href = url;
+              link.setAttribute("download", "image.png"); //or any other extension
+              document.body.appendChild(link);
+              link.click();
+            });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      };
+
     useEffect (()=> {
         axios.get('http://localhost:7000/user/camera-roll', {
             headers: {
@@ -30,14 +58,37 @@ const YouCameraRoll = (props) => {
             }}
             )
              .then(res => {
-                 console.log(res.data.data.photos.photos)
+                console.log(res.data.data.photos.photos)
+                array=res.data.data.photos.photos
+                
+    for (let item of array)
+    {
+        console.log(item._id)
+        axios.get(`http://localhost:7000/photo/${item._id}`, {
+            headers: {
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+            }}
+            )
+             .then(res => {
+                 console.log(res)
+                 dateTaken=res.data.data.dateTaken
+                 url = res.data.data.sizes.size.largeSquare.url
+                 console.log({date:dateTaken, link:url})
+                 picArray.push({date:dateTaken, link:url, id:item._id})
+                 setPics(picArray)
+                 
+             }) .catch( res => {
+
+                 alert(res)
+                 console.log(res.response)
+             })
+    }
              }) .catch( res => {
 
                  alert(res)
                  console.log(res.response)
              })
     },[])
-
 
     const handleCloseShareModal = () => {
         setIsShareModalOpen(false);
@@ -62,7 +113,20 @@ const YouCameraRoll = (props) => {
     }
 
     const deleteObject = () => {
-        
+        console.log(selectedImg.id)
+        axios.delete(`http://localhost:7000/photo/${selectedImg.id}`, {
+            headers: {
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
+            }}
+            )
+            .then(res => {
+                console.log(res)
+            }) .catch( res => {
+
+                alert(res)
+                console.log(res.response)
+            })
+
     }
 
     const goToUpl = () => {
@@ -92,7 +156,8 @@ const YouCameraRoll = (props) => {
         //         console.log(res)
         //     })
     }
-    for (let item of props.currPics) {
+
+    for (let item of pics) {
         if (dateArray.indexOf(item.date) == -1) {
             dateArray.push(item.date)
         }
@@ -100,7 +165,7 @@ const YouCameraRoll = (props) => {
 
     for (let item1 of dateArray) {
         var sameDateArray = []
-        for (let item2 of props.currPics) {
+        for (let item2 of pics) {
             if (item1 == item2.date) {
                 sameDateArray.push(item2)
             }
@@ -108,8 +173,7 @@ const YouCameraRoll = (props) => {
         objectsArray.push(sameDateArray)
     }
 
-    console.log(dateArray)
-    console.log(objectsArray)
+    console.log(pics)
     return (
         <div>
             <div className='background'>
@@ -147,7 +211,7 @@ const YouCameraRoll = (props) => {
                     )}
                     <div className='download'>
                         Download
-                        <a href={selectedImg.link} download> 
+                        <a href={selectedImg.link} download onClick={e=>download(e)}>
                             <button className='downloadButton'></button>
                         </a>
                     </div> 
