@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import './YouCover.css';
 import API from '../../fakeAPI';
+import { useHistory } from 'react-router';
 
 /**
  * @function
@@ -24,6 +25,7 @@ const YouCover = (props) => {
     const userId = props.userId;
     
     const isThisMe = props.userId === props.currentUserId;
+    let history = useHistory();
 
     useEffect(() => {
         
@@ -64,7 +66,9 @@ const YouCover = (props) => {
     //         })
     // }, []);
 
-
+    const followHandler = () => {
+        history.push(`/user/${userId}/Followers`)
+    }
 
     const picHandler = (event) => {
         setPic(event.target.src);
@@ -85,7 +89,7 @@ const YouCover = (props) => {
         (<div className='picChoice'>
             <div className='popUp'>
                 {props.currPics.map(imgSrc => (
-                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc} onClick={picHandler}/>))}
+                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc.link} onClick={picHandler}/>))}
                 <button className='xButton' onClick={()=>setPicChoose(false)}>Save profile picture</button>
             </div> 
         </div>)
@@ -94,7 +98,7 @@ const YouCover = (props) => {
         (
             <div className='popUp'>
                 {props.currPics.map(imgSrc => (
-                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc} onClick={covHandler}/>))}
+                <img className='imagesList' width='150' height='150' key={imgSrc} src={imgSrc.link} onClick={covHandler}/>))}
                 <button className='xButton' onClick={()=>setCovChoose(false)}>Save cover picture</button>
             </div>
         )
@@ -105,7 +109,7 @@ const YouCover = (props) => {
         <img className='userPic' alt='profilePic' onClick={()=> setPicChoose(true)} width ='65' height ='65' src={pic} />
         <h2 className='youPageName'>{name}</h2>
         <h6 className='youPageUserName'>{username}</h6>
-        <h6 className='youFollowers'>{followers} Followers .</h6>
+        <h6 className='youFollowers' onClick={()=>followHandler()}>{followers} Followers .</h6>
         <h6 className='youFollowing'>{following} Following</h6>
     </div>
     );
