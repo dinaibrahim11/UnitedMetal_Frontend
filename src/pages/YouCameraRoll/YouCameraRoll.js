@@ -31,7 +31,6 @@ const YouCameraRoll = (props) => {
 
 
     const download = e => {
-        console.log(e.target.href);
         fetch(selectedImg.link, {
           method: "GET",
           headers: {}
@@ -58,6 +57,7 @@ const YouCameraRoll = (props) => {
             }}
             )
              .then(res => {
+                console.log("Roll getting")
                 console.log(res.data.data.photos.photos)
                 array=res.data.data.photos.photos
                 
@@ -70,10 +70,8 @@ const YouCameraRoll = (props) => {
             }}
             )
              .then(res => {
-                 console.log(res)
-                 dateTaken=res.data.data.dateTaken
+                 dateTaken=res.data.data.dateUploaded.slice(0,10)
                  url = res.data.data.sizes.size.largeSquare.url
-                 console.log({date:dateTaken, link:url})
                  picArray.push({date:dateTaken, link:url, id:item._id})
                  setPics(picArray)
                  
@@ -89,7 +87,7 @@ const YouCameraRoll = (props) => {
                  console.log(res.response)
              })
     },[])
-
+    console.log(picArray)
     const handleCloseShareModal = () => {
         setIsShareModalOpen(false);
     }
@@ -111,9 +109,9 @@ const YouCameraRoll = (props) => {
             setSelectedImg(img)
         }
     }
-
     const deleteObject = () => {
-        console.log(selectedImg.id)
+        console.log("deleted image id")
+        console.log(`${selectedImg.id}`)
         axios.delete(`http://localhost:7000/photo/${selectedImg.id}`, {
             headers: {
                 "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOGQ1NDUwZWMwMDAwNTQ2ODYwN2ExMSIsImlhdCI6MTYyMjQ5OTg5OSwiZXhwIjoxNjMwMjc1ODk5fQ.00XtWUUUKFDEKUfFd4KJlau9hN928Qq40GMs79EVluE` 
