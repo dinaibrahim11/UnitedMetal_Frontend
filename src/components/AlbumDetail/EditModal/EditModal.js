@@ -14,6 +14,7 @@ const EditModal = (props) => {
     const handleButtonClick = () => {
         updatePhoto();
         props.handleCloseEditModal();
+        props.changeCoverPhoto(newPhotoID);
     }
 
     const handleSelection = (id, url) => {

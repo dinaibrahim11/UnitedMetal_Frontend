@@ -62,6 +62,10 @@ const AlbumDetail = (props) => {
        setEditTextClicked(true);
     }
 
+    const changeCoverPhoto = (id) => {
+        setPrimaryPhotoID(id);
+    }
+
     const handleDoneClick = () => {
         
         setEditTextClicked(false);
@@ -196,6 +200,7 @@ return(
                 modalTitle="Select a photo"
                 handleCloseEditModal={handleCloseEditModal}
                 albumID={albumID}
+                changeCoverPhoto={(id)=>changeCoverPhoto(id)}
                 
      />
      ) : (
