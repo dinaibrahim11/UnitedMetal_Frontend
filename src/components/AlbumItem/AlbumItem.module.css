@@ -5,7 +5,11 @@
     box-shadow: 0 8px 24px 0 rgba(0,0,0,0.12);
     overflow: 'visible';
     z-index: 0;
-    transition: 0.4s
+    transition: 0.4s;
+    margin-left: 4%;
+    margin-right: 7px;
+    margin-bottom: 8px;
+    margin-top: 12px;
 }
 
 .album:hover {
