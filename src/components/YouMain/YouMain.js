@@ -17,6 +17,8 @@ import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+import YouAlbums from '../../pages/YouAlbums/YouAlbums';
+import YouAlbums_Collections from '../../pages/YouAlbums_Collections/YouAlbums_Collections'
 import { useSelector } from 'react-redux';
 
 
@@ -60,6 +62,8 @@ const YouMain = (props) => {
     const currentUserId = useSelector(state => state.users.currentUser.userId);
     const userId = props.match.params.id || currentUserId; 
 
+    const [collections, setCollections] = useState('false');
+
     const handleChange = (event, newValue) => {
     setValue(newValue);
     };
@@ -67,7 +71,19 @@ const YouMain = (props) => {
         setTab(props.currentTab)
     }, [props.currentTab])
    
+    const setCameraRoll = () => {
+        setTab('cameraRoll');
+    }
     
+    const setCollectionsTrue = () => {
+        setCollections('true');
+    }
+
+    const albumClickHandler = () => {
+        setTab('albums');
+        setCollections('false');
+    }
+
     return (
         <div>
             <div>
@@ -89,7 +105,7 @@ const YouMain = (props) => {
                         >
                             <Tab label="About" {...a11yProps(0)} onClick={() => setTab('about')}/>
                             <Tab label="Photostream" {...a11yProps(1)} />
-                            <Tab label="Albums" {...a11yProps(2)} />
+                            <Tab label="Albums" {...a11yProps(2)} onClick={albumClickHandler}/>
                             <Tab label="Faves" {...a11yProps(3)} />
                             <Tab label="Galleries" {...a11yProps(4)} />
                             <Tab label="Groups" {...a11yProps(5)} />
@@ -100,7 +116,10 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
-                {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
+            {tab === 'about' ? <YouAbout userId={userId} currPics={DUMMY_IMAGES}/> : 
+                (tab === 'albums' & collections==='false') ? <YouAlbums setCameraRoll={setCameraRoll} setCollectionsTrue={setCollectionsTrue} currentTab={props.currentTab}/> 
+                : (tab === 'albums' & collections==='true') ? <YouAlbums_Collections /> 
+                :<YouCameraRoll userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>
     );
