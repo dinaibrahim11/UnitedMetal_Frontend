@@ -2,6 +2,17 @@ import React, {useState, useEffect, useReducer} from 'react';
 import classes from './Organizer.module.css'
 import { Redirect } from "react-router-dom";
 import API from '../../fakeAPI';
+import { makeStyles } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 const Organizer = () => {
 
@@ -30,6 +41,9 @@ const Organizer = () => {
     const [albumDescription, setAlbumDescription] = useState();
     const [primaryPhotoID, setPrimaryPhotoID] = useState();
     const [droppedPhotos, setDroppedPhotos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const classes = useStyles();
 
     useEffect(() => {
       getCameraRollPhotos();
@@ -55,6 +69,10 @@ const Organizer = () => {
       setRedirect("/albums");
     }
 
+    const handleSearchInput = (e) => {
+      setSearchTerm(e.target.value);
+    }
+
     const handleSaveClick = (e) => {
       e.preventDefault();
       if(!albumTitle){
@@ -62,6 +80,7 @@ const Organizer = () => {
     } else{
     setAlbumID(albumID+1);
     postDataHandler();
+    console.log(primaryPhotoID);
     setRedirect("/albums"); }
     }
 
@@ -109,7 +128,7 @@ const Organizer = () => {
         "url": draggedPhotoURL
       }
       setDroppedPhotos([...droppedPhotos, addedPhoto]);
-      if(albumsCount === 0) {setPrimaryPhoto(addedPhoto);}
+      if(albumsCount === 0) {setPrimaryPhoto(addedPhoto); setPrimaryPhotoID(addedPhoto.id)}
       }
  }
 
@@ -136,11 +155,11 @@ const postDataHandler = () => {
   if(titleError===''){
     const albumInfo = {
       "id": albumID,
-      "albunName": albumTitle,
+      "albumName": albumTitle,
       "description": albumDescription,
       "photocount": albumsCount,
       "primaryphoto": primaryPhotoID,
-      "photos" : {droppedPhotos}
+      "photos" : droppedPhotos
      }
     API.post('albums', albumInfo)      //json server
     .then(response => {
@@ -182,7 +201,6 @@ const postDataHandler = () => {
             </div>
             <p className={classes.p__error}>{titleError}</p>
            </form>
-
            
            { droppedOver ? (
             <div className={classes.Organizer_dnd} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} > 
@@ -206,7 +224,7 @@ const postDataHandler = () => {
           
         <div className={classes.Organizer_bottomdiv}>
               <div className={classes.Organizer_search}>
-              <input type="text" className={classes.search_inputfield}></input>
+              <input type="text" className={classes.search_inputfield} onChange={handleSearchInput}></input>
               <button className={classes.search_button}>SEARCH</button>
               </div>
               <div className={classes.middle_block} onDragOver={(e)=>handleDragOver(e)} onDrop={(e)=>handleLowerDrop(e)}>
@@ -216,6 +234,8 @@ const postDataHandler = () => {
                    ))}
 
               </div>
+
+              
           </div>
 
     </div>
