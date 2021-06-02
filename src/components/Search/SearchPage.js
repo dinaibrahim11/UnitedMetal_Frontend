@@ -27,6 +27,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {useMediaQuery} from "@material-ui/core";
+import { useEffect } from 'react';
+import axios from 'axios';
 
 
 
@@ -62,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
  * @example <SearchPage />
  */
 
-function SearchPage(){
+function SearchPage(props){
 
 const searchQuery = useSelector(state => state.users.currentSearchQuery);
 const history = useHistory(); // function used to redirect to another oage
@@ -103,9 +105,9 @@ const links1 = [
 
     //////////////////////////////////////////////////////  Setters using useState  //////////////////////////////////////////////////////////////////////////////////
    
-    const[Images,setImages]=useState(links1);   //setting the array of Images by the array of links containg every information needed to show the images
+    const[Images,setImages]=useState([]);   //setting the array of Images by the array of links containg every information needed to show the images
     const[TabSlection,SetTabSelection]=useState(1); //setting the state of tabs whether selected ot not 1 for first tab(default) ,2 for second tab, 3 for third tab
-    const[People,SetPeople]=useState(cardsPeoples);//setting the array of people by the array of cardspeople containg every information needed to be shown for a person
+    const[People,SetPeople]=useState([]);//setting the array of people by the array of cardspeople containg every information needed to be shown for a person
     const[Groups,setGroups]=useState(cardsGroups);//setting the array of Group by the array of cardsGroups containg every information needed to be shown for a group
 
 //////////////////////////////////////////////////////  different routes redirecting functions //////////////////////////////////////////////////////////////////
@@ -114,14 +116,14 @@ const links1 = [
      *  @returns void
      * @param {int} num - An int represting image ID
      */
- const handleImageRoute=(num)=>{history.push("/images"+num);}
+ const handleImageRoute=(num)=>{history.push("/photos/"+num);}
       
     /**
      * it takes the ID number of a person  and directs the user to a page depending on Person ID
      * @returns void
      * @param {int} num - An int represting Person ID
      */
- const handleCardRoute=(num)=>{history.push("/people"+num);}
+ const handleCardRoute=(num)=>{history.push("/user/"+num);}
 
  /**
   * it takes the ID number of a Group and directs the user to a page depending on Person ID
@@ -146,6 +148,63 @@ border:'1px solid black',
   color:'white',
   width:'10px',
   }
+
+
+
+
+
+
+  ////
+  //console.log("alaaaaa")
+  //console.log(props.location.search.slice(1))
+
+  // search queary constants////////////////////////////////////////////////////////////////////////////////////
+  const SearchQ=props.location.search.slice(1);
+  const LocalH="http://localhost:7000/photo/search?searchText="+SearchQ+"&limit=200&page=1"
+const LocalH2="http://localhost:7000/user/search?searchText="+SearchQ+"&limit=20&page=1"
+  /////
+
+
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjY1ODg0MWQ1OTNjNjVjOGMxYTc5OCIsImlhdCI6MTYyMjU2MzYzNCwiZXhwIjoxNjMwMzM5NjM0fQ.HTV2jtYf5WpcxpeFazN7Ug9TM1qo1jJfN7qpM-_Kjwo"
+
+
+
+/////
+useEffect(() => {
+    axios.get(LocalH,{ 
+        headers: {
+        "Authorization": `Bearer ${token}` 
+    }})
+      .then(res => {
+        console.log("search res");
+        //console.log(res)
+        //console.log(res.data.data)
+        //console.log(res.data.data[0].sizes.size.original.source)
+        //console.log(res.data.data[0]._id)
+       setImages(res.data.data)
+      }).catch(err => {
+        console.log(err.response)
+        setImages([]);
+      })
+  }, [SearchQ])
+
+  useEffect(() => {
+    axios.get(LocalH2,{ 
+        headers: {
+        "Authorization": `Bearer ${token}` 
+    }})
+      .then(res => {
+        console.log("search res");
+        console.log(res)
+    SetPeople(res.data.data)
+      }).catch(err => {
+        console.log(err.response)
+     
+      })
+  }, [SearchQ])
+
+
+
 
 ////////////////////////////////////   Return of Search Page function  ////////////////////////////////////////////////////////////////
 return(
@@ -184,9 +243,9 @@ Groups
 
 
  <Grid container spacing={2} > 
- {TabSlection === 1 ?  Images.map( (Image) => //Grid Containing grid items mapped on the Array of Images( If the first tab is selected) by using the URL element, and on click redirects to another page based on each image ID
+ {(TabSlection === 1 && Images )?  Images.map( (Image) => //Grid Containing grid items mapped on the Array of Images( If the first tab is selected) by using the URL element, and on click redirects to another page based on each image ID
  <Grid item xs={6} sm={3} md={2}>
- <img className="img__PhotoG" data-testid="6" src={Image.url} onClick={ ( )=> handleImageRoute(Image.idd)} width={200} height={200} /> </Grid>)  : (null)}
+ <img className="img__PhotoG" data-testid="6" src={Image.sizes.size.large.source} onClick={ ( )=> handleImageRoute(Image._id)} width={200} height={200} /> </Grid>)  : (null)}
 </Grid>
 
 
@@ -199,7 +258,7 @@ Groups
 {TabSlection===2 ? People.map((People) => //Grid Containing grid items mapped on the Array of People( If the second tab is selected) by using the URL element , Name and other elements to be shown on a card , and on click redirects to another page based on each person ID
 <Grid item xs={12} sm={6} md={4}>
 
-<Card className="peopleC"  data-testid="7" style={cardStyle} onClick={()=>handleCardRoute(People.id2)}>
+<Card className="peopleC"  data-testid="7" style={cardStyle} onClick={()=>handleCardRoute(People._id)}>
 
 <CardHeader avatar=
 {<Avatar >
@@ -209,17 +268,17 @@ action=
 {<Button   size='small'  style={ButtonStyle} >
 +Follow
 </Button>}
-title={People.Name} 
+title={People.displayName} 
 subheader={People.bio}
 />
 <CardActions >
 <IconButton aria-label="Photoss" >
 <PhotoIcon/>
-{People.imges}
+{People.photoCount}
 </IconButton>
 <IconButton aria-label="Followers" >    
 <PeopleIcon/>
-{People.follows} 
+{People.followerCount} 
 </IconButton>
 {People.join}
 </CardActions>        
