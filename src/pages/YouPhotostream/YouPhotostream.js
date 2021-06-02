@@ -1,9 +1,11 @@
-
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import { usersActions } from '../../storev2/users-slice';
+import { useDispatch, useSelector } from 'react-redux';
       
       /**
  * @function YouPhotostream
  */
-import React, { useState } from 'react';
 
 
 /**
@@ -12,6 +14,17 @@ import React, { useState } from 'react';
  * @returns {element} the Photostream components
  */
 const YouPhotostream = (props) => {
+  
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const preventRefresh = (event, path) => {
+    event.preventDefault();
+    history.push(path);
+  }
+
+  const currentUserId = useSelector(state => state.users.currentUser.userId);
+
  
     return (
 
@@ -59,71 +72,57 @@ const YouPhotostream = (props) => {
               <div className="view fluid-magic-tools-view requiredToShowOnServer" data-view-signature="fluid-magic-tools-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1"><div className="fluid-centered fluid-magic-toolbar">
                   <div className="primary-tools-container">
                     <div className="view photostream-filter-tools-view requiredToShowOnServer primary-tools" data-view-signature="photostream-filter-tools-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1">
-                      <div className="dropdown-link filter-sort" aria-haspopup="true" aria-expanded="false" tabIndex={0}><p>Date uploaded</p><span /></div>
-                      <div className="dropdown-link filter-view" aria-haspopup="true" aria-expanded="false" tabIndex={0}><p>Public view</p><span /></div>
+                      <div className="dropdown-link filter-sort" aria-haspopup="true" aria-expanded="false" tabIndex={0}>Date uploaded<span /></div>
+                      <div className="dropdown-link filter-view" aria-haspopup="true" aria-expanded="false" tabIndex={0}>Public view <span /></div>
                       <div className="global-nav-content styleguide-global-nav fluid sohp-mobile-navable">
                     </div>
                     </div>
                   </div>
-                  <div className="secondary-tools">
-                    <div className="share-link">
-                      <div className="view fluid-share-photostream-view" data-view-signature="fluid-share-photostream-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__parentViewName_fluid-magic-tools-view__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_false__subnavConfig_1"><div className="fluid-share-button share-photostream-icon
-		 disable-sharing
-		
-		
-		
-		" title="Sharing is disabled" tabIndex={0}>
-                          <span title="Sharing is disabled" className="fluid-share-icon ">
-                            <svg className="icon icon-share_hollow share-icon"><use xlinkHref="#icon-share_hollow" /></svg>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="view fluid-magic-slideshow-view requiredToShowOnServer" data-view-signature="fluid-magic-slideshow-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1"><a href="#" className="slideshow-toggle" title="Toggle slideshow" tabIndex={-1}><span /></a>
-                    </div>
-                    <div className="view fluid-magic-search-view requiredToShowOnServer closed" data-view-signature="fluid-magic-search-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1"><a href="#" className="search-toggle" title="Search photostream" data-track="addContextPhotostream"><span /></a>
-                      <input tabIndex={-1} className="magic-search" placeholder="Search photostream" type="text" defaultValue />
-                    </div>
-                    <a className="edit-link" href="/photos/192903766@N08/edit" title="Edit photo info">
-                      <span className="fluid-edit-icon" />
-                    </a>
                   </div>
-                </div>
               </div>
               <div role="main" className="photolist-container fluid-centered">
                 <div className="photolist-empty hidden">
                   <h4>You have no public photos</h4>
                   <a className="butt medium" href="/photos/upload">Upload photos</a>
                 </div>
-                <div className="view photo-list-view requiredToShowOnServer photostream" style={{height: '328px'}} data-view-signature="photo-list-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__dealbreaker_true__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1"><div className="view photo-list-photo-view requiredToShowOnServer photostream awake" style={{transform: 'translate(0px, 0px)', WebkitTransform: 'translate(0px, 0px)', msTransform: 'translate(0px, 0px)', width: '180px', height: '320px', backgroundImage: 'url(//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg)'}} data-view-signature="photo-list-photo-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__dealbreaker_true__engagementModelName_photo-engagement-models__geo_1__id_51216129720__interactionViewName_photo-list-photo-interaction-view__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__parentContainer_1__parentSignature_photolist-4es__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1">
+                <div className="view photo-list-view requiredToShowOnServer photostream" style={{height: '328px'}} data-view-signature="photo-list-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__dealbreaker_true__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1">
+                 
+                 
+                 
+                  <div className="view photo-list-photo-view requiredToShowOnServer photostream awake" style={{transform: 'translate(0px, 0px)', WebkitTransform: 'translate(0px, 0px)', msTransform: 'translate(0px, 0px)', width: '180px', height: '320px', backgroundImage: 'url(//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg)'}} 
+                  onClick={(e) => {e.preventDefault(); history.push("//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg")}}
+                  data-view-signature="photo-list-photo-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__dealbreaker_true__engagementModelName_photo-engagement-models__geo_1__id_51216129720__interactionViewName_photo-list-photo-interaction-view__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__parentContainer_1__parentSignature_photolist-4es__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1">
                     <div className="interaction-view" />
-                  </div></div>
+                  </div>
+
+                  <div className="view photo-list-photo-view requiredToShowOnServer photostream awake" style={{transform: 'translate(0px, 0px)', WebkitTransform: 'translate(0px, 0px)', msTransform: 'translate(0px, 0px)', width: '180px', height: '320px', backgroundImage: 'url(//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg)'}} 
+                  onClick={(e) => {e.preventDefault(); history.push("//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg")}}
+                  data-view-signature="photo-list-photo-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__dealbreaker_true__engagementModelName_photo-engagement-models__geo_1__id_51216129720__interactionViewName_photo-list-photo-interaction-view__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__parentContainer_1__parentSignature_photolist-4es__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1">
+                    <div className="interaction-view" />
+                  </div>
+
+                  <div className="view photo-list-photo-view requiredToShowOnServer photostream awake" style={{transform: 'translate(0px, 0px)', WebkitTransform: 'translate(0px, 0px)', msTransform: 'translate(0px, 0px)', width: '180px', height: '320px', backgroundImage: 'url(//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg)'}} 
+                  onClick={(e) => {e.preventDefault(); history.push("//live.staticflickr.com/65535/51216129720_7b4982c231_n.jpg")}}
+                  data-view-signature="photo-list-photo-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__dealbreaker_true__engagementModelName_photo-engagement-models__geo_1__id_51216129720__interactionViewName_photo-list-photo-interaction-view__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__parentContainer_1__parentSignature_photolist-4es__photostreamId_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1">
+                    <div className="interaction-view" />
+                  </div>                  
+
+                  </div>
+                  
+
+
+
+
                 <div className="view pagination-view requiredToShowOnServer photostream" data-view-signature="pagination-view__UA_1__adConfig_1__additionalViewClasses_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_false__requiredToShowOnServer_true__subnavConfig_1" />
               </div>
             </div>
-            <div className="view footer-full-view requiredToShowOnServer" data-view-signature="footer-full-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2F__contextId_192903766%40N08-dateposted-public__contextSuffix_dateposted-public__geo_1__isCameraroll_false__isHelloPro_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_photostream-models__nsid_192903766%40N08__openGiftPro_false__pageParams_1__photoListConfig_1__photostreamId_192903766%40N08__requiredToShowOnClient_false__requiredToShowOnServer_true__subnavConfig_1"><div className="foot-banner-container" />
-              
-            </div>
+          
           </div>
         </div>
         <div id="stacking-overlay-container" />
         <link id="rollup-css" rel="stylesheet" href="https://combo.staticflickr.com/ap/build/stylesheets/rollup-f592be30.css" type="text/css" media="screen" />
       </div>
-        /*<div>
-            <div className='background'>
-            </div>
-            <div className='images'>
-            {props.currPics.map(imgSrc => (<img className='rollImage' width='100' height='100' key={imgSrc} src={imgSrc}/>))}
-            </div>
-            <div>
-                <div className='upButton'>
-                    <input className='uploadButton' accept='image/*' multiple type='file' onChange={fileSelectionHandler}/>
-                    <div className='colorButton'>Click to upload new images</div>
-                    <img className='preview' width='100' height='100' src={localImgUrl}/>
-                    <h5 className='previewTxt'>Preview</h5>
-                </div>
-            </div>
-        </div>*/
+   
     )
 }
 
