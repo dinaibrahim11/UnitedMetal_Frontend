@@ -59,11 +59,11 @@ const Main = (props) => {
                 <Route exact path="/user/:id/photostream" render={(props) => <YouMain {...props} currentTab="photostream" /> } />
                 <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />  
-
                 <Route exact path="/SearchPage" component={SearchPage} />
                 <Route exact path="/user/:id/followers" component={Followers} />
                 <Route exact path="/upload" component={Upload} />
                 <Route exact path="/user/:id/following" component={Following} />
+                <Route exact path="/SearchPage/" component={SearchPage}/>
             </Switch>
             
         </main>

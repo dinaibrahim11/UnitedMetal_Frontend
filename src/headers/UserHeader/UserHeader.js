@@ -36,10 +36,11 @@ const UserHeader = (props) => {
       if (searchQuery === '') {
           return;
       }
+      history.push("/SearchPage/?"+searchQuery);
       setSearchQuery('');
-      history.push("/SearchPage");
   }
-
+ 
+  
     return (
           
       <div>
