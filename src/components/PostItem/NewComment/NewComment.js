@@ -9,7 +9,6 @@ import { usersActions } from '../../../storev2/users-slice';
 import API from '../../../fakeAPI';
 import PropTypes from 'prop-types';
 
-
 /**
  * Provides the input text box along with the Add Comment button
  * @author Abdelrahman Mamdouh
@@ -19,7 +18,7 @@ import PropTypes from 'prop-types';
 const NewComment = (props) => {
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState('');
-    
+    const token = useSelector(state => state.users.currentUser.token);
 
     const userAvatarPhoto = useSelector(state => state.users.currentUser.avatarPhoto);
     const userName = useSelector(state => state.users.currentUser.username);
@@ -38,22 +37,46 @@ const NewComment = (props) => {
         if (commentText === ''){
             return;
         }
-        var d = (new Date()).toString().split(' ').splice(1,3).join(' ');
-        API.post(`posts/${props.postId}/comments`, {
-            postId: props.postId,
-            commentText: commentText,
-            username: userName, 
-            avatarPhoto: userAvatarPhoto,
-            dateCommented: d
-        })
-        .then(res => {
-            /**
-             * toggleComments forces the comments to be refetched showing
-             * the most updated comments
-             */
+        // var d = (new Date()).toString().split(' ').splice(1,3).join(' ');
+        // API.post(`posts/${props.postId}/comments`, {
+        //     postId: props.postId,
+        //     commentText: commentText,
+        //     username: userName, 
+        //     avatarPhoto: userAvatarPhoto,
+        //     dateCommented: d
+        // })
+        // .then(res => {
+        //     /**
+        //      * toggleComments forces the comments to be refetched showing
+        //      * the most updated comments
+        //      */
+        //     setCommentText('');
+        //     dispatch(usersActions.toggleComments());
+        // })
+
+
+
+        API.post(`photo/${props.postId}/comments`, {
+            body: commentText
+        }, { 
+            headers: {
+            "Authorization": `Bearer ${token}` 
+        }}).then (res => {
+            console.log("ADD NEW COMMENT");
+            console.log(res);
+            // if (res.data.data.status === 'success') {
+            //     setCommentText('');
+            //     dispatch(usersActions.toggleComments());
+                
+            //     //setAddedComment(prev => !prev);
+            //     //dispatch(usersActions.toggleCommentsPhotoDetails());
+            // }
             setCommentText('');
             dispatch(usersActions.toggleComments());
-        })
+        }).catch(err => {
+            console.log(err.response);
+        });
+
 
     }
 

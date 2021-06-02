@@ -19,7 +19,7 @@ const TagItem = (props) => {
 
     const handleDeleteTag = () => {
         // TODO: send delete request
-        axios.delete(`http://localhost:7000/photo/${props.photoId}/tags`,{
+        axios.delete(`photo/${props.photoId}/tags`,{
             tags: props.tagText
         }, { 
             headers: {

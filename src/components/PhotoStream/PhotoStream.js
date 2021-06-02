@@ -27,7 +27,7 @@ export default function PhotoStream(props) {
     const [photos, setPhotos] = useState([]);
 
     useEffect(() => {
-        API.get(`http://localhost:7000/user/${props.userId}/stream`, { 
+        API.get(`user/${props.userId}/stream`, { 
             headers: {
                 "authorization": `Bearer ${props.token}` 
             }}).then(res => {

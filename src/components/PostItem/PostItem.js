@@ -44,6 +44,7 @@ const PostItem = (props) => {
     const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
     const [isLinkCopied, setIsLinkCopied] = useState(false);
     const [comments, setComments] = useState([]);
+    const token = useSelector(state => state.users.currentUser.token)
 
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
 
@@ -53,24 +54,59 @@ const PostItem = (props) => {
      * Get all the comments for this specific post/photo
      */
     useEffect(() => {
-        API.get(`posts/${props.postId}/comments`)
-            .then(res => {
-                setComments(res.data);
-            });
+        // API.get(`posts/${props.postId}/comments`)
+        //     .then(res => {
+        //         setComments(res.data);
+        //     });
+
+        API.get(`photo/${props.postId}/comments`)
+        .then(res => {
+            console.log("COMMENTS");
+            console.log(res);
+            setComments(res.data.data.comments);
+        }).catch(err => {
+            console.log(err.response);
+        });
             
     }, [props.postId, rerender]);
     
     const handleFav = () => {
+        // if (isFaved) {
+        //     setCountFaves(prevCount => prevCount - 1);
+        //     dispatch(usersActions.removeFavedPhoto(props.id));
+        // } else {
+        //     setCountFaves(prevCount => prevCount + 1);
+        //     dispatch(usersActions.addSingleFavedPhoto({
+        //         id: props.id,
+        //         owner: props.username,
+        //         url: props.imageUrl
+        //     }))
+        // }
+
         if (isFaved) {
-            setCountFaves(prevCount => prevCount - 1);
-            dispatch(usersActions.removeFavedPhoto(props.id));
+            API.delete(`user/faves/${props.postId}`, { 
+                headers: {
+                    "Authorization": `Bearer ${token}` 
+                }})
+                .then(res => {
+                    console.log("REMOVING A FAVE");
+                    console.log(res);
+                    
+                }).catch(err => {
+                    console.log(err.response);
+                });
         } else {
-            setCountFaves(prevCount => prevCount + 1);
-            dispatch(usersActions.addSingleFavedPhoto({
-                id: props.id,
-                owner: props.username,
-                url: props.imageUrl
-            }))
+            API.post(`user/faves/${props.postId}`,{},{ 
+                headers: {
+                "Authorization": `Bearer ${token}` 
+                }})
+                .then(res => {
+                    console.log("ADDING A FAV");
+                    console.log(res);
+                    setIsFaved(true);
+                }).catch(err => {
+                    console.log(err.response);
+                });
         }
     }
 

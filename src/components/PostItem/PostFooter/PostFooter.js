@@ -11,6 +11,8 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import { useSelector } from 'react-redux';
 import NewComment from '../NewComment/NewComment';
 import PropTypes from 'prop-types';
+import API from '../../../fakeAPI';
+
 
 /**
  * Contains comments and fave and comment icon and add to gallery icon
@@ -31,10 +33,16 @@ const PostFooter = (props) => {
     const userName = useSelector(state => state.users.currentUser.username);
     const isEditingAComment = useSelector(state => state.users.currentUser.isEditingAComment);
 
+    const currentUserId = useSelector(state => state.users.currentUser.userId);
+
 
     const addFavHandler = () => {
+        
+
         props.setIsFaved(prevState => !prevState);
         props.handleFav();
+        
+
     }
 
  
@@ -83,7 +91,7 @@ const PostFooter = (props) => {
 
                     {props.comments.map((comment) => {
                         
-                        return <Comment key={comment.id} dateCommented={comment.dateCommented} postId={comment.postId} commentId={comment.id} isByCurrentUser={comment.username === userName} isAddComment={false} avatarPhoto={comment.avatarPhoto} username={comment.username} commentText={comment.commentText} />
+                        return <Comment key={comment._id} dateCommented={comment.date.slice(0,10)} postId={props.postId} commentId={comment._id} isByCurrentUser={comment.userId._id === currentUserId} isAddComment={false} avatarPhoto={comment.avatarPhoto} username={`${comment.userId.firstName} ${comment.userId.lastName}`} commentText={comment.body} />
                     })}
 
                     {!isEditingAComment && <NewComment postId={props.postId} />}

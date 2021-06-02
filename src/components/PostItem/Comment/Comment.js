@@ -11,6 +11,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types'; 
 
+import { useSelector } from 'react-redux';
+
 import API from '../../../fakeAPI';
 
 /**
@@ -33,6 +35,8 @@ const Comment = (props) => {
     const [isEditingComment, setIsEditingComment] = useState(false);
     const [editingText, setEditingText] = useState(''); 
 
+    const token = useSelector(state => state.users.currentUser.token);
+
     const handleEdit = () => {
         setIsEditingComment(true);
         setEditingText(props.commentText);
@@ -47,25 +51,59 @@ const Comment = (props) => {
     const handleEditingSubmit = (event) => {
         event.preventDefault();
         setIsEditingComment(false);
-        var d = (new Date()).toString().split(' ').splice(1,3).join(' ');
-        API.patch(`comments/${+props.commentId}`, {
-            id: props.commentId,
-            postId: props.postId,
-            commentText: editingText,
-            avatarPhoto: props.avatarPhoto,
-            username: props.username,
-            dateCommented: d //updating the date commented
-        }).then(res => {
+        // var d = (new Date()).toString().split(' ').splice(1,3).join(' ');
+        // API.patch(`comments/${+props.commentId}`, {
+        //     id: props.commentId,
+        //     postId: props.postId,
+        //     commentText: editingText,
+        //     avatarPhoto: props.avatarPhoto,
+        //     username: props.username,
+        //     dateCommented: d //updating the date commented
+        // }).then(res => {
+        //     dispatch(usersActions.toggleComments());
+        // })
+        // dispatch(usersActions.setIsEditingACommentFalse());
+        console.log("COMMENTID: "+props.commentId);
+        API.patch(`photo/comments/${props.commentId}`, {
+            body: editingText
+        }, { 
+            headers: {
+            "Authorization": `Bearer ${token}` 
+        }}).then(res => {
+            console.log("EDITING TEXT");
+            console.log(res);
+            if (res.data.data.status === 'success') {
+                
+            }
             dispatch(usersActions.toggleComments());
-        })
+        }).catch(err => {
+            console.log("ERROR EDITING TEXT");
+            console.log(err.response);
+        });
         dispatch(usersActions.setIsEditingACommentFalse());
     }
 
     const handleRemoveComment = () => {
-        API.delete(`comments/${+props.commentId}`)
-        .then(res => {
-            dispatch(usersActions.toggleComments());
-        }).catch(err => console.log(err));
+        // API.delete(`comments/${+props.commentId}`)
+        // .then(res => {
+        //     dispatch(usersActions.toggleComments());
+        // }).catch(err => console.log(err));
+
+        API.delete(`photo/${props.postId}/comments/${props.commentId}`, { 
+            headers: {
+            "Authorization": `Bearer ${token}` 
+        }})
+            .then(res => {
+                console.log("DELETEING COMMENT");
+                console.log(token);
+                console.log(res);
+                dispatch(usersActions.toggleComments());
+            }).catch(err => {
+                console.log(err.response);
+                console.log(props.postId);
+                console.log("ERROR DELETEING COMMENT");
+                console.log(token);
+            });
     }
 
     let editableComment = (
