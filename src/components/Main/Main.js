@@ -10,6 +10,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Unauthorized from '../Unauthorized/Unauthorized';
 import { useSelector } from 'react-redux';
 import YouMain from '../YouMain/YouMain';
+import Organizer from '../Organizer/Organizer'
 
 import Welcome from '../../components/Welcome/Welcome';
 import Login from '../../components/Login/Login';
@@ -22,6 +23,8 @@ import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
+import AlbumItem from '../AlbumItem/AlbumItem';
+import AlbumDetail from '../AlbumDetail/AlbumDetail'
 
 /**
  * Responsible for the routing of the whole website
@@ -52,7 +55,11 @@ const Main = (props) => {
                 <Route exact path='/Unauthorized' component={Unauthorized} />
                 <Route exact path="/user/:id" render={(props) => <YouMain {...props} currentTab="about" /> } />
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />
+                <Route exact path="/albums" render={(props) => <YouMain {...props} currentTab="albums" /> } />
+                <Route exact path="/collections" render={(props) => <YouMain {...props} currentTab="albums" /> } />
                 <Route exact path="/SearchPage" component={SearchPage} />
+                <Route exact path="/organize" component={Organizer}/>
+                <Route exact path="/albums/:id" component={AlbumDetail} />
             </Switch>
             
         </main>
