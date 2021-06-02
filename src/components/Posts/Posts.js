@@ -62,7 +62,7 @@ const Posts = () => {
         //  <div style={{margin: 'auto 100px', maxWidth: '600px'}}>
         <Container className={classes.layout}>
 
-            <ActivityView data-testid="activity"/>
+            {/* <ActivityView data-testid="activity"/> */}
             
             {postsFeed.map((post) => {
                 return <PostItem key={post._id} id={post._id} username={`${post.userId.firstName} ${post.userId.lastName}`} 
