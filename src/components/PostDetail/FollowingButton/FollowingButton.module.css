@@ -1,0 +1,9 @@
+.following__button {
+    width: 130px;
+    text-align: start;
+}
+
+.following__button:hover {
+    width: 160px;
+    text-align: start;
+}
