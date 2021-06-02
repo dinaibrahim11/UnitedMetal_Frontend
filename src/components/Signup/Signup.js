@@ -257,8 +257,9 @@ const Signup = () => {
     } else if (password.length < 12) {
         setpassError('Password should be 12 characters or more');
         setErrorCount(1);
+        totalErrorCount++;
     } else {
-      if (checkStrongPassword(password)){
+      if (checkGoodPassword(password)){
         setpassError(''); 
         setErrorCount(0);
       } else {
@@ -365,6 +366,7 @@ const Signup = () => {
       let upperCaseGood = false;
       let digitGood = false;
       let lowerCaseGood = false;
+      let specialGood = false;
       for (let i = 0; i < str.length; i++) {
         let character = str.charAt(i);
         if (!isNaN(character * 1)){
@@ -378,17 +380,24 @@ const Signup = () => {
           }
       }
       }
-      return (upperCaseGood && lowerCaseGood && digitGood);
+      
+      var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+      if (format.test(str)) {
+        specialGood = true;
+      }
+
+      return (upperCaseGood && lowerCaseGood && digitGood && specialGood);
     }
 
     const checkStrongPassword = (pswd) => {
       var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-      if(pswd.match(decimal)) 
+      alert(pswd);
+      if(pswd.toString().match(decimal)) 
       { 
-      //alert('Correct, try another...')
+      alert('Correct, try another...')
       return true;
       } else {
-        //alert("so weakkk");
+        alert("so weakkk");
         return false;
       }
     }

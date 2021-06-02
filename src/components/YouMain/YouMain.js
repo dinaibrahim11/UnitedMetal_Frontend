@@ -17,8 +17,10 @@ import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
+import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
+import YouFaves from '../../pages/YouFaves/YouFaves';
 import { useSelector } from 'react-redux';
-
+import PhotoStream from '../PhotoStream/PhotoStream';
 
 function a11yProps(index) {
     return {
@@ -55,6 +57,7 @@ const DUMMY_IMAGES = [{link:"https://image.shutterstock.com/image-photo/connecte
  */
 const YouMain = (props) => {
     const [tab, setTab] = useState('cameraroll');
+    
     let history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -82,7 +85,7 @@ const YouMain = (props) => {
             <div className='toolbarBg'></div>
             <div className={classes.root}>
                 <div className='navBar'>
-                    <AppBar position="static" color="default" >
+                    <AppBar position="static" color="white" >
                         <Tabs
                         value={value}
                         onChange={handleChange}
@@ -93,9 +96,9 @@ const YouMain = (props) => {
                         aria-label="scrollable auto tabs example"
                         >
                             <Tab label="About" {...a11yProps(0)} onClick={() => setTab('about')}/>
-                            <Tab label="Photostream" {...a11yProps(1)} />
+                            <Tab label="Photostream" {...a11yProps(1)} onClick={() => setTab('photostream')} />
                             <Tab label="Albums" {...a11yProps(2)} />
-                            <Tab label="Faves" {...a11yProps(3)} />
+                            <Tab label="Faves" {...a11yProps(3)} onClick={() => setTab('faves')} />
                             <Tab label="Galleries" {...a11yProps(4)} />
                             <Tab label="Groups" {...a11yProps(5)} />
                             <Tab label="CameraRoll" {...a11yProps(6)} onClick={() => setTab('cameraRoll')}/>
@@ -105,7 +108,9 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
-                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
+                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> :
+                tab === 'photostream' ? <PhotoStream userId={currentUserId} token={currentUserToken}  /> : 
+                <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>
     );
