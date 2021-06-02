@@ -115,4 +115,53 @@ width:100px;
     width: 100%;
     object-fit: cover;
   }
+div.textspace2{
+  margin:auto 70 ;
+  padding-top: 10px;
 
+  background-color: #f3f5f6;;
+}
+.tredtext{
+   font-size: 14px;
+   font-weight:500;
+   padding-left: 10%;
+}
+div.textspace3{
+  margin:auto 70 ;
+   padding-top: 10px;
+
+  background-color: #f3f5f6;;
+}
+.tredtext2{
+   font-size: 14px;
+   font-weight:500;
+   padding-left: 10%;
+}
+div.expspace2{
+
+  padding-top: 10px;
+}
+div.expspace3{
+
+  padding-top: 10px;
+}
+
+
+
+
+div.textspace4{
+  margin:auto 70 ;
+   padding-top: 10px;
+
+  background-color: #f3f5f6;;
+}
+.tredtext3{
+   font-size: 14px;
+   font-weight:500;
+   padding-left: 10%;
+}
+
+div.expspace4{
+
+  padding-top: 10px;
+}

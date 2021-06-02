@@ -28,7 +28,9 @@ import Col from 'react-bootstrap/Col';
 import {useMediaQuery} from "@material-ui/core";
 import { Divider } from '@material-ui/core';
 import ExploreItem from './ExploreItem';
-
+import TrendingItem from './TrendingItem';
+import TrendingItem2 from './TrendingItem2';
+import TrendingItem3 from './TrendingItem3';
 function ExplorePage(){
     
 
@@ -59,9 +61,41 @@ const links2 = [
     const[Images2,setImages2]=useState(links2);  
     
 
-      
-
+      const tn=[{iddd:1,srcc:"https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60", titlee:"Japan" ,hei:200,wid:200},
+      { iddd:2,srcc:"https://wallpapercave.com/wp/wp2952992.jpg", titlee:"Germany",hei:200,wid:200},
+      {iddd:3 , srcc:"https://www2.pictorem.com/collection/900_fabartdesigns_sunset,%20dawn,%20nature,%20mountains,%20landscape,%20ka%C3%A7kars,%20grassland,%20cloud,%20highland,%20outdoor,%20summer,%20sky,%20beautiful,%20stunning,%20wallpaper,.jpg", titlee:"Outdoors",hei:200,wid:200},
+      {iddd:4, srcc:"https://wallpapercave.com/wp/7wIhmgY.jpg" , titlee:"Black forest" ,hei:200,wid:200                     }
+   ,{iddd:5,srcc:"https://p4.wallpaperbetter.com/wallpaper/1013/76/901/birds-waxwing-bird-wallpaper-preview.jpg", titlee:"Sigma",hei:200,wid:200}
+    
+    
+    ]
+    const[TrendingNows,SetTrendingNow]=useState(tn);  
+    
         
+
+    const tw=[{iddd2:1,srcc2:"https://i.pinimg.com/originals/4a/38/de/4a38de34649636200219081fd9dfdb42.jpg", titlee2:"Outside" ,hei2:200,wid2:650},
+    { iddd2:2,srcc2:"https://i.pinimg.com/originals/5b/8c/85/5b8c85f1d33f821692e2b9be2ac2b86d.jpg", titlee2:"music",hei2:200,wid2:650},
+    {iddd2:3 , srcc2:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwZhRqu-mHFPTZC2U5YfCDe5PZv1l6Pq9MsQ&usqp=CAU", titlee2:"nikkor",hei2:200,wid2:650},
+    {iddd2:4, srcc2:"https://p0.pikist.com/photos/340/875/beads-nawleka%C4%87-balls-letters-fun-colorful-the-background-the-structure-of-the-invoice.jpg" , titlee2:"Vowel" ,hei2:200,wid2:650 }
+  ]
+  const[TrendingWeeks,SetTrendingWeek]=useState(tw);  
+  
+
+
+const twat=  [ {iddd3:1,  srcc3:"https://i.pinimg.com/736x/ed/5d/03/ed5d03fc057df0f78f373753b03dd981.jpg" ,titlee3:"Sunset",wid3:200 ,hei3:200  },
+{iddd3:2  ,srcc3:"https://wallpaperaccess.com/full/1089778.jpg",titlee3:"Beach" ,wid3:200,hei3:200     },
+{iddd3:3 ,srcc3:"https://wallpaperaccess.com/full/223672.jpg",titlee3:"Water",wid3:200 ,hei3:200},
+{iddd3:4  , srcc3:"https://i.pinimg.com/originals/3e/d1/77/3ed177ee9f8a536fd0f36941550ed683.jpg",titlee3:"Sky",wid3:200 ,hei3:200},
+{iddd3:5, srcc3:"https://wallpaperaccess.com/full/1178419.jpg" ,titlee3:"Flower",wid3:200  ,hei3:200  },
+{iddd3:6, srcc3:"https://wallpaperaccess.com/full/1124086.jpg",titlee3:"Snow"  ,wid3:200 ,hei3:200 },
+{iddd3:7 , srcc3:"https://wallpaperaccess.com/full/384178.jpg" ,titlee3:"Dogs",wid3:200 ,hei3:200 },
+{iddd3:8, srcc3:"https://i.pinimg.com/originals/8a/74/6d/8a746d8eb265ab3ef533fa491e93f8b4.jpg",titlee3:"City"   ,wid3:200,hei3:200},
+{iddd3:9, srcc3:"https://wallpaperaccess.com/full/4507217.jpg",titlee3:"Christmas"  ,wid3:200,hei3:200},
+{iddd3:10, srcc3:"https://wallpaperaccess.com/full/32048.jpg",titlee3:"Cats"  ,wid3:200 ,hei3:200  },
+{iddd3:11, srcc3:"https://wallpapercave.com/wp/wp6286493.jpg" ,titlee3:"birds"  ,wid3:200 ,hei3:200 },
+{iddd3:12, srcc3:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOYnQiDy3veSV8ixhnFTxBKzyvlplAPEsA3w&usqp=CAU",titlee3:"Cars"  ,wid3:200 ,hei3:200}];
+
+const[TrendingATs,SetTrendingAT]=useState(twat);  
 
 
 
@@ -129,6 +163,140 @@ I_FC={Image2.favC}
 ):(null)}
 </Grid>
 </div>
+
+{Tabb===2 ?
+(
+<div className="textspace2">
+
+ 
+<text    className="tredtext">   
+    Trending Tags- Now
+</text>
+</div>):(null)}
+
+
+<div className="expspace2"></div>
+<div className="m2" style={{paddingLeft:'10%'}}>
+<Grid container spacing={1}  >
+{Tabb===2 ? 
+
+
+
+    TrendingNows.map( (TrendingNow)=>
+    
+        
+    
+    
+        <Grid item xs={10} sm={2} md={2} >
+            
+    <TrendingItem
+    key={TrendingNow.iddd}
+    T_id={TrendingNow.iddd}
+
+   
+    T_url={TrendingNow.srcc}
+   T_t={TrendingNow.titlee}
+    T_h={TrendingNow.hei}
+    T_w={TrendingNow.wid}
+    
+    
+    />
+    </Grid>
+    
+    ):(null)}
+    </Grid>
+    </div>
+
+    {Tabb===2 ?
+(
+<div className="textspace3">
+
+ 
+<text    className="tredtext2">   
+    Trending Tags- This Week
+</text>
+</div>):(null)}
+
+<div className="expspace3"></div>
+<div className="m3" style={{paddingLeft:'10%'}}>
+<Grid container spacing={2}  >
+{Tabb===2 ? 
+
+
+
+    TrendingWeeks.map( (TrendingWeek)=>
+    
+        
+    
+    
+        <Grid item xs={17} sm={2} md={3} >
+            
+    <TrendingItem2
+    key={TrendingWeek.iddd2}
+    T_id2={TrendingWeek.iddd2}
+
+   
+    T_url2={TrendingWeek.srcc2}
+   T_t2={TrendingWeek.titlee2}
+    T_h2={TrendingWeek.hei2}
+    T_w2={TrendingWeek.wid2}
+    
+    
+    />
+    </Grid>
+    
+    ):(null)}
+    </Grid>
+    </div>
+
+    {Tabb===2 ?
+(
+<div className="textspace4">
+
+ 
+<text    className="tredtext3">   
+Tags — All Time Most Popular
+</text>
+</div>):(null)}
+
+
+
+<div className="expspace3"></div>
+<div className="m3" style={{paddingLeft:'10%'}}>
+<Grid container spacing={2}  >
+{Tabb===2 ? 
+
+
+
+    TrendingATs.map( (TrendingAT)=>
+    
+        
+    
+    
+        <Grid item xs={12} sm={2} md={3} >
+            
+    <TrendingItem3
+    key={TrendingAT.iddd3}
+    T_id3={TrendingAT.iddd3}
+
+   
+    T_url3={TrendingAT.srcc3}
+   T_t3={TrendingAT.titlee3}
+    T_h3={TrendingAT.hei3}
+    T_w3={TrendingAT.wid3}
+    
+    
+    />
+    </Grid>
+    
+    ):(null)}
+    </Grid>
+    </div>
+
+
+
+
+
 </div>
 
 
