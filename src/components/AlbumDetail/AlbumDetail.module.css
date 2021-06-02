@@ -154,16 +154,16 @@
 
 .icons{
     opacity: 0.9;
-    margin-top: -2%;
+   
     
 }
 
 .shareIcon{
     color: white;
-    font-size: 23px;
-    margin-left: 2%;
+    font-size: 20px;
+    margin-left: 4%;
     margin-right: 3%;
-    margin-top: 5px;
+    margin-top: -3%;
 }
 
 .shareIcon:hover {
@@ -172,10 +172,10 @@
 
 .downloadIcon{
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: -7px;
     margin-right: 3%;
-    margin-top: 10px;
+    margin-top: -3%;
 }
 
 .downloadIcon:hover {

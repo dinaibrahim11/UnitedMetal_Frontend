@@ -7,10 +7,12 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EditIcon from '@material-ui/icons/Edit';
 import { Redirect } from "react-router-dom";
 import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
-import { BsTrash } from "react-icons/bs";
 import {RiShareForwardLine} from "react-icons/ri";
 import {Icon} from '@material-ui/core';
-import { BurstModeOutlined } from '@material-ui/icons';
+import { Tooltip } from '@material-ui/core';
+import Modal from '@material-ui/core/Modal';
+import EditModal from '../AlbumDetail/EditModal/EditModal'
+
 
 const AlbumDetail = (props) => {
 
@@ -24,6 +26,7 @@ const AlbumDetail = (props) => {
     const [photos, setPhotos] = useState([]); 
 
     const [editTextClicked, setEditTextClicked] = useState(false);
+    const [openEditor, setOpenEditor] = useState(false);
     const [newAlbumName, setNewAlbumName] = useState('');
 
     const [primaryPhotoURL, setPrimaryPhotoURL] = useState();
@@ -32,15 +35,15 @@ const AlbumDetail = (props) => {
     const [redirect, setRedirect] = useState(null);
 
     const handleEdit = () =>{
+          setOpenEditor(true);
+    }
 
+    const handleCloseEditModal = () => {
+        setOpenEditor(false);
     }
 
     const handlePhotoClick = (id) => {
         setRedirect('/photos/' + id);
-    }
-
-    const deleteHandler = () =>{
-
     }
 
     const downloadHandler = () => {
@@ -63,14 +66,13 @@ const AlbumDetail = (props) => {
         
         setEditTextClicked(false);
         if(!albumDescription){setAlbumDescription('Click here to enter a description for this album')}
+        if(newAlbumName) {setalbumName(newAlbumName);}
         if(!newAlbumName) {setNewAlbumName(albumName)};
         console.log(albumDescription);
         postNewData();
     }
 
     const handleTitleChange = (e) => {
-       // if(e.target.value !== '') {setalbumName(e.target.value);}
-       // else{setNewAlbumName('')}
        setNewAlbumName(e.target.value);
     }
    
@@ -78,8 +80,9 @@ const AlbumDetail = (props) => {
            setAlbumDescription(e.target.value);
     }
 
+
     const postNewData = () => {
-        if(albumName){
+        if(newAlbumName){
             const newAlbumInfo = {
               "albumName": newAlbumName,
               "description": albumDescription
@@ -118,6 +121,8 @@ const AlbumDetail = (props) => {
         });
       }, [primaryPhotoID])
 
+
+
     if(redirect){
       return(
           <Redirect to={redirect} />
@@ -136,7 +141,12 @@ return(
     <div className={classes.album_cover} >
 
        <img className={classes.cover_photo} src={primaryPhotoURL}/>
-       <EditIcon className={classes.edit_icon} onClick={handleEdit}/>
+
+       <Tooltip title="Edit cover">
+       <Icon className={classes.edit_icon} onClick={handleEdit}>
+       <EditIcon />
+       </Icon>
+       </Tooltip>
 
        <div className={classes.text1} onClick={handleEditText}>
        <input type="text" className={classes.cover_title} defaultValue={albumName} value={newAlbumName} onChange={handleTitleChange}/>
@@ -150,10 +160,19 @@ return(
        </div>
 
        <div className={classes.icons}>
-        <RiShareForwardLine onClick={shareHandler} className={classes.shareIcon} /> 
-          <Icon onClick={downloadHandler} className={classes.downloadIcon} >
+
+       <Tooltip title="Share this album">
+       <Icon  onClick={shareHandler} className={classes.shareIcon} style={{fontSize:'25px'}}>
+        <RiShareForwardLine /> 
+        </Icon>
+        </Tooltip>
+
+        <Tooltip title="Download">
+          <Icon onClick={downloadHandler} className={classes.downloadIcon} style={{fontSize: '45px'}}>
                  <GetAppOutlinedIcon />
          </Icon>
+         </Tooltip>
+
        </div>
           </div>
        ) : (
@@ -170,6 +189,18 @@ return(
     <img key={photo.id} src={photo.url}  className={classes.album_photo} onClick={()=>handlePhotoClick(photo.id)}/>))}
     </div>
 
+    {openEditor === true ? (
+     <EditModal openEditor={openEditor}
+                photos={photos}
+                albumName={albumName}
+                modalTitle="Select a photo"
+                handleCloseEditModal={handleCloseEditModal}
+                albumID={albumID}
+                
+     />
+     ) : (
+      <div></div>)}
+      
 </div>
 )
 }
