@@ -70,12 +70,12 @@
 }
 
 
+
 .p__error2{
     color: red;
     line-height: 190%;
     font-size: 90%;
-    text-align: start;
-    margin-top: -3%;
+    margin-top: -1%;
 }
 
 .div__recaptcha {
