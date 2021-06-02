@@ -67,7 +67,15 @@ const YouMain = (props) => {
     const currentUserFirstName = useSelector(state => state.users.currentUser.firstName);
     const currentUserLastName = useSelector(state => state.users.currentUser.lastName);
     const currentUserDisplayName = useSelector(state => state.users.currentUser.displayName);
-
+    var myprof = false;
+    if (currentUserId == userId)
+    {
+        myprof= true;
+    }
+    else
+    {
+        myprof=false;
+    }
     const handleChange = (event, newValue) => {
     setValue(newValue);
     };
@@ -101,7 +109,7 @@ const YouMain = (props) => {
                             <Tab label="Faves" {...a11yProps(3)} onClick={() => setTab('faves')} />
                             <Tab label="Galleries" {...a11yProps(4)} />
                             <Tab label="Groups" {...a11yProps(5)} />
-                            <Tab label="CameraRoll" {...a11yProps(6)} onClick={() => setTab('cameraRoll')}/>
+                        {myprof &&  (<Tab label="CameraRoll" {...a11yProps(6)} onClick={() => setTab('cameraRoll')}/>)}
                         </Tabs>
                     </AppBar>
         

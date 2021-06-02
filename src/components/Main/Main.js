@@ -24,9 +24,9 @@ import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
 import Followers from '../../pages/Followers/Followers'
 import Upload from '../../pages/Upload/Upload'
-
 import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
 import YouFaves from '../../pages/YouFaves/YouFaves';
+import Following from '../../pages/Following/Following'
 
 /**
  * Responsible for the routing of the whole website
@@ -63,6 +63,7 @@ const Main = (props) => {
                 <Route exact path="/SearchPage" component={SearchPage} />
                 <Route exact path="/user/:id/followers" component={Followers} />
                 <Route exact path="/upload" component={Upload} />
+                <Route exact path="/user/:id/following" component={Following} />
             </Switch>
             
         </main>

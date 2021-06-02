@@ -23,7 +23,6 @@ const YouCover = (props) => {
     const [name,setName] = useState('John Silva');
     const [username,setUsername] = useState('JohnSilvaMendes');
     const userId = props.userId;
-    
     const isThisMe = props.userId === props.currentUserId;
     let history = useHistory();
 
@@ -65,9 +64,16 @@ const YouCover = (props) => {
     //             alert(err)
     //         })
     // }, []);
+    const followingHandler = () => {
+        history.push(`/user/${userId}/following`);
+    }
 
     const followHandler = () => {
-        history.push(`/user/${userId}/Followers`)
+        history.push(`/user/${userId}/Followers`);
+    }
+    
+    const followersHandler = () => {
+        history.push(`/user/${userId}/followers`);
     }
 
     const picHandler = (event) => {
@@ -109,8 +115,8 @@ const YouCover = (props) => {
         <img className='userPic' alt='profilePic' onClick={()=> setPicChoose(true)} width ='65' height ='65' src={pic} />
         <h2 className='youPageName'>{name}</h2>
         <h6 className='youPageUserName'>{username}</h6>
-        <h6 className='youFollowers' onClick={()=>followHandler()}>{followers} Followers .</h6>
-        <h6 className='youFollowing'>{following} Following</h6>
+        <h6 className='youFollowers' onClick={followersHandler}>{followers} Followers .</h6>
+        <h6 className='youFollowing' onClick={followingHandler}>{following} Following</h6>
     </div>
     );
 };
