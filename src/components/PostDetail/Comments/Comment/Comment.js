@@ -121,7 +121,7 @@ const Comment = (props) => {
                     {props.commentText}
                 </textarea>
             </div>
-            <button className={classes.add__comment__button} onClick={handleEditingSubmit} >Done</button>
+            <button className={classes.add__comment__button} onClick={handleEditingSubmit} id="photodetail-edit-done">Done</button>
         </form>
         
         
@@ -132,8 +132,8 @@ const Comment = (props) => {
             <div className={classes.comment__content}>
                     {props.commentText}
             </div>
-            {(props.isPhotoMine && isDeleteIconShown) && <DeleteIcon onClick={handleRemoveComment} className={classes.icon} fontSize="small" />}
-            {(props.isPhotoMine && isEditIconShown) && <EditIcon onClick={handleEdit} className={classes.icon} fontSize="small" />}
+            {(props.isPhotoMine && isDeleteIconShown) && <DeleteIcon onClick={handleRemoveComment} className={classes.icon} fontSize="small" id="photodetail-delete-btn"/>}
+            {(props.isPhotoMine && isEditIconShown) && <EditIcon onClick={handleEdit} className={classes.icon} fontSize="small" id="photodetail-edit-btn" />}
         </Fragment>
     );
 

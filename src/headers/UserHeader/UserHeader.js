@@ -88,7 +88,7 @@ const UserHeader = (props) => {
                   </div>
                   <ul className="nav-menu desktop-only" role="menubar">
                     <li data-context="you">
-                      <a role="menuitem" data-track="gnYouMainClick" className="gn-title you" href="/photos/192903766@N08/" aria-haspopup="true" aria-expanded="false" aria-label="You">You</a>
+                      <a role="menuitem" data-track="gnYouMainClick" className="gn-title you" href={`/user/${currentUserId}`} aria-haspopup="true" aria-expanded="false" aria-label="You">You</a>
                       <ul className="gn-submenu" role="menu" aria-label="submenu">
                         <li className="menuitem">
                           <a role="menuitem" aria-label="About" data-track="gnYouAboutClick" href="/about" onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}`)}}>About</a>
@@ -97,13 +97,13 @@ const UserHeader = (props) => {
                           <a data-track="gnYouPhotostreamClick"  onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}/photostream`)}} href="/photostream">Photostream</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Albums">
-                          <a data-track="gnYouSetsClick" href="/photos/192903766@N08/albums">Albums</a>
+                          <a data-track="gnYouSetsClick" href="/albums">Albums</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Faves">
                           <a data-track="gnYouFavoritesClick"  onClick={(e) => {e.preventDefault(); history.push("/faves")}} href="/faves">Faves</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Galleries">
-                          <a data-track="gnYouGalleriesClick" href="/photos/192903766@N08/galleries">
+                          <a data-track="gnYouGalleriesClick" href="/galleries">
                             Galleries
                           </a>
                         </li>

@@ -23,11 +23,12 @@ const TagItem = (props) => {
             tags: props.tagText
         }, { 
             headers: {
-            "Authorization": `Bearer ${props.token}` 
+            "authorization": `Bearer ${props.token}` 
         }}).then(res => {
             console.log("REMOVE TAG");
             console.log(res);
         }).catch(err => {
+            console.log("ERROR removing tag");
             console.log(err.response);
         })
     }

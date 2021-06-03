@@ -76,7 +76,9 @@ const YouAbout = (props) => {
             .then(res => {
                 if (res.data.data) {
                     setBio(res.data.data.aboutMe);
+                    
                 } 
+                console.log("ABOUT ME");
                 console.log(res);
                 console.log(res.data.data.aboutMe)
             })

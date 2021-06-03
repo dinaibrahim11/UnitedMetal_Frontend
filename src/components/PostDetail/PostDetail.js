@@ -100,15 +100,18 @@ const PostDetail = (props) => {
     const [photo, setPhoto] = useState(null);
     const [dateUploaded, setDateUploaded] = useState(null);
 
+    const [ownerId, setOwnerId] = useState(null);
+
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
     const loggedInUserFaves = useSelector(state => state.users.currentUser.favedPhotos);
 
     const tmpToken = currentUserToken;//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjY1ODg0MWQ1OTNjNjVjOGMxYTc5OCIsImlhdCI6MTYyMjU3NjgyMywiZXhwIjoxNjMwMzUyODIzfQ.8mCry7WtW7Z7OkhKTF13UWO_H_SDt2VAF49ucCwyDpk";
 
+    
+
     //const tmpPhotoId = "60b57a56eb47f20b64271884";
     const tmpPhotoId = postId; //"60b6614e1d593c65c8c1a79e";
     const tmpUserId = currentUserId; //"60b658841d593c65c8c1a798";
-    let ownerId = null;
 
 
     useEffect(() => {
@@ -123,7 +126,18 @@ const PostDetail = (props) => {
                 
                 setPhoto(res.data.data);
                 setTags(res.data.data.tags);
-                
+                console.log("PHOTO")
+                console.log(res);
+                console.log("OWNER ID");
+                setOwnerId(res.data.data.userId);
+                API.get(`user/${res.data.data.userId}/real-name`)
+                .then(res => {
+                    setFirstName(res.data.data.firstName);
+                    setLastName(res.data.data.lastName);
+                }).catch(err => {
+                    console.log("[PostDetail]::RealName")
+                });
+
             })
 
         API.get(`photo/${tmpPhotoId}`)
@@ -137,7 +151,7 @@ const PostDetail = (props) => {
                 console.log(err.response);
             })
             
-        API.get(`user/${tmpUserId}/real-name`)
+        API.get(`user/${ownerId}/real-name`)
             .then(res => {
                 setFirstName(res.data.data.firstName);
                 setLastName(res.data.data.lastName);
@@ -151,6 +165,15 @@ const PostDetail = (props) => {
                 if (res.data.status === 'success') {
                     dispatch(usersActions.setFavedPhotos(res.data.data.favourites));
                     setFavedPhotos(res.data.data.favourites);
+
+                    for (let i = 0; i < favedPhotos.length; i++) {
+                        if (favedPhotos[i].userId._id === tmpUserId) {
+                            setIsFaved(true);
+                            dispatch(usersActions.toggleComments());
+                            //window.location.reload(true);
+                            break;
+                        }
+                    }
                 }
                 console.log(res)
                 
@@ -158,14 +181,14 @@ const PostDetail = (props) => {
                 console.log(err.response);
             });
 
-        for (let i = 0; i < favedPhotos.length; i++) {
-            if (favedPhotos[i].userId._id === tmpUserId) {
-                setIsFaved(true);
-                dispatch(usersActions.toggleComments());
-                //window.location.reload(true);
-                break;
-            }
-        }
+        // for (let i = 0; i < favedPhotos.length; i++) {
+        //     if (favedPhotos[i].userId._id === tmpUserId) {
+        //         setIsFaved(true);
+        //         dispatch(usersActions.toggleComments());
+        //         //window.location.reload(true);
+        //         break;
+        //     }
+        // }
 
     }, [postId, rerender]);
 
@@ -370,7 +393,7 @@ const PostDetail = (props) => {
     }
 
     const handleGoToProfile = () => {
-        history.push(`/user/${tmpUserId}`);
+        history.push(`/user/${ownerId}`);
     }
 
 
@@ -428,14 +451,15 @@ const PostDetail = (props) => {
                             </div>
                             <p onClick={handleGoToProfile} className={classes.real__name} >{firstName}{" "}{lastName}</p>
                             {/* <button className={classes.follow__button}>Following</button> */}
-                            {isPhotoMine ? null : isFollowing ? <FollowingButton onClickUnFollow={handleUnFollow} /> : <FollowButton onClickFollow={handleFollowClick} />}
+                            {(ownerId === currentUserId) ? null : isFollowing ? <FollowingButton onClickUnFollow={handleUnFollow} /> : <FollowButton onClickFollow={handleFollowClick} />}
+                            
                             
                         </div>
                         <div style={{display: 'flex'}}>
                             <button className={classes.pro__button} >PRO</button>
-                            <PhotoDescription token={tmpToken} postId={postId} isEditable={!isPhotoMine} title="Title" description="This is a description" />
+                            <PhotoDescription token={tmpToken} postId={postId} isEditable={ownerId === currentUserId} title="Title" description="This is a description" />
                         </div>
-                        <Comments token={currentUserToken} isPhotoMine={isPhotoMine} userId={photo && photo.userId} photoId={postId}/>
+                        <Comments token={currentUserToken} isPhotoMine={ownerId === currentUserId} userId={photo && photo.userId} photoId={postId}/>
 
                         <div>
                             
@@ -448,15 +472,15 @@ const PostDetail = (props) => {
                                 <div className={classes.right__stats_details__container}>
                                     <div className={classes.stat__item}>
                                         <span>{photo && photo.views}</span>
-                                        <span className={classes.stats__label}>views</span>
+                                        <span className={classes.stats__label} id="photodetail-views-counts">views</span>
                                     </div>
                                     <div className={classes.stat__item}>
                                         <span>{photo && photo.favourites}</span>
-                                        <span className={classes.stats__label}>faves</span>
+                                        <span className={classes.stats__label} id="photodetail-faves-count">faves</span>
                                     </div>
                                     <div className={classes.stat__item}>
                                         <span>{photo && photo.comments.length}</span>
-                                        <span className={classes.stats__label}>comments</span>
+                                        <span className={classes.stats__label} id="photodetail-comments-count">comments</span>
                                     </div>
                                 </div>
                                 <div className={classes.date__taken}>
@@ -486,7 +510,7 @@ const PostDetail = (props) => {
                                             photoSrc={gallery.photoSrc} 
                                             galleryTitle={gallery.title} 
                                             itemsCount={gallery.itemsCount} 
-                                            isPhotoMine={isPhotoMine}
+                                            isPhotoMine={ownerId === currentUserId}
                                         />
                                     ))}
                                 </ul>
@@ -494,7 +518,7 @@ const PostDetail = (props) => {
                             </div>
                         </div> 
 
-                        {isPhotoMine && (
+                        {(ownerId === currentUserId) && (
                         <div className={classes.sub__photo__right__row5}>
                             <div className={classes.galleries}>
                                 <h5 className={classes.galleries__count}>

@@ -42,6 +42,7 @@ const Comments = (props) => {
     const [addedComment, setAddedComment] = useState(false);
     //const rerender = useSelector(state => state.users.toggleCommentsPostDetail); //when a new comment is added, rerender
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
+    const loggedInUserId = useSelector(state => state.users.currentUser.userId);
 
 
     useEffect(() => {
@@ -177,7 +178,7 @@ const Comments = (props) => {
                     
                     <Comment key={comment._id} commentId={comment._id} avatarPhoto={comment.avatarPhoto}
                         author={`${comment.userId.firstName} ${comment.userId.lastName}`} date={comment.date}
-                        commentText={comment.body} isPhotoMine={comment.userId._id === props.userId} 
+                        commentText={comment.body} isPhotoMine={comment.userId._id === loggedInUserId} 
                         authorId={comment.userId._id}
                         token={tmpToken}
                         photoId={props.photoId}

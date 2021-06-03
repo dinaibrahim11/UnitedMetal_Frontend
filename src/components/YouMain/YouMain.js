@@ -117,7 +117,7 @@ const YouMain = (props) => {
             </div>
             <div>
                 {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> :
-                tab === 'photostream' ? <PhotoStream userId={currentUserId} token={currentUserToken}  /> : 
+                tab === 'photostream' ? <PhotoStream userId={userId} token={currentUserToken}  /> : 
                 <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
             </div>
         </div>

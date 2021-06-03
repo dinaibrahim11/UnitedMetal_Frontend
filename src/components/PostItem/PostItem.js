@@ -44,7 +44,9 @@ const PostItem = (props) => {
     const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
     const [isLinkCopied, setIsLinkCopied] = useState(false);
     const [comments, setComments] = useState([]);
-    const token = useSelector(state => state.users.currentUser.token)
+    const token = useSelector(state => state.users.currentUser.token);
+    const currentUserId = useSelector(state => state.users.currentUser.userId)
+    const [favedPhotos, setFavedPhotos] = useState([]);
 
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
 
@@ -67,7 +69,40 @@ const PostItem = (props) => {
         }).catch(err => {
             console.log(err.response);
         });
+
+
+        // to set the fav button filled or not
+        API.get(`user/${currentUserId}/faves`)
+            .then(res => {
+                console.log("FAVED");
+                if (res.data.status === 'success') {
+                    dispatch(usersActions.setFavedPhotos(res.data.data.favourites));
+                    setFavedPhotos(res.data.data.favourites);
+
+                    for (let i = 0; i < favedPhotos.length; i++) {
+                        if (favedPhotos[i].userId._id === currentUserId) {
+                            setIsFaved(true);
+                            dispatch(usersActions.toggleComments());
+                            //window.location.reload(true);
+                            break;
+                        }
+                    }
+                }
+                console.log(res)
+                
+            }).catch(err => {
+                console.log(err.response);
+            });
             
+            for (let i = 0; i < favedPhotos.length; i++) {
+                if (favedPhotos[i].userId._id === currentUserId) {
+                    setIsFaved(true);
+                    dispatch(usersActions.toggleComments());
+                    //window.location.reload(true);
+                    break;
+                }
+            }
+
     }, [props.postId, rerender]);
     
     const handleFav = () => {

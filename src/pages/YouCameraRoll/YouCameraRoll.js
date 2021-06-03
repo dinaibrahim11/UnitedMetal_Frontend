@@ -51,6 +51,7 @@ const YouCameraRoll = (props) => {
       };
 
     useEffect (()=> {
+        let isMounted = true; 
         API.get('user/camera-roll', {
             headers: {
                 "Authorization": `Bearer ${props.token}` 
@@ -81,7 +82,7 @@ const YouCameraRoll = (props) => {
 
              })
 
-             
+             return () => { isMounted = false };  
     },[])
     const handleCloseShareModal = () => {
         setIsShareModalOpen(false);
