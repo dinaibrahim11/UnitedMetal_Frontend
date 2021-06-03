@@ -20,7 +20,6 @@ import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
 import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
 import YouFaves from '../../pages/YouFaves/YouFaves';
 import { useSelector } from 'react-redux';
-import PhotoStream from '../PhotoStream/PhotoStream';
 
 function a11yProps(index) {
     return {
