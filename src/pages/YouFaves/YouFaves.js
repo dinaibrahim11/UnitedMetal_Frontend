@@ -88,18 +88,18 @@
 
             <div className="view photo-list-view requiredToShowOnServer" style={{height: '752px'}} data-view-signature="photo-list-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2Ffavorites%2F__geo_1__hideMorePages_false__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__modelRegistryName_favorite-models__nsid_192903766%40N08__pageParams_1__photoListConfig_1__requiredToShowOnClient_true__requiredToShowOnServer_true__subnavConfig_1__userId_192903766%40N08">
               <div className="view photo-list-photo-view requiredToShowOnServer awake" style={{transform: 'translate(0px, 0px)', WebkitTransform: 'translate(0px, 0px)', msTransform: 'translate(0px, 0px)', width: '555px', height: '370px', backgroundImage: 'url(//live.staticflickr.com/65535/51213109579_f8db920c87_z.jpg)'}} 
-              onClick={(e) => {e.preventDefault(); history.push("//live.staticflickr.com/65535/51213109579_f8db920c87_z.jpg")}}
+              
               data-view-signature="photo-list-photo-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2Ffavorites%2F__contextSuffix_faves-192903766%40N08__engagementModelName_photo-engagement-models__geo_1__hideMorePages_false__id_51213109579__interactionViewName_photo-list-photo-interaction-view__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_favorite-models__nsid_192903766%40N08__pageParams_1__parentContainer_1__parentSignature_photolist-3r1__removeOwnFaves_true__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1__userId_192903766%40N08">
                 <div className="interaction-view" />
               </div>
               <div className="view photo-list-photo-view requiredToShowOnServer awake" style={{transform: 'translate(559px, 0px)', WebkitTransform: 'translate(559px, 0px)', msTransform: 'translate(559px, 0px)', width: '659px', height: '370px', backgroundImage: 'url(//live.staticflickr.com/65535/51210622992_ce23a8135c_c.jpg)'}} 
-              onClick={(e) => {e.preventDefault(); history.push("//live.staticflickr.com/65535/51210622992_ce23a8135c_c.jpg")}}
+            
 
               data-view-signature="photo-list-photo-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2Ffavorites%2F__contextSuffix_faves-192903766%40N08__engagementModelName_photo-engagement-models__geo_1__hideMorePages_false__id_51210622992__interactionViewName_photo-list-photo-interaction-view__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_favorite-models__nsid_192903766%40N08__pageParams_1__parentContainer_1__parentSignature_photolist-3r1__removeOwnFaves_true__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1__userId_192903766%40N08">
                 <div className="interaction-view" />
               </div>
               <div className="view photo-list-photo-view requiredToShowOnServer awake" style={{transform: 'translate(0px, 374px)', WebkitTransform: 'translate(0px, 374px)', msTransform: 'translate(0px, 374px)', width: '557px', height: '370px', backgroundImage: 'url(//live.staticflickr.com/65535/51212180157_b4c9c32efe_z.jpg)'}} 
-             onClick={(e) => {e.preventDefault(); history.push("//live.staticflickr.com/65535/51212180157_b4c9c32efe_z.jpg")}}
+             
 
               data-view-signature="photo-list-photo-view__UA_1__adConfig_1__baseURL_%2Fphotos%2F192903766%40N08%2Ffavorites%2F__contextSuffix_faves-192903766%40N08__engagementModelName_photo-engagement-models__geo_1__hideMorePages_false__id_51212180157__interactionViewName_photo-list-photo-interaction-view__isMobile_false__isOwner_true__isTwitterbot_false__isViewingSelf_true__layoutItem_1__model_1__modelRegistryName_favorite-models__nsid_192903766%40N08__pageParams_1__parentContainer_1__parentSignature_photolist-3r1__removeOwnFaves_true__requiredToShowOnClient_true__requiredToShowOnServer_true__showInteractionBarPlaceholder_false__subnavConfig_1__userId_192903766%40N08">
                 <div className="interaction-view" />
