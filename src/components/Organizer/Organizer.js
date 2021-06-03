@@ -2,19 +2,10 @@ import React, {useState, useEffect, useReducer} from 'react';
 import classes from './Organizer.module.css'
 import { Redirect } from "react-router-dom";
 import API from '../../fakeAPI';
-import { makeStyles } from '@material-ui/core/styles';
-import Alert from '@material-ui/lab/Alert';
+import { usersActions } from '../../storev2/users-slice';
+import {useSelector, useDispatch} from 'react-redux'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
-
-const Organizer = () => {
+const Organizer = (props) => {
 
     const [cameraRollPhotos, setCameraRollPhotos] = useState([]);
     const [droppedOver, setIsDroppedOver] = useState(false);
@@ -43,7 +34,8 @@ const Organizer = () => {
     const [droppedPhotos, setDroppedPhotos] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const classes = useStyles();
+    const userId = useSelector(state => state.users.currentUser.userId);
+    const token = useSelector(state => state.users.currentUser.token);
 
     useEffect(() => {
       getCameraRollPhotos();
@@ -144,11 +136,26 @@ const handleLowerDrop = (ev) => {
   }
 }
 
-    const getCameraRollPhotos = () => {
+    /*const getCameraRollPhotos = () => {
       API.get('photos' )
       .then(response => {
         setCameraRollPhotos(response.data);
     })
+  }*/
+
+  const getCameraRollPhotos = () => {
+    API.get(`user/${userId}/stream`, { 
+      headers: {
+          "Authorization": `Bearer ${token}` 
+      }}).then(res => {
+      console.log("PHOTOSTREAM");
+      console.log(res);
+     // setPhotos(res.data.data.photos.photos);
+      setCameraRollPhotos(res.data.data.photos.photos);
+  }).catch(err => {
+      console.log(err.response);
+  });
+
   }
 
 const postDataHandler = () => {

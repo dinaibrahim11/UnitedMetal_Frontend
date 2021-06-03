@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import API from '../../fakeAPI';
 import AlbumItem from '../../components/AlbumItem/AlbumItem'
 import GridList from '@material-ui/core/GridList';
+import DeleteModal from '../../components/AlbumItem/DeleteModal/DeleteModal'
 
 
 const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab}) => {
