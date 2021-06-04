@@ -344,7 +344,8 @@ const Signup = () => {
               // TODO: change to email confirmation screen
               setRedirect("/home");
             } 
-      }).catch(err => {
+      })
+      /*.catch(err => {
         console.log(err.response);
         console.log(err.response.data.status);
         if (err.response.data.status === "fail") {
@@ -355,7 +356,7 @@ const Signup = () => {
           //setpassError(err.response.data.message);
           setisSubmitting(false);
         } 
-      })
+      })*/
     }
 
   }
