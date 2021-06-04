@@ -28,6 +28,11 @@ import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
 import YouFaves from '../../pages/YouFaves/YouFaves';
 import Following from '../../pages/Following/Following'
 
+import AccountSettings from '../../components/UserSettings/AccountSettings';
+import editPass from '../UserSettings/editPass';
+import passChange from '../UserSettings/passChange';
+import dispChange from '../UserSettings/dispChange';
+import ExplorePage from '../../components/Explore/ExplorePage';
 /**
  * Responsible for the routing of the whole website
  * @example <Main />
@@ -64,6 +69,11 @@ const Main = (props) => {
                 <Route exact path="/upload" component={Upload} />
                 <Route exact path="/user/:id/following" component={Following} />
                 <Route exact path="/SearchPage/" component={SearchPage}/>
+                <Route exact path="/AccountSettings" component={AccountSettings} />
+                <Route exact path="/editPass" component={editPass} />
+                <Route exact path="/passChange" component={passChange} />
+                <Route exact path="/dispChange" component={dispChange} />
+                <Route exact path="/ExplorePage" component={ExplorePage} />
             </Switch>
             
         </main>

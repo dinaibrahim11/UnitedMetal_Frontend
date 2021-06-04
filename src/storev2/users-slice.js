@@ -101,6 +101,14 @@ const usersSlice = createSlice({
             localStorage.removeItem('currentUser');
         },
 
+
+        changeDisplayName(state, action) {
+            state.currentUser.displayName = action.payload;
+          },
+
+
+  
+
         signup(state, action) {
             const { email, password, userId, token, displayName, firstName, lastName } = action.payload;
             let user = {

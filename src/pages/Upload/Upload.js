@@ -45,7 +45,7 @@ const Upload = (props) => {
                  console.log(res)
              }) .catch( res => {
 
-                 alert(res)
+                 //alert(res)
                  console.log(res.response)
              })
 

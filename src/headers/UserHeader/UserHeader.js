@@ -118,14 +118,14 @@ const UserHeader = (props) => {
                       </ul>
                     </li>
                     <li data-context="explore">
-                      <a role="menuitem" data-track="gnExploreMainClick" className="gn-title explore" href="/explore" aria-haspopup="true" aria-expanded="false" aria-label="Explore">
+                      <a role="menuitem" data-track="gnExploreMainClick" className="gn-title explore" href="/ExplorePage" aria-haspopup="true" aria-expanded="false" aria-label="Explore">
                         Explore
                       </a>
                       <ul className="gn-submenu" role="menu" aria-label="submenu">
                         <li role="menuitem" aria-label="Recent Photos">
-                          <a data-track="gnExploreRecentPhotosClick" href="/explore">Recent Photos</a></li>
+                          <a data-track="gnExploreRecentPhotosClick" href="/ExplorePage">Recent Photos</a></li>
                         <li role="menuitem" aria-label="Trending">
-                          <a data-track="gnExploreTagsClick" href="/photos/tags">Trending</a></li>
+                          <a data-track="gnExploreTagsClick" href="/ExplorePage">Trending</a></li>
                         
                       </ul>
                     </li>
@@ -189,7 +189,7 @@ const UserHeader = (props) => {
                     <li role="menuitem">
                       <div role="menuitem" className="view account-menu-view requiredToShowOnServer" data-view-signature="account-menu-view__UA_1__adConfig_1__enableBrowserUpgradeBanner_true__filterType_all__isMobile_false__isOwner_true__layoutType_large__nsid_192903766%40N08__requiredToShowOnClient_true__requiredToShowOnServer_true__resetStoredBatchId_true__showFeedBannerAd_true">	<div className="c-account-menu">
                           <div className="c-account-buddyicon">
-                            <a href="/settings" tabIndex={0} aria-haspopup="true" aria-expanded="false" aria-label="Your account">
+                            <a href="/AccountSettings" tabIndex={0} aria-haspopup="true" aria-expanded="false" aria-label="Your account">
                               <div className="avatar person tiny" style={{backgroundImage: 'url(//combo.staticflickr.com/pw/images/buddyicon06.png#192903766@N08)'}} />
                             </a>
                         

@@ -74,7 +74,7 @@ const YouCameraRoll = (props) => {
                  setPics(picArray)
                  
              }) .catch( res => {
-                alert(res.response);
+                //res.response);
                 console.log(res.response);
              })
     }

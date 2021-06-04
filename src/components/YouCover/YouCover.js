@@ -36,7 +36,7 @@ const YouCover = (props) => {
                     console.log(userId)
                 }
             }).catch(err => {
-                alert(err);
+                //alert(err);
             });
         
         API.get(`user/${userId}/real-name`)
