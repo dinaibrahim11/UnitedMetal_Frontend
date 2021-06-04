@@ -12,7 +12,8 @@
 .youPageName {
     font-weight: 100;
     position: absolute;
-    top: 120px;
+    font-size:xx-large;
+    top: 100px;
     left: 150px;
     color: white;
 }
@@ -20,16 +21,23 @@
 .youPageUserName {
     font-weight: 100;
     position: absolute;
-    top: 165px;
-    left: 152px;
+    font-size: small;
+    top: 140px;
+    left: 150px;
     color: white;
     visibility: visible;
+}
+
+.shareMod {
+    position: fixed;
+    width: 100%;
 }
 
 .youFollowers {
     font-weight: 100;
     position: absolute;
-    top: 165px;
+    font-size: small;
+    top: 140px;
     left: 302px;
     color: white;
 }
@@ -37,7 +45,8 @@
 .youFollowing {
     font-weight: 100;
     position: absolute;
-    top: 165px;
+    font-size:small;
+    top: 140px;
     left: 392px;
     color: white;
 }
@@ -47,13 +56,19 @@
         visibility: hidden;
     }
     
+    .youPageName {
+        font-size: large;
+        top: 120px;
+        font-weight: 200;
+    }
+
     .youFollowers {
-        top: 165px;
+        top: 140px;
         left: 152px;
     }
 
     .youFollowing {
-        top: 165px;
+        top: 140px;
         left: 242px;
     }
 }

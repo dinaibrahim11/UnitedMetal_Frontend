@@ -294,12 +294,6 @@
     background-color: lightblue;
 }
 
-.uploadImg {
-    position: relative;
-    top: 160px;
-    left: 450px;
-}
-
 .images {
     position: absolute;
     top: 250px;
@@ -336,24 +330,23 @@
 }
 
 .uploadButton {
-    position: relative;
-    top: 20px;
-    left: 0px;
+    position: absolute;
+    top: 350px;
+    left: 300px;
     z-index: 2;
     opacity: 0;
 }
 
-.colorButton {
-    background-color: rgb(4, 144, 231);
+.coloButton {
+    position: absolute;
+    top: 350px;
+    left: 300px;
+    background-color: rgb(58, 130, 211);
     color: white;
-    width: 293px;
+    width: 250px;
     height: 25px;
-    position: relative;
-    left: 0px;
-    bottom: 5px;
-    font-size: medium;
-    font-weight: 100;
     text-align: center;
+    font-size: medium;
 }
 
 .toolbarBg {
@@ -387,6 +380,13 @@
     left: 10px;
     top: 40px;
     z-index: -1;
+}
+
+.headingUp {
+    position: absolute;
+    top: 300px;
+    left: 225px;
+    font-size: large;
 }
 
 .rollImage {
@@ -593,6 +593,11 @@
     width: 98px;
     height: 20px;
     opacity: 0;
+}
+
+.shareMod {
+    position: absolute;
+    left:0px;
 }
 
 .share {

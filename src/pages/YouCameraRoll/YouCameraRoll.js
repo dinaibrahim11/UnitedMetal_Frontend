@@ -14,11 +14,12 @@ import API from '../../fakeAPI';
 const YouCameraRoll = (props) => {
     var objectsArray = []
     var dateArray = []
+    var arr = []
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedImg, setSelectedImg] = useState(null);
     const [localImgUrl, setLocalImgUrl] = useState(null);
     const [privacyChoice, setPrivacyChoice] = useState(false);
-    const [imgState, setImgState] = useState(null);
+    const [imgState, setImgState] = useState([]);
     const [isShareModalOpen,setIsShareModalOpen] = useState(false);
     const [pics,setPics] = useState([])
     
@@ -122,7 +123,28 @@ const YouCameraRoll = (props) => {
 
     const uncheckOthersAndSet = (id) => {
         var boxes = document.getElementsByName('checkBox');
-        setImgState(id);
+        
+        if (id == 'public')
+        {
+            arr.push([true,false,false])
+        }
+        else if (id == 'friends')
+        {
+            arr.push([false,true,false])
+        }
+        else if (id == 'family')
+        {
+            arr.push([false,false,true])
+        }
+        else if (id == 'familyAndFriends')
+        {
+            arr.push([false,true,true])
+        }
+        else if (id == 'private')
+        {
+            arr.push([false,false,false])
+        }
+        setImgState(arr);
         for (let item of boxes) {
             if (item.id != id) {
                 item.checked=false;
@@ -142,6 +164,26 @@ const YouCameraRoll = (props) => {
         //     .then(res => {
         //         console.log(res)
         //     })
+    }
+
+    const changeHandle = () => {
+        setPrivacyChoice(false)
+        API.patch(`photo/${selectedImg.id}`, {
+            headers: {
+                "Authorization": `Bearer ${props.token}` 
+            }},
+            {"permissions": {
+                "public": true,
+                "friend": true,
+                "family": true
+            }})
+            .then(res => {
+                console.log(res)
+            }) .catch( res => {
+
+                alert(res)
+                console.log(res.response)
+            })
     }
 
     for (let item of pics) {
@@ -191,7 +233,7 @@ const YouCameraRoll = (props) => {
                             </div>
                             </div>
                             
-                            <button className='savePrivacyButton' onClick={()=>setPrivacyChoice(false)}>Change</button>
+                            <button className='savePrivacyButton' onClick={changeHandle}>Change</button>
                             <button className='closePrivacyButton' onClick={()=>setPrivacyChoice(false)}>Cancel</button>
                         </div>
                     )}
@@ -212,10 +254,12 @@ const YouCameraRoll = (props) => {
                     <div className='share'>
                         Share
                         <button className='shareButton' ref={button => {clickShare=button}} onClick={()=>setIsShareModalOpen(true)}></button>
+                        <div className='shareMod'>
                         <ShareModal isShareModalOpen={isShareModalOpen}
                                     handleCloseShareModal={handleCloseShareModal}
                                     modalTitle="Share the photo"
                                     externalShareLink={selectedImg.link}/>
+                        </div>
                     </div>
                     
                 </div>
@@ -224,13 +268,11 @@ const YouCameraRoll = (props) => {
             )}
             
             { !objectsArray.length &&
-            (<div className='uploadImg'>
-                <div>Got a lot of photos? We got a lot of space</div>
+            (<div>
+                <div className='headingUp'>Got a lot of photos? We got a lot of space</div>
                 <div className='upButton'>
                     <input className='uploadButton' accept='image/*' multiple type='file' onChange={fileSelectionHandler}/>
-                    <div className='colorButton'>Select files to upload</div>
-                    <img className='preview' width='100' height='100' src={localImgUrl}/>
-                    <h5 className='previewTxt'>Preview</h5>
+                    <div className='coloButton'>Select files to upload</div>
                 </div> 
             </div>)}
             <div className='images'>
