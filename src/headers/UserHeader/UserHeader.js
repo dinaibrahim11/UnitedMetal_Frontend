@@ -117,14 +117,14 @@ const UserHeader = (props) => {
                       </ul>
                     </li>
                     <li data-context="explore">
-                      <a role="menuitem" data-track="gnExploreMainClick" className="gn-title explore" href="/explore" aria-haspopup="true" aria-expanded="false" aria-label="Explore">
+                      <a role="menuitem" data-track="gnExploreMainClick" className="gn-title explore" href="/ExplorePage" aria-haspopup="true" aria-expanded="false" aria-label="Explore">
                         Explore
                       </a>
                       <ul className="gn-submenu" role="menu" aria-label="submenu">
                         <li role="menuitem" aria-label="Recent Photos">
-                          <a data-track="gnExploreRecentPhotosClick" href="/explore">Recent Photos</a></li>
+                          <a data-track="gnExploreRecentPhotosClick" href="/ExplorePage">Recent Photos</a></li>
                         <li role="menuitem" aria-label="Trending">
-                          <a data-track="gnExploreTagsClick" href="/photos/tags">Trending</a></li>
+                          <a data-track="gnExploreTagsClick" href="/ExplorePage">Trending</a></li>
                         
                       </ul>
                     </li>

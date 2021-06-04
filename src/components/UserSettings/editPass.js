@@ -48,7 +48,7 @@ function EditPass(){
     var cardStyling = {
         variant:'outlined',
             height: '17%',
-            width:'23%',
+            width:'25%',
           transitionDuration: '0.1s',
        
           boxShadow: "none" 
@@ -136,6 +136,16 @@ function EditPass(){
 
 
 
+          
+
+/**
+ *  the function checks for the password if its good or not
+ * it checks if it has a special charachter and upper case
+ * it checks if its length is minimum 12
+ * @param {*} str  the password string
+ * @returns {boolean} 
+ */
+
 
 
           const checkGoodPassword = (str) => {
@@ -191,7 +201,7 @@ const setpass=()=> {
  if(values.password!=values2.password2){
      if(!checkGoodPassword(values2.password2))
      {
-       
+   
      }
      else{
          
