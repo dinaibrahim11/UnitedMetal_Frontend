@@ -10,6 +10,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Unauthorized from '../Unauthorized/Unauthorized';
 import { useSelector } from 'react-redux';
 import YouMain from '../YouMain/YouMain';
+import Organizer from '../Organizer/Organizer'
 
 import Welcome from '../../components/Welcome/Welcome';
 import Login from '../../components/Login/Login';
@@ -27,6 +28,9 @@ import Upload from '../../pages/Upload/Upload'
 import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
 import YouFaves from '../../pages/YouFaves/YouFaves';
 import Following from '../../pages/Following/Following'
+import YouAlbums from '../../pages/YouAlbums/YouAlbums'
+import AlbumItem from '../AlbumItem/AlbumItem';
+import AlbumDetail from '../AlbumDetail/AlbumDetail'
 
 import AccountSettings from '../../components/UserSettings/AccountSettings';
 import editPass from '../UserSettings/editPass';
@@ -74,6 +78,11 @@ const Main = (props) => {
                 <Route exact path="/passChange" component={passChange} />
                 <Route exact path="/dispChange" component={dispChange} />
                 <Route exact path="/ExplorePage" component={ExplorePage} />
+                <Route exact path="/albums" render={(props) => <YouMain {...props} currentTab="albums" /> } />
+                <Route exact path="/albumss" component={YouAlbums} />
+                <Route exact path="/collections" render={(props) => <YouMain {...props} currentTab="albums" /> } />
+                <Route exact path="/organize" component={Organizer}/>
+                <Route exact path="/albums/:id" component={AlbumDetail} />
             </Switch>
             
         </main>

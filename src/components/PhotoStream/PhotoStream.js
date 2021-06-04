@@ -32,6 +32,7 @@ export default function PhotoStream(props) {
                 "authorization": `Bearer ${props.token}` 
             }}).then(res => {
             console.log("PHOTOSTREAM");
+            console.log(props.userId);
             console.log(res);
             setPhotos(res.data.data.photos.photos);
         }).catch(err => {

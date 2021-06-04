@@ -2,7 +2,10 @@
 import React from 'react';
 import GuestHeader from '../../headers/GuestHeader/GuestHeader';
 import UserHeader from '../../headers/UserHeader/UserHeader';
+import OrganizeHeader from '../../headers/OrganizeHeader/OrganizeHeader'
+//import './Header.css';
 import { useSelector } from 'react-redux';
+import {useLocation} from "react-router-dom";
 
 /**
  * Navigation bar at the top
@@ -15,6 +18,16 @@ const Header = () => {
     // const islogged = JSON.parse(localStorage.getItem('currentUser'));
     // alert(islogged)
 
+    let location = useLocation();
+    const query = new URLSearchParams(location.search);
+    const urlParam = query.get('/organizer');
+    console.log(urlParam);
+
+    if(urlParam) {
+        return(
+            <OrganizeHeader />
+        )
+    }
 
     return (
         <div style={{marginBottom: '0px'}}>
