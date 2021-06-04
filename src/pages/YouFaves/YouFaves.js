@@ -3,6 +3,10 @@ import { usersActions } from '../../storev2/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import API from '../../fakeAPI';
+import { makeStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+
       /**
  * @function YouFaves
  * @author Dina Mohsen
@@ -14,19 +18,55 @@ import API from '../../fakeAPI';
         * @param {properties} props 
         * @returns {element} the faves components
         */
+
+        const useStyles = makeStyles((theme) => ({
+          root: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around',
+            overflow: 'hidden',
+            marginTop: '250px'
+          },
+          gridList: {
+            width: 500,
+            height: 450,
+          },
+        }));
        const YouFaves = (props) => {
          
-  const history = useHistory();
-  const dispatch = useDispatch();
-
-  const preventRefresh = (event, path) => {
-    event.preventDefault();
-    history.push(path);
-  }
-
-  const currentUserId = useSelector(state => state.users.currentUser.userId);
+        const classes = useStyles();
+        const history = useHistory();
+        const [photos, setPhotos] = useState([]);
+    
+        useEffect(() => {
+            API.get(`user/:id/faves`, { 
+                headers: {
+                    "authorization": `Bearer ${props.token}` 
+                }}).then(res => {
+                console.log("FAVOURITES");
+                console.log(res);
+                setPhotos(res.data.data.favourites);
+            }).catch(err => {
+                console.log(err.response);
+            });
+    
+        }, []);
+    
+        const goToImage = (photoId) => {
+            history.push(`/photos/${photoId}`);
+        }
+  const userId = useSelector(state => state.users.currentUser.userId);
 
            return (
+             /*    <div className={classes.root}>
+      <GridList cellHeight={160} className={classes.gridList} cols={4} >
+        {photos.map((tile) => (
+          <GridListTile key={tile._id} cols={tile.cols || 1} onClick={() => goToImage(tile._id)}>
+            <img src={tile.sizes.size.original.source} alt={tile.title} />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>*/
              
       <div>
       <title> Favorites | Flickr</title>
