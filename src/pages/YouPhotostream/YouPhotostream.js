@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+
 import { useHistory } from "react-router-dom";
 import { usersActions } from '../../storev2/users-slice';
 import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import API from '../../fakeAPI';
+
       
       /**
  * @function YouPhotostream
+ * @author Dina Mohsen
  */
 
 
@@ -13,9 +20,22 @@ import { useDispatch, useSelector } from 'react-redux';
  * @param {properties} props 
  * @returns {element} the Photostream components
  */
+
+ const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    marginTop: '250px'
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+  },
+}));
+
 const YouPhotostream = (props) => {
-  
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const preventRefresh = (event, path) => {
@@ -24,12 +44,43 @@ const YouPhotostream = (props) => {
   }
 
   const currentUserId = useSelector(state => state.users.currentUser.userId);
+  const classes = useStyles();
+  const history = useHistory();
+  const [photos, setPhotos] = useState([]);
 
+  useEffect(() => {
+      API.get(`http://localhost:7000/user/${props.userId}/stream`, { 
+          headers: {
+              "authorization": `Bearer ${props.token}` 
+          }}).then(res => {
+          console.log("PHOTOSTREAM");
+          console.log(res);
+          setPhotos(res.data.data.photos.photos);
+      }).catch(err => {
+          console.log(err.response);
+      });
+
+  }, []);
+
+  const goToImage = (photoId) => {
+      history.push(`/photos/${photoId}`);
+  }
  
     return (
 
       <div>
+        
         <title> Photostream | Flickr</title>
+        
+    <div className={classes.root}>
+      <GridList cellHeight={160} className={classes.gridList} cols={4} >
+        {photos.map((tile) => (
+          <GridListTile key={tile._id} cols={tile.cols || 1} onClick={() => goToImage(tile._id)}>
+            <img src={tile.sizes.size.original.source} alt={tile.title} />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
         <link rel="alternate" type="application/json+oembed" href="https://www.flickr.com/services/oembed/?format=json&url=https://www.flickr.com/photos/192903766@N08/" title="DIna ." />
         <link rel="alternate" type="application/xml+oembed" href="https://www.flickr.com/services/oembed/?format=xml&url=https://www.flickr.com/photos/192903766@N08/" title="DIna ." />
         <link rel="alternate" type="application/atom+xml" title="Flickr: DIna .'s Photostream Atom feed" href="/services/feeds/photos_public.gne?id=192903766@N08&lang=en-us&format=atom" data-dynamic="true" />
