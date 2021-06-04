@@ -344,9 +344,10 @@ const Signup = () => {
               // TODO: change to email confirmation screen
               setRedirect("/home");
             } 
-      }).catch(err => {
+      })
+      .catch(err => {
         console.log(err.response);
-       /* console.log(err.response.data.status);
+        console.log(err.response.data.status);
        
         if (err.response.data.status === "fail") {
           //alert("status 400");
@@ -354,8 +355,8 @@ const Signup = () => {
             setemailError("duplicate email found");
           }
           //setpassError(err.response.data.message);
-          setisSubmitting(false);*/
-        //} 
+          setisSubmitting(false);
+        } 
       })
     }
 
