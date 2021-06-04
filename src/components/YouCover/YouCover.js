@@ -15,11 +15,11 @@ import { useHistory } from 'react-router';
  */
 const YouCover = (props) => {
     const [picChoose,setPicChoose] = useState(false);
-    const [pic,setPic] = useState(`https://s3-us-west-2.amazonaws.com/melingoimages/Images/4315.jpg`);
+    const [pic,setPic] = useState(`https://combo.staticflickr.com/pw/images/buddyicon03_r.png`);
     const [covChoose,setCovChoose] = useState(false);
-    const [covPic,setCovPic] = useState(`https://www.naturesseed.com/pub/media/cache/1200x200/e47cf16f3d5bd49571ce8f0606b63dc4/l/a/lawn-and-garden-solutions-for-shady-areas.jpg`);
+    const [covPic,setCovPic] = useState(`https://combo.staticflickr.com/pw/images/coverphoto02_h.jpg.v3`);
     const [followers,setFollowers] = useState('0');
-    const [following,setFollowing] = useState('1');
+    const [following,setFollowing] = useState('0');
     const [name,setName] = useState('John Silva');
     const [username,setUsername] = useState('JohnSilvaMendes');
     const userId = props.userId;

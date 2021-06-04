@@ -189,7 +189,7 @@ const PostItem = (props) => {
             <PostHeader data-testid="postHeader" avatar={props.avatarPhoto} username={props.username} onClickMore={showMoreHandler}/>
             <Menu id="simple-menu" open={moreIsShown} onClose={closeMoreHandler} keepMounted anchorEl={anchorEl}>
                 <MenuItem onClick={handleOpenShareModal} data-testid="shareButton">Share</MenuItem>
-                <MenuItem onClick={handleGoToProfile}>Go to profile</MenuItem>
+                {/* <MenuItem onClick={handleGoToProfile}>Go to profile</MenuItem> */}
             </Menu>
 
     <Modal
