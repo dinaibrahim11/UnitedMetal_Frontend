@@ -19,6 +19,8 @@ import Tabs from '@material-ui/core/Tabs';
 import YouCameraRoll from '../../pages/YouCameraRoll/YouCameraRoll';
 import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
 import YouFaves from '../../pages/YouFaves/YouFaves';
+import YouAlbums from '../../pages/YouAlbums/YouAlbums';
+import YouAlbums_Collections from '../../pages/YouAlbums_Collections/YouAlbums_Collections'
 import { useSelector } from 'react-redux';
 import PhotoStream from '../PhotoStream/PhotoStream';
 
@@ -68,6 +70,8 @@ const YouMain = (props) => {
     const currentUserLastName = useSelector(state => state.users.currentUser.lastName);
     const currentUserDisplayName = useSelector(state => state.users.currentUser.displayName);
 
+    const [collections, setCollections] = useState('false');
+
     const handleChange = (event, newValue) => {
     setValue(newValue);
     };
@@ -75,7 +79,19 @@ const YouMain = (props) => {
         setTab(props.currentTab)
     }, [props.currentTab])
    
+    const setCameraRoll = () => {
+        setTab('cameraRoll');
+    }
     
+    const setCollectionsTrue = () => {
+        setCollections('true');
+    }
+
+    const albumClickHandler = () => {
+        setTab('albums');
+        setCollections('false');
+    }
+
     return (
         <div>
             <div>
@@ -97,7 +113,7 @@ const YouMain = (props) => {
                         >
                             <Tab label="About" {...a11yProps(0)} onClick={() => setTab('about')}/>
                             <Tab label="Photostream" {...a11yProps(1)} onClick={() => setTab('photostream')} />
-                            <Tab label="Albums" {...a11yProps(2)} />
+                            <Tab label="Albums" {...a11yProps(2)} onClick={albumClickHandler}/>
                             <Tab label="Faves" {...a11yProps(3)} onClick={() => setTab('faves')} />
                             <Tab label="Galleries" {...a11yProps(4)} />
                             <Tab label="Groups" {...a11yProps(5)} />
@@ -108,9 +124,12 @@ const YouMain = (props) => {
                 </div>
             </div>
             <div>
-                {tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> :
-                tab === 'photostream' ? <PhotoStream userId={currentUserId} token={currentUserToken}  /> : 
-                <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>}
+
+            {   tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : 
+               (tab === 'albums' && collections==='false') ? <YouAlbums token={currentUserToken} currentUserId={currentUserId} setCameraRoll={setCameraRoll} setCollectionsTrue={setCollectionsTrue} currentTab={props.currentTab}/>
+             :(tab === 'photostream') ? <PhotoStream userId={currentUserId} token={currentUserToken}  />   
+                :<YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>   }
+
             </div>
         </div>
     );

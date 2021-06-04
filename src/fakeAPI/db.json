@@ -146,6 +146,22 @@
       "emailaddress": "mosalah@mail.com",
       "password": "mosalah12345",
       "id": 801
+    }, 
+    {
+      "firstname": "e",
+      "lastname": "h",
+      "age": "21",
+      "emailaddress": "esraaaaaa@gmail.com",
+      "password": "e-passwordddd",
+      "id": 801
+    },
+    {
+      "firstname": "e",
+      "lastname": "h",
+      "age": "21",
+      "emailaddress": "esraaaaaa@gmail.com",
+      "password": "e-passwordddd",
+      "id": 802
     }
   ],
   "recent": [
@@ -418,43 +434,116 @@
   ],
   "albums": [
     {
-      "id": 1,
-      "userId": 400,
-      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
-      "title": "Green",
-      "itemsCount": 1
+      "id": "5590beb07237ad1fb4458fae",
+      "albumName": "sunsets",
+      "description": "best sunset photos",
+      "photocount": 2,
+      "primaryphoto": 1,
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.template.net/wp-content/uploads/2016/05/19130256/Beach-Resort-Sunset-HD-Wallpaper-Background.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://wallpapercave.com/fwp/wp5716268.jpg"
+        }
+      ]
     },
     {
-      "id": 2,
-      "userId": 400,
-      "photoSrc": "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg",
-      "title": "Awesome Cats",
-      "itemsCount": 3
+      "id": "QhTpUwY",
+      "albumName": "album1",
+      "description": "album1_description",
+      "photocount": 5,
+      "primaryphoto": 2,
+      "photos": [
+        {
+          "id": 2,
+          "url": "https://wallpapercave.com/fwp/wp5716268.jpg"
+        },
+        {
+          "id": 4,
+          "url": "https://wallpapercave.com/uwp/uwp404136.jpeg"
+        },
+        {
+          "id": 5,
+          "url": "https://wallpapercave.com/wp/wp170202.jpg"
+        },
+        {
+          "id": 6,
+          "url": "https://wallpapercave.com/wp/wp4202055.jpg"
+        },
+        {
+          "id": 9,
+          "url": "https://wallpapercave.com/wp/wp4203600.jpg"
+        }
+      ]
     },
     {
-      "id": 3,
-      "userId": 200,
-      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
-      "title": "Green",
-      "itemsCount": 5
-    }
-  ],
-  "galleries": [
-    {
-      "id": 2,
-      "userId": 400,
-      "photoSrc": "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg",
-      "title": "Awesome Cats",
-      "itemsCount": 3
+      "id": "jMsECDI",
+      "albumName": "album2",
+      "description": "album2_descrition",
+      "photocount": 3,
+      "primaryphoto": 3,
+      "photos": [
+        {
+          "id": 3,
+          "url": "https://wallpapercave.com/fwp/wp5981208.jpg"
+        },
+        {
+          "id": 8,
+          "url": "https://wallpapercave.com/wp/9T3NTEL.jpg"
+        },
+        {
+          "id": 10,
+          "url": "https://wallpapercave.com/wp/wp4079759.jpg"
+        }
+      ]
     },
     {
-      "id": 3,
-      "userId": 200,
-      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
-      "title": "Green",
-      "itemsCount": 5
-    }
-  ],
+      "id": "OCuuvq5",
+      "albumName": "album3",
+      "description": "",
+      "photocount": 3,
+      "primaryphoto": 9,
+      "photos": [
+        {
+          "id": 8,
+          "url": "https://wallpapercave.com/wp/9T3NTEL.jpg"
+        },
+        {
+          "id": 9,
+          "url": "https://wallpapercave.com/wp/wp4203600.jpg"
+        },
+        {
+          "id": 10,
+          "url": "https://wallpapercave.com/wp/wp4079759.jpg"
+        }
+      ]
+    },
+    {
+      "id": "LnfyYUK",
+      "albumName": "album4",
+      "photocount": 4,
+      "primaryphoto": 6,
+      "photos": [
+        {
+          "id": 6,
+          "url": "https://wallpapercave.com/wp/wp4202055.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://wallpapercave.com/fwp/wp5716268.jpg"
+        },
+        {
+          "id": 5,
+          "url": "https://wallpapercave.com/wp/wp170202.jpg"
+        },
+        {
+          "id": 4,
+          "url": "https://wallpapercave.com/uwp/uwp404136.jpeg"
+        }
+      ],
   "cameraRoll": [
     {
       "id": 1

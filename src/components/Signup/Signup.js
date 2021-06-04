@@ -346,15 +346,16 @@ const Signup = () => {
             } 
       }).catch(err => {
         console.log(err.response);
-        console.log(err.response.data.status);
+       /* console.log(err.response.data.status);
+       
         if (err.response.data.status === "fail") {
           //alert("status 400");
           if (err.response.data.message.toString().includes("Duplicate")) {
             setemailError("duplicate email found");
           }
           //setpassError(err.response.data.message);
-          setisSubmitting(false);
-        } 
+          setisSubmitting(false);*/
+        //} 
       })
     }
 
