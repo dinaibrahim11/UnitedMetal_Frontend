@@ -22,40 +22,6 @@ import GalleryItem from './GalleryItem/GalleryItem';
 import ShareModal from '../UI/ShareModal/ShareModal';
 import { useHistory } from "react-router-dom";
 
-const tmpPhoto = "https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png";
-const tmpPhoto2 = "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg";
-const tmpPhoto3 = "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg";
-const DUMMY_TAGS = ["2021","cats","scene","background","1999","ocean","blues","awesome",
-                    "hilarious","great","awkward","lame","ohhh"]
-const DUMMY_ALBUMS = [{id: "1", photoSrc: tmpPhoto2, itemsCount: 1, title: "Green"}, {id: "2", photoSrc: tmpPhoto3, itemsCount: 3, title: "Cool Cats"}];
-
-/*
-"albums": [
-    {
-      "id": 1,
-      "userId": 400,
-      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
-      "title": "Green",
-      "itemsCount": 1
-    },
-    {
-      "id": 2,
-      "userId": 400,
-      "photoSrc": "https://live.staticflickr.com/1965/30720390577_68227d3fa9_s.jpg",
-      "title": "Awesome Cats",
-      "itemsCount": 3
-    },
-    {
-      "id": 3,
-      "userId": 200,
-      "photoSrc": "https://live.staticflickr.com/65535/51183971863_f3c8c7e14d_s.jpg",
-      "title": "Green",
-      "itemsCount": 5
-    }
-  ],
-
-*/
-
 /**
  * Displays the details of a photo (img, comments, faves, metadata, owner)
  * @async
@@ -67,17 +33,13 @@ const PostDetail = (props) => {
 
     const currentUserId = useSelector(state => state.users.currentUser.userId);
     const currentUserToken = useSelector(state => state.users.currentUser.token);
-    const rerenderAlbums = useSelector(state => state.users.albumsToggle);
     const dispatch = useDispatch();
     const history = useHistory();
 
 
     const postId = props.match.params.id;
-    const [post, setPost] = useState({});
-    const [userDisplayName, setUserDisplayName] = useState("");
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [avatarPhoto, setAvatarPhoto] = useState('');
     const [followingMenuOpen, setFollowingMenuOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [friendChecked, setFriendChecked] = useState(false);
@@ -85,12 +47,9 @@ const PostDetail = (props) => {
     const [isFollowing, setIsFollowing] = useState(false);
     const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
     const [isOpenAlbumModal, setIsOpenAlbumModal] = useState(false);
-    const [canAddTag, setCanAddTag] = useState(false);
     const [tags, setTags] = useState([]);
     const [showAddTag, setShowAddTag] = useState(false);
     const [addTagValue, setAddTagValue] = useState(null);
-    const [isPhotoMine, setIsPhotoMine] = useState(false); //check if this is the current user's photo
-    const [showAlbumCloseThumbnail, setShowAlbumCloseThumbnail] = useState(false);
     const [albums, setAlbums] = useState([]);
     const [galleries, setGalleries] = useState([]);
     const [isFaved, setIsFaved] = useState();
@@ -98,19 +57,12 @@ const PostDetail = (props) => {
     const [imgSrc, setImgSrc] = useState('');
     const [isShareModalOpen, setIsShareModalOpen] = useState(false); //redundant
     const [photo, setPhoto] = useState(null);
-    const [dateUploaded, setDateUploaded] = useState(null);
-
     const [ownerId, setOwnerId] = useState(null);
     const [fetchedPostId, setFetchedPostId] = useState(false);
-
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
-    const loggedInUserFaves = useSelector(state => state.users.currentUser.favedPhotos);
-
     const tmpToken = currentUserToken;//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjY1ODg0MWQ1OTNjNjVjOGMxYTc5OCIsImlhdCI6MTYyMjU3NjgyMywiZXhwIjoxNjMwMzUyODIzfQ.8mCry7WtW7Z7OkhKTF13UWO_H_SDt2VAF49ucCwyDpk";
 
     
-
-    //const tmpPhotoId = "60b57a56eb47f20b64271884";
     const tmpPhotoId = postId; //"60b6614e1d593c65c8c1a79e";
     const tmpUserId = currentUserId; //"60b658841d593c65c8c1a798";
 
@@ -415,18 +367,10 @@ const PostDetail = (props) => {
                     modalTitle="Share the photo"
                     externalShareLink={imgSrc}
                 />
-                {/* <button>Download</button>
-                <button>Share</button>
-                <button>Fave</button> */}
+
             </div>
 
-            {/* <div className={classes.main__content}>
-            <div className={classes.grid__parent}>
-                <div className={classes.left}>Profile Info</div>
-                <div className={classes.right}>Meta data</div>
-                
-            </div>
-            </div> */}
+
             <div className={classes.main__content}>
             <div className={classes.sub__photo__container}>
                 <div className={classes.sub__photo__content__container}>

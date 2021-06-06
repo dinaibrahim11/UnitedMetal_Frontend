@@ -3,6 +3,14 @@ import { Fragment } from 'react';
 import classes from './PhotoDescription.module.css'
 import API from '../../../fakeAPI';
 
+
+/**
+ * Display the title and description of the image
+ * and handles the logic of updating them
+ * @param {string} title 
+ * @param {string} description  
+ * @returns {component}
+ */
 const PhotoDescription = (props) => {
 
     const [title, setTitle] = useState(props.title);
@@ -39,10 +47,6 @@ const PhotoDescription = (props) => {
     const handleEditDescriptionKeyDown = (event) => {
         if (event.key == 'Enter') {
             setIsEditable(false);
-            // TODO: handle async requests
-            // API.patch()
-            //     .then(res)
-            //     .catch(err)
             API.patch(`photo/${props.postId}`, {
             title: title,
             description: description

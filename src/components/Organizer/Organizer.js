@@ -58,7 +58,7 @@ const Organizer = (props) => {
 
     const handleCancel = (e) => {
       e.preventDefault();
-      setRedirect("/albums");
+      setRedirect("/home");
     }
 
     const handleSearchInput = (e) => {
@@ -73,7 +73,7 @@ const Organizer = (props) => {
     setAlbumID(albumID+1);
     postDataHandler();
     console.log(primaryPhotoID);
-    setRedirect("/albums"); }
+    setRedirect("/home"); }
     }
 
     const searchClickHandler = () => {

@@ -1,19 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import classes from './CameraMetadata.module.css';
 
-
+/**
+ * 
+ * @param {*} props 
+ * @returns 
+ */
 const CameraMetadata = (props) => {
 
     const [isExifOpen, setIsExifOpen] = useState(false);
-
-    // useEffect(() => {
-    //     // TODO: make API request to get the camera name and model and focal length and camera lens
-
-    //     // TODO: make API request to get EXIF data
-
-
-    // }, []);
-
 
     const handleExifClick = () => {
         setIsExifOpen(prevState => !prevState);

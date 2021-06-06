@@ -4,6 +4,14 @@ import CloseIcon from '@material-ui/icons/Close';
 import API from '../../../fakeAPI';
 import { useSelector } from 'react-redux';
 
+
+/**
+ * A tag item display holds a tagText with hovering functionality to remove the tag
+ * @param {bool} editable   - can edit the tag or not 
+ * @param {string} photoId  - id of the photo/post
+ * @param {string} tagText  - the text content of the tag
+ * @returns {component}
+ */
 const TagItem = (props) => {
 
     const [showDeleteTag, setShowDeleteTag] = useState(false);
