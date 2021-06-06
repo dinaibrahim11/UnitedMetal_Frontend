@@ -1,8 +1,15 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import classes from './AlbumItem.module.css';
 import CloseIcon from '@material-ui/icons/Close';
 
-
+/**
+ * 
+ * @param {function} onDeleteAlbum - delete from the selected album
+ * @param {number} itemsCount - number of images inside the album item
+ * @param {string} albumTitle - title of the album
+ * @param {string} photoSrc - image link
+ * @returns 
+ */
 const AlbumItem = (props) => {
 
     const handleRemoveFromAlbum = () => {

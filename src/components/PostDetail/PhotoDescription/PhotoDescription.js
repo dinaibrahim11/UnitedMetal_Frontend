@@ -7,6 +7,8 @@ import API from '../../../fakeAPI';
 /**
  * Display the title and description of the image
  * and handles the logic of updating them
+ * @param {boolean} isEditable
+ * @param {string} postId
  * @param {string} title 
  * @param {string} description  
  * @returns {component}
@@ -97,8 +99,8 @@ const PhotoDescription = (props) => {
 
     const staticContent = (
         <div onClick={handleEditDescription} className={classes.description}>
-            <h5>{title}</h5>
-            <p>{description}</p>
+            <h5 data-testid="title">{title}</h5>
+            <p data-testid="description">{description}</p>
         </div>
     );
 

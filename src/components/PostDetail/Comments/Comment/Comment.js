@@ -111,7 +111,7 @@ const Comment = (props) => {
 
     let commentContent = (
         <Fragment>
-            <div className={classes.comment__content}>
+            <div className={classes.comment__content} data-testid="comment-text">
                     {props.commentText}
             </div>
             {(props.isPhotoMine && isDeleteIconShown) && <DeleteIcon onClick={handleRemoveComment} className={classes.icon} fontSize="small" id="photodetail-delete-btn"/>}

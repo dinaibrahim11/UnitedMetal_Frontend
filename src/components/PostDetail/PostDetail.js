@@ -74,30 +74,30 @@ const PostDetail = (props) => {
                 
                 setPhoto(res.data.data);
                 setTags(res.data.data.tags);
-                console.log("PHOTO")
-                console.log(res);
-                console.log("OWNER ID");
+                //console.log("PHOTO")
+                //console.log(res);
+                //console.log("OWNER ID");
                 setOwnerId(res.data.data.userId._id);
                 setFetchedPostId(prev => !prev);
             }).catch(err => {
-                console.log("[PostDetail]::RealName");
-                console.log(err.response);
+                //console.log("[PostDetail]::RealName");
+                //console.log(err.response);
             });
 
         API.get(`photo/${tmpPhotoId}`)
             .then(res => {
-                console.log("Photo details")
-                console.log(res);
+                //console.log("Photo details")
+                //console.log(res);
                 //console.log(res.data.data.userId);
                 setImgSrc(res.data.data.sizes.size.large.source);
             }).catch(err => {
-                console.log("[PostDetail]::ERROR");
-                console.log(err.response);
+                //console.log("[PostDetail]::ERROR");
+                //console.log(err.response);
             })
 
         API.get(`user/${tmpUserId}/faves`)
             .then(res => {
-                console.log("FAVED");
+                //console.log("FAVED");
                 if (res.data.status === 'success') {
                     dispatch(usersActions.setFavedPhotos(res.data.data.favourites));
                     setFavedPhotos(res.data.data.favourites);
@@ -111,10 +111,10 @@ const PostDetail = (props) => {
                         }
                     }
                 }
-                console.log(res)
+                //console.log(res)
                 
             }).catch(err => {
-                console.log(err.response);
+                //console.log(err.response);
             });
 
     }, [postId, rerender]);
@@ -125,8 +125,8 @@ const PostDetail = (props) => {
                 setFirstName(res.data.data.firstName);
                 setLastName(res.data.data.lastName);
             }).catch(err => {
-                console.log("[PostDetail]::RealName");
-                console.log(err.response);
+                //console.log("[PostDetail]::RealName");
+                //console.log(err.response);
             });
     }, [fetchedPostId]);
 
@@ -137,29 +137,29 @@ const PostDetail = (props) => {
                 setAlbums(res.data);
                 
             }).catch(err => {
-                console.log(err);
+                //console.log(err);
             });
 
         API.get(`users/400/galleries`)
         .then(res => {
             setGalleries(res.data);
-            console.log(res.data);
+            //console.log(res.data);
             
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
         });
         
         API.get(`user/${tmpUserId}/faves`)
             .then(res => {
-                console.log("FAVED");
+                //console.log("FAVED");
                 if (res.data.status === 'success') {
                     dispatch(usersActions.setFavedPhotos(res.data.data.favourites));
                     setFavedPhotos(res.data.data.favourites);
                 }
-                console.log(res)
+                //console.log(res)
                 
             }).catch(err => {
-                console.log(err.response);
+                //console.log(err.response);
             });
 
         for (let i = 0; i < favedPhotos.length; i++) {
@@ -182,8 +182,8 @@ const PostDetail = (props) => {
                     "Authorization": `Bearer ${tmpToken}` 
                 }})
                 .then(res => {
-                    console.log("REMOVING A FAVE");
-                    console.log(res);
+                    //console.log("REMOVING A FAVE");
+                    //console.log(res);
                     
                 }).catch(err => {
 
@@ -195,11 +195,11 @@ const PostDetail = (props) => {
                 "Authorization": `Bearer ${tmpToken}` 
                 }})
                 .then(res => {
-                    console.log("ADDING A FAV");
-                    console.log(res);
+                    //console.log("ADDING A FAV");
+                    //console.log(res);
                     setIsFaved(true);
                 }).catch(err => {
-                    console.log(err.response);
+                    //console.log(err.response);
                 });
                 setIsFaved(true);
         }
@@ -358,9 +358,9 @@ const PostDetail = (props) => {
                     }}
                 />
                 {/* <img className={classes.image__view_img} src={post.imageUrl} alt="" /> */}
-                {isFaved ? <AiFillStar id="photo-like-filled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}}/> : <AiOutlineStar id="photo-like-unfilled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} />}
-                <FaRegShareSquare onClick={() => setIsShareModalOpen(true)} className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}}/>
-                <BsDownload onClick={handleDownloadPhoto} className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} />
+                {isFaved ? <AiFillStar id="photo-like-filled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}}/> : <AiOutlineStar id="photo-like-unfilled-btn" onClick={handleFav} className={`${classes.buttons} ${classes.image__view_fav}`} style={{color: 'white'}} data-testid="faved-btn"/>}
+                <FaRegShareSquare onClick={() => setIsShareModalOpen(true)} className={`${classes.buttons} ${classes.image__view_share}`} style={{color: 'white'}} data-testid="share-btn"/>
+                <BsDownload onClick={handleDownloadPhoto} className={`${classes.buttons} ${classes.image__view_download}`} style={{color: 'white'}} data-testid="download-btn" />
                 <ShareModal 
                     isShareModalOpen={isShareModalOpen} 
                     handleCloseShareModal={handleCloseShareModal}
@@ -401,15 +401,15 @@ const PostDetail = (props) => {
                             <div className={classes.sub__photo__right__stats__view}>
                                 <div className={classes.right__stats_details__container}>
                                     <div className={classes.stat__item}>
-                                        <span>{photo && photo.views}</span>
+                                        <span data-testid="count-views">{photo && photo.views}</span>
                                         <span className={classes.stats__label} id="photodetail-views-counts">views</span>
                                     </div>
                                     <div className={classes.stat__item}>
-                                        <span>{photo && photo.favourites}</span>
+                                        <span data-testid="count-faves">{photo && photo.favourites}</span>
                                         <span className={classes.stats__label} id="photodetail-faves-count">faves</span>
                                     </div>
                                     <div className={classes.stat__item}>
-                                        <span>{photo && photo.comments.length}</span>
+                                        <span data-testid="count-comments">{photo && photo.comments.length}</span>
                                         <span className={classes.stats__label} id="photodetail-comments-count">comments</span>
                                     </div>
                                 </div>
@@ -424,7 +424,7 @@ const PostDetail = (props) => {
             
                         <div className={classes.sub__photo__right__row3}>
                             <div className={classes.galleries}>
-                                <h5 className={classes.galleries__count}>
+                                <h5 className={classes.galleries__count} data-testid="galleries-count">
                                     This photo is in {galleries.length} galleries
                                 </h5>
                                 <p className={classes.add__to__gallery}
@@ -451,7 +451,7 @@ const PostDetail = (props) => {
                         {(ownerId === currentUserId) && (
                         <div className={classes.sub__photo__right__row5}>
                             <div className={classes.galleries}>
-                                <h5 className={classes.galleries__count}>
+                                <h5 className={classes.galleries__count} data-testid="albums-count">
                                     This photo is in {albums.length} albums
                                 </h5>
                                 <p className={classes.add__to__gallery}
@@ -471,8 +471,8 @@ const PostDetail = (props) => {
                         <div className={classes.sub__photo__right__row4}>
                             <div className={classes.tags__view}>
                                 <h5 className={classes.tags__title}>Tags</h5>
-                                <p onClick={handleShowAddTag} className={classes.add__tag}>Add tags</p>
-                                {showAddTag && <input onKeyDown={handleAddTagKeyDown} onChange={handleAddTagChange} value={addTagValue} type="text" placeholder="Add a tag" className={classes.add__tag__input} />}
+                                <p onClick={handleShowAddTag} className={classes.add__tag} data-testid="add-tags">Add tags</p>
+                                {showAddTag && <input data-testid="input-add-tags" onKeyDown={handleAddTagKeyDown} onChange={handleAddTagChange} value={addTagValue} type="text" placeholder="Add a tag" className={classes.add__tag__input} />}
                                 <ul className={classes.tags__list}>
                                     {tags.map(tag => <TagItem tagText={tag} token={tmpToken} photoId={postId} tagName={tag} editable={true}/>)}
                                 </ul>
