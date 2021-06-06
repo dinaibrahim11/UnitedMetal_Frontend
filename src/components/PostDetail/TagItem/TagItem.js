@@ -49,7 +49,7 @@ const TagItem = (props) => {
 
     return (
         <Fragment>
-            <li onMouseEnter={handleShowDeleteTag} onMouseLeave={handleHideDeleteTag} className={classes.tag}>
+            <li onMouseEnter={handleShowDeleteTag} onMouseLeave={handleHideDeleteTag} className={classes.tag} data-testid="tag-text">
                 {props.tagName} {" "} {showDeleteTag && <CloseIcon style={{height: '20px'}} onClick={handleDeleteTag} />}
             </li>
         </Fragment>
