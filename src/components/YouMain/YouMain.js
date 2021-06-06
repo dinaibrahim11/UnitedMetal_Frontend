@@ -11,7 +11,6 @@ import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import YouAbout from '../../pages/YouAbout/YouAbout';
 import { useState } from 'react';
-import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
@@ -61,7 +60,6 @@ const DUMMY_IMAGES = [{link:"https://image.shutterstock.com/image-photo/connecte
 const YouMain = (props) => {
     const [tab, setTab] = useState('cameraroll');
     
-    let history = useHistory();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const currentUserId = useSelector(state => state.users.currentUser.userId);
