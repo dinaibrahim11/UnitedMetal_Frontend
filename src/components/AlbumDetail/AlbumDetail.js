@@ -56,7 +56,7 @@ const AlbumDetail = (props) => {
     }
 
     const handleGoBack = () => {
-        setRedirect("/albums")
+        setRedirect("/home");
     }
 
     const handleEditText = () => {
