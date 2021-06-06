@@ -97,7 +97,7 @@ const UserHeader = (props) => {
                           <a data-track="gnYouPhotostreamClick"  onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}/photostream`)}} href="/photostream">Photostream</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Albums">
-                          <a data-track="gnYouSetsClick" href="/albums">Albums</a>
+                          <a data-track="gnYouSetsClick" onClick={(e) => {e.preventDefault(); history.push(`/user/${currentUserId}/albums`)}} href="/albums">Albums</a>
                         </li>
                         <li className="menuitem" role="menuitem" aria-label="Faves">
                           <a data-track="gnYouFavoritesClick"  onClick={(e) => {e.preventDefault(); history.push("/faves")}} href="/faves">Faves</a>
