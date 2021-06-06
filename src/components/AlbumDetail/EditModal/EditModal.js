@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import GridList from '@material-ui/core/GridList';
 import classes from './EditModal.module.css'
-import API from '../../../fakeAPI'
+import API from '../../../fakeAPI';
+import { useSelector } from 'react-redux';
 
 const EditModal = (props) => {
 
@@ -11,9 +12,12 @@ const EditModal = (props) => {
     const [enableButton, setEnableButton] = useState(false);
     const [newPhotoID, setNewPhotoID] = useState();
 
+    const token = useSelector(state => state.users.currentUser.token);
+
     const handleButtonClick = () => {
         updatePhoto();
         props.handleCloseEditModal();
+        console.log(newPhotoID);
         props.changeCoverPhoto(newPhotoID);
     }
 
@@ -35,9 +39,18 @@ const EditModal = (props) => {
             const newAlbumPhoto = {
               "primaryphoto": newPhotoID
              }
-            API.patch('/albums/'+ props.albumID, newAlbumPhoto) 
+            API.patch(`photoset/${props.albumID}/primary/${newPhotoID}`, {},
+            {
+                headers: {
+                  "Authorization": `Bearer ${token}` 
+                }
+              }) 
             .then(response => {
-             console.log(response)
+                console.log("[EditModal]::Success");
+                console.log(response);
+           }).catch(err => {
+               console.log("[EditModal]::ERROR");
+               console.log(err.response);
            })
           }
     }
@@ -66,9 +79,9 @@ const EditModal = (props) => {
              <GridList >
              {props.photos.map((photo) => (
 
-                 (isSelected === true && photo.url===selectedPhotoURL) ? (<img key={photo.id} src={photo.url} className={classes.modal_photos} style={{width:'150px', marginRight:'2px', marginBottom:'11px', border:'3px solid blue'}} onClick={handledisSelection}/>
+                 (isSelected === true && photo.sizes.size.medium.source===selectedPhotoURL) ? (<img key={photo._id} src={photo.sizes.size.medium.source} className={classes.modal_photos} style={{width:'150px', marginRight:'2px', marginBottom:'11px', border:'3px solid blue'}} onClick={handledisSelection}/>
                  ) : (
-                    <img key={photo.id} src={photo.url} className={classes.modal_photos} style={{width:'150px', marginRight:'2px', marginBottom:'11px'}} onClick={()=>handleSelection(photo.id ,photo.url)}/>
+                    <img key={photo._id} src={photo.sizes.size.medium.source} className={classes.modal_photos} style={{width:'150px', marginRight:'2px', marginBottom:'11px'}} onClick={()=>handleSelection(photo._id ,photo.sizes.size.medium.url)}/>
                  )
              ))}
              </GridList>

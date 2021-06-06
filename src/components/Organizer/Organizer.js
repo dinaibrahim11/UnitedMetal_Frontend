@@ -119,6 +119,7 @@ const Organizer = (props) => {
         "id": draggedPhotoID,
         "url": draggedPhotoURL
       }
+      console.log("DRAGGED URL: ", draggedPhotoURL);
       setDroppedPhotos([...droppedPhotos, addedPhoto]);
       if(albumsCount === 0) {setPrimaryPhoto(addedPhoto); setPrimaryPhotoID(addedPhoto.id)}
       }
@@ -151,6 +152,7 @@ const handleLowerDrop = (ev) => {
       console.log("PHOTOSTREAM");
       console.log(res);
      // setPhotos(res.data.data.photos.photos);
+     console.log(res.data.data.photos.photos)
       setCameraRollPhotos(res.data.data.photos.photos);
   }).catch(err => {
       console.log(err.response);
@@ -168,10 +170,33 @@ const postDataHandler = () => {
       "primaryphoto": primaryPhotoID,
       "photos" : droppedPhotos
      }
-    API.post('albums', albumInfo)      //json server
-    .then(response => {
-     console.log(response)
-   })
+
+    let droppedPhotosIds = droppedPhotos.map(e => e.id);
+   
+    API.post('photoset/', {
+      albumName: albumTitle,
+      primaryPhotoId: primaryPhotoID,
+      description: albumDescription,
+      photos: droppedPhotosIds,
+      comments: []
+      }, {
+        headers: {
+          "Authorization": `Bearer ${token}` 
+        }
+      }).then(res => {
+          console.log("Created new album");
+          console.log(res);
+        }
+      ).catch(err => {
+        console.log("error creating album");
+        console.log("primaryid: ", primaryPhotoID);
+        console.log(err.response);
+      })
+
+
+
+
+
   }
   }
 
@@ -237,7 +262,7 @@ const postDataHandler = () => {
               <div className={classes.middle_block} onDragOver={(e)=>handleDragOver(e)} onDrop={(e)=>handleLowerDrop(e)}>
               
                    {cameraRollPhotos.map((photo) => (
-                    <img src={photo.url} className={classes.Organizer_photo} key={photo.id} draggable onDragStart={(e)=>handleDragStart(e,photo.id, photo.url)} onDragEnter={(e)=>handleDragEnter(e,photo.id)}/>
+                    <img src={photo.sizes.size.medium.url} className={classes.Organizer_photo} key={photo._id} draggable onDragStart={(e)=>handleDragStart(e,photo._id, photo.sizes.size.medium.url)} onDragEnter={(e)=>handleDragEnter(e,photo._id)}/>
                    ))}
 
               </div>

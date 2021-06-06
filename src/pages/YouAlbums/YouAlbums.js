@@ -10,7 +10,7 @@ import AlbumItem from '../../components/AlbumItem/AlbumItem'
 import GridList from '@material-ui/core/GridList';
 
 
-const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab}) => {
+const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab, userId}) => {
 
     const [isCameraRollEmpty, setIsCameraRollEmpty] = useState('false');
     const [redirect, setRedirect] = useState(null);
@@ -46,8 +46,8 @@ const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab}) => {
            .then(res => {
              console.log("CAMERA ROLL");
              console.log(res.data.data);
-             console.log(res.data.data.length);
-            if(!res.data.data || res.data.data.length === 0 || !res.data.data.length) {
+             console.log(res.data.data.photos.length);
+            if(!res.data.data || res.data.data.photos.length === 0) {
               setIsCameraRollEmpty('true');
               console.log("if condition")
             }
@@ -72,17 +72,20 @@ const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab}) => {
     }
 
     const getAlbumsData = () => {
-      API.get('albums' )
+      API.get(`user/${userId}/albums` )
       .then(response => {
-        console.log(response.data);
-        setAlbums(response.data);
-    })
+        console.log("Fetched albums");
+        console.log(response.data.data);
+        setAlbums(response.data.data);
+      }).catch(err => {
+        console.log(err.response);
+      })
     }
 
     useEffect(() => {
       getAlbumsData();
       checkCameraRoll();
-    }, [currentTab])
+    }, [])
 
     //checkCameraRoll();
 
@@ -108,17 +111,17 @@ const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab}) => {
                            </div>
                            {/* <div><AlbumItem /></div> */}
                            <GridList >
-                             {albums.map((album) => (
+                             {albums.length > 0 && albums.map((album) => (
 
-                              albumName = album.albumName, 
-                              albumDescription=album.description,
-                              photoCount = album.photocount,
-                               primaryPhoto = album.primaryphoto,
-                               photos = album.photos,
+                              albumName = album.album.albumName, 
+                              albumDescription = " ",
+                              photoCount = album.album.photos.length,
+                               primaryPhoto = album.album.primaryPhotoId,
+                               photos = album.album.photos,
 
                               <AlbumItem 
-                               key={album.id}
-                               albumID = {album.id}
+                               key={album.album._id}
+                               albumID = {album.album._id}
                                albumName={albumName}
                                albumDescription={albumDescription}
                                photoCount={photoCount}

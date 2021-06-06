@@ -12,7 +12,7 @@ import {Icon} from '@material-ui/core';
 import { Tooltip } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import EditModal from '../AlbumDetail/EditModal/EditModal'
-
+import { useSelector } from 'react-redux';
 
 const AlbumDetail = (props) => {
 
@@ -33,6 +33,7 @@ const AlbumDetail = (props) => {
     const [primaryPhotoID, setPrimaryPhotoID] = useState();
 
     const [redirect, setRedirect] = useState(null);
+    const token = useSelector(state => state.users.currentUser.token);
 
     const handleEdit = () =>{
           setOpenEditor(true);
@@ -91,7 +92,12 @@ const AlbumDetail = (props) => {
               "albumName": newAlbumName,
               "description": albumDescription
              }
-            API.patch('/albums/'+albumID, newAlbumInfo) 
+            API.patch(`photoset/${albumID}/meta`, newAlbumInfo, 
+            {
+                headers: {
+                  "Authorization": `Bearer ${token}` 
+                }
+              }) 
             .then(response => {
              console.log(response)
            })
@@ -103,27 +109,34 @@ const AlbumDetail = (props) => {
     }
     
     useEffect(() => {
-        API.get(`albums/${albumId}`)
+        API.get(`photoset/${albumId}`)
             .then(response => {
-                setAlbum(response.data);
-                setAlbumID(response.data.id);
-                setalbumName(response.data.albumName); setNewAlbumName(response.data.albumName);
-                setAlbumDescription(response.data.description);
-                setPhotosCount(response.data.photocount);
-                setPhotos(response.data.photos);
-                if(response.data.id === albumId) {setPrimaryPhotoID(response.data.primaryphoto);}
-                if(!response.data.description) {setAlbumDescription('Click here to enter a description for this album');}
+                console.log("[AlbumDetail]");
+                console.log(response);
+                setAlbum(response.data.data);
+                setAlbumID(response.data.data._id);
+                setalbumName(response.data.data.albumName); setNewAlbumName(response.data.data.albumName);
+                setAlbumDescription(response.data.data.description);
+                setPhotosCount(response.data.data.photocount);
+                setPhotos(response.data.data.photos);
+                setPrimaryPhotoURL(response.data.data.primaryPhotoId.sizes.size.large.source);
+                if(response.data.data._id === albumId) {setPrimaryPhotoID(response.data.data.primaryPhotoId._id);}
+                if(!response.data.data.description) {
+                    setAlbumDescription('Click here to enter a description for this album');
+                } else {
+                    setAlbumDescription(response.data.data.description);
+                }
             });
     }, [])
 
-    useEffect(() => {
-        API.get('photos')
-        .then(response => {
-            console.log(response.data);
-            response.data.map((photo) => {
-              if(photo.id === primaryPhotoID) { setPrimaryPhotoURL(photo.url);}})
-        });
-      }, [primaryPhotoID])
+    // useEffect(() => {
+    //     API.get('photos')
+    //     .then(response => {
+    //         console.log(response.data);
+    //         response.data.map((photo) => {
+    //           if(photo.id === primaryPhotoID) { setPrimaryPhotoURL(photo.url);}})
+    //     });
+    //   }, [primaryPhotoID])
 
 
 
@@ -190,7 +203,7 @@ return(
 
     <div className={classes.album_photos}>
     {photos.map((photo) => (
-    <img key={photo.id} src={photo.url}  className={classes.album_photo} onClick={()=>handlePhotoClick(photo.id)}/>))}
+    <img key={photo._id} src={photo.sizes.size.medium.source}  className={classes.album_photo} onClick={()=>handlePhotoClick(photo._id)}/>))}
     </div>
 
     {openEditor === true ? (

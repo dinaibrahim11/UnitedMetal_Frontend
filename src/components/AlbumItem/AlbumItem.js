@@ -90,7 +90,7 @@ if(redirect) {
           component="img"
           height="170"
           width="220" 
-          image={primaryPhotoURL}
+          image={primaryPhoto.sizes.size.medium.source}
           zIndex="0"
           />
          
@@ -109,19 +109,19 @@ if(redirect) {
          <div className={classes.albumFooter}>
 
           <Tooltip title="Share this album">
-          <Icon onClick={shareHandler} style={{color:'white', marginRight:'15%', fontSize:'27px',  marginBottom:'-5%', marginLeft:'7%'}}>
+          <Icon onClick={shareHandler} style={{color:'black', marginRight:'15%', fontSize:'27px',  marginBottom:'-5%', marginLeft:'7%'}}>
           <RiShareForwardLine />
           </Icon>
           </Tooltip>
 
           <Tooltip title="Download">
-         <Icon onClick={downloadHandler} style={{color:'white', marginRight:'4%', fontSize:'35px', marginBottom:'-3%'}}>
+         <Icon onClick={downloadHandler} style={{color:'black', marginRight:'4%', fontSize:'35px', marginBottom:'-3%'}}>
                 <GetAppOutlinedIcon />
         </Icon>
         </Tooltip>
 
         <Tooltip title="Delete this album" >
-        <IconButton onClick={deleteHandler} style={{color:'white', fontSize:'20px',  marginBottom:'-9%', marginRight:'3%'}}>
+        <IconButton onClick={deleteHandler} style={{color:'black', fontSize:'20px',  marginBottom:'-9%', marginRight:'3%'}}>
         <BsTrash   />
         </IconButton>
         </Tooltip>
