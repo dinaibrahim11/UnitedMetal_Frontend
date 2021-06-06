@@ -56,7 +56,7 @@ const PhotoDescription = (props) => {
                 console.log(err.response);
                 console.log(props.postId);
             })
-
+            setTitleOrDescriptionChanged(prev => !prev);
         }
     }
 

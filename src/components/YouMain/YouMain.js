@@ -135,7 +135,7 @@ const YouMain = (props) => {
             <div>
 
             {   tab === 'about' ? <YouAbout token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/> : 
-               (tab === 'albums' && collections==='false') ? <YouAlbums token={currentUserToken} currentUserId={currentUserId} setCameraRoll={setCameraRoll} setCollectionsTrue={setCollectionsTrue} currentTab={props.currentTab}/>
+               (tab === 'albums' && collections==='false') ? <YouAlbums token={currentUserToken} userId={userId} currentUserId={currentUserId} setCameraRoll={setCameraRoll} setCollectionsTrue={setCollectionsTrue} currentTab={props.currentTab}/>
              : (tab === 'photostream') ? <PhotoStream userId={userId} token={currentUserToken}  />  
              : (tab === 'faves') ? <YouFaves /> : <YouCameraRoll token={currentUserToken} currentUserId={currentUserId} userId={userId} currPics={DUMMY_IMAGES}/>   }
 

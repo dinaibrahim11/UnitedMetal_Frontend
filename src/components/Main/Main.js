@@ -78,7 +78,7 @@ const Main = (props) => {
                 <Route exact path="/passChange" component={passChange} />
                 <Route exact path="/dispChange" component={dispChange} />
                 <Route exact path="/ExplorePage" component={ExplorePage} />
-                <Route exact path="/albums" render={(props) => <YouMain {...props} currentTab="albums" /> } />
+                <Route exact path="/user/:id/albums" render={(props) => <YouMain {...props} currentTab="albums" /> } />
                 <Route exact path="/albumss" component={YouAlbums} />
                 <Route exact path="/collections" render={(props) => <YouMain {...props} currentTab="albums" /> } />
                 <Route exact path="/organize" component={Organizer}/>

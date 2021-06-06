@@ -101,6 +101,7 @@ const PostDetail = (props) => {
     const [dateUploaded, setDateUploaded] = useState(null);
 
     const [ownerId, setOwnerId] = useState(null);
+    const [fetchedPostId, setFetchedPostId] = useState(false);
 
     const rerender = useSelector(state => state.users.toggle); //when a new comment is added, rerender
     const loggedInUserFaves = useSelector(state => state.users.currentUser.favedPhotos);
@@ -115,11 +116,6 @@ const PostDetail = (props) => {
 
 
     useEffect(() => {
-        // API.get(`photos/${postId}`)
-        //     .then(res => {
-        //         setPost(res.data);
-        //         setIsFollowing(res.data.isFollowing);
-        //     });
 
         API.get(`photo/${postId}`)
             .then(res => {
@@ -129,16 +125,12 @@ const PostDetail = (props) => {
                 console.log("PHOTO")
                 console.log(res);
                 console.log("OWNER ID");
-                setOwnerId(res.data.data.userId);
-                API.get(`user/${res.data.data.userId}/real-name`)
-                .then(res => {
-                    setFirstName(res.data.data.firstName);
-                    setLastName(res.data.data.lastName);
-                }).catch(err => {
-                    console.log("[PostDetail]::RealName")
-                });
-
-            })
+                setOwnerId(res.data.data.userId._id);
+                setFetchedPostId(prev => !prev);
+            }).catch(err => {
+                console.log("[PostDetail]::RealName");
+                console.log(err.response);
+            });
 
         API.get(`photo/${tmpPhotoId}`)
             .then(res => {
@@ -150,14 +142,6 @@ const PostDetail = (props) => {
                 console.log("[PostDetail]::ERROR");
                 console.log(err.response);
             })
-            
-        API.get(`user/${ownerId}/real-name`)
-            .then(res => {
-                setFirstName(res.data.data.firstName);
-                setLastName(res.data.data.lastName);
-            }).catch(err => {
-                console.log("[PostDetail]::RealName")
-            });
 
         API.get(`user/${tmpUserId}/faves`)
             .then(res => {
@@ -169,7 +153,7 @@ const PostDetail = (props) => {
                     for (let i = 0; i < favedPhotos.length; i++) {
                         if (favedPhotos[i].userId._id === tmpUserId) {
                             setIsFaved(true);
-                            dispatch(usersActions.toggleComments());
+                            //dispatch(usersActions.toggleComments());
                             //window.location.reload(true);
                             break;
                         }
@@ -181,16 +165,18 @@ const PostDetail = (props) => {
                 console.log(err.response);
             });
 
-        // for (let i = 0; i < favedPhotos.length; i++) {
-        //     if (favedPhotos[i].userId._id === tmpUserId) {
-        //         setIsFaved(true);
-        //         dispatch(usersActions.toggleComments());
-        //         //window.location.reload(true);
-        //         break;
-        //     }
-        // }
-
     }, [postId, rerender]);
+
+    useEffect(() => {
+        API.get(`user/${ownerId}/real-name`)
+            .then(res => {
+                setFirstName(res.data.data.firstName);
+                setLastName(res.data.data.lastName);
+            }).catch(err => {
+                console.log("[PostDetail]::RealName");
+                console.log(err.response);
+            });
+    }, [fetchedPostId]);
 
     useEffect(() => {
         //TODO: should be changed to ${currentUserId}
@@ -233,7 +219,7 @@ const PostDetail = (props) => {
             }
         }
 
-    }, [currentUserId, rerenderAlbums, rerender])
+    }, [currentUserId])
 
 
     const handleFav = () => {
