@@ -25,7 +25,7 @@ import GridListTile from '@material-ui/core/GridListTile';
             justifyContent: 'space-around',
             overflow: 'hidden',
             backgroundColor: theme.palette.background.paper,
-            
+            marginTop: '250px'
           },
           gridList: {
             width: 900,
@@ -41,7 +41,7 @@ import GridListTile from '@material-ui/core/GridListTile';
         useEffect(() => {
             API.get(`user/${props.userId}/faves`, { 
                 headers: {
-                    "authorization": `Bearer ${props.token}` 
+                    "Authorization": `Bearer ${props.token}` 
                 }}).then(res => {
                 console.log("FAVOURITES");
                 console.log(res);
@@ -62,7 +62,7 @@ import GridListTile from '@material-ui/core/GridListTile';
             <GridList cellHeight={160} className={classes.gridList} cols={4} >
               {photos.map((tile) => (
                 <GridListTile key={tile._id} cols={tile.cols || 1} onClick={() => goToImage(tile._id)}>
-                  <img src={tile.sizes.size.original.source} alt={tile.title} />
+                  <img src={tile.sizes.size.small.source} alt={tile.title} />
                 </GridListTile>
               ))}
             </GridList>

@@ -5,7 +5,11 @@ import GridListTile from '@material-ui/core/GridListTile';
 import API from '../../fakeAPI';
 import { useHistory } from "react-router-dom";
 
-
+/**
+ * Responsible for returning the 
+ * @param {properties} props 
+ * @returns {element} the Photostream components
+ */
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -20,7 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+/**
+ * @function YouPhotostream
+ * @author Dina Mohsen
+ * using flickr library for styling
+ */
 export default function PhotoStream(props) {
   const classes = useStyles();
     const history = useHistory();
