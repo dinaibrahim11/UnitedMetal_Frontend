@@ -31,7 +31,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 500,
+    width: 1000,
     height: 450,
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
@@ -76,7 +76,7 @@ const YouPhotostream = (props) => {
         
     return (
       <div className={classes.root}>
-      <GridList cellHeight={240} spacing={2}  className={classes.gridList} cols={2} >
+      <GridList cellHeight={300} spacing={2}  className={classes.gridList} cols={2} >
       
         {photos.map((tile) => (
           <GridListTile key={tile._id}  cols={tile.cols ? 2 : 1} rows={tile.cols ? 2 : 1} onClick={() => goToImage(tile._id)}>
