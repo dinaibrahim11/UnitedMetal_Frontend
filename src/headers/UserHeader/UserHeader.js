@@ -78,7 +78,7 @@ const UserHeader = (props) => {
                 <div className="global-nav-container fluid-centered " role="navigation" aria-label="Main">
 
                   <div className="mobile-nav-toggle phone-and-tablet-only">
-                  <DrawerToggleButton/>
+      
                   </div>
                   <div className="flickr-logo-container" style={{marginLeft: '20px'}}>
                     <a href="/home" onClick={(e) => {e.preventDefault(); history.push("/home")}}  className="main-logo new-logo" data-track="gnLogoClick" title="Flickr logo. If you click it, you'll go home" role="heading" aria-level={1} aria-label="Flickr logo. If you click it, you'll go home">
