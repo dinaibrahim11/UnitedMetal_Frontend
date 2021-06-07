@@ -7,7 +7,7 @@ import DrawerToggleButton from '../../components/Drawer/DrawerToggleButton';
 /**
  * Navigation bar at the top
  * @author Dina Mohsen
- * 
+ * using flickr library for styling
  */
 const UserHeader = (props) => {
 
@@ -200,7 +200,8 @@ const UserHeader = (props) => {
 
 
                     <li >
-                          <a role="menuitem"  className="gn-title explore"  aria-haspopup="true" aria-expanded="false" aria-label="Account"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/")}} href="/welcome">Logout</a>
+                          <a role="menuitem"  className="gn-title explore"  aria-haspopup="true" aria-expanded="false" aria-label="Account"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/welcome")}} href="/welcome">Log 
+                          Out</a>
                         </li>
                     
                   </ul>
