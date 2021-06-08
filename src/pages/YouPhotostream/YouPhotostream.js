@@ -85,7 +85,7 @@ const YouPhotostream = (props) => {
              <GridListTileBar
               title={tile.title}
               titlePosition="buttom"
-              subtitle={<span>by {tile.author}</span>}
+              subtitle={<span>by {tile.firstName} {tile.lastName}</span>}
               actionIcon={
                 <IconButton aria-label={`star ${tile.title}`} className={classes.icon}>
                   <StarBorderIcon />
