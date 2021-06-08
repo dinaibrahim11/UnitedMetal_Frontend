@@ -5,6 +5,13 @@ import API from '../../fakeAPI';
 import { usersActions } from '../../storev2/users-slice';
 import {useSelector, useDispatch} from 'react-redux'
 
+/**
+ * Responsible for creating a new album
+ * by selecting photos from camera roll photos 
+ * @author Esraa Hamed 
+ * @returns {element} - The organizer contents
+ * @example <Organizer />
+ */
 const Organizer = (props) => {
 
     const [cameraRollPhotos, setCameraRollPhotos] = useState([]);
@@ -41,6 +48,10 @@ const Organizer = (props) => {
       getCameraRollPhotos();
     }, [])
 
+    /**
+     * Check if photo has already been dragged and dropped (added to the album)
+     * If so, it sets photoAlreadyExists to true to be later checked and prevented from added to the album again
+     */
     useEffect(() => {
       setPhotoAlreadyExists(false);
       {droppedPhotos.map((item)=>{
@@ -86,6 +97,12 @@ const Organizer = (props) => {
      // setPhotoToBeRemovedIndex(cameraRollPhotos.indexOf(ev.target));  
     }
 
+    /**
+     * Responsible for handling the effect of dragging a photo downwards from the drag and drop region
+     * @param {object} ev - the JavaScript event object
+     * @param {number} id - id of the draggeed photo
+     * @param {string} url - url of the dragged photo
+     */
     const handleLowerDragStart = (ev,id, url) => {
       console.log("on drag start:", id);
       setRemovedPhotoID(id);
@@ -108,6 +125,11 @@ const Organizer = (props) => {
       ev.preventDefault();
     } 
 
+    /**
+     * Responsible for handling the effect of dropping a photo from the lower region in the drag and drop region
+     * Whenever a photo is dropped, photos count increment and this photo is added to the album
+     * @param {obect} ev - the JavaScript event object
+     */
     const handleUpperDrop = (ev) => {     
       ev.preventDefault();
       if(photoAlreadyExists===false){
@@ -125,6 +147,11 @@ const Organizer = (props) => {
       }
  }
 
+ /**
+  * Responsible for handling the effect of dropping a photo from drag and drop region in the lower region
+  * Whenever a photo is dropped, photos count decrement and this photo is removed from the album
+  * @param {object} ev - the JavaScript event object 
+  */
 const handleLowerDrop = (ev) => {
 
    ev.preventDefault();
