@@ -5,6 +5,16 @@ import classes from './EditModal.module.css'
 import API from '../../../fakeAPI';
 import { useSelector } from 'react-redux';
 
+
+/**
+ *  A modal that displays photos of the album to select a new primary photo from them
+ * Responsible for editing the cover/primary photo of the album
+ * @author Esraa Hamed
+ * @param {number} albumID - id of the album 
+ * @param {string} albumName - name of the album 
+ * @param {element} photos - photos of the album (to select a new primary photo from them) 
+ * @returns {element} - the EditModal contents
+ */
 const EditModal = (props) => {
 
     const [isSelected, setIsSelected] = useState(false);
