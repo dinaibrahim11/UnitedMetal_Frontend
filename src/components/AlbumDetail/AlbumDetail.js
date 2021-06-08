@@ -14,6 +14,18 @@ import Modal from '@material-ui/core/Modal';
 import EditModal from '../AlbumDetail/EditModal/EditModal'
 import { useSelector } from 'react-redux';
 
+/**
+* Displays the details of an album (name, decription, primary photo, photos contained in the album, and their count)
+ * @author Esraa Hamed
+ * @param {number} albumID - id of the album
+ * @param {string} albumName - name/title of the album
+ * @param {string} description - description of the album
+ * @param {number} photocount - number of photos inside the album
+ * @param {number} primaryPhoto - id of the primary photo of the album
+ * @param {object} photos - photos of the album
+ * @example <AlbumDetail />  
+ * @returns {element} - The AlbumDetail contents
+ */
 const AlbumDetail = (props) => {
 
     const albumId = props.match.params.id;
@@ -85,7 +97,9 @@ const AlbumDetail = (props) => {
            setAlbumDescription(e.target.value);
     }
 
-
+/**
+ * Posts new name/description of the album to the database
+ */
     const postNewData = () => {
         if(newAlbumName){
             const newAlbumInfo = {
@@ -108,6 +122,10 @@ const AlbumDetail = (props) => {
         if(albumDescription ==='Click here to enter a description for this album') {setAlbumDescription('')}
     }
     
+    /**
+     * gets all album data and sets albumID, albumName, ... accordingly
+     * If an album doesn't have a description, it displays 'Click here to enter a description for this album' instead
+     */
     useEffect(() => {
         API.get(`photoset/${albumId}`)
             .then(response => {
