@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Flickr-Clone Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This is the project for the course Software Engineering 2021, were we are making an image hosting website as flickr.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to run:
+- install [node](https://nodejs.org/en/download/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Open terminal/git-bash:
+```sh
+$ git clone https://github.com/amamdouhmahfouz/Flickr-Frontend.git
+$ npm install
+$ npm start
+```
 
-### `npm test`
+Or you can go directly to our deployed website: https://www.flickrclone.tech/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## This project was done with:
+- React js
+- CSS
+- Material UI 
+- Redux Toolkit for state management
+- Jest for unit testing
 
-### `npm run build`
+## Functionalities
+- Upload photos
+- Like/Unlike a photo
+- Search for a photo
+- Search for a user
+- Add, edit, and delete a comment from a photo
+- Add an album
+- Edit cover photo and description of album
+- View favorites 
+- View other profiles
+- Change account settings (password)
+- Add/edit your bio
+- Explore
+- View homepage
+- View photostream
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future work
+- Make a whole refactoring for the favoriting and unfavoriting logic of a photo, as not always the requests are being sent correctly.
+- Implement the remaining functionalities such as follow and notifications, as these features could add the sense of a real social networking app.
+- Implement the Groups feature to enhance the communication between the users of our website.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Team members
+- Abdelrahman Mamdouh
+- Alaa Hamed
+- Dina Mohsen
+- Esraa Hamed
+- Mostafa Hazem
