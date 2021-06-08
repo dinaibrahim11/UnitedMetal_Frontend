@@ -38,5 +38,5 @@ test('photos count is not equal to zero',  () => {
     const { getByTestId } = render(<Provider store={store}><Router><AlbumDetail match={{params: {id: 1}}}/></Router></Provider>);
     const photosCount = getByTestId("photos-count");
     expect(photosCount.textContent).not.toBe("0 photos");
-
 })
+
