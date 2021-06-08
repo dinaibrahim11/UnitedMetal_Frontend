@@ -5,6 +5,13 @@ import API from '../../fakeAPI';
 import { usersActions } from '../../storev2/users-slice';
 import {useSelector, useDispatch} from 'react-redux'
 
+/**
+ * Responsible for creating a new album
+ * by selecting photos from camera roll photos 
+ * @author Esraa Hamed 
+ * @returns {element} - The organizer contents
+ * @example <Organizer />
+ */
 const Organizer = (props) => {
 
     const [cameraRollPhotos, setCameraRollPhotos] = useState([]);
@@ -41,6 +48,10 @@ const Organizer = (props) => {
       getCameraRollPhotos();
     }, [])
 
+    /**
+     * Check if photo has already been dragged and dropped (added to the album)
+     * If so, it sets photoAlreadyExists to true to be later checked and prevented from added to the album again
+     */
     useEffect(() => {
       setPhotoAlreadyExists(false);
       {droppedPhotos.map((item)=>{
@@ -86,6 +97,12 @@ const Organizer = (props) => {
      // setPhotoToBeRemovedIndex(cameraRollPhotos.indexOf(ev.target));  
     }
 
+    /**
+     * Responsible for handling the effect of dragging a photo downwards from the drag and drop region
+     * @param {object} ev - the JavaScript event object
+     * @param {number} id - id of the draggeed photo
+     * @param {string} url - url of the dragged photo
+     */
     const handleLowerDragStart = (ev,id, url) => {
       console.log("on drag start:", id);
       setRemovedPhotoID(id);
@@ -108,6 +125,11 @@ const Organizer = (props) => {
       ev.preventDefault();
     } 
 
+    /**
+     * Responsible for handling the effect of dropping a photo from the lower region in the drag and drop region
+     * Whenever a photo is dropped, photos count increment and this photo is added to the album
+     * @param {obect} ev - the JavaScript event object
+     */
     const handleUpperDrop = (ev) => {     
       ev.preventDefault();
       if(photoAlreadyExists===false){
@@ -125,6 +147,11 @@ const Organizer = (props) => {
       }
  }
 
+ /**
+  * Responsible for handling the effect of dropping a photo from drag and drop region in the lower region
+  * Whenever a photo is dropped, photos count decrement and this photo is removed from the album
+  * @param {object} ev - the JavaScript event object 
+  */
 const handleLowerDrop = (ev) => {
 
    ev.preventDefault();
@@ -220,13 +247,13 @@ const postDataHandler = () => {
               <p className={classes.Organizer_square}>The photo or video you drag here will represent the set</p>
              )}
           
-            <p className={classes.Organizer_square_p}>{albumsCount} items in the album</p>
-            <input type="text" className={classes.Organizer_textbox1}  defaultValue="new album" onChange={handleTitleInput}/>
+            <p className={classes.Organizer_square_p} data-testid="photos-count">{albumsCount} items in the album</p>
+            <input type="text" className={classes.Organizer_textbox1}  defaultValue="new album" onChange={handleTitleInput} data-testid="name-input"/>
             <br />
-            <input type="textarea" className={classes.Organizer_textbox2} onDrop={(e)=>handleTextAreaDrop(e)} onChange={handleDescriptionInput}></input>
+            <input type="textarea" className={classes.Organizer_textbox2} onDrop={(e)=>handleTextAreaDrop(e)} onChange={handleDescriptionInput} data-testid="description-input"></input>
             <div className={classes.Buttons_div}>
 
-             {enableSaveButton===false ? (<button className={classes.save_button_disabled} disabled onClick={handleSaveClick}>SAVE</button>) : (<button className={classes.save_button_enabled} onClick={handleSaveClick}>SAVE</button>)}
+             {enableSaveButton===false ? (<button className={classes.save_button_disabled} disabled onClick={handleSaveClick} data-testid="save-btn">SAVE</button>) : (<button className={classes.save_button_enabled} onClick={handleSaveClick}>SAVE</button>)}
 
              
             <button className={classes.cancel_button} onClick={handleCancel}>CANCEL</button>
@@ -243,7 +270,7 @@ const postDataHandler = () => {
          ))}
          </div>
            ) :   
-           <div className={classes.Organizer_rightdiv} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} >
+           <div className={classes.Organizer_rightdiv} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} data-testid="drop-div">
            <br /> <br />
              <h4 className={classes.Organizer_rightdiv_h4} style={{fontWeight:'normal', fontSize:'33px'}}>
              Drag stuff here to add it to the album

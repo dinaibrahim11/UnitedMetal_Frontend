@@ -14,6 +14,18 @@ import Modal from '@material-ui/core/Modal';
 import EditModal from '../AlbumDetail/EditModal/EditModal'
 import { useSelector } from 'react-redux';
 
+/**
+* Displays the details of an album (name, decription, primary photo, photos contained in the album, and their count)
+ * @author Esraa Hamed
+ * @param {number} albumID - id of the album
+ * @param {string} albumName - name/title of the album
+ * @param {string} description - description of the album
+ * @param {number} photocount - number of photos inside the album
+ * @param {number} primaryPhoto - id of the primary photo of the album
+ * @param {object} photos - photos of the album
+ * @example <AlbumDetail />  
+ * @returns {element} - The AlbumDetail contents
+ */
 const AlbumDetail = (props) => {
 
     const albumId = props.match.params.id;
@@ -85,7 +97,9 @@ const AlbumDetail = (props) => {
            setAlbumDescription(e.target.value);
     }
 
-
+/**
+ * Posts new name/description of the album to the database
+ */
     const postNewData = () => {
         if(newAlbumName){
             const newAlbumInfo = {
@@ -108,6 +122,10 @@ const AlbumDetail = (props) => {
         if(albumDescription ==='Click here to enter a description for this album') {setAlbumDescription('')}
     }
     
+    /**
+     * gets all album data and sets albumID, albumName, ... accordingly
+     * If an album doesn't have a description, it displays 'Click here to enter a description for this album' instead
+     */
     useEffect(() => {
         API.get(`photoset/${albumId}`)
             .then(response => {
@@ -166,27 +184,27 @@ return(
        </Tooltip>
 
        <div className={classes.text1} onClick={handleEditText}>
-       <input type="text" className={classes.cover_title} defaultValue={albumName} value={newAlbumName} onChange={handleTitleChange}/>
-       <input type="textarea" className={classes.cover_description} defaultValue={albumDescription} value={albumDescription} onChange={handleDescriptionChange} onFocus={handleFocus}/>
+       <input type="text" className={classes.cover_title} defaultValue={albumName} value={newAlbumName} onChange={handleTitleChange}  data-testid="album-name"/>
+       <input type="textarea" className={classes.cover_description} defaultValue={albumDescription} value={albumDescription} onChange={handleDescriptionChange} onFocus={handleFocus}  data-testid="album-description"/>
         </div>
 
        {editTextClicked===false ? (
            <div>
         <div className={classes.text2}>
-       <p className={classes.cover_photoCount}> {photosCount + " photos"} </p>
+       <p className={classes.cover_photoCount} data-testid="photos-count"> {photosCount + " photos"} </p>
        </div>
 
        <div className={classes.icons}>
 
        <Tooltip title="Share this album">
        <Icon  onClick={shareHandler} className={classes.shareIcon} style={{fontSize:'25px'}}>
-        <RiShareForwardLine /> 
+        <RiShareForwardLine data-testid="share-btn"/> 
         </Icon>
         </Tooltip>
 
         <Tooltip title="Download">
           <Icon onClick={downloadHandler} className={classes.downloadIcon} style={{fontSize: '45px'}}>
-                 <GetAppOutlinedIcon />
+                 <GetAppOutlinedIcon  data-testid="download-btn"/>
          </Icon>
          </Tooltip>
 

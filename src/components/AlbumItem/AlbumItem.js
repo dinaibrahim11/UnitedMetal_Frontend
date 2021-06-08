@@ -13,6 +13,18 @@ import { Redirect } from "react-router-dom";
 import API from '../../fakeAPI';
 import DeleteModal from '../AlbumItem/DeleteModal/DeleteModal'
 
+
+/**
+ * A single album item that contains name and photo count of the album,
+ * and the primary photo of the album
+ * @author Esraa Hamed
+ * @param {number} albumID - ID of the album
+ * @param {string} albumName - name of the album  
+ * @param {number} photoCount - number of photos inisde the album
+ * @param {number} primaryPhoto - ID of the primary photo of the album 
+ * @example <AlbumItem />
+ * @returns {element} The Album Item contents
+ */
 const AlbumItem = ({ albumID, albumName, albumDescription, photoCount, primaryPhoto, photos }) => {
 
     
@@ -63,6 +75,10 @@ const handleAlbumClick = () => {
   setRedirect("/albums/" + albumID);
 }
 
+/**
+ * Gets camera roll photos and search for the photo with ID similar to the primaryPhoto ID sent as a prop
+ * to set it as the primary photo of the album
+ */
 useEffect(() => {
   API.get('photos')
   .then(response => {
@@ -102,7 +118,7 @@ if(redirect) {
           </div>
          ) : ( 
             <div className={classes.typo_hovered}>
-         <Typography variant='p' className={classes.title}> {albumName} </Typography>
+         <Typography variant='p' className={classes.title} data-testid="albumTitle"> {albumName} </Typography>
          <br />
          <Typography variant='p' className={classes.photosNumber}> {photoCount + " photos"} </Typography>
 
