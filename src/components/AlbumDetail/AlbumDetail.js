@@ -184,27 +184,27 @@ return(
        </Tooltip>
 
        <div className={classes.text1} onClick={handleEditText}>
-       <input type="text" className={classes.cover_title} defaultValue={albumName} value={newAlbumName} onChange={handleTitleChange}/>
-       <input type="textarea" className={classes.cover_description} defaultValue={albumDescription} value={albumDescription} onChange={handleDescriptionChange} onFocus={handleFocus}/>
+       <input type="text" className={classes.cover_title} defaultValue={albumName} value={newAlbumName} onChange={handleTitleChange}  data-testid="album-name"/>
+       <input type="textarea" className={classes.cover_description} defaultValue={albumDescription} value={albumDescription} onChange={handleDescriptionChange} onFocus={handleFocus}  data-testid="album-description"/>
         </div>
 
        {editTextClicked===false ? (
            <div>
         <div className={classes.text2}>
-       <p className={classes.cover_photoCount}> {photosCount + " photos"} </p>
+       <p className={classes.cover_photoCount} data-testid="photos-count"> {photosCount + " photos"} </p>
        </div>
 
        <div className={classes.icons}>
 
        <Tooltip title="Share this album">
        <Icon  onClick={shareHandler} className={classes.shareIcon} style={{fontSize:'25px'}}>
-        <RiShareForwardLine /> 
+        <RiShareForwardLine data-testid="share-btn"/> 
         </Icon>
         </Tooltip>
 
         <Tooltip title="Download">
           <Icon onClick={downloadHandler} className={classes.downloadIcon} style={{fontSize: '45px'}}>
-                 <GetAppOutlinedIcon />
+                 <GetAppOutlinedIcon  data-testid="download-btn"/>
          </Icon>
          </Tooltip>
 

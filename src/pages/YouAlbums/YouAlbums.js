@@ -99,11 +99,11 @@ const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab, userId}) => {
     if(isCameraRollEmpty === 'true'){
         YouAlbumsContent = <div>
                            <div className={classes.page_YouAlbums_center}>
-                           <h4 className={classes.page_YouAlbums_Header}>Let's make an album</h4>
+                           <h4 className={classes.page_YouAlbums_Header} data-testid="emptyCR-header">Let's make an album</h4>
                            </div>
                            <div>
                            <p className={classes.page_YouAlbums_p}> Easily organize all your photos into beautiful albums to share with friends, family or even other Flickr members.</p>
-                           <div className={classes.page_YouAlbums_Button}><Button variant="contained" color="primary" onClick={buttonClickHandler}> Go to camera roll </Button></div>
+                           <div className={classes.page_YouAlbums_Button} ><Button variant="contained" color="primary" onClick={buttonClickHandler} data-testid="cameraroll-btn"> Go to camera roll </Button></div>
                            <div> <img src={YouAlbums_bg} className={classes.YouAlbums_bg}/></div>
                            </div>
                            </div>
@@ -112,7 +112,7 @@ const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab, userId}) => {
     if(isCameraRollEmpty === 'false' ){
         YouAlbumsContent = <div>
                            <div className={classes.page_YouAlbums_options}>
-                           <Button style={{ fontSize: '11', color: 'grey', fontWeight: 'normal'}} onClick={newalbum_handler}> <AddToPhotosIcon />New album</Button> <h4 style={{fontWeight:'lighter'}}> | </h4>
+                           <Button style={{ fontSize: '11', color: 'grey', fontWeight: 'normal'}} onClick={newalbum_handler} title="New album"> <AddToPhotosIcon />New album</Button> <h4 style={{fontWeight:'lighter'}}> | </h4>
                            <Button style={{ fontSize: '11', color: 'grey', fontWeight: 'normal'}}> <AddToPhotosIcon /> New collection</Button>
                            <Button style={{ fontSize: '11', color: 'grey', fontWeight: 'normal' }} onClick={viewcollection_handler}> View my collections</Button> 
                            </div>

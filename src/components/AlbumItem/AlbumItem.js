@@ -118,7 +118,7 @@ if(redirect) {
           </div>
          ) : ( 
             <div className={classes.typo_hovered}>
-         <Typography variant='p' className={classes.title}> {albumName} </Typography>
+         <Typography variant='p' className={classes.title} data-testid="albumTitle"> {albumName} </Typography>
          <br />
          <Typography variant='p' className={classes.photosNumber}> {photoCount + " photos"} </Typography>
 

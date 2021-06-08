@@ -247,13 +247,13 @@ const postDataHandler = () => {
               <p className={classes.Organizer_square}>The photo or video you drag here will represent the set</p>
              )}
           
-            <p className={classes.Organizer_square_p}>{albumsCount} items in the album</p>
-            <input type="text" className={classes.Organizer_textbox1}  defaultValue="new album" onChange={handleTitleInput}/>
+            <p className={classes.Organizer_square_p} data-testid="photos-count">{albumsCount} items in the album</p>
+            <input type="text" className={classes.Organizer_textbox1}  defaultValue="new album" onChange={handleTitleInput} data-testid="name-input"/>
             <br />
-            <input type="textarea" className={classes.Organizer_textbox2} onDrop={(e)=>handleTextAreaDrop(e)} onChange={handleDescriptionInput}></input>
+            <input type="textarea" className={classes.Organizer_textbox2} onDrop={(e)=>handleTextAreaDrop(e)} onChange={handleDescriptionInput} data-testid="description-input"></input>
             <div className={classes.Buttons_div}>
 
-             {enableSaveButton===false ? (<button className={classes.save_button_disabled} disabled onClick={handleSaveClick}>SAVE</button>) : (<button className={classes.save_button_enabled} onClick={handleSaveClick}>SAVE</button>)}
+             {enableSaveButton===false ? (<button className={classes.save_button_disabled} disabled onClick={handleSaveClick} data-testid="save-btn">SAVE</button>) : (<button className={classes.save_button_enabled} onClick={handleSaveClick}>SAVE</button>)}
 
              
             <button className={classes.cancel_button} onClick={handleCancel}>CANCEL</button>
@@ -270,7 +270,7 @@ const postDataHandler = () => {
          ))}
          </div>
            ) :   
-           <div className={classes.Organizer_rightdiv} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} >
+           <div className={classes.Organizer_rightdiv} onDrop={(e)=>handleUpperDrop(e)} onDragOver={(e)=>handleDragOver(e)} data-testid="drop-div">
            <br /> <br />
              <h4 className={classes.Organizer_rightdiv_h4} style={{fontWeight:'normal', fontSize:'33px'}}>
              Drag stuff here to add it to the album
