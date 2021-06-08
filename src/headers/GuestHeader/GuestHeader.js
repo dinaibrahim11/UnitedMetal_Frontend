@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 /**
  * Navigation bar at the top
  * @author Dina Mohsen
- * 
+ * using flickr library for styling
  */
 const GuestHeader = (props) => {
 
