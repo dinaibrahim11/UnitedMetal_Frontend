@@ -9,7 +9,14 @@ import API from '../../fakeAPI';
 import AlbumItem from '../../components/AlbumItem/AlbumItem'
 import GridList from '@material-ui/core/GridList';
 
-
+/**
+ * Display YouAlbums page content
+ * If camera roll is empty it shows a button to direct the user to the camera roll page tp add photos
+ * If not, it shows all the albums created by the current user
+ * @author Esraa Hamed
+ * @param {properties} props 
+ * @returns {element} - YouAlbums component
+ */
 const YouAlbums = ({setCameraRoll, setCollectionsTrue, currentTab, userId}) => {
 
     const [isCameraRollEmpty, setIsCameraRollEmpty] = useState('false');
