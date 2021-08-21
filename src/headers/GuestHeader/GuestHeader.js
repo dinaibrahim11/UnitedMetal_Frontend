@@ -65,11 +65,13 @@ const GuestHeader = (props) => {
                 <div className="nav-banner-container" />
                 <div className="global-nav-content styleguide-global-nav fluid sohp-mobile-navable">
                   <div className="global-nav-container fluid-centered global-no-sidebar" role="navigation" aria-label="Main">
-                    <div className="flickr-logo-container">
-                      <a href="/" className="main-logo new-logo" data-track="gnLogoClick" title="Flickr logo. If you click it, you'll go home" role="heading" aria-level={1} aria-label="Flickr logo. If you click it, you'll go home">
-                        <svg className="icon icon-flickr_logo_dots"><use xlinkHref="#icon-flickr_logo_dots" /></svg>
-                      </a>
-                    </div>
+                    
+                  <div style={{margin: '0 18px 0 18px'}}>
+          <div className="main_title" style={{marginBottom: '27px', marginTop: '-8px'}}>
+            <h2 className="headtitle" style={{fontSize: '30px', margin: '14px 0px 10px 0px'}}>United Metal</h2>
+          
+          </div></div>
+                    
                     <ul className="nav-menu desktop-only" role="menubar">
                     </ul>
                     <ul className="gn-tools" role="menubar">
@@ -82,17 +84,27 @@ const GuestHeader = (props) => {
                             </label>
                             <ul className="search-pillbox">
                             </ul>
-                            <input onChange={handleChange} value={searchQuery} type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Photos, people, or groups" name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
+                            <input onChange={handleChange} value={searchQuery} type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Projects, collaboratios or careers.." name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
                           </form>
                           <div className="view search-autosuggest-items-list-view" data-view-signature="search-autosuggest-items-list-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_false__requiredToShowOnServer_false__theme_semi-transparent-theme__whichTabIsActiveOnRender_none" />
                         </div>
                         <svg className="icon mobile-search-close-button phone-and-tablet-only"><use xlinkHref="#icon-close" /></svg>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Log In</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Home</a>
                       </li>
-                      <li className="gn-signup" role="menuitem" aria-label="Sign Up">
-                        <a data-track="gnSignupClick" data-link-id="globalnav_signup_button" className="gn-title butt" href="/signup">Sign Up</a>
+                      <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">About us</a>
+                      </li>
+                      <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Projects</a>
+                      </li>
+                      <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Careers</a>
+                      </li>
+                      <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Contact
+                        us</a>
                       </li>
                     </ul>
                     <div className="mobile-nav-drawer-overlay" />
