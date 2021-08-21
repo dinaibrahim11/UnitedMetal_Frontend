@@ -1,8 +1,5 @@
-# Flickr-Clone Frontend
-
-
-This is the project for the course Software Engineering 2021, were we are making an image hosting website as flickr.
-
+# United-Metal Frontend
+This is the project for the industrial training summer 2021, were we are making a new website for the company to replace the old website unitedmetal.com.eg.
 
 
 ## How to run:
@@ -10,47 +7,35 @@ This is the project for the course Software Engineering 2021, were we are making
 
 Open terminal/git-bash:
 ```sh
-$ git clone https://github.com/amamdouhmahfouz/Flickr-Frontend.git
+$ git clone https://github.com/dinaibrahim11/UnitedMetal-Frontend/.git
 $ npm install
 $ npm start
 ```
 
-Or you can go directly to our deployed website: https://www.flickrclone.tech/
+Or you can go directly to our deployed website: https://
 
 ## This project was done with:
 - React js
-- CSS
-- Material UI 
+- CSS Libraries
 - Redux Toolkit for state management
 - Jest for unit testing
 
 ## Functionalities
-- Upload photos
-- Like/Unlike a photo
-- Search for a photo
-- Search for a user
-- Add, edit, and delete a comment from a photo
-- Add an album
-- Edit cover photo and description of album
-- View favorites 
-- View other profiles
-- Change account settings (password)
-- Add/edit your bio
-- Explore
+- Search for a project
+- Search for a company
+- Search for a job
+- View about
+- View other collaborations
+- Add/edit your info
+- Send request
+- Contact the company
+- Subscribe to newsteller
 - View homepage
-- View photostream
 
-## Future work
-- Make a whole refactoring for the favoriting and unfavoriting logic of a photo, as not always the requests are being sent correctly.
-- Implement the remaining functionalities such as follow and notifications, as these features could add the sense of a real social networking app.
-- Implement the Groups feature to enhance the communication between the users of our website.
-
-
+## Future work ##to be edited
+- Make a whole refactoring
+- Implement the remaining functionalities , as these features.
 
 
 ## Team members
-- Abdelrahman Mamdouh
-- Alaa Hamed
 - Dina Mohsen
-- Esraa Hamed
-- Mostafa Hazem
