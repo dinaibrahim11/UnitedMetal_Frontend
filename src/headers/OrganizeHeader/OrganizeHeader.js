@@ -12,7 +12,7 @@ const OrganizeHeader = () => {
         <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" >
-            Flickr
+            United Metal
           </Typography>
         </Toolbar>
        </AppBar>

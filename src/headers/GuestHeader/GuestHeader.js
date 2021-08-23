@@ -94,7 +94,7 @@ const GuestHeader = (props) => {
                         <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Home</a>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">About us</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">About</a>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
                         <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Projects</a>

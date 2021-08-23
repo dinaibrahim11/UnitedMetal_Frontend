@@ -90,7 +90,8 @@ const Welcome = (props) => {
         <ul id="banners_grid" className="clearfix">
           <li>
             <a href="shop/category/1/?lang=English" className="img_container">
-              <img src="images/cat/haircare.jpg" data-src="images/cat/haircare.jpg" alt="" className="lazy" data-pagespeed-url-hash={988693001} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={988693001} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <h3>Manufacturing Workshops and Warehouses (Hangars)</h3>
                 <p>
@@ -103,7 +104,8 @@ const Welcome = (props) => {
           </li>
           <li>
             <a href="shop/category/2/?lang=English" className="img_container">
-              <img src="images/cat/65.jpg" data-src="images/cat/65.jpg" alt="" className="lazy" data-pagespeed-url-hash={2630428309} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" 
+              data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2630428309} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <h3>Covering and Cladding of the Ceiling and Walls</h3>
                 <p>
@@ -116,7 +118,8 @@ const Welcome = (props) => {
           </li>
           <li>
             <a href="shop/category/11/?lang=English" className="img_container">
-              <img src="images/cat/bundlecover.jpg" data-src="images/cat/bundlecover.jpg" alt="" className="lazy" data-pagespeed-url-hash={2006291945} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2006291945} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <h3>Tanks and Containers (Steel and Stainless Steel)</h3>
                 <p>
@@ -133,7 +136,8 @@ const Welcome = (props) => {
         <ul id="banners_grid" className="clearfix">
           <li>
             <a href="shop/category/1/?lang=English" className="img_container">
-              <img src="images/cat/haircare.jpg" data-src="images/cat/haircare.jpg" alt="" className="lazy" data-pagespeed-url-hash={988693001} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={988693001} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <h3>Steel Structures (All Types)</h3>
                 <p>
@@ -146,7 +150,8 @@ const Welcome = (props) => {
           </li>
           <li>
             <a href="shop/category/2/?lang=English" className="img_container">
-              <img src="images/cat/65.jpg" data-src="images/cat/65.jpg" alt="" className="lazy" data-pagespeed-url-hash={2630428309} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2630428309} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <h3>Sandwich Panels</h3>
                 <p>
@@ -159,7 +164,8 @@ const Welcome = (props) => {
           </li>
           <li>
             <a href="shop/category/11/?lang=English" className="img_container">
-              <img src="images/cat/bundlecover.jpg" data-src="images/cat/bundlecover.jpg" alt="" className="lazy" data-pagespeed-url-hash={2006291945} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2006291945} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 <h3>Overhead Cranes</h3>
                 <p>
@@ -197,7 +203,10 @@ const Welcome = (props) => {
           <div className="owl-carousel owl-theme products_carousel">
           </div>
         </div>
-          <a className="btn_1" href="shop/" role="button" style={{margin: '0 auto', display: 'block', width: '120px', bottom: '11px', position: 'absolute', left: 0, right: 0}}>SEND REQUEST</a>
+        <div className="main_title" style={{marginBottom: '27px', marginTop: '-8px'}}>
+            <a className="black-btn" href="member/?action=community" role="button">
+              SEND REQUEST</a>
+          </div>
         </div>
         <div className="main_title" style={{margin: '10px 0 9px 0'}}>
             <h3 className="headtitle" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important'}}>
@@ -225,17 +234,12 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
         </div>
       
         <div className="margin_20_15" style={{margin: '0 18px 0 18px'}}>
-          <div className="main_title">
-            <h2 className="headtitle" style={{margin: '15px 0 17px 0'}}>
-              <a href="post/view/5/Blog/" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important', color: '#000'}}>
-                LATEST BLOGS</a></h2>
-          </div>
           <div className="row">
             <div className="col-md-4 sm-padding ">
               <article className="blog">
                 <figure>
                   <a href="Post/details/185/-REASONS-WHY-YOU-SHOULD-SHARE-YOUR-BRÆS!/?lang=English">
-                    <img className="imgblog" src="files/2021/8/19//2e87d.SHARE.jpg" alt="" data-pagespeed-url-hash={81983290} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                    <img className="imgblog" src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" data-pagespeed-url-hash={81983290} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                   </a>
                 </figure>
               </article>
@@ -244,7 +248,7 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <article className="blog">
                 <figure>
                   <a href="Post/details/180/A-K-REASONS-WHY!/?lang=English">
-                    <img className="imgblog" src="files/2021/8/8//2daa5.2.jpg" alt="" data-pagespeed-url-hash={2543908006} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                    <img className="imgblog" src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" data-pagespeed-url-hash={2543908006} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                   </a>
                 </figure>
               </article>
@@ -253,45 +257,20 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <article className="blog">
                 <figure>
                   <a href="Post/details/168/-TIPS-ON-HOW-TO-FIX-FRIZZY-HAIR!/?lang=English">
-                    <img className="imgblog" src="files/2021/8/8//12338.3.jpg" alt="" data-pagespeed-url-hash={186867355} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                    <img className="imgblog" src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" data-pagespeed-url-hash={186867355} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                   </a>
                 </figure>
               </article>
             </div>
-            <div className="col-md-4 sm-padding  d-none d-sm-block ">
-              <article className="blog">
-                <figure>
-                  <a href="Post/details/169/YOUR-ULTIMATE-PERIOD-GUIDE/?lang=English">
-                    <img className="imgblog" src="files/2021/8/8//40c74.4.jpg" alt="" data-pagespeed-url-hash={1737175577} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-                  </a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-md-4 sm-padding  d-none d-sm-block ">
-              <article className="blog">
-                <figure>
-                  <a href="Post/details/158/HEATLESS-CURLS?-SAY-NO-MORE!/?lang=English">
-                    <img className="imgblog" src="files/2021/8/8//03e68.1.jpg" alt="" data-pagespeed-url-hash={2694502214} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-                  </a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-md-4 sm-padding  d-none d-sm-block ">
-              <article className="blog">
-                <figure>
-                  <a href="Post/details/139/THE-CHECKLIST:-CLAY-MASK-EDITION/?lang=English">
-                    <img className="imgblog" src="files/2021/8/8//415b8.5.jpg" alt="" data-pagespeed-url-hash={2897655836} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-                  </a>
-                </figure>
-              </article>
-            </div>
+     
+         
+           
           </div>
         </div>
         <div style={{margin: '0 18px 0 18px'}}>
           <div className="main_title" style={{marginBottom: '27px', marginTop: '-8px'}}>
-            <h2 className="headtitle" style={{fontSize: '30px', margin: '14px 0px 10px 0px'}}>Join the Bræs Community</h2>
-            <a className="black-btn" href="member/?action=community" role="button">
-              Click here to upload </a>
+            <h2 className="headtitle" style={{fontSize: '30px', margin: '14px 0px 10px 0px'}}>Our Clients</h2>
+        
           </div>
           <div className="row">
             <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
@@ -445,7 +424,7 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6">
-              <h3 data-target="#collapse_1">ACCOUNT DETAILS</h3>
+              <h3 data-target="#collapse_1">About</h3>
               <div className="collapse dont-collapse-sm links" id="collapse_1">
                 <ul>
                   <li><a href="member/?action=profile">My account</a></li>
@@ -455,7 +434,7 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               </div>
             </div>
             <div className="col-lg-3 col-md-6">
-              <h3 data-target="#collapse_2">OUR BLOGS</h3>
+              <h3 data-target="#collapse_2">Services</h3>
               <div className="collapse dont-collapse-sm links" id="collapse_2">
                 <ul>
                   <li><a href="post/view/6/sub:1">Product Recommendations Based On Hair Problems</a></li>
@@ -491,7 +470,7 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
             </div>
             <div className="col-lg-6">
               <ul className="additional_links">
-                <li><span>All Rights Reserved To © 2021 Braes</span></li>
+                <li><span>All Rights Reserved To © 2021 United Metal</span></li>
               </ul>
             </div>
           </div>
