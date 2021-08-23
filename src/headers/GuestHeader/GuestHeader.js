@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-
+import { usersActions } from '../../storev2/users-slice';
+import { useDispatch, useSelector } from 'react-redux';
 /**
  * Navigation bar at the top
  * @author Dina Mohsen
@@ -8,25 +9,34 @@ import { useHistory } from "react-router-dom";
  */
 const GuestHeader = (props) => {
 
-    const history = useHistory();
-    const [searchQuery, setSearchQuery] = useState('');
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-    //To avoid the refreshing problem:
-    //https://stackoverflow.com/questions/63880605/react-js-how-to-prevent-page-reload-once-click-on-the-link-right-now-the-whole
+  const preventRefresh = (event, path) => {
+    event.preventDefault();
+    history.push(path);
+  }
 
-    const handleChange = (event) => {
-        setSearchQuery(event.target.value);
-        
-    }
+  const currentUserId = useSelector(state => state.users.currentUser.userId);
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        if (searchQuery === '') {
-            return;
-        }
-        setSearchQuery('');
-        history.push("/SearchPage");
-    }
+  const [searchQuery, setSearchQuery] = useState('');
+
+  //To avoid the refreshing problem:
+  //https://stackoverflow.com/questions/63880605/react-js-how-to-prevent-page-reload-once-click-on-the-link-right-now-the-whole
+
+  const handleChange = (event) => {
+      setSearchQuery(event.target.value);
+      
+  }
+
+  const handleClick = (event) => {
+      event.preventDefault();
+      if (searchQuery === '') {
+          return;
+      }
+      history.push("/SearchPage/?"+searchQuery);
+      setSearchQuery('');
+  }
 
 
     return (   
@@ -91,19 +101,19 @@ const GuestHeader = (props) => {
                         <svg className="icon mobile-search-close-button phone-and-tablet-only"><use xlinkHref="#icon-close" /></svg>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Home</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/home"  onClick={(e) => {e.preventDefault(); history.push("/home")}} >Home</a>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">About</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login"  onClick={(e) => {e.preventDefault(); history.push("/home")}} >About</a>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Projects</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login"  onClick={(e) => {e.preventDefault(); history.push("/home")}} >Projects</a>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Careers</a>
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login"  onClick={(e) => {e.preventDefault(); history.push("/home")}} >Careers</a>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">
-                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login">Contact
+                        <a data-track="gnSignin" data-link-id="globalnav_signin_link" className="gn-title" href="/login"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >Contact
                         us</a>
                       </li>
                     </ul>
