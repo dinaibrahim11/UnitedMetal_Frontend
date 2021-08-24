@@ -98,6 +98,7 @@ const GuestHeader = (props) => {
                           </form>
                           <div className="view search-autosuggest-items-list-view" data-view-signature="search-autosuggest-items-list-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_false__requiredToShowOnServer_false__theme_semi-transparent-theme__whichTabIsActiveOnRender_none" />
                         </div>
+                        
                         <svg className="icon mobile-search-close-button phone-and-tablet-only"><use xlinkHref="#icon-close" /></svg>
                       </li>
                       <li className="gn-signin tablet-and-desktop-only" role="menuitem" aria-label="Sign In">

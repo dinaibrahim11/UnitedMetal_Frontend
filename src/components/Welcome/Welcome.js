@@ -1,6 +1,5 @@
 import React from 'react' 
 import classes from './Welcome.module.css'
-import video1 from './welcome_video.mp4'
 import {Link} from 'react-router-dom'
 
 /**
@@ -208,7 +207,16 @@ const Welcome = (props) => {
               SEND REQUEST</a>
           </div>
         </div>
-        <div className="main_title" style={{margin: '10px 0 9px 0'}}>
+        
+        <div className=" margin_20_15" style={{maxWidth: '98%', margin: '0 auto'}}>
+          <div className="main_title" style={{margin: '14px 0 17px 0'}}>
+            <h2 className="headtitle" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important'}}>About us</h2>
+            <p>
+            United Metal is a leading manufacturer in the field of metallic construction
+Our staff consists of civil, architect, mechanical, and electrical engineers. In addition to production and erection skilled labors whom are organized in outdoor workshops and equipped with the required tools. This staff is qualified to work under hard conditions and in different areas.
+            </p>
+          </div>
+          <div className="main_title" style={{margin: '10px 0 9px 0'}}>
             <h3 className="headtitle" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important'}}>
               . </h3>
             <h4 style={{fontSize: '20px'}}>.</h4>
@@ -220,33 +228,11 @@ const Welcome = (props) => {
             
 
           </div>
-        <div className=" margin_20_15" style={{maxWidth: '98%', margin: '0 auto'}}>
-          <div className="main_title" style={{margin: '14px 0 17px 0'}}>
-            <h2 className="headtitle" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important'}}>About us</h2>
-            <p>
-            United Metal is a leading manufacturer in the field of metallic construction
-Our staff consists of civil, architect, mechanical, and electrical engineers. In addition to production and erection skilled labors whom are organized in outdoor workshops and equipped with the required tools. This staff is qualified to work under hard conditions and in different areas.
-            </p>
-          </div>
           <div className="owl-carousel owl-theme products_carousel">
         
           </div>
           <ul id="banners_grid" className="clearfix">
-          <li>
-            <a href="shop/category/1/?lang=English" className="img_container">
-              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
-               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={988693001} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-              <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-               
-                <p>
-                we have the solution
-            </p>
-            <h3>Hangars</h3>
-                <span className="abstract" />
-                <div><span className="btn_1">Go</span></div>
-              </div>
-            </a>
-          </li>
+       
           <li>
             <a href="shop/category/2/?lang=English" className="img_container">
               <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" 
@@ -254,9 +240,9 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
             
                 <p>
-                we have the ceiling
+                WE HAVE THE SOLUTION
                 </p>
-                <h3>Hangars</h3>
+                <h3>HANGARS</h3>
                 <span className="abstract" />
                 <div><span className="btn_1">Go</span></div>
               </div>
@@ -269,15 +255,13 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 
                 <p>
-                we have the solution
-                </p>  <h3>Hangars</h3>
+                WE HAVE THE SOLUTION
+                </p>  <h3>OVERHEAD CRANES</h3>
                 <span className="abstract" />
                 <div><span className="btn_1">Go</span></div>
               </div>
             </a>
           </li>
-        </ul>
-        <ul id="banners_grid" className="clearfix">
           <li>
             <a href="shop/category/1/?lang=English" className="img_container">
               <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
@@ -285,8 +269,27 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 
                 <p>
-                we have the solution
-                </p>  <h3>Hangars</h3>
+                WE HAVE THE SOLUTION
+                </p>  <h3>STEEL STRUCTURES</h3>
+                <span className="abstract" />
+                <div><span className="btn_1">Go</span></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <ul id="banners_grid" className="clearfix">
+     
+       
+          <li>
+            <a href="shop/category/11/?lang=English" className="img_container">
+              <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2006291945} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+              <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                
+                <p>
+                CLADDING OF THE CEILING
+                </p>
+                <h3>HANGARS</h3>
                 <span className="abstract" />
                 <div><span className="btn_1">Go</span></div>
               </div>
@@ -299,184 +302,61 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 
                 <p>
-                we have the solution
+              WE HAVE THE SOLUTION
                     </p>
-                    <h3>Hangars</h3>
+                    <h3>SANDWICH PANELS</h3>
                 <span className="abstract" />
                 <div><span className="btn_1">Go</span></div>
               </div>
             </a>
           </li>
           <li>
-            <a href="shop/category/11/?lang=English" className="img_container">
+            <a href="shop/category/2/?lang=English" className="img_container">
               <img src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804"
-               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2006291945} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+               data-src="https://cdn.shopify.com/s/files/1/0082/5553/7223/products/TIM_20190927172031_1024x1024@2x.png?v=1571718804" alt="" className="lazy" data-pagespeed-url-hash={2630428309} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
               <div className="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                 
                 <p>
-                we have the solution
-                </p>
-                <h3>Hangars</h3>
+                WE HAVE THE SOLUTION
+                    </p>
+                    <h3>TANKS AND CONTAINERS</h3>
                 <span className="abstract" />
                 <div><span className="btn_1">Go</span></div>
               </div>
             </a>
           </li>
+        
         </ul>
         </div>
-        <div style={{margin: '0 18px 0 18px'}}>
-          <div className="main_title" style={{marginBottom: '27px', marginTop: '-8px'}}>
-            <h2 className="headtitle" style={{fontSize: '30px', margin: '14px 0px 10px 0px'}}>Our Clients</h2>
-        
+        <div className="main_title" style={{margin: '10px 0 9px 0'}}>
+            <h3 className="headtitle" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important'}}>
+              . </h3>
+            <h4 style={{fontSize: '20px'}}>.</h4>
           </div>
-          <div className="row">
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406221.jpg" alt="" data-pagespeed-url-hash={4292308181} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406216.jpg" alt="" data-pagespeed-url-hash={1545056503} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406210.jpg" alt="" data-pagespeed-url-hash={4073024273} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406205.jpg" alt="" data-pagespeed-url-hash={1325772595} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406199.jpg" alt="" data-pagespeed-url-hash={3090191273} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406193.jpg" alt="" data-pagespeed-url-hash={1323191747} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406183.jpg" alt="" data-pagespeed-url-hash={1398407760} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-              <article className="blog">
-                <figure>
-                  <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406177.jpg" alt="" data-pagespeed-url-hash={2651623457} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                </figure>
-              </article>
-            </div>
+          <div className="main_title" style={{margin: '10px 0 9px 0'}}>
+            <h3 className="headtitle" style={{fontSize: '33px', fontFamily: 'futurabold', fontWeight: 'normal!important'}}>
+              . </h3>
+            <h4 style={{fontSize: '20px'}}>.</h4>
+            
+
           </div>
-          <div id="accordion">
-            <a href="javascript:void(0)" data-toggle="collapse" data-target="#collapseOne" aria-expanded="fale" aria-controls="collapseOne">
-              <img src="themes/braes/assets/img/arrow-dropdown-circles.png" style={{width: '50px', margin: '0 auto 6px auto', display: 'block'}} data-pagespeed-url-hash={1913428194} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-            </a>
-            <div id="collapseOne" className="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-              <div className="row">
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406299.jpg" alt="" data-pagespeed-url-hash={1826828162} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406292.jpg" alt="" data-pagespeed-url-hash={4060296011} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406288.jpg" alt="" data-pagespeed-url-hash={1607544254} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406284.jpg" alt="" data-pagespeed-url-hash={429544570} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406239.jpg" alt="" data-pagespeed-url-hash={2278124240} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406235.jpg" alt="" data-pagespeed-url-hash={1100124556} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406230.jpg" alt="" data-pagespeed-url-hash={3922592247} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-                <div className="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 sm-padding">
-                  <article className="blog">
-                    <figure>
-                      <a href="post/view/5/Blog/"> <img className="Communityimg" src="files/community/thumb_1628406226.jpg" alt="" data-pagespeed-url-hash={1469840490} onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></a>
-                    </figure>
-                  </article>
-                </div>
-              </div>
-            </div>
+          <div className="featured featured-img " data-mobile="files/2021/3/19//76173.middlephone.jpg" data-contain={0} data-mobile-height={500} data-bg="url(files/2021/3/19//76173.middlephone.jpg)" data-position="center">
+        <div className="container margin_20_15">
+    
+          <div className="main_title">
+            
+ <h1>Our Clients</h1>
+            <h4>
+            FOX . DAWILA . MAADI CONTRACTING . EVA PHARMA . UNIVERSAL . PYRAMID POULTRY CO. . NEW URBAN COMMUNITIES AUTHORITY . ENVIRO MASTER . EIPAL . ELSEWEDY ELECTRIC . SUEZ POLYSTER CO. . CASING& TUBING . EGYPTIAN MILITARY FORCES . ALMASA HOTEL . MINISTRY OF INTERIOR SERVICE . ZAMIL STEEL . CUSTOM STORAGE COMPANY
+            </h4>
           </div>
+          <div className="owl-carousel owl-theme products_carousel">
+          </div>
+        </div>
         </div>
         <style dangerouslySetInnerHTML={{__html: ".featured-img181{background-image:url(files/2021/8/19//0bde0.laaa22.jpg);background-repeat:no-repeat;background-position:inherit;background-size:cover;height:650px}@media (max-width:680px){.featured-img181{background-image:url(files/2021/8/19//98168.laaaphone22.jpg)!important;height:500px;background-position:center!important}}" }} />
-        <div className="featured featured-img181 " data-mobile="files/2021/8/19//98168.laaaphone22.jpg" data-contain={0} data-mobile-height={500} data-bg="url(files/2021/8/19//98168.laaaphone22.jpg)" data-position="center">
-        </div>
+        
       </main>
-      <div className="top_panel">
-        <div className="container header_panel">
-          <a href="javascript:void(0)" className="btn_close_top_panel"><i className="ti-close" /></a>
-          <label> product added to cart</label>
-        </div>
-        <div id="cart-result">
-          <div className="item">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-7">
-                </div>
-                <div className="col-md-5 btn_panel">
-                  <a href="cart/cart" className="btn_1 outline">View cart</a> <a href="checkout.html" className="btn_1">Checkout</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><div className="fb-customerchat" page_id={420189051856950}>
-      </div>
       <footer className="revealed">
         <div className="container">
           <div className="row">
@@ -484,9 +364,7 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <h3 data-target="#collapse_1">About</h3>
               <div className="collapse dont-collapse-sm links" id="collapse_1">
                 <ul>
-                  <li><a href="member/?action=profile">My account</a></li>
-                  <li><a href="member/?action=orders">My Orders</a></li>
-                  <li><a href="member/?action=orders&act=track">Track your Order</a></li>
+                  <a href="member/?action=profile">United Metal is a leading manufacturer in the field of metallic construction, located in the 6th October Trading center and the factory is located in the 3rd industrial zone in 6th of October city.</a> 
                 </ul>
               </div>
             </div>
@@ -494,21 +372,39 @@ Our staff consists of civil, architect, mechanical, and electrical engineers. In
               <h3 data-target="#collapse_2">Services</h3>
               <div className="collapse dont-collapse-sm links" id="collapse_2">
                 <ul>
-                  <li><a href="post/view/6/sub:1">Product Recommendations Based On Hair Problems</a></li>
-                  <li><a href="post/view/7/sub:1">Bræs Kitchen</a></li>
-                  <li><a href="post/view/8/sub:1">Know Your Hair Porosity</a></li>
-                  <li><a href="post/view/9/sub:1">Bræs Hair Routines</a></li>
-                </ul>
+                 <li> <a href="post/view/6/sub:1">SUBSCRIBE
+Don’t miss Unitedmetal latest news and events. Subscribe to our newsletter channel and be informed</a>
+                  
+</li>
+                      <li className="gn-search-box" role="menuitem">
+
+                        <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_true__requiredToShowOnServer_true__theme_semi-transparent-theme__whichTabIsActiveOnRender_none"><form  role="search" className="search-form">
+                            <label data-track="gnSearchSearchIcon" aria-label="Search">
+                              <svg className="icon search-icon" style={{width: '22px', height: '22px'}} data-track="gnSearchSearchIcon" aria-label="Search"><use xlinkHref="#icon-search" /></svg>
+                              <input type="submit" data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button" />
+                            </label>
+                            <ul className="search-pillbox">
+                            </ul>
+                            <input  type="text" id="search-field" className="autosuggest-selectable-item" placeholder="write your mail.." name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
+                          </form>
+                          <div className="view search-autosuggest-items-list-view" data-view-signature="search-autosuggest-items-list-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_false__requiredToShowOnServer_false__theme_semi-transparent-theme__whichTabIsActiveOnRender_none" />
+                        </div>
+                      </li>
+                    <li>  <a className="black-btn" href="member/?action=community" role="button">
+              SUBSCRIBE</a></li>
+              </ul>
+        
               </div>
+    
+          
+          
             </div>
             <div className="col-lg-4 col-md-6">
               <h3 data-target="#collapse_3">Contact us</h3>
               <div className="collapse dont-collapse-sm contacts" id="collapse_3">
                 <ul>
-                  <li><i className="ti-home" />New Cairo, Cairo, Egypt</li>
-                  <li><i className="ti-headphone-alt" /><a href="tel://+2‭01116333052">‭0111633305</a></li>
-                  <li><i className="ti-email" /><a href="/contact">Contact BRÆS</a></li>
-                  <li><i className="fas fa-shipping-fast" /><a href="/shop/ShippingPolicy"> Shipping policy </a></li>
+                  <li><i className="ti-home" />Head office : 6 October Trading center building no 1</li>
+                  <li><i className="fas fa-shipping-fast" /> Work Shop : 3rd industrial zone 6th of October </li>
                 </ul>
               </div>
             </div>
