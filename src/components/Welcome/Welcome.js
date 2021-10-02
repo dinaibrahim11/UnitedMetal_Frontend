@@ -1,5 +1,4 @@
 import React from 'react' 
-import classes from './Welcome.module.css'
 import {Link} from 'react-router-dom'
 
 /**

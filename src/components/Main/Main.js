@@ -11,7 +11,6 @@ import Unauthorized from '../Unauthorized/Unauthorized';
 import { useSelector } from 'react-redux';
 import YouMain from '../YouMain/YouMain';
 import Organizer from '../Organizer/Organizer'
-
 import Welcome from '../../components/Welcome/Welcome';
 import Login from '../../components/Login/Login';
 import ForgetPassword from '../../components/ForgetPassword/ForgetPassword'
@@ -24,7 +23,7 @@ import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
 import Followers from '../../pages/Followers/Followers'
-import Upload from '../../pages/Upload/Upload'
+import About from '../../pages/About/About'
 import YouPhotostream from '../../pages/YouPhotostream/YouPhotostream';
 import YouFaves from '../../pages/YouFaves/YouFaves';
 import Following from '../../pages/Following/Following'
@@ -71,7 +70,7 @@ const Main = (props) => {
                 <Route exact path="/cameraroll" render={(props) => <YouMain {...props} currentTab="cameraroll" /> } />  
                 <Route exact path="/SearchPage" component={SearchPage} />
                 <Route exact path="/user/:id/followers" component={Followers} />
-                <Route exact path="/upload" component={Upload} />
+                <Route exact path="/about" component={About} />
                 <Route exact path="/user/:id/following" component={Following} />
                 <Route exact path="/SearchPage/" component={SearchPage}/>
                 <Route exact path="/AccountSettings" component={AccountSettings} />
