@@ -18,14 +18,7 @@ import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
-import About from '../../pages/About/About';
-
-import AccountSettings from '../../components/UserSettings/AccountSettings';
-import editPass from '../UserSettings/editPass';
-import passChange from '../UserSettings/passChange';
-import dispChange from '../UserSettings/dispChange';
-import ExplorePage from '../../components/Explore/ExplorePage';
-/**
+import About from '../../pages/About/About';/**
  * Responsible for the routing of the whole website
  * @example <Main />
  * 
@@ -49,18 +42,14 @@ const Main = (props) => {
                 <Route exact path="/post-forgotpassword" component={ForgetPasswordSuccess} />
                 <Route exact path="/forgotpassword-confirm" component={ResetPassword} />
                 <Route exact path="/post-forgotpassword-confirm" component={ResetPasswordSuccess} />
-                <ProtectedRoute exact path="/home" isLoggedIn={isLoggedIn} component={Posts}/>
+            
              <Route exact path='/Unauthorized' component={Unauthorized} />
                <Route exact path="/SearchPage" component={SearchPage} />
                
                 <Route exact path="/about" component={About} />
                
                 <Route exact path="/SearchPage/" component={SearchPage}/>
-                <Route exact path="/AccountSettings" component={AccountSettings} />
-                <Route exact path="/editPass" component={editPass} />
-                <Route exact path="/passChange" component={passChange} />
-                <Route exact path="/dispChange" component={dispChange} />
-                <Route exact path="/ExplorePage" component={ExplorePage} />
+             
                 <Route exact path="/organize" component={Organizer}/>
                 <Route exact path="/SearchPage" component={SearchPage} />
 
