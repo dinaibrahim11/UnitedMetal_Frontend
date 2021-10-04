@@ -72,7 +72,7 @@ const Footer = (props) => {
                       <h3 data-target="#collapse_1">About</h3>
                       <div className="collapse dont-collapse-sm links" id="collapse_1">
                         <ul>
-                          <a href="member/?action=profile">United Metal is a leading manufacturer in the field of metallic construction, located in the 6th October Trading center and the factory is located in the 3rd industrial zone in 6th of October city.</a> 
+                          <a href="member/?action=profile">United Metal is a leading manufacturer in the field of metallic construction. The company is located in the 6th October Trading center and the factory is located in the 3th industrial zone in 6th of October city.</a> 
                         </ul>
                       </div>
                     </div>
@@ -86,22 +86,18 @@ const Footer = (props) => {
         </li>
                               <li className="gn-search-box" role="menuitem">
         
-                                <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_true__requiredToShowOnServer_true__theme_semi-transparent-theme__whichTabIsActiveOnRender_none"><form  role="search" className="search-form">
-                                    <label data-track="gnSearchSearchIcon" aria-label="Search">
-                                      <svg className="icon search-icon" style={{width: '22px', height: '22px'}} data-track="gnSearchSearchIcon" aria-label="Search"><use xlinkHref="#icon-search" /></svg>
-                                      <input type="submit" data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button" />
-                                    </label>
-                                    <ul className="search-pillbox">
-                                    </ul>
-                                    <input  type="text" id="search-field" className="autosuggest-selectable-item" placeholder="write your mail.." name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
-                                  </form>
+                                <div className="view search-autosuggest-field-view requiredToShowOnServer" data-view-signature="search-autosuggest-field-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_true__requiredToShowOnServer_true__theme_semi-transparent-theme__whichTabIsActiveOnRender_none">
+                                  <div className="form-group">
+                        <textarea className="form-control" style={{height: '34px'}} placeholder="Your mail .." name="contact_subject" id="contact_subject" defaultValue={""} />
+                      </div>
                                   <div className="view search-autosuggest-items-list-view" data-view-signature="search-autosuggest-items-list-view__UA_1__adConfig_1__disableMobileNav_true__enableBrowserUpgradeBanner_true__isMobile_false__isOwner_false__requiredToShowOnClient_false__requiredToShowOnServer_false__theme_semi-transparent-theme__whichTabIsActiveOnRender_none" />
                                 </div>
                               </li>
-                            <li>  <a className="black-btn" href="member/?action=community" role="button">
-                      SUBSCRIBE</a></li>
-                      </ul>
-                
+                              <div className="form-group">
+                        <input className="btn_1 full-width" type="SUBSCRIBE" defaultValue="SUBSCRIBE" />
+                      </div>
+                  
+                </ul>
                       </div>
             
                   
