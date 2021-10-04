@@ -106,11 +106,12 @@ const GuestHeader = (props) => {
                       </div>
                       <ul> 
                         <li><a href="/"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >HOME</a></li>
-                        <li>  <a href="/about"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >ABOUT</a></li>
                         <li> <a href="shop/all"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >PROJECTS</a></li>
                               
-                       <li><a href="shop/all/best:1"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >CAREERS</a></li> <li><a href="shop/category/11/">SERVICES</a></li>
+                       <li><a href="shop/all/best:1"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >CAREERS</a></li> 
+                       <li><a href="shop/category/11/" onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >SERVICES</a></li>
                         
+                       <li>  <a href="/about"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >ABOUTUS</a></li>
                          <li><a href="/contact"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >CONTACTUS</a></li>
                       </ul>
                     </div>
