@@ -113,6 +113,8 @@ const Footer = (props) => {
                         <ul>
                           <li><i className="ti-home" />Head office : 6 October Trading center building no 1</li>
                           <li><i className="fas fa-shipping-fast" /> Work Shop : 3rd industrial zone 6th of October </li>
+                          <li><i className="fas fa-shipping-fast" /> Email  : info@unitedmetal.com.eg  </li>
+                        
                         </ul>
                       </div>
                     </div>
@@ -123,7 +125,7 @@ const Footer = (props) => {
                     </div>
                     <div className="col-lg-6">
                       <ul className="additional_links">
-                        <li><span>2021 United Metal</span></li>
+                        <li style={{fontSize: '10px'}}><span style={{fontSize: '10px'}}>All Rights Reserved To © 2021 United Metal</span></li>
                       </ul>
                     </div>
                   </div>
