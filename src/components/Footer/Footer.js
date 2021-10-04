@@ -68,14 +68,7 @@ const Footer = (props) => {
               <footer className="revealed">
         <div className="container">
                   <div className="row">
-                    <div className="col-lg-3 col-md-6">
-                      <h3 data-target="#collapse_1">About</h3>
-                      <div className="collapse dont-collapse-sm links" id="collapse_1">
-                        <ul>
-                          <a href="member/?action=profile">United Metal is a leading manufacturer in the field of metallic construction. The company is located in the 6th October Trading center and the factory is located in the 3th industrial zone in 6th of October city.</a> 
-                        </ul>
-                      </div>
-                    </div>
+                    
                     <div className="col-lg-3 col-md-6">
                       <h3 data-target="#collapse_2">Services</h3>
                       <div className="collapse dont-collapse-sm links" id="collapse_2">
@@ -98,18 +91,27 @@ const Footer = (props) => {
                       </div>
                   
                 </ul>
+
                       </div>
             
                   
                   
+                    </div>
+                    <div className="col-lg-3 col-md-6">
+                      <h3 data-target="#collapse_1">About</h3>
+                      <div className="collapse dont-collapse-sm links" id="collapse_1">
+                        <ul>
+                          <a href="member/?action=profile">United Metal is a leading manufacturer in the field of metallic construction. The company is located in the 6th October Trading center and the factory is located in the 3th industrial zone in 6th of October city.</a> 
+                        </ul>
+                      </div>
                     </div>
                     <div className="col-lg-4 col-md-6">
                       <h3 data-target="#collapse_3">Contact us</h3>
                       <div className="collapse dont-collapse-sm contacts" id="collapse_3">
                         <ul>
                           <li><i className="ti-home" />Head office : 6 October Trading center building no 1</li>
-                          <li><i className="fas fa-shipping-fast" /> Work Shop : 3rd industrial zone 6th of October </li>
-                          
+                          <li><i className="ti-home" /> Work Shop : 3rd industrial zone 6th of October </li>
+                          <li><i className="ti-home" /> Mail : info@unitedmetal.com.eg </li>
                         
                         </ul>
                       </div>
