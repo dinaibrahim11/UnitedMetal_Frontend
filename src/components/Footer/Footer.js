@@ -113,7 +113,7 @@ const Footer = (props) => {
                         <ul>
                           <li><i className="ti-home" />Head office : 6 October Trading center building no 1</li>
                           <li><i className="fas fa-shipping-fast" /> Work Shop : 3rd industrial zone 6th of October </li>
-                          <li><i className="fas fa-shipping-fast" /> Email  : info@unitedmetal.com.eg  </li>
+                          
                         
                         </ul>
                       </div>
