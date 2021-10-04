@@ -59,7 +59,7 @@
           <main className="bg_gray">
             <div className="container">
               <div className="main_title">
-                <h2>Contact US</h2>
+                <h2>Contact Us</h2>
                 <a href="tel://+20 111 888 0095">+20 111 888 0095</a>
                 Phone number available
                 From Sunday to Thursday from 10AM till 7PM
