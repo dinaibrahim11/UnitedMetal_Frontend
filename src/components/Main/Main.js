@@ -6,8 +6,7 @@ import './Main.css';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Unauthorized from '../Unauthorized/Unauthorized';
 import { useSelector } from 'react-redux';
-import Organizer from '../Organizer/Organizer'
-import Welcome from '../../components/Welcome/Welcome';
+import Organizer from '../Organizer/Organizer';
 import Login from '../../components/Login/Login';
 import ForgetPassword from '../../components/ForgetPassword/ForgetPassword'
 import Home from '../../pages/Home/Home';
@@ -18,10 +17,16 @@ import Signup from '../../components/Signup/Signup';
 import FormSuccess from '../../components/FormSuccess/FormSuccess';
 import SearchPage from '../../components/Search/SearchPage';
 import SearchMain from '../../components/Search/SearchMain';
-import About from '../../pages/About/About';/**
+import About from '../../pages/About/About';
+import Contact from '../../pages/Contact/Contact';
+import Careers from '../../pages/Careers/Careers';
+import Projects from '../../pages/Projects/Projects';
+import Services from '../../pages/Services/Services';
+
+/**
  * Responsible for the routing of the whole website
  * @example <Main />
- * 
+ * @author Dina Mohsen
  *     
  */
 const Main = (props) => {
@@ -33,7 +38,7 @@ const Main = (props) => {
     return (
         <main>
             <Switch>
-                <Route exact path="/" component={Welcome} />
+                <Route exact path="/" component={Home} />
            
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/signup" component={Signup}/>
@@ -47,7 +52,10 @@ const Main = (props) => {
                <Route exact path="/SearchPage" component={SearchPage} />
                
                 <Route exact path="/about" component={About} />
-               
+                <Route exact path="/contact" component={Contact} />
+                <Route exact path="/careers" component={Careers} />
+                <Route exact path="/projects" component={Projects} />
+                <Route exact path="/services" component={Services} />
                 <Route exact path="/SearchPage/" component={SearchPage}/>
              
                 <Route exact path="/organize" component={Organizer}/>

@@ -2,8 +2,9 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom'
 import './App.css';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
-import Welcome from './components/Welcome/Welcome';
+
 import Login from './components/Login/Login';
 import ForgetPassword from './components/ForgetPassword/ForgetPassword'
 import Home from './pages/Home/Home';
@@ -23,7 +24,7 @@ const App = () => {
       {/*<Main />*/}
       {/* <Switch>
 
-      <Route exact path="/" component={Welcome} />
+      <Route exact path="/" component={Home} />
       <Route path="/login" component={Login}/>
       <Route path="/signup" component={Signup}/>
       <Route path="/post-signup" component={FormSuccess} />
@@ -35,10 +36,11 @@ const App = () => {
 
       </Switch> */}
       <Main />
-
+<Footer />
     </div>
     {/*<Header />
         <Main />
+        <Footer />
       </div>*/}
     </BrowserRouter>
     
