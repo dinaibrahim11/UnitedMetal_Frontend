@@ -65,6 +65,22 @@ const Footer = (props) => {
               <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
               <style dangerouslySetInnerHTML={{__html: ".videoWrapper{position:relative;padding-bottom:56.25%;padding-top:25px;height:0}.videoWrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}figure{margin:0 0 .60rem}" }} />
               
+          <div className="top_panel">
+            <div className="container header_panel">
+              <a href="javascript:void(0)" className="btn_close_top_panel"><i className="ti-close" /></a>
+              <label> product added to cart</label>
+            </div>
+            <div>
+              <div className="item">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12" id="cart-result">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
               <footer className="revealed">
         <div className="container">
                   <div className="row">
