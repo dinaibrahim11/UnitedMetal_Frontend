@@ -21,6 +21,7 @@ import About from '../../pages/About/About';
 import Contact from '../../pages/Contact/Contact';
 import Careers from '../../pages/Careers/Careers';
 import Projects from '../../pages/Projects/Projects';
+import Project from '../../pages/Project/Project';
 import Services from '../../pages/Services/Services';
 
 /**
@@ -55,6 +56,7 @@ const Main = (props) => {
                 <Route exact path="/contact" component={Contact} />
                 <Route exact path="/careers" component={Careers} />
                 <Route exact path="/projects" component={Projects} />
+                <Route exact path="/project" component={Project} />
                 <Route exact path="/services" component={Services} />
                 <Route exact path="/SearchPage/" component={SearchPage}/>
              
