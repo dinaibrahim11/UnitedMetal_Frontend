@@ -67,27 +67,13 @@ const GuestHeader = (props) => {
         <div id="page">
           <header className="version_1">
             <div className="layer" />
-            <div className="countdownTimer">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="offset-md-0 offset-lg-1 col-md-12 col-lg-10 center-items">
-                    <div className="content marquee" style={{textAlign: 'center'}}>
-                      <p className="Marquee-content" style={{margin: 0}}>
-                        .
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="main-body-overlay" style={{opacity: 0, display: 'none'}} />
-            </div>
             <div className="main_header">
               <div className="container">
                 <div className="row small-gutters">
                   <div className="col-xl-2 col-lg-1 d-lg-flex align-items-center">
                     <div id="logo">
                       <a href="index.html">
-                        <img src="./logo.png" alt="UnitedMetal" width={100} style={{width: '85px'}} /></a>
+                        <img src="./logo.png" alt="United Metal" width={200} style={{width: '185px'}} /></a>
                     </div>
                   </div>
                   <nav className="col-xl-7 col-lg-8">
@@ -111,8 +97,8 @@ const GuestHeader = (props) => {
                        <li><a href="shop/all/best:1"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >CAREERS</a></li> 
                        <li><a href="shop/category/11/" onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >SERVICES</a></li>
                         
-                       <li>  <a href="/about"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >ABOUTUS</a></li>
-                         <li><a href="/contact"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >CONTACTUS</a></li>
+                       <li>  <a href="/about"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >ABOUT US</a></li>
+                         <li><a href="/contact"  onClick={(e) => {e.preventDefault(); dispatch(usersActions.logout()); history.push("/home")}} >CONTACT US</a></li>
                       </ul>
                     </div>
                   </nav>
@@ -120,27 +106,7 @@ const GuestHeader = (props) => {
                     <ul className="top_tools">
                       <li className="d-block d-none d-sm-block d-md-none">
                       </li>
-                      <li>
-                        <div className="dropdown dropdown-cart">
-                          <a href="/cart" className="cart_bt mobile-ddl">
-                            <strong>0 </strong>
-                            <i className="ti-shopping-cart" />
-                          </a>
-                          <div className="dropdown-menu cart-menu">
-                            <ul>
-                            </ul>
-                            <div className="total_drop">
-                              <div className="clearfix" style={{display: 'none'}}>
-                                <strong>Total</strong><span />
-                              </div>
-                              <a style={{backgroundColor: '#faeaea', color: '#000'}} href="cart/" className="btn_1 cart">View cart</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <a href="wishlist" className="wishlist"><span>Wishlist</span></a>
-                      </li>
+                      
                       <li>
                         <a className="phone_top" href="https://braes.co/contact"><strong><span>Need Help</span></strong></a>
                       </li>
@@ -150,17 +116,7 @@ const GuestHeader = (props) => {
               </div>
             </div>
             <div className="countdownTimer">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="offset-md-0 offset-lg-1 col-md-12 col-lg-10 center-items">
-                    <div className="content marquee" style={{textAlign: 'center'}}>
-                      <p className="Marquee-content" style={{margin: 0}}>
-                        .
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <div className="main-body-overlay" style={{opacity: 0, display: 'none'}} />
             </div>
             <div className="main_nav Sticky">
@@ -170,28 +126,6 @@ const GuestHeader = (props) => {
                     <ul className="top_tools">
                       <li className="d-block d-none d-sm-block d-md-none search-icon">
                         <a href="javascript:void(0);" className="btn_search_mob"><span>Search</span></a>
-                      </li>
-                      <li>
-                        <div className="dropdown dropdown-access">
-                          <a href="javascript:void(0)" className="access_link mobile-ddl">
-                            <span>Account</span></a>
-                          <div className="dropdown-menu">
-                            <a href="member/?action=Register" className="btn_1">Sign In or Sign Up</a>
-                            <ul>
-                              <li>
-                                <a href="member/?action=orders&act=track"><i className="ti-truck" />Track your Order</a>
-                              </li>
-                              <li>
-                                <a href="member/?action=orders"><i className="ti-package" />My Orders</a>
-                              </li>
-                              <li>
-                                <a href="member/?action=profile"><i className="ti-user" />My Profile</a>
-                              </li>
-                              <li>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
                       </li>
                       <li style={{display: 'block'}} className> <a className="lang-select " href="index/?action=lang&Id=Arabic&return=__2Fcontact">
                           AR
@@ -208,25 +142,20 @@ const GuestHeader = (props) => {
 
                     <div className="custom-search-input" style={{marginTop: '-5px'}}>
                       <form action="shop/all/" method="post">
-                        <input type="text" placeholder="Projects, collaboratios or careers.."  name="keyword" defaultValue  onChange={handleChange} value={searchQuery}  data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button"  />
-                        
-                        <input type="SEARCH" className="btn_1 full-width" defaultValue="Search" />
-                  
+                        <input type="text" placeholder="Search projects, collaboratios or careers.."  name="keyword" defaultValue  onChange={handleChange} value={searchQuery}  data-track="gnSearchSearchIcon" className="search-icon-button" tabIndex={-1} aria-label="Search" role="button"  />
+          
                       </form>
                     </div>
-
-
-    
-  
                   </div>
                 </div>
               </div>
               <div className="search_mob_wp">
                 <form action="shop/all/" method="post">
                            
-    <input onChange={handleChange} value={searchQuery} type="text" id="search-field" className="autosuggest-selectable-item" placeholder="Projects, collaboratios or careers.." name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
+    <input onChange={handleChange} value={searchQuery} type="text" id="search-field" className="autosuggest-selectable-item"
+     placeholder="Projects, collaboratios or careers.." name="text" defaultValue autoComplete="off" aria-label="Search" role="textbox" />
   
-                  <input type="submit" className="btn_1 full-width" defaultValue="Search" />
+                  <input type="submit" defaultValue="Search" />
                 </form>
               </div>
 
@@ -258,11 +187,6 @@ const GuestHeader = (props) => {
         </div>
         <div id="toTop" />
     </div>
-
-
-
-
-
 
 
               );
